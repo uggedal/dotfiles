@@ -14,6 +14,8 @@ setopt append_history
 
 # keybindings
 bindkey -e
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 # completion
 zstyle :compinstall filename '$HOME/.zshrc'
