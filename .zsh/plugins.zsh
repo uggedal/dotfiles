@@ -34,7 +34,3 @@ if _has_plugin zsh-syntax-highlighting; then
   ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]="fg=yellow"
   ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]="fg=yellow"
 fi
-
-if _has_plugin zsh-syntax-highlighting-filetypes; then
-  _source_plugin zsh-syntax-highlighting-filetypes
-fi
