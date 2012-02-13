@@ -1,4 +1,5 @@
 .lesshst
+.ssh/
 .viminfo
 .zcompdump
 .zsh_history
