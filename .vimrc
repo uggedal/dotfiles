@@ -5,10 +5,11 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible     " vim mode
 
-set nobackup         " don't make backup files
+set undofile         " persist undo tree
 set history=100      " lines of command line history
 
-set directory=/tmp// " Put swap files in a separate tmp dir
+set undodir=~/.vim/tmp/undo//,/tmp//    " undo files
+set directory=~/.vim/tmp/swap//,/tmp//  " swap files
 
 set autoread         " read a unchanged file if it's been changed outside vim
 
