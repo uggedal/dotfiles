@@ -1,10 +1,6 @@
-_which() {
-  which "$1" &>/dev/null;
-}
-
-# env
-if [ -d "$HOME/bin" ]; then
-  export PATH="$HOME/bin:$PATH"
+# env shared between bash and zsh
+if [ -f "$HOME/.profile" ]; then
+  . "$HOME/.profile"
 fi
 
 # history
@@ -25,36 +21,6 @@ zstyle :compinstall filename '$HOME/.zshrc'
 zstyle ':completion:*' special-dirs ..
 autoload -Uz compinit
 compinit
-
-# editor
-if _which vim; then
-  export EDITOR="$(which vim)"
-  export VISUAL="$EDITOR"
-fi
-
-# pager
-if _which less; then
-  export PAGER=less
-
-  export LESS="-F -X -R"
-  export LESS_TERMCAP_mb=$'\E[01;31m'
-  export LESS_TERMCAP_md=$'\E[01;31m'
-  export LESS_TERMCAP_me=$'\E[0m'
-  export LESS_TERMCAP_se=$'\E[0m'
-  export LESS_TERMCAP_so=$'\E[01;44;33m'
-  export LESS_TERMCAP_ue=$'\E[0m'
-  export LESS_TERMCAP_us=$'\E[01;32m'
-fi
-
-# grep
-alias grep='grep --color=auto'
-export GREP_COLOR="1;33"
-
-# aliases
-alias ls='ls -hF --color'
-alias bc='bc -ql'
-alias ports='lsof -i -P -sTCP:LISTEN'
-alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
 
 # prompt
 autoload -U colors
@@ -77,23 +43,6 @@ function preexec() {
   fi
 }
 
-# functions
-
-function f()
-{
-  find . -path '*/.git' -prune \
-  -o -path '*/.hg' -prune \
-  -o -path '*/.svn' -prune \
-  -o -name '*.swp' -prune \
-  -o -name '*.pyc' -prune \
-  -o -type f -print | xargs grep -l $1
-}
-
-function replace()
-{
-  find . \( ! -regex '.*/\..*' \) -type f | xargs perl -pi -e "s/$1/$2/g"
-}
-
 function short_hostname() {
   local host=$(hostname -s)
   typeset -A elements
@@ -104,4 +53,3 @@ function short_hostname() {
     echo $host
   fi
 }
-
