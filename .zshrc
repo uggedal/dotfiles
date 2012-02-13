@@ -1,8 +1,11 @@
+_which() {
+  which "$1" &>/dev/null;
+}
+
 # env
-export EDITOR=/usr/bin/vim
-export PATH="$HOME/bin:$PATH"
-export LESS="-F -X -R"
-export GREP_COLOR="1;33"
+if [ -d "$HOME/bin" ]; then
+  export PATH="$HOME/bin:$PATH"
+fi
 
 # history
 HISTFILE=~/.zsh_history
@@ -23,28 +26,32 @@ zstyle ':completion:*' special-dirs ..
 autoload -Uz compinit
 compinit
 
-# ssh agent forwarding inside tmux
-function preexec() {
-  if [[ -n $TMUX ]]; then
-    NEW_SSH_AUTH_SOCK=`tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2`
-    if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
-      SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
-    fi
-  fi
-}
+# editor
+if _which vim; then
+  export EDITOR="$(which vim)"
+  export VISUAL="$EDITOR"
+fi
 
-# colorized manpages
-export LESS_TERMCAP_mb=$'\E[01;31m'
-export LESS_TERMCAP_md=$'\E[01;31m'
-export LESS_TERMCAP_me=$'\E[0m'
-export LESS_TERMCAP_se=$'\E[0m'
-export LESS_TERMCAP_so=$'\E[01;44;33m'
-export LESS_TERMCAP_ue=$'\E[0m'
-export LESS_TERMCAP_us=$'\E[01;32m'
+# pager
+if _which less; then
+  export PAGER=less
+
+  export LESS="-F -X -R"
+  export LESS_TERMCAP_mb=$'\E[01;31m'
+  export LESS_TERMCAP_md=$'\E[01;31m'
+  export LESS_TERMCAP_me=$'\E[0m'
+  export LESS_TERMCAP_se=$'\E[0m'
+  export LESS_TERMCAP_so=$'\E[01;44;33m'
+  export LESS_TERMCAP_ue=$'\E[0m'
+  export LESS_TERMCAP_us=$'\E[01;32m'
+fi
+
+# grep
+alias grep='grep --color=auto'
+export GREP_COLOR="1;33"
 
 # aliases
 alias ls='ls -hF --color'
-alias grep='grep --color=auto'
 alias bc='bc -ql'
 alias ports='lsof -i -P -sTCP:LISTEN'
 alias rmpyc='find . -name \*.pyc -exec rm -v {} \;'
@@ -59,6 +66,16 @@ else
   PROMPT='$(short_hostname) %~ '
 fi
 RPROMPT="%(?,,%{$fg[red]%}%?%{$reset_color%})"
+
+# ssh agent forwarding inside tmux
+function preexec() {
+  if [[ -n $TMUX ]]; then
+    NEW_SSH_AUTH_SOCK=`tmux showenv|grep ^SSH_AUTH_SOCK|cut -d = -f 2`
+    if [[ -n $NEW_SSH_AUTH_SOCK ]] && [[ -S $NEW_SSH_AUTH_SOCK ]]; then
+      SSH_AUTH_SOCK=$NEW_SSH_AUTH_SOCK
+    fi
+  fi
+}
 
 # functions
 
