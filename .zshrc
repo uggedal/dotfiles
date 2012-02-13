@@ -16,12 +16,6 @@ bindkey -e
 bindkey "^[[A" history-beginning-search-backward
 bindkey "^[[B" history-beginning-search-forward
 
-# completion
-zstyle :compinstall filename '$HOME/.zshrc'
-zstyle ':completion:*' special-dirs ..
-autoload -Uz compinit
-compinit
-
 # prompt
 autoload -U colors
 colors
@@ -57,3 +51,9 @@ function _short_hostname() {
 if [ -f "$HOME/.zsh/plugins.zsh" ]; then
   source "$HOME/.zsh/plugins.zsh"
 fi
+
+# completion
+zstyle :compinstall filename '$HOME/.zshrc'
+zstyle ':completion:*' special-dirs ..
+autoload -Uz compinit
+compinit
