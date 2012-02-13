@@ -12,8 +12,8 @@ if _has_plugin completions; then
   fpath=($zsh_plugins/completions $fpath)
 fi
 
-if _has_plugin syntax-highlighting; then
-  _source_plugin syntax-highlighting
+if _has_plugin zsh-syntax-highlighting; then
+  _source_plugin zsh-syntax-highlighting
 
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
@@ -35,6 +35,6 @@ if _has_plugin syntax-highlighting; then
   ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]="fg=yellow"
 fi
 
-if _has_plugin syntax-highlighting-filetypes; then
-  _source_plugin syntax-highlighting-filetypes
+if _has_plugin zsh-syntax-highlighting-filetypes; then
+  _source_plugin zsh-syntax-highlighting-filetypes
 fi
