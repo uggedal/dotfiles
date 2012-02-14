@@ -4,3 +4,18 @@
 [submodule ".zsh/plugins/zsh-syntax-highlighting"]
 	path = .zsh/plugins/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
+[submodule ".vim/bundle/syntastic"]
+	path = .vim/bundle/syntastic
+	url = git://github.com/scrooloose/syntastic.git
+[submodule ".vim/bundle/solarized"]
+	path = .vim/bundle/solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
+[submodule ".vim/bundle/supertab"]
+	path = .vim/bundle/supertab
+	url = git://github.com/ervandew/supertab.git
+[submodule ".vim/bundle/markdown"]
+	path = .vim/bundle/markdown
+	url = git://github.com/tpope/vim-markdown.git
+[submodule ".vim/bundle/commentary"]
+	path = .vim/bundle/commentary
+	url = git://github.com/tpope/vim-commentary.git

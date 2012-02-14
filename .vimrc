@@ -170,3 +170,5 @@ augroup vimrcEx
     \   exe "normal g`\"" |
     \ endif
 augroup END
+
+runtime bundle.vim
