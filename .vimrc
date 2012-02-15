@@ -113,6 +113,9 @@ autocmd Syntax * match Error /\%80v/  " mark lines over 80 columns
 " JSON syntax highlighting:
 au BufNewFile,BufRead *.json setlocal ft=javascript
 
+" Salt state syntax highlighting:
+au BufNewFile,BufRead *.sls setlocal ft=yaml
+
 " 4 spaces for Python:
 au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4
 
