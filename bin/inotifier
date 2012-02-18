@@ -1,0 +1,9 @@
+#!/bin/sh
+
+FORMAT="%w%f written"
+
+"$@"
+
+while inotifywait -qre close_write --format "$FORMAT" .; do
+  "$@"
+done
