@@ -1,0 +1,5 @@
+# Salt state files
+--type-add=yaml=.sls
+
+# Markup
+--type-set=markup=.md,.mardown,.rst
