@@ -103,7 +103,7 @@ set smarttab       " inserts spaces according to shiftwidt when <TAB>
 
 set wrap           " visually wrap lines longer than the window
 
-autocmd Syntax * match Error /\%80v/  " mark lines over 80 columns
+set colorcolumn=80 " mark lines over 80 columns
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
