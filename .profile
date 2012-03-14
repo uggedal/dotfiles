@@ -58,12 +58,22 @@ fi
 
 function f()
 {
+  local opts="-I"
+  if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
+    local opts="${opts}i"
+  fi
+  if [ $1 = '-v' ]; then
+    local opts="${opts}n"
+    shift
+  else
+    local opts="${opts}l"
+  fi
   find . -path '*/.git' -prune \
   -o -path '*/.hg' -prune \
   -o -path '*/.svn' -prune \
   -o -name '*.swp' -prune \
   -o -name '*.pyc' -prune \
-  -o -type f -print | xargs grep -l $1
+  -o -type f -print0 | xargs -0 grep $opts --color=auto "$@"
 }
 
 function replace()
