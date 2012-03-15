@@ -15,6 +15,16 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+# go
+if [ -d "$HOME/dev/go" ]; then
+  export GOROOT=$HOME/dev/go
+  export PATH=$PATH:$GOROOT/bin
+
+  if [ -d "$HOME/dev/gopath" ]; then
+    export GOPATH=$HOME/dev/gopath
+  fi
+fi
+
 # editor
 if _which vim; then
   export EDITOR="$(which vim)"
