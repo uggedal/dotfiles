@@ -37,3 +37,6 @@
 [submodule ".vim/bundle/yaml"]
 	path = .vim/bundle/yaml
 	url = git://github.com/avakhov/vim-yaml.git
+[submodule ".vim/bundle/go"]
+	path = .vim/bundle/go
+	url = git://github.com/uggedal/go-vim.git
