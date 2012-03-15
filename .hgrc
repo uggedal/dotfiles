@@ -6,6 +6,7 @@ cacerts = /etc/ssl/certs/ca-certificates.crt
 
 [extensions]
 color=
+hgext.convert=
 
 [color]
 status.modified = yellow
