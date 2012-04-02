@@ -25,6 +25,12 @@ if [ -d "$HOME/dev/go" ]; then
   fi
 fi
 
+# ruby
+if [ -d "$HOME/.gem" ]; then
+  export GEM_HOME=$HOME/.gem
+  export PATH=$PATH:$GEM_HOME/bin
+fi
+
 # editor
 if _which vim; then
   export EDITOR="$(which vim)"
