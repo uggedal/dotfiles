@@ -69,6 +69,9 @@ if _root; then
     alias pacman-orphans='pacman -Rs $(pacman -Qtdq)'
   fi
 fi
+if _which cloc; then
+  alias cloc="cloc --exclude-dir=.git,.hg"
+fi
 
 # functions
 
