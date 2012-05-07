@@ -19,9 +19,10 @@ let g:html5_rdfa_attributes_complete = 0
 let g:html5_microdata_attributes_complete = 0
 let g:html5_aria_attributes_complete = 0
 
-" Ctrl-P remappings:
+" Ctrl-P mappings for tab usage:
 let g:ctrlp_map = '<leader>o'
 let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("e")': ['<c-t>'],
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
   \ }
+let g:ctrlp_open_new_file = 't'
