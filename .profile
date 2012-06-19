@@ -75,8 +75,15 @@ fi
 
 # functions
 
-function f()
-{
+function ssh() {
+  if [ -e $HOME/.ssh/id_rsa -a -x /usr/bin/keychain ];then
+    eval $(keychain --eval --agents ssh --quick --quiet id_rsa)
+  fi
+
+  exec /usr/bin/ssh "$@"
+}
+
+function f() {
   local opts="-I"
   if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
     local opts="${opts}i"
@@ -95,7 +102,6 @@ function f()
   -o -type f -print0 | xargs -0 grep $opts --color=auto "$@"
 }
 
-function replace()
-{
+function replace() {
   find . \( ! -regex '.*/\..*' \) -type f | xargs perl -pi -e "s/$1/$2/g"
 }
