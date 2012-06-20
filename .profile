@@ -15,6 +15,12 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+
+# keychain
+if [ -e $HOME/.ssh/id_rsa -a -x /usr/bin/keychain ];then
+  eval $(keychain --eval --agents ssh --quick --quiet id_rsa)
+fi
+
 # go
 if [ -d "$HOME/dev/go" ]; then
   export GOROOT=$HOME/dev/go
@@ -74,14 +80,6 @@ if _which cloc; then
 fi
 
 # functions
-
-function ssh() {
-  if [ -e $HOME/.ssh/id_rsa -a -x /usr/bin/keychain ];then
-    eval $(keychain --eval --agents ssh --quick --quiet id_rsa)
-  fi
-
-  exec /usr/bin/ssh "$@"
-}
 
 function f() {
   local opts="-I"
