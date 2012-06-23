@@ -9,6 +9,7 @@ HISTSIZE=100000
 SAVEHIST=$HISTSIZE
 setopt hist_verify
 setopt hist_ignore_dups
+setopt hist_ignore_space
 setopt append_history
 
 # keybindings
