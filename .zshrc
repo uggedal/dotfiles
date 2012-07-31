@@ -39,7 +39,7 @@ function preexec() {
 }
 
 function _short_hostname() {
-  local host=$(hostname -s)
+  local host=$(hostname)
   typeset -A elements
   elements=(hydrogen h helium he lithium li beryllium be boron b carbon c nitrogen n oxygen o fluorine f neon ne sodium na magnesium mg aluminum al silicon si phosphorus p sulfur s chlorine cl argon ar potassium k calcium ca scandium sc titanium ti vanadium v chromium cr manganese mn iron fe cobalt co nickel ni copper cu zinc zn gallium ga germanium ge arsenic as selenium se bromine br krypton kr rubidium rb strontium sr yttrium y zirconium zr niobium nb molybdenum mo technetium tc ruthenium ru rhodium rh palladium pd silver ag cadmium cd indium in tin sn antimony sb tellurium te iodine i xenon xe cesium cs barium ba lanthanum la cerium ce praseodymium pr neodymium nd promethium pm samarium sm europium eu gadolinium gd terbium tb dysprosium dy holmium ho erbium er thulium tm ytterbium yb lutetium lu hafnium hf tantalum ta wolfram w rhenium re osmium os iridium ir platinum pt gold au mercury hg thallium tl lead pb bismuth bi polonium po astatine at radon rn francium fr radium ra actinium ac thorium th protactinium pa uranium u neptunium np plutonium pu americium am curium cm berkelium bk californium cf einsteinium es fermium fm mendelevium md nobelium no lawrencium lr)
   if (( ${+elements[$host]} )); then
