@@ -72,7 +72,7 @@ if _which lsof; then
 fi
 if _root; then
   if _which pacman; then
-    alias pacman-orphans='pacman -Rs $(pacman -Qtdq)'
+    alias pacman-orphans='pacman -Qtdq && pacman -Rs $(pacman -Qtdq)'
   fi
 fi
 if _which cloc; then
