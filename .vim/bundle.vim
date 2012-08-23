@@ -26,3 +26,13 @@ let g:ctrlp_prompt_mappings = {
   \ 'AcceptSelection("t")': ['<cr>', '<2-LeftMouse>'],
   \ }
 let g:ctrlp_open_new_file = 't'
+
+" DWM custom mappings:
+let g:dwm_map_keys = 0
+
+map <C-N> :call DWM_New()<CR>
+map <C-C> :call DWM_Close()<CR>
+map <C-H> :call DWM_Focus()<CR>
+map <C-J> <C-W>w
+map <C-K> <C-W>W
+map <C-L> :ls<CR>
