@@ -1,10 +1,5 @@
 call pathogen#infect()
 
-if &term =~ "screen-256"
-  let g:solarized_termcolors=256
-else
-  let g:solarized_termcolors=16
-endif
 colorscheme solarized
 
 " Automatically close syntastic error window when no errors are detected:
