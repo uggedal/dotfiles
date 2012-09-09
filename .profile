@@ -27,12 +27,7 @@ fi
 
 # go
 if [ -d "$HOME/dev/go" ]; then
-  export GOROOT=$HOME/dev/go
-  export PATH=$PATH:$GOROOT/bin
-
-  if [ -d "$HOME/dev/go" ]; then
-    export GOPATH=$HOME/dev/go
-  fi
+  export GOPATH=$HOME/dev/go
 fi
 
 # ruby
