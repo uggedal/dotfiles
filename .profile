@@ -15,6 +15,10 @@ if [ -d "$HOME/bin" ]; then
   export PATH="$HOME/bin:$PATH"
 fi
 
+# secrets
+if [ -d "$HOME/.secrets" ]; then
+  . "$HOME/.secrets"
+fi
 
 # keychain
 if [ -e $HOME/.ssh/id_rsa -a -x /usr/bin/keychain ];then
