@@ -78,6 +78,9 @@ fi
 if _which cloc; then
   alias cloc="cloc --exclude-dir=.git,.hg"
 fi
+if _which dig; then
+  alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
+fi
 
 # functions
 
