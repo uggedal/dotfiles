@@ -2,6 +2,7 @@
 .config/htop/htoprc
 .gem/
 .lesshst
+.secrets
 .ssh/
 .viminfo
 .vim/.netrwhist
