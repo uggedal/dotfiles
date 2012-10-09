@@ -37,6 +37,11 @@ if [ -d "$HOME/.gem" ]; then
   export PATH=$PATH:$GEM_HOME/bin
 fi
 
+# node
+if [ -d "$HOME/node_modules" ]; then
+  export PATH=$PATH:$HOME/node_modules/.bin
+fi
+
 # editor
 if _which vim; then
   export EDITOR="$(which vim)"
