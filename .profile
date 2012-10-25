@@ -94,7 +94,7 @@ function f() {
   if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
     local opts="${opts}i"
   fi
-  if [ $1 = '-v' ]; then
+  if [ "$1" = '-v' ]; then
     local opts="${opts}n"
     shift
   else
