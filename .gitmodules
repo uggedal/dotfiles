@@ -46,3 +46,6 @@
 [submodule ".vim/bundle/pinpoint"]
 	path = .vim/bundle/pinpoint
 	url = git://github.com/fmoralesc/vim-pinpoint.git
+[submodule ".vim/bundle/mustche"]
+	path = .vim/bundle/mustche
+	url = git://github.com/juvenn/mustache.vim.git
