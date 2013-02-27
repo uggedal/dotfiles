@@ -9,7 +9,7 @@ function _source_plugin() {
 }
 
 if _has_plugin completions; then
-  fpath=($zsh_plugins/completions/src $fpath)
+  fpath=($zsh_plugins/zsh-completions/src $fpath)
 fi
 
 if _has_plugin zsh-syntax-highlighting; then
