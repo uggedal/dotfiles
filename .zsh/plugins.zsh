@@ -8,7 +8,7 @@ function _source_plugin() {
   source $zsh_plugins/$1/$1.zsh
 }
 
-if _has_plugin completions; then
+if _has_plugin zsh-completions; then
   fpath=($zsh_plugins/zsh-completions/src $fpath)
 fi
 
