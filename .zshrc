@@ -55,6 +55,9 @@ fi
 
 # completion
 zstyle :compinstall filename '$HOME/.zshrc'
+
 zstyle ':completion:*' special-dirs ..
+zstyle ':completion:*:mplayer:argument*' tag-order - '! urls'
+
 autoload -Uz compinit
 compinit
