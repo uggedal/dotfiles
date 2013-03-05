@@ -142,6 +142,7 @@ let mapleader = ","
 nnoremap <Leader>b :ls<CR>
 nnoremap <Leader>p :bp<CR>
 nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>d :bd<CR>
 nnoremap <Leader>g :b#<CR>
 nnoremap <Leader>1 :1b<CR>
 nnoremap <Leader>2 :2b<CR>
