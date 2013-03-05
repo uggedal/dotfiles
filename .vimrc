@@ -126,7 +126,7 @@ au FileType go setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Statusbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%02n\ %f%m%r%h%w\ %y\ [%{&ff}]
+set statusline=%02n\ %f%m%r%h%w\ %y
 set statusline+=%=%-14.(%l,%c%V%)\ %L
 
 set laststatus=2
