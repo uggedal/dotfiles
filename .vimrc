@@ -66,15 +66,13 @@ inoremap <down> <nop>
 inoremap <left> <nop>
 inoremap <right> <nop>
 
+" Disable tab shortcuts:
+nnoremap gT <nop>
+nnoremap gt <nop>
+
 " Move up and down in screen lines, not file lines:
 nnoremap j gj
 nnoremap k gk
-
-" Tab movement shortcuts:
-nnoremap <left> gT
-nnoremap <right> gt
-nnoremap <silent> <up> :if tabpagenr() == 1\|exe "tabm ".tabpagenr("$")\|else\|exe "tabm ".(tabpagenr()-2)\|endif<CR> 
-nnoremap <silent> <down> :if tabpagenr() == tabpagenr("$")\|tabm 0\|else\|exe "tabm ".tabpagenr()\|endif<CR>
 
 " Split movement shortcuts:
 nnoremap <C-h> <C-w>h
@@ -128,7 +126,7 @@ au FileType go setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Statusbar
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set statusline=%f%m%r%h%w\ %y\ [%{&ff}]
+set statusline=%02n\ %f%m%r%h%w\ %y\ [%{&ff}]
 set statusline+=%=%-14.(%l,%c%V%)\ %L
 
 set laststatus=2
@@ -140,27 +138,33 @@ set laststatus=2
 " Avoid pinky stretch for '\':
 let mapleader = ","
 
-" Toggle line numbers:
-nnoremap  <leader>n :set nonumber!<CR>
-
-" Toggle display of invisible characters (like TextMate):
-set listchars=tab:▸\ ,eol:¬
-nnoremap <leader>l :set list!<CR>
+" Buffer movement:
+nnoremap <Leader>b :ls<CR>
+nnoremap <Leader>p :bp<CR>
+nnoremap <Leader>n :bn<CR>
+nnoremap <Leader>g :b#<CR>
+nnoremap <Leader>1 :1b<CR>
+nnoremap <Leader>2 :2b<CR>
+nnoremap <Leader>3 :3b<CR>
+nnoremap <Leader>4 :4b<CR>
+nnoremap <Leader>5 :5b<CR>
+nnoremap <Leader>6 :6b<CR>
+nnoremap <Leader>7 :7b<CR>
+nnoremap <Leader>8 :8b<CR>
+nnoremap <Leader>9 :9b<CR>
+nnoremap <Leader>0 :10b<CR>
 
 " Toggle paste mode for no autoindenting:
-nnoremap <leader>p :set invpaste<CR>
+nnoremap <leader>i :set invpaste<CR>
 
 " Opens an edit command with the path of the current file filled in
 nnoremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
-
-" Opens a tab edit command with the path of the current file filled in
-nnoremap <Leader>te :tabe <C-R>=expand("%:p:h") . "/" <CR>
 
 " Create vertical split and navigate to it:
 nnoremap <leader>w <C-w>v<C-w>l
 
 " Clear search highlights:
-nnoremap <leader><space> :noh<CR>
+nnoremap <leader>c :noh<CR>
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
