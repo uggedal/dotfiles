@@ -2,6 +2,9 @@ call pathogen#infect()
 
 colorscheme solarized
 
+" No grey bg in sign gutter
+hi! SignColumn ctermbg=NONE
+
 " Syntastic:
 let g:syntastic_check_on_open=1
 let g:syntastic_enable_signs=1
