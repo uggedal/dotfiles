@@ -17,3 +17,5 @@
   date = iso
 [advice]
   statusHints = false
+[pull]
+	rebase = true
