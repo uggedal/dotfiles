@@ -4,6 +4,6 @@ FORMAT="%w%f written"
 
 "$@"
 
-while inotifywait -qre close_write --format "$FORMAT" .; do
+while inotifywait -qre create,delete,modify --format "$FORMAT" .; do
   "$@"
 done
