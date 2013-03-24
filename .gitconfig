@@ -13,9 +13,9 @@
   unpush = push -f origin HEAD^:master
 [push]
   default = simple
+[pull]
+	rebase = true
 [log]
   date = iso
 [advice]
   statusHints = false
-[pull]
-	rebase = true
