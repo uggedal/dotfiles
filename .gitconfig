@@ -19,3 +19,5 @@
   date = iso
 [advice]
   statusHints = false
+[diff]
+	tool = vimdiff
