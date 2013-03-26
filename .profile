@@ -86,6 +86,18 @@ fi
 if _which dig; then
   alias extip="dig +short myip.opendns.com @resolver1.opendns.com"
 fi
+if _which free; then
+  alias free="free -m"
+fi
+if _which vmstat; then
+  alias iostat="vmstat 1"
+fi
+if _which iostat; then
+  alias iostat="iostat -xkdz 1"
+fi
+if _which mpstat; then
+  alias iostat="mpstat -P ALL 1"
+fi
 
 # functions
 
