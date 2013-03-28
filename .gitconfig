@@ -11,6 +11,7 @@
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
   unpush = push -f origin HEAD^:master
+  unmerged = ls-files --unmerged
 [push]
   default = simple
 [pull]
