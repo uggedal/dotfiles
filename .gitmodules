@@ -49,3 +49,6 @@
 [submodule ".vim/bundle/mustche"]
 	path = .vim/bundle/mustche
 	url = git://github.com/juvenn/mustache.vim.git
+[submodule ".vim/bundle/characterize"]
+	path = .vim/bundle/characterize
+	url = git://github.com/tpope/vim-characterize.git
