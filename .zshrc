@@ -61,3 +61,6 @@ zstyle ':completion:*:mplayer:argument*' tag-order - '! urls'
 
 autoload -Uz compinit
 compinit
+
+# fast man page access (accessed with <Esc-h>)
+autoload run-help
