@@ -65,3 +65,8 @@ compinit
 
 # fast man page access (accessed with <Esc-h>)
 autoload run-help
+
+# edit command line
+autoload edit-command-line
+zle -N edit-command-line
+bindkey '\ee' edit-command-line
