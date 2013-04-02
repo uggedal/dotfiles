@@ -70,3 +70,7 @@ autoload run-help
 autoload edit-command-line
 zle -N edit-command-line
 bindkey '\ee' edit-command-line
+
+# automagically quote urls
+autoload -U url-quote-magic
+zle -N self-insert url-quote-magic
