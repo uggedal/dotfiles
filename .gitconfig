@@ -13,7 +13,7 @@
   unpush = push -f origin HEAD^:master
   unmerged = ls-files --unmerged
 [push]
-  default = simple
+  default = upstream
 [pull]
 	rebase = true
 [log]
