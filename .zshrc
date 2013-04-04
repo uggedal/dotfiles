@@ -29,6 +29,7 @@ fi
 RPROMPT="%(?,,%{$fg[red]%}%?%{$reset_color%})"
 
 # completion
+setopt completeinword
 zstyle :compinstall filename '$HOME/.zshrc'
 zstyle ':completion:*' menu select
 zstyle ':completion:*' special-dirs ..
