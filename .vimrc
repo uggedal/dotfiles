@@ -99,6 +99,7 @@ set expandtab      " expand tabs to spaces
 set tabstop=2      " width of an actual tab char in spaces
 set softtabstop=2  " width of an inserted tab char
 set shiftwidth=2   " number of spaces for each indent
+set shiftround     " snap to indent columns
 set smarttab       " inserts spaces according to shiftwidt when <TAB>
 
 set wrap           " visually wrap lines longer than the window
