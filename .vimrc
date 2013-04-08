@@ -53,6 +53,11 @@ autocmd FileType help wincmd L         " Open help window in vertical split
 " kill manual key:
 nnoremap K <nop>
 
+" Saner timeouts:
+set notimeout
+set ttimeout
+set ttimeoutlen=10
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
