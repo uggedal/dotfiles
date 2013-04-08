@@ -58,6 +58,9 @@ set notimeout
 set ttimeout
 set ttimeoutlen=10
 
+" Allow changing from unsaved buffer:
+set hidden
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
