@@ -50,7 +50,7 @@ set wildignore+=*.pyc,*.png
 autocmd InsertLeave * set nocursorline " no cursorline in normal mode
 autocmd InsertEnter * set cursorline   " cursorline in insert mode
 autocmd FileType help wincmd L         " Open help window in vertical split
-" kill manual key:
+" Kill manual key:
 nnoremap K <nop>
 
 " Saner timeouts:
