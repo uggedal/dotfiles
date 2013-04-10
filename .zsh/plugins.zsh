@@ -1,7 +1,7 @@
 local zsh_plugins="$HOME/.zsh/plugins"
 
 function _has_plugin() {
-  [ -d "$zsh_plugins/$1" ] && find "$zsh_plugins/$1" -maxdepth 0 -empty | read
+  [ -d "$zsh_plugins/$1" ] && find "$zsh_plugins/$1" -maxdepth 0 -type f | read
 }
 
 function _source_plugin() {
