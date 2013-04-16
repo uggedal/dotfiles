@@ -24,7 +24,7 @@ set shortmess+=I     " don't show splash screen
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=light
 
-syntax on 
+syntax enable
 set synmaxcol=200                " don't highlight long lines
 filetype plugin indent on        " language dependent indenting
 
