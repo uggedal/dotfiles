@@ -61,6 +61,9 @@ set ttimeoutlen=10
 " Allow changing from unsaved buffer:
 set hidden
 
+" Saner <C-A>/<C-X> incr/decr:
+set nrformats-=octal
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Movement
