@@ -105,6 +105,7 @@ nnoremap N Nzzzv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set autoindent     " fallback when filetype don't provide indent
 set expandtab      " expand tabs to spaces
 set tabstop=2      " width of an actual tab char in spaces
 set softtabstop=2  " width of an inserted tab char
