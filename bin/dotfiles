@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+
+set -e
+
+PROTO=git
+
+ZSH_PLUGINS=(
+)
+
+VIM_PLUGINS=(
+)
+
+ensure_repo() {
+  local repo=$1
+  local target=$2
+  local version=$3
+
+  if [ ! -d $target/.git ]; then
+    git clone $PROTO://github.com/$repo.git $target
+  fi
+
+  $(cd $target && git checkout $version 2>/dev/null)
+}
+
+ensure_plugins() {
+  local root=$1
+  shift
+  local plugins=("${@}")
+
+  test -d $root || mkdir -p $root
+
+  for plugin in "${plugins[@]}"; do
+    local repo=$(cut -d' ' -f 1 <<< $plugin)
+    local name=$(cut -d/ -f 2 <<< $repo)
+    local version=$(cut -d' ' -f 2 <<< $plugin)
+
+    ensure_repo $repo $root/$name $version
+  done
+}
+
+case $1 in
+  sync)
+    ensure_plugins "$HOME/.zsh/plugins" "${ZSH_PLUGINS[@]}"
+    ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
+  ;;
+  ls)
+    echo Not implemented
+  ;;
+  *)
+    echo Usage: $(basename $0) '[sync|ls]'
+    exit 1
+  ;;
+esac
