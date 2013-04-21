@@ -19,6 +19,8 @@ ensure_repo() {
     git clone $PROTO://github.com/$repo.git $target
   fi
 
+  # TODO: pull if version not available
+
   $(cd $target && git checkout $version 2>/dev/null)
 }
 
