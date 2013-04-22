@@ -11,6 +11,8 @@ ZSH_PLUGINS=(
 )
 
 VIM_PLUGINS=(
+  'ervandew/supertab 2.0'
+  'scrooloose/syntastic 3.0.0'
 )
 
 ensure_repo() {
