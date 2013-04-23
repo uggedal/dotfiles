@@ -1,7 +1,7 @@
 local zsh_plugins="$HOME/.zsh/plugins"
 
 function _has_plugin() {
-  [ -d "$zsh_plugins/$1" ] && find "$zsh_plugins/$1" -maxdepth 0 -type f | read
+  [ -d "$zsh_plugins/$1/.git" ]
 }
 
 function _source_plugin() {
@@ -17,13 +17,13 @@ if _has_plugin zsh-syntax-highlighting; then
 
   ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets)
 
-  # colors matching solarized light color scheme:
-  ZSH_HIGHLIGHT_STYLES[path]='fg=magenta,bold'
+  # colors matching base16 light color scheme:
+  ZSH_HIGHLIGHT_STYLES[path]='fg=blue'
   ZSH_HIGHLIGHT_STYLES[globbing]='fg=magenta'
 
-  ZSH_HIGHLIGHT_STYLES[command]="fg=blue"
-  ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=blue"
-  ZSH_HIGHLIGHT_STYLES[builtin]="fg=blue"
+  ZSH_HIGHLIGHT_STYLES[command]="fg=green"
+  ZSH_HIGHLIGHT_STYLES[hashed-command]="fg=green"
+  ZSH_HIGHLIGHT_STYLES[builtin]="fg=green"
 
   ZSH_HIGHLIGHT_STYLES[alias]='fg=magenta'
   ZSH_HIGHLIGHT_STYLES[function]='fg=magenta'
