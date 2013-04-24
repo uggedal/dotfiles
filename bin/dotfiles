@@ -55,6 +55,6 @@ case $1 in
   ;;
   *)
     echo Usage: $(basename $0) '[sync|ls]'
-    exit 1
+    exit 64
   ;;
 esac
