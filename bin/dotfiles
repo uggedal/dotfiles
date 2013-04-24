@@ -2,7 +2,7 @@
 
 set -e
 
-# TODO: tage proto as argv:
+# TODO: take proto as argv:
 PROTO=git
 
 ZSH_PLUGINS=(
