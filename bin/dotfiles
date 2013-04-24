@@ -37,9 +37,9 @@ ensure_plugins() {
   test -d $root || mkdir -p $root
 
   for plugin in "${plugins[@]}"; do
-    local repo=$(cut -d' ' -f 1 <<< $plugin)
-    local name=$(cut -d/ -f 2 <<< $repo)
-    local version=$(cut -d' ' -f 2 <<< $plugin)
+    local repo=${plugin%% *}
+    local name=${repo##*/}
+    local version=${plugin##* }
 
     ensure_repo $repo $root/$name $version
   done
