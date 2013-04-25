@@ -21,12 +21,12 @@ ensure_repo() {
   local version=$3
 
   if [ ! -d $target/.git ]; then
-    git clone $PROTO://github.com/$repo.git $target
+    git clone -q $PROTO://github.com/$repo.git $target
+  else
+    (cd $target && git fetch -q)
   fi
 
-  # TODO: pull if version not available
-
-  $(cd $target && git checkout $version 2>/dev/null)
+  (cd $target && git checkout -q $version)
 }
 
 ensure_plugins() {
