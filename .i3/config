@@ -1,0 +1,144 @@
+#
+# Constants
+#
+
+set $mod Mod1
+
+set $font -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
+
+set $light   #fdf6e3
+set $shade   #eee8d5
+set $dark    #657b83
+set $warning #cb4b16
+
+#
+# Behavior
+#
+
+focus_follows_mouse no
+
+for_window [class="MPlayer"] floating enable, border none
+for_window [class="Spotify"] floating enable, border none, move absolute position center
+for_window [class="Chromium"] border none
+
+assign [class="Chromium"] 1
+
+#
+# Style
+#
+
+font $font
+
+# class                 border   backgr.  text    indicator
+client.focused          $dark    $dark    $light  $warning
+client.focused_inactive $shade   $shade   $dark   $shade
+client.unfocused        $shade   $shade   $dark   $shade
+client.urgent           $warning $warning $light  $shade
+
+
+#
+# Keybindings
+#
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+# start a terminal
+bindsym $mod+Shift+Return exec urxvtc
+bindsym $mod+Shift+t exec urxvtc -title tmux -e /bin/sh -i -c 'tmux attach || tmux'
+
+# kill focused window
+bindsym $mod+Shift+c kill
+
+# start dmenu (a program launcher)
+bindsym $mod+p exec dmenu_run -fn "$font" -nb "$light" -nf "$dark" -sb "$light" -sf "$warning"
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# move focused window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# split in horizontal orientation
+bindsym $mod+v split h
+
+# split in vertical orientation
+bindsym $mod+s split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (tabbed, stacked by toggling split)
+bindsym $mod+t layout tabbed
+bindsym $mod+w layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space floating toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle
+
+# focus the parent container
+bindsym $mod+a focus parent
+
+# switch to workspace
+bindsym $mod+1 workspace 1
+bindsym $mod+2 workspace 2
+bindsym $mod+3 workspace 3
+bindsym $mod+4 workspace 4
+bindsym $mod+5 workspace 5
+bindsym $mod+6 workspace 6
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace 1
+bindsym $mod+Shift+2 move container to workspace 2
+bindsym $mod+Shift+3 move container to workspace 3
+bindsym $mod+Shift+4 move container to workspace 4
+bindsym $mod+Shift+5 move container to workspace 5
+bindsym $mod+Shift+6 move container to workspace 6
+
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+q exit
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+  # These bindings trigger as soon as you enter the resize mode
+
+  bindsym h resize shrink width 10 px or 10 ppt
+  bindsym j resize grow height 10 px or 10 ppt
+  bindsym k resize shrink height 10 px or 10 ppt
+  bindsym l resize grow width 10 px or 10 ppt
+
+  # back to normal: Enter or Escape
+  bindsym Return mode "default"
+  bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+#
+# Statusbar
+#
+
+bar {
+  status_command i3status
+  position top
+  colors {
+    background $light
+    statusline $dark
+
+    focused_workspace  #93a1a1 #93a1a1 $light
+    active_workspace   $light $light $dark
+    inactive_workspace $light $light $dark
+    urgent_workspace   $warning $warning $light
+  }
+}
