@@ -21,7 +21,8 @@
 .viminfo
 .vim/.netrwhist
 .VirtualBox/
-VirtualBox\ VMs/
 .zcompdump
 .zsh_history
 .Xauthority
+
+VirtualBox\ VMs/
