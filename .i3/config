@@ -136,7 +136,7 @@ bar {
     background $light
     statusline $dark
 
-    focused_workspace  #93a1a1 #93a1a1 $light
+    focused_workspace  $dark $dark $light
     active_workspace   $light $light $dark
     inactive_workspace $light $light $dark
     urgent_workspace   $warning $warning $light
