@@ -1,6 +1,6 @@
 call pathogen#infect()
 
-colorscheme solarized
+silent! colorscheme solarized
 
 " No grey bg in sign gutter
 hi! SignColumn ctermbg=NONE
