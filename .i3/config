@@ -6,10 +6,10 @@ set $mod Mod1
 
 set $font -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
 
-set $light   #fdf6e3
-set $shade   #eee8d5
-set $dark    #657b83
-set $warning #cb4b16
+set $light   #f5f5f5
+set $shade   #e0e0e0
+set $dark    #505050
+set $warning #f4bf75
 
 #
 # Behavior
