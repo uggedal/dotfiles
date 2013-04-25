@@ -23,7 +23,7 @@ if [ -x /usr/bin/xmodmap -a -f $HOME/.Xmodmap ]; then
 fi
 
 # Root window background
-xsetroot -solid '#fdf6e3'
+xsetroot -solid '#f5f5f5'
 
 # Nicer pointer over root window
 xsetroot -cursor_name left_ptr &
