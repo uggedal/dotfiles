@@ -1,0 +1,6 @@
+#!/bin/sh
+
+STREAM="http://lyd.nrk.no/nrk_radio_p3_mp3_h"
+RE="s/ICY Info: StreamTitle='(.+)'.*/\1/p"
+
+mplayer -msglevel all=4 $STREAM 2>/dev/null | sed -nr "$RE"
