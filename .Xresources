@@ -11,7 +11,7 @@ Xft.rgba: rgb
 
 ! Urxvt
 
-URxvt*urlLauncher: firefox
+URxvt*urlLauncher: chromium
 URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
 URxvt*boldFont: -*-terminus-bold-r-*-*-14-*-*-*-*-*-*
 URxvt*italicFont: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
