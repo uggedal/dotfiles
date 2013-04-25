@@ -15,6 +15,10 @@ VIM_PLUGINS=(
   'scrooloose/syntastic 3.0.0'
 )
 
+log() {
+  printf "%-30s %s\n" $1 "$2"
+}
+
 ensure_repo() {
   local repo=$1
   local target=$2
@@ -45,16 +49,52 @@ ensure_plugins() {
   done
 }
 
+status_plugins() {
+  local root=$1
+  shift
+  local plugins=("${@}")
+
+  for plugin in "${plugins[@]}"; do
+    local repo=${plugin%% *}
+    local name=${repo##*/}
+    local version=${plugin##* }
+
+    status_repo $name $root/$name $version
+  done
+}
+
+status_repo() {
+  local name=$1
+  local target=$2
+  local version=$3
+
+  if [ ! -d $target/.git ]; then
+    log $name 'not installed'
+    return
+  fi
+
+  if grep -q '^[0-9.]\+$' <<<$version; then
+    local actual_version=$(cd $target && git describe --tags)
+    test $actual_version = $version && return
+  else
+    local actual_version=$(cd $target && git rev-parse HEAD)
+    grep -q "^$version" <<<$actual_version && return
+  fi
+
+  log $name "not updated to $version"
+}
+
 case $1 in
   sync)
     ensure_plugins "$HOME/.zsh/plugins" "${ZSH_PLUGINS[@]}"
     ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
-  ls)
-    echo Not implemented
+  status)
+    status_plugins "$HOME/.zsh/plugins" "${ZSH_PLUGINS[@]}"
+    status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   *)
-    echo Usage: $(basename $0) '[sync|ls]'
+    echo Usage: $(basename $0) '[sync|status]'
     exit 64
   ;;
 esac
