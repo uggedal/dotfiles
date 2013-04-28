@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+find . \( ! -regex '.*/\..*' \) -type f | xargs \
+  perl -pi -e "s/$1/$2/g"
