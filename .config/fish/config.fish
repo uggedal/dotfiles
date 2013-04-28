@@ -14,5 +14,10 @@ if _which vim
   set -gx VISUAL "$EDITOR"
 end
 
+# Browser
+if _which chromium
+  set -gx BROWSER (which chromium)
+end
+
 # Aliases
 function ls; ls -hF --color=auto $argv; end
