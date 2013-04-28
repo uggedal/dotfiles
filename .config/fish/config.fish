@@ -13,3 +13,6 @@ if _which vim
   set -gx EDITOR (which vim)
   set -gx VISUAL "$EDITOR"
 end
+
+# Aliases
+function ls; ls -hF --color=auto $argv; end
