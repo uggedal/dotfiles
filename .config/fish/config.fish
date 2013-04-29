@@ -31,3 +31,17 @@ end
 #
 
 function ls; ls -hF --color=auto $argv; end
+
+
+#
+# Prompt
+#
+
+function fish_prompt
+
+  if test -n "$SSH_CONNECTION"
+    printf '%s ' (hostname)
+  end
+
+  printf '%s ' (prompt_pwd)
+end
