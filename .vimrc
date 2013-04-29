@@ -133,6 +133,13 @@ au BufNewFile,BufRead *.json setlocal ft=javascript
 " Salt state syntax highlighting:
 au BufNewFile,BufRead *.sls setlocal ft=yaml
 
+" FIsh syntax highlighting:
+au BufNewFile,BufRead *.fish set filetype=fish
+au BufNewFile,BufRead,StdinReadPost *
+    \ if getline(1) =~ '/fish$' |
+    \   set ft=fish |
+    \ endif
+
 " 4 spaces for Python:
 au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4
 
