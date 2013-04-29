@@ -35,6 +35,7 @@ Lastly this repo contains a few useful scripts:
 * `inotifier` is a wrapper around `inotifywait` which runs the given command
   whenever any file in the current directory or below changes.
 * `p3` is a less verbose wrapper around mplayer and NRK P3's radio stream.
+* `replace` is a recursive global search and replace helper.
 
 Installation
 ------------
