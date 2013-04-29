@@ -25,6 +25,8 @@ if _which chromium
   set -gx BROWSER (which chromium)
 end
 
+set fish_greeting ''
+
 
 #
 # Aliases
