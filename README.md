@@ -1,36 +1,17 @@
 Uggedal's dotfiles
 ==================
 
-These dotfiles are used on Linux but should be usable on other
-UNIX-like systems.
-
-Installation
-------------
-
-I keep my whole home directory in git without using symlinking as often
-found in OS X specific dotfiles. Installation is therefore as simple as:
-
-    cd ~
-    git init
-    git remote add origin https://github.com/uggedal/dotfiles.git
-    git pull
-
-Third party dependencies are synchronized using a [custom script][dotfiles]
-(since git submodules are a PITA):
-
-    dotfiles sync
-
-Dependencies
-------------
-
-The essential utilities needed are:
+This is an opinionated and minimalistic dotfiles repo. You will find no
+superfluous shell aliases or obscure vim plugins here. The essential programs
+I use in my daily workflow are:
 
 * git
-* zsh
+* fish
 * vim
 * tmux
 
-For a usable X environment the following dependencies are also needed:
+In addition the following programs are used to form an ideal graphical
+experience:
 
 * i3
 * i3status
@@ -38,12 +19,27 @@ For a usable X environment the following dependencies are also needed:
 * unclutter
 * autocutsel
 
-Other non-essential applications are also configured:
+This repo also contains configuration for some not so essential programs:
 
 * mercurial
 * jshint
 * mplayer
 * rtorrent
 
+Installation
+------------
+
+I keep my whole home directory in git without using symlinking as often
+found in other dotfile repos. Installation is therefore as simple as:
+
+    cd ~
+    git init
+    git remote add origin https://github.com/uggedal/dotfiles.git
+    git pull
+
+Third-party dependencies are synchronized using a [custom script][dotfiles]
+(since git submodules are a PITA):
+
+    dotfiles sync
 
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/bin/dotfiles
