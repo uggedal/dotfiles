@@ -18,7 +18,7 @@ set showcmd          " display incomplete commands
 
 set shortmess+=I     " don't show splash screen
 
-set shell=/bin/bash\ --login " some plugins are not compatible with fish shell
+set shell=/bin/bash  " some plugins are not compatible with fish shell
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
