@@ -1,6 +1,6 @@
 # Helpers
 function _which
-  which "$argv[1]" 2>/dev/null;
+  which "$argv[1]" >- ^-;
 end
 
 # Local bin dir
