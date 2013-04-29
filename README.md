@@ -26,6 +26,12 @@ This repo also contains configuration for some not so essential programs:
 * mplayer
 * rtorrent
 
+Lastly this repo contains a few useful scripts:
+
+* `f` searches recursively in files for the given string. Prints matches when
+  given the `-v` flag.
+
+
 Installation
 ------------
 
