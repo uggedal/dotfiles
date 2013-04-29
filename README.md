@@ -32,6 +32,8 @@ Lastly this repo contains a few useful scripts:
   below.
 * `f` searches recursively in files for the given string. Prints matches when
   given the `-v` flag.
+* `inotifier` is a wrapper around `inotifywait` which runs the given command
+  whenever any file in the current directory or below changes.
 
 
 Installation
