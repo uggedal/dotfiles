@@ -1,5 +1,7 @@
 .cache/
 .config/chromium/
+.config/fish/fish_history
+.config/fish/fishd.*
 .config/gtk-*/
 .config/htop/htoprc
 .config/spotify/
