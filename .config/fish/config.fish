@@ -3,7 +3,7 @@
 #
 
 function _which
-  which "$argv[1]" >- ^-;
+  which "$argv[1]" >&- ^&-;
 end
 
 
