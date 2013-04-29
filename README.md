@@ -28,6 +28,8 @@ This repo also contains configuration for some not so essential programs:
 
 Lastly this repo contains a few useful scripts:
 
+* `dotfiles` handles syncing of third party depdendencies as described
+  below.
 * `f` searches recursively in files for the given string. Prints matches when
   given the `-v` flag.
 
