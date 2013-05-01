@@ -63,11 +63,17 @@ end
 # Keychain
 #
 
-if _which keychain; and test -e $HOME/.ssh/id_rsa; and status --is-interactive
-  # Need to have these vars set due to a bug in keychain env file for fish:
-  set -xU SSH_AUTH_SOCK
-  set -xU SSH_AGENT_PID
+function keychain
+  set -l privkey $HOME/.ssh/id_rsa
+  set -l keyenv $HOME/.keychain/$HOSTNAME-fish
 
-  keychain --agents ssh --nogui --quick --quiet id_rsa
-  test -e $HOME/.keychain/$HOSTNAME-fish; and . $HOME/.keychain/$HOSTNAME-fish
+  if _which keychain; and test -e $privkey; and status --is-interactive
+    # Need to have these vars set due to a bug in keychain env file for fish:
+    set -xU SSH_AUTH_SOCK
+    set -xU SSH_AGENT_PID
+
+    command keychain -q -Q --agents ssh $privkey
+
+    test -e $keyenv; and . $keyenv
+  end
 end
