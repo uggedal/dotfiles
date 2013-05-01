@@ -22,6 +22,10 @@ if _which vim
   set -gx VISUAL "$EDITOR"
 end
 
+if _which less
+  set -gx PAGER (which less)
+end
+
 if _which chromium
   set -gx BROWSER (which chromium)
 end
