@@ -11,6 +11,7 @@ end
 # Env
 #
 
+set -gx HOSTNAME (hostname)
 
 if test -d "$HOME/bin"
   set -gx PATH "$HOME/bin" $PATH
@@ -41,7 +42,7 @@ function ls; command ls -hF --color=auto $argv; end
 
 function fish_prompt
   if test -n "$SSH_CONNECTION"
-    printf '%s ' (hostname)
+    printf '%s ' $HOSTNAME
   end
 
   printf '%s ' (prompt_pwd)
@@ -55,4 +56,18 @@ function fish_right_prompt
     printf '%d' $last_status
     set_color normal
   end
+end
+
+
+#
+# Keychain
+#
+
+if _which keychain; and test -e $HOME/.ssh/id_rsa; and status --is-interactive
+  # Need to have these vars set due to a bug in keychain env file for fish:
+  set -xU SSH_AUTH_SOCK
+  set -xU SSH_AGENT_PID
+
+  keychain --agents ssh --nogui --quick --quiet id_rsa
+  test -e $HOME/.keychain/$HOSTNAME-fish; and . $HOME/.keychain/$HOSTNAME-fish
 end
