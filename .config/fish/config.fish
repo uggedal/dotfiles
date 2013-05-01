@@ -24,7 +24,15 @@ end
 
 if _which less
   set -gx PAGER (which less)
-  set -gx LESS "-F -X"
+  set -gx LESS "-F -X -R"
+
+  # colored man pages:
+  set -gx LESS_TERMCAP_md (printf \e\[1\;31m)     # start bold
+  set -gx LESS_TERMCAP_so (printf \e\[1\;40\;37m) # start standout
+  set -gx LESS_TERMCAP_se (printf \e\[0m)         # end standout
+  set -gx LESS_TERMCAP_us (printf \e\[0\;34m)     # start underlining
+  set -gx LESS_TERMCAP_ue (printf \e\[0m)         # end underlining
+  set -gx LESS_TERMCAP_me (printf \e\[0m)         # end all modes
 end
 
 if _which chromium
