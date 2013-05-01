@@ -63,17 +63,35 @@ end
 # Keychain
 #
 
-function keychain
-  set -l privkey $HOME/.ssh/id_rsa
+function _keychain_init_env
   set -l keyenv $HOME/.keychain/$HOSTNAME-fish
 
-  if _which keychain; and test -e $privkey; and status --is-interactive
+  if test -e $keyenv
     # Need to have these vars set due to a bug in keychain env file for fish:
     set -xU SSH_AUTH_SOCK
     set -xU SSH_AGENT_PID
 
-    command keychain -q -Q --agents ssh $privkey
-
-    test -e $keyenv; and . $keyenv
+    . $keyenv
   end
+end
+
+_keychain_init_env
+
+function _keychain_prompt
+  set -l privkey $HOME/.ssh/id_rsa
+
+  if _which keychain; and test -e $privkey; and status --is-interactive
+    command keychain -q -Q --agents ssh $privkey
+    _keychain_init_env
+  end
+end
+
+function ssh
+  _keychain_prompt
+  command ssh $argv
+end
+
+function scp
+  _keychain_prompt
+  command scp $argv
 end
