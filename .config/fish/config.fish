@@ -24,6 +24,7 @@ end
 
 if _which less
   set -gx PAGER (which less)
+  set -gx LESS "-F -X"
 end
 
 if _which chromium
