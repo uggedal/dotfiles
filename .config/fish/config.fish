@@ -85,6 +85,8 @@ set fish_color_quote green
 set fish_color_operator red
 set fish_color_escape red
 
+set fish_color_search_match --background=yellow
+
 
 #
 # Keychain
