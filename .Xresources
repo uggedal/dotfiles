@@ -1,7 +1,7 @@
 ! Fonts
 
 Xft.dpi: 96
-Xft.autohint: 1
+Xft.autohint: 0
 Xft.hinting: 1
 Xft.hintstyle: hintfull
 Xft.antialias: 1
@@ -11,13 +11,14 @@ Xft.rgba: rgb
 
 ! Urxvt
 
+URxvt.font:xft:DejaVu Sans Mono-10
+URxvt.boldFont:xft:DejaVu Sans Mono-10:style=bold
+URxvt.letterSpace: -1
+
 URxvt*urlLauncher: chromium
-URxvt*font: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
-URxvt*boldFont: -*-terminus-bold-r-*-*-14-*-*-*-*-*-*
-URxvt*italicFont: -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
-URxvt*boldItalicFont: -*-terminus-bold-r-*-*-14-*-*-*-*-*-*
 URxvt*scrollBar: false
 URxvt*mouseWheelScrollPage: True
+
 URxvt*internalBorder: 6
 !URxvt*borderLess: true
 URxvt*externalBorder: 0

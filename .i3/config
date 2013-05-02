@@ -4,7 +4,8 @@
 
 set $mod Mod1
 
-set $font -*-terminus-medium-r-*-*-14-*-*-*-*-*-*
+set $font DejaVu Sans Mono
+set $font_size 10
 
 set $light   #f5f5f5
 set $shade   #e0e0e0
@@ -27,7 +28,7 @@ assign [class="Chromium"] 1
 # Style
 #
 
-font $font
+font pango:$font $font_size
 
 # class                 border   backgr.  text    indicator
 client.focused          $dark    $dark    $light  $warning
@@ -51,7 +52,7 @@ bindsym $mod+Shift+t exec urxvtc -title tmux -e /bin/sh -i -c 'tmux attach || tm
 bindsym $mod+Shift+c kill
 
 # start dmenu (a program launcher)
-bindsym $mod+p exec dmenu_run -fn "$font" -nb "$light" -nf "$dark" -sb "$light" -sf "$warning"
+bindsym $mod+p exec dmenu_run -fn "$font-$font_size" -nb "$light" -nf "$dark" -sb "$warning" -sf "$dark"
 
 # change focus
 bindsym $mod+h focus left
