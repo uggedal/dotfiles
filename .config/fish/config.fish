@@ -78,7 +78,7 @@ end
 # Colors
 #
 
-set fish_color_command 
+set fish_color_command purple --bold
 set fish_color_autosuggestion aaa
 set fish_color_quote green
 set fish_color_operator red
