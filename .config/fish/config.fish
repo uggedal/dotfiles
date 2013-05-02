@@ -74,6 +74,12 @@ function fish_right_prompt
   end
 end
 
+#
+# Colors
+#
+
+set fish_color_autosuggestion aaa
+
 
 #
 # Keychain
