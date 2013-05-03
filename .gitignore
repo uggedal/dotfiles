@@ -23,8 +23,6 @@
 .viminfo
 .vim/.netrwhist
 .VirtualBox/
-.zcompdump
-.zsh_history
 .Xauthority
 
 VirtualBox\ VMs/

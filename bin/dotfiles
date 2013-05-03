@@ -5,11 +5,6 @@ set -e
 # TODO: take proto as argv:
 PROTO=git
 
-ZSH_PLUGINS=(
-  'zsh-users/zsh-completions 9cbd2b6762'
-  'zsh-users/zsh-syntax-highlighting 0.1.3'
-)
-
 VIM_PLUGINS=(
   'ervandew/supertab 2.0'
   'scrooloose/syntastic 3.0.0'
@@ -87,11 +82,9 @@ status_repo() {
 
 case $1 in
   sync)
-    ensure_plugins "$HOME/.zsh/plugins" "${ZSH_PLUGINS[@]}"
     ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   status)
-    status_plugins "$HOME/.zsh/plugins" "${ZSH_PLUGINS[@]}"
     status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   *)
