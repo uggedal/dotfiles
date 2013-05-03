@@ -80,7 +80,9 @@ end
 
 set fish_color_command purple --bold
 set fish_color_param normal
+
 set fish_color_autosuggestion aaa
+
 set fish_color_quote green
 set fish_color_operator red
 set fish_color_escape red
