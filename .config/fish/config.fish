@@ -49,7 +49,9 @@ set fish_greeting ''
 # Aliases
 #
 
-function ls; command ls -hF --color=auto $argv; end
+function ls
+  command ls -hF --color=auto $argv
+end
 
 
 #
