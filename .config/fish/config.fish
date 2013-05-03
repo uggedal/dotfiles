@@ -78,15 +78,19 @@ end
 # Colors
 #
 
+# Command:
 set fish_color_command purple --bold
 set fish_color_param normal
 
-set fish_color_autosuggestion aaa
-
+# Tokens:
 set fish_color_quote green
 set fish_color_operator red
 set fish_color_escape red
 
+# Auto suggestion:
+set fish_color_autosuggestion aaa
+
+# History search matches:
 set fish_color_search_match --background=yellow
 
 
