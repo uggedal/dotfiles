@@ -87,6 +87,9 @@ set fish_color_quote green
 set fish_color_operator red
 set fish_color_escape red
 
+# Comment:
+set fish_color_comment aaa
+
 # Auto suggestion:
 set fish_color_autosuggestion aaa
 
