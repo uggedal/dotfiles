@@ -59,6 +59,12 @@ if test -d $HOME/dev/go
   _prepend_path $GOPATH/bin
 end
 
+# Ruby
+if _which gem
+  set -gx GEM_HOME $HOME/.gem
+  _prepend_path $GEM_HOME/bin
+end
+
 
 #
 # Aliases
