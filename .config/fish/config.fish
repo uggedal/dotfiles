@@ -53,6 +53,12 @@ if _which chromium
   set -gx BROWSER (which chromium)
 end
 
+# Go:
+if test -d $HOME/dev/go
+  set -gx GOPATH $HOME/dev/go
+  _prepend_path $GOPATH/bin
+end
+
 
 #
 # Aliases
