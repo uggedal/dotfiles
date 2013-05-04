@@ -11,17 +11,22 @@ end
 # Env
 #
 
+set fish_greeting ''
+
 set -gx HOSTNAME (hostname)
 
+# Local bin dir:
 if test -d "$HOME/bin"
   set -gx PATH "$HOME/bin" $PATH
 end
 
+# Editor:
 if _which vim
   set -gx EDITOR (which vim)
   set -gx VISUAL "$EDITOR"
 end
 
+# Pager:
 if _which less
   set -gx PAGER (which less)
   set -gx LESS "-F -X -R"
@@ -35,14 +40,14 @@ if _which less
   set -gx LESS_TERMCAP_me (printf \e\[0m)         # end all modes
 end
 
+# Grep highlight color:
 # Fish itself aliases grep to grep --color=auto
 set -gx GREP_COLOR '1;32'
 
+# Browser:
 if _which chromium
   set -gx BROWSER (which chromium)
 end
-
-set fish_greeting ''
 
 
 #
