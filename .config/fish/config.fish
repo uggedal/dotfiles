@@ -6,6 +6,12 @@ function _which
   which "$argv[1]" >&- ^&-
 end
 
+function _prepend_path
+  if test -d $argv[1]; and not contains $argv[1] $PATH
+    set -gx PATH $argv[1] $PATH
+  end
+end
+
 
 #
 # Env
@@ -16,9 +22,7 @@ set fish_greeting ''
 set -gx HOSTNAME (hostname)
 
 # Local bin dir:
-if test -d "$HOME/bin"
-  set -gx PATH "$HOME/bin" $PATH
-end
+_prepend_path $HOME/bin
 
 # Editor:
 if _which vim
