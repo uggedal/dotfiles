@@ -1,0 +1,3 @@
+#!/bin/sh
+
+pacman -Qtdq && pacman -Rs $(pacman -Qtdq)
