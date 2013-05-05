@@ -91,6 +91,11 @@ set fish_color_autosuggestion aaa
 # History search matches:
 set fish_color_search_match --background=yellow
 
+# Pager:
+set fish_pager_color_prefix blue
+set fish_pager_color_description aaa
+set fish_pager_color_progress black
+
 
 #
 # Keychain
