@@ -65,6 +65,9 @@ if _which gem
   _prepend_path $GEM_HOME/bin
 end
 
+# Node
+_prepend_path $HOME/node_modules/.bin
+
 
 #
 # Colors
