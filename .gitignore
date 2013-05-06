@@ -5,6 +5,7 @@
 .config/fish/generated_completions/
 .config/gtk-*/
 .config/htop/htoprc
+.config/menus/
 .config/spotify/
 .config/Trolltech.conf
 .dbus/
