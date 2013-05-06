@@ -1,3 +1,4 @@
+# Generated files:
 /.cache/
 /.config/chromium/
 /.config/fish/fish_history
@@ -26,6 +27,11 @@
 /.vim/.netrwhist
 /.VirtualBox/
 /.Xauthority
-
 /Downloads/
 /VirtualBox\ VMs/
+
+# Blob files:
+/dev
+/dl
+/img
+/vid
