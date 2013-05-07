@@ -8,6 +8,7 @@ I use in my daily workflow are:
 * [fish][]
 * ssh
 * git
+* [keychain][]
 * vim
 * tmux
 
@@ -55,5 +56,6 @@ Third-party dependencies are synchronized using a [custom script][dotfiles]
     dotfiles sync
 
 [fish]: http://fishshell.com/
+[keychain]: http://www.funtoo.org/Keychain
 [i3]: http://i3wm.org/
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/bin/dotfiles
