@@ -101,6 +101,7 @@ set fish_pager_color_progress black
 # Keychain
 #
 
+# Source keychain env if it's available
 function _keychain_init_env
   set -l keyenv $HOME/.keychain/$HOSTNAME-fish
 
@@ -115,6 +116,7 @@ end
 
 _keychain_init_env
 
+# Display keychain prompt if ssh-agent holds no keys
 function _keychain_prompt
   set -l privkey $HOME/.ssh/id_rsa
 
