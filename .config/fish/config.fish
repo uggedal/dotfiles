@@ -139,7 +139,7 @@ function _update_ssh_auth_sock
   end
 
   if test -n $updated_sock; and test -S $updated_sock
-    set -xU SSH_AUTH_SOCK $updated_sock
+    set SSH_AUTH_SOCK $updated_sock
   end
 end
 
