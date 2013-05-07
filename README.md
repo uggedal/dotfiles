@@ -5,8 +5,9 @@ This is an opinionated and minimalistic dotfiles repo. You will find no
 superfluous shell aliases or obscure vim plugins here. The essential programs
 I use in my daily workflow are:
 
-* git
 * [fish][]
+* ssh
+* git
 * vim
 * tmux
 
