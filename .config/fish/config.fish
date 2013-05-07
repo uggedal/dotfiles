@@ -133,3 +133,13 @@ function scp
   _keychain_prompt
   command scp $argv
 end
+
+function git
+  set -l network_actions push pull fetch
+
+  if contains $argv[1] $network_actions
+    _keychain_prompt
+  end
+
+  command git $argv
+end
