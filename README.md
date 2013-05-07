@@ -6,7 +6,7 @@ superfluous shell aliases or obscure vim plugins here. The essential programs
 I use in my daily workflow are:
 
 * git
-* fish
+* [fish][]
 * vim
 * tmux
 
@@ -53,4 +53,5 @@ Third-party dependencies are synchronized using a [custom script][dotfiles]
 
     dotfiles sync
 
+[fish]: http://fishshell.com/
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/bin/dotfiles
