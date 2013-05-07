@@ -98,7 +98,7 @@ set fish_pager_color_progress black
 
 
 #
-# Keychain
+# Lazily update keychain and agent fowarding when using ssh, scp and git
 #
 
 # Source keychain env if it's available
@@ -126,13 +126,32 @@ function _keychain_prompt
   end
 end
 
+# Check for updated ssh auth sock if we're inside tmux
+function _update_ssh_auth_sock
+  if test -z $TMUX
+    return
+  end
+
+  set -l updated_sock (tmux showenv | grep '^SSH_AUTH_SOCK' | cut -d= -f2)
+
+  if test $SSH_AUTH_SOCK = $updated_sock
+    return
+  end
+
+  if test -n $updated_sock; and test -S $updated_sock
+    set -xU SSH_AUTH_SOCK $updated_sock
+  end
+end
+
 function ssh
   _keychain_prompt
+  _update_ssh_auth_sock
   command ssh $argv
 end
 
 function scp
   _keychain_prompt
+  _update_ssh_auth_sock
   command scp $argv
 end
 
@@ -141,6 +160,7 @@ function git
 
   if contains $argv[1] $network_actions
     _keychain_prompt
+    _update_ssh_auth_sock
   end
 
   command git $argv
