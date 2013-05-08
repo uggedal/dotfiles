@@ -47,19 +47,21 @@ URxvt*urgentOnBell: true
 *.foreground:   base02
 *.background:   base07
 *.cursorColor:  base02
-*.color0:       base01
-*.color1:       base08
-*.color2:       base0B
-*.color3:       base0A
-*.color4:       base0D
-*.color5:       base0F
-*.color6:       base0C
-*.color7:       base06
-*.color8:       base00
-*.color9:       base09
-*.color10:      base02
-*.color11:      base03
-*.color12:      base04
-*.color13:      base0E
-*.color14:      base05
-*.color15:      base07
+!                       |  ansi           |  actual          |  vim
+!-----------------------|-----------------|------------------|---------
+*.color0:       base00  !  Black          |                  |  cterm00
+*.color1:       base08  !  Red            |                  |  cterm08
+*.color2:       base0B  !  Green          |                  |  cterm0B
+*.color3:       base0A  !  Yellow         |                  |  cterm0A
+*.color4:       base0D  !  Blue           |                  |  cterm0D
+*.color5:       base0E  !  Magenta        |                  |  cterm0E
+*.color6:       base0C  !  Cyan           |                  |  cterm0C
+*.color7:       base05  !  White          |  Grey, lighter   |  cterm05
+*.color8:       base03  !  BrightBlack    |  Grey, dark      |  cterm03
+*.color9:       base09  !  BrightRed      |  Orange          |  cterm09
+*.color10:      base01  !  BrightGreen    |  Grey, darkest   |  cterm01
+*.color11:      base02  !  BrightYellow   |  Grey, darker    |  cterm02
+*.color12:      base04  !  BrightBlue     |  Grey, ligth     |  cterm04
+*.color13:      base06  !  BrightMagenta  |  Grey, lightest  |  cterm06
+*.color14:      base0F  !  BrightCyan     |  Brown           |  cterm0F
+*.color15:      base07  !  BrightWhite    |  White           |  cterm07
