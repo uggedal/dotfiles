@@ -78,9 +78,9 @@ set fish_color_command aa759f --bold
 set fish_color_param normal
 
 # Tokens:
-set fish_color_quote 90a959
-set fish_color_operator ac4142
-set fish_color_escape ac4142
+set fish_color_quote green
+set fish_color_operator red
+set fish_color_escape red
 
 # Comment:
 set fish_color_comment b0b0b0
@@ -89,12 +89,12 @@ set fish_color_comment b0b0b0
 set fish_color_autosuggestion b0b0b0
 
 # History search matches:
-set fish_color_search_match normal --background=f4bf75
+set fish_color_search_match normal --background=yellow
 
 # Pager:
-set fish_pager_color_prefix 6a9fb5
+set fish_pager_color_prefix blue
 set fish_pager_color_description b0b0b0
-set fish_pager_color_progress e0e0e0
+set fish_pager_color_progress black
 
 
 #
