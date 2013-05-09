@@ -28,6 +28,7 @@
 /.VirtualBox/
 /.Xauthority
 /Downloads/
+/node_modules/
 /VirtualBox\ VMs/
 
 # Blob files:
