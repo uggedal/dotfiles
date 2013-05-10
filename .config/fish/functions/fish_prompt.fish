@@ -6,7 +6,7 @@ function fish_prompt
   end
 
   if test -n "$SSH_CONNECTION"
-    printf '%s ' $HOSTNAME
+    printf '%s ' (chemical_element_to_symbol $HOSTNAME)
   end
 
   printf '%s ' (prompt_pwd)
