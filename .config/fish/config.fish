@@ -68,6 +68,11 @@ end
 # Node
 _prepend_path $HOME/node_modules/.bin
 
+# Python
+if _which virtualenv
+  set -gx VIRTUAL_ENV_DISABLE_PROMPT true
+end
+
 
 #
 # Colors
