@@ -19,7 +19,7 @@ end
 
 set -e fish_greeting
 
-set -gx HOSTNAME (hostname)
+set -gx HOSTNAME (hostname -s)
 
 # Local bin dir:
 _prepend_path $HOME/bin
