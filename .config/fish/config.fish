@@ -7,7 +7,7 @@ function _which
 end
 
 function _prepend_path
-  if test -d $argv[1]; and not contains $argv[1] $PATH
+  if begin; test -d $argv[1]; and not contains $argv[1] $PATH; end
     set -gx PATH $argv[1] $PATH
   end
 end
@@ -136,7 +136,7 @@ _keychain_init_env
 function _keychain_prompt
   set -l privkey $HOME/.ssh/id_rsa
 
-  if _which keychain; and test -e $privkey; and status --is-interactive
+  if begin; _which keychain; and test -e $privkey; and status --is-interactive; end
     command keychain -q -Q --agents ssh $privkey
     _keychain_init_env
   end
@@ -154,7 +154,7 @@ function _update_ssh_auth_sock
     return
   end
 
-  if test -n $updated_sock; and test -S $updated_sock
+  if begin; test -n $updated_sock; and test -S $updated_sock; end
     set SSH_AUTH_SOCK $updated_sock
   end
 end
