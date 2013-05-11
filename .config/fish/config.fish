@@ -17,7 +17,7 @@ end
 # Env
 #
 
-set fish_greeting ''
+set -e fish_greeting
 
 set -gx HOSTNAME (hostname)
 
