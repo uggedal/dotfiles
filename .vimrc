@@ -202,6 +202,7 @@ nnoremap <leader>c :noh<CR>
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 iabbrev @@ eivind@uggedal.com
+iabbrev EU Eivind Uggedal
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
