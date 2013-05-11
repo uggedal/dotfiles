@@ -134,9 +134,13 @@ _keychain_init_env
 
 # Display keychain prompt if ssh-agent holds no keys
 function _keychain_prompt
+  if not status --is-interactive
+    return
+  end
+
   set -l privkey $HOME/.ssh/id_rsa
 
-  if begin; _which keychain; and test -e $privkey; and status --is-interactive; end
+  if begin; _which keychain; and test -e $privkey; end
     command keychain -q -Q --agents ssh $privkey
     _keychain_init_env
   end
