@@ -1,6 +1,6 @@
 function fish_prompt
   if test -n "$VIRTUAL_ENV"
-    set_color green
+    set_color $__fish_color_prompt_virtualenv
     printf '%s ' (basename $VIRTUAL_ENV)
     set_color normal
   end
