@@ -7,7 +7,7 @@ function fish_right_prompt
     set_color normal
   end
 
-  if prompt_git_tree; and prompt_git_dirty
+  if begin; prompt_git_tree; and prompt_git_dirty; end
     set_color $__fish_color_prompt_git_dirty
     printf ' *'
     set_color normal
