@@ -24,6 +24,9 @@ set -gx HOSTNAME (hostname -s)
 # Local bin dir:
 _prepend_path $HOME/bin
 
+# Keychain:
+keychain_init_env
+
 # Editor:
 if _which vim
   set -gx EDITOR (which vim)
@@ -117,61 +120,15 @@ set fish_pager_color_progress black
 # Lazily update keychain and agent fowarding when using ssh, scp and git
 #
 
-# Source keychain env if it's available
-function _keychain_init_env
-  set -l keyenv $HOME/.keychain/$HOSTNAME-fish
-
-  if test -e $keyenv
-    # Need to have these vars set due to a bug in keychain env file for fish:
-    set -xU SSH_AUTH_SOCK
-    set -xU SSH_AGENT_PID
-
-    . $keyenv
-  end
-end
-
-_keychain_init_env
-
-# Display keychain prompt if ssh-agent holds no keys
-function _keychain_prompt
-  if not status --is-interactive
-    return
-  end
-
-  set -l privkey $HOME/.ssh/id_rsa
-
-  if begin; _which keychain; and test -e $privkey; end
-    command keychain -q -Q --agents ssh $privkey
-    _keychain_init_env
-  end
-end
-
-# Check for updated ssh auth sock if we're inside tmux
-function _update_ssh_auth_sock
-  if test -z $TMUX
-    return
-  end
-
-  set -l updated_sock (tmux showenv | grep '^SSH_AUTH_SOCK' | cut -d= -f2)
-
-  if test $SSH_AUTH_SOCK = $updated_sock
-    return
-  end
-
-  if begin; test -n $updated_sock; and test -S $updated_sock; end
-    set SSH_AUTH_SOCK $updated_sock
-  end
-end
-
 function ssh
-  _keychain_prompt
-  _update_ssh_auth_sock
+  keychain_prompt
+  tmux_update_ssh_auth_sock
   command ssh $argv
 end
 
 function scp
-  _keychain_prompt
-  _update_ssh_auth_sock
+  keychain_prompt
+  tmux_update_ssh_auth_sock
   command scp $argv
 end
 
@@ -179,8 +136,8 @@ function git
   set -l network_actions push pull fetch
 
   if contains $argv[1] $network_actions
-    _keychain_prompt
-    _update_ssh_auth_sock
+    keychain_prompt
+    tmux_update_ssh_auth_sock
   end
 
   command git $argv
