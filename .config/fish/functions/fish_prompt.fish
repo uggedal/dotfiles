@@ -9,6 +9,8 @@ function fish_prompt
     printf '%s ' (chemical_element_to_symbol $HOSTNAME)
   end
 
+  set_color $fish_color_cwd
   printf '%s ' (prompt_pwd)
+  set_color normal
 end
 

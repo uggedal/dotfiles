@@ -81,6 +81,9 @@ end
 # Colors
 #
 
+# Prompt:
+set fish_color_cwd normal
+
 # Command:
 set fish_color_command aa759f --bold
 set fish_color_param normal
