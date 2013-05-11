@@ -114,31 +114,3 @@ set fish_color_search_match normal --background=yellow
 set fish_pager_color_prefix blue
 set fish_pager_color_description b0b0b0
 set fish_pager_color_progress black
-
-
-#
-# Lazily update keychain and agent fowarding when using ssh, scp and git
-#
-
-function ssh
-  keychain_prompt
-  tmux_update_ssh_auth_sock
-  command ssh $argv
-end
-
-function scp
-  keychain_prompt
-  tmux_update_ssh_auth_sock
-  command scp $argv
-end
-
-function git
-  set -l network_actions push pull fetch
-
-  if contains $argv[1] $network_actions
-    keychain_prompt
-    tmux_update_ssh_auth_sock
-  end
-
-  command git $argv
-end
