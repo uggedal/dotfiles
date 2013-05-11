@@ -8,6 +8,6 @@ function fish_right_prompt
   end
 
   if prompt_git_dirty
-    printf '*'
+    printf ' *'
   end
 end
