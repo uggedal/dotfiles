@@ -83,6 +83,7 @@ end
 
 # Prompt:
 set fish_color_cwd normal
+set fish_color_cwd_root red
 set __fish_color_prompt_virtualenv green
 
 # Command:

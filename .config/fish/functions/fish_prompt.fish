@@ -9,7 +9,11 @@ function fish_prompt
     printf '%s ' (chemical_element_to_symbol $HOSTNAME)
   end
 
-  set_color $fish_color_cwd
+  if test $USER = root
+    set_color $fish_color_cwd_root
+  else
+    set_color $fish_color_cwd
+  end
   printf '%s ' (prompt_pwd)
   set_color normal
 end
