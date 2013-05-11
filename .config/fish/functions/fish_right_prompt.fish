@@ -8,6 +8,8 @@ function fish_right_prompt
   end
 
   if prompt_git_dirty
+    set_color $__fish_color_prompt_git_dirty
     printf ' *'
+    set_color normal
   end
 end

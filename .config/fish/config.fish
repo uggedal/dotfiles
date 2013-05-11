@@ -86,6 +86,7 @@ set fish_color_cwd normal
 set fish_color_cwd_root red
 set __fish_color_prompt_character b0b0b0
 set __fish_color_prompt_error red
+set __fish_color_prompt_git_dirty b0b0b0
 set __fish_color_prompt_virtualenv green
 
 # Command:
