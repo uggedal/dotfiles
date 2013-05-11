@@ -44,6 +44,9 @@ if _which less
   set -gx LESS_TERMCAP_me (printf \e\[0m)         # end all modes
 end
 
+# Man:
+set -gx MANWIDTH 80
+
 # Grep highlight color:
 # Fish itself aliases grep to grep --color=auto
 set -gx GREP_COLOR '1;32'
