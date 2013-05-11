@@ -6,4 +6,8 @@ function fish_right_prompt
     printf '%d' $last_status
     set_color normal
   end
+
+  if prompt_git_dirty
+    printf '*'
+  end
 end
