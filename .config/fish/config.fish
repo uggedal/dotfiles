@@ -49,7 +49,7 @@ set -gx MANWIDTH 80
 
 # Grep highlight color:
 # Fish itself aliases grep to grep --color=auto
-set -gx GREP_COLOR '1;32'
+set -gx GREP_COLORS 'ms=1;31'
 
 # Browser:
 if _which chromium
