@@ -8,9 +8,21 @@ function fish_right_prompt
     return
   end
 
-  if begin; prompt_git_tree; and prompt_git_dirty; end
+  set -l git_branch (command git rev-parse --abbrev-ref HEAD ^&-)
+
+  if test -z $git_branch
+    return
+  end
+
+  if not git diff --quiet --ignore-submodules HEAD >&- ^&-
     set_color $__fish_color_prompt_git_dirty
     printf '*'
     set_color normal
+  end
+
+  if test $git_branch = master
+    printf 'm'
+  else
+    printf $git_branch
   end
 end
