@@ -5,11 +5,12 @@ function fish_right_prompt
     set_color $__fish_color_prompt_error
     printf '%d' $last_status
     set_color normal
+    return
   end
 
   if begin; prompt_git_tree; and prompt_git_dirty; end
     set_color $__fish_color_prompt_git_dirty
-    printf ' *'
+    printf '*'
     set_color normal
   end
 end
