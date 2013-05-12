@@ -14,7 +14,7 @@ function fish_right_prompt
     return
   end
 
-  if not git diff --quiet --ignore-submodules HEAD >&- ^&-
+  if not command git diff --quiet --ignore-submodules HEAD >&- ^&-
     set_color $__fish_color_prompt_git_dirty
     printf '*'
     set_color normal
