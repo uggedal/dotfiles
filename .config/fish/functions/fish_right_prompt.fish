@@ -20,9 +20,11 @@ function fish_right_prompt
     set_color normal
   end
 
+  set_color $__fish_color_prompt_git_branch
   if test $git_branch = master
     printf 'm'
   else
     printf $git_branch
   end
+  set_color normal
 end
