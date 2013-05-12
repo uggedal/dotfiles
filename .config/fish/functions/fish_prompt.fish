@@ -24,7 +24,6 @@ function fish_prompt
   else
     set_color $__fish_color_prompt_error
   end
-
   printf '❯ '
   set_color normal
 end
