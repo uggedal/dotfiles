@@ -22,7 +22,11 @@ function fish_right_prompt
 
   if test $git_branch != master
     set_color $__fish_color_prompt_git_branch
-    printf $git_branch
+    if test (expr length $git_branch) -gt 10
+      printf '%s…' (expr substr $git_branch 1 9)
+    else
+      printf $git_branch
+    end
     set_color normal
   end
 end
