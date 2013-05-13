@@ -12,9 +12,12 @@
 # Aliases
 #
 
-# Use human readable format for file sizes of ls and append indicators to
-# directories (/), executables (*), symlinks (@), sockets (=), and FIFOs (|):
-alias ls='command ls -hF --color=auto'
+# Use ls with:
+#   - human readable format for file sizes
+#   - append indicators to directories (/), executables (*), symlinks (@),
+#     sockets (=), and FIFOs (|)
+#   - list dates for long listings in full iso format
+alias ls='command ls -hF --time-style=long-iso --color=auto'
 
 # Surpress bc welcome msg and load math lib with 20 as default scale:
 alias bc='command bc -ql'
