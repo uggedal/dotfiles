@@ -56,7 +56,7 @@ Third-party dependencies are synchronized using a [custom script][dotfiles]
 (since git submodules are a PITA):
 
 ```sh
-    dotfiles sync
+dotfiles sync
 ```
 
 [keychain]: http://www.funtoo.org/Keychain
