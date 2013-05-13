@@ -7,6 +7,7 @@ PROTO=git
 
 VIM_PLUGINS=(
   'chriskempson/base16-vim 1ec0ea8'
+  'pangloss/vim-javascript 22475fc'
   'ervandew/supertab 2.0'
   'scrooloose/syntastic 3.0.0'
 )
