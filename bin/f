@@ -2,6 +2,7 @@
 
 function f() {
   local opts="-I"
+  local root="."
 
   if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
     local opts="${opts}i"
@@ -14,7 +15,12 @@ function f() {
     local opts="${opts}l"
   fi
 
-  find . -path '*/.git' -prune \
+  if [ -d "$1" ]; then
+    root="$1"
+    shift
+  fi
+
+  find "$root" -path '*/.git' -prune \
     -o -path '*/.hg' -prune \
     -o -path '*/.svn' -prune \
     -o -name '*.swp' -prune \
