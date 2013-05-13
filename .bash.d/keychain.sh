@@ -1,3 +1,9 @@
+#
+# Wraps ssh/scp/git to ensure an ssh-agent is running using
+# keychain. Also makes sure that an active ssh auth socket
+# is defined in the environment when using ssh/scp/git inside tmux.
+#
+
 # Bail if we don't have keychain on the path:
 command -v keychain >/dev/null || return
 
