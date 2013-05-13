@@ -44,6 +44,14 @@ GREP_OPTIONS='--color=auto'
 GREP_COLORS='ms=1;31'
 export GREP_OPTIONS GREP_COLORS
 
+# Go:
+if [ -d $HOME/dev/go ]; then
+  GOPATH=$HOME/dev/go
+  PATH="$PATH:$GOPATH/bin"
+  export GOPATH
+fi
+
+
 #
 # Aliases
 #
