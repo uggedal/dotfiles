@@ -1,9 +1,6 @@
 # Generated files:
 /.cache/
 /.config/chromium/
-/.config/fish/fish_history
-/.config/fish/fishd.*
-/.config/fish/generated_completions/
 /.config/gtk-*/
 /.config/htop/htoprc
 /.config/menus/
