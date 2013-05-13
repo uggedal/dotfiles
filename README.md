@@ -5,7 +5,7 @@ This is an opinionated and minimalistic dotfiles repo. You will find no
 superfluous shell aliases or obscure vim plugins here. The essential programs
 I use in my daily workflow are:
 
-* [fish][]
+* bash
 * ssh
 * git
 * [keychain][]
@@ -55,7 +55,6 @@ Third-party dependencies are synchronized using a [custom script][dotfiles]
 
     dotfiles sync
 
-[fish]: http://fishshell.com/
 [keychain]: http://www.funtoo.org/Keychain
 [i3]: http://i3wm.org/
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/bin/dotfiles
