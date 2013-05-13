@@ -2,6 +2,12 @@
 [ -z "$PS1" ] && return
 
 #
+# Environment
+#
+
+[ -d $HOME/bin ] && PATH="$HOME/bin:${PATH}"
+
+#
 # Plugins
 #   - activate/deactivate by making the plugin file executable or not
 #
