@@ -35,6 +35,10 @@ if command -v less >/dev/null; then
          LESS_TERMCAP_us LESS_TERMCAP_ue LESS_TERMCAP_me
 fi
 
+# Make man pages more readable:
+MANWIDTH=80
+export MANWIDTH
+
 #
 # Aliases
 #
