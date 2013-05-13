@@ -4,10 +4,10 @@
 # is defined in the environment when using ssh/scp/git inside tmux.
 #
 
-# Bail if we don't have keychain on the path:
-command -v keychain >/dev/null || return
 
 _keychain_init() {
+  command -v keychain >/dev/null || return
+
   local private_key=$HOME/.ssh/id_rsa
 
   [ -e $private_key ] || return 1
