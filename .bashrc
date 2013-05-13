@@ -3,9 +3,8 @@
 
 #
 # Plugins
+#   - activate/deactivate by making the plugin file executable or not
 #
-#   Activated/deactivated by making the plugin file executable or not
-
 if [ -d ~/.bash.d ]; then
   for plugin in ~/.bash.d/*.sh; do
     [ -x $plugin ] && . $plugin
