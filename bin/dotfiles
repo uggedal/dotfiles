@@ -9,7 +9,6 @@ VIM_PLUGINS=(
   'chriskempson/base16-vim 1ec0ea8'
   'ervandew/supertab 2.0'
   'scrooloose/syntastic 3.0.0'
-  'vim-scripts/fish.vim 0.1'
 )
 
 log() {
