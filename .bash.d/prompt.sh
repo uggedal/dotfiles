@@ -3,4 +3,4 @@ if [ -z "$HOSTNAME_SYMBOL" ]; then
   export HOSTNAME_SYMBOL
 fi
 
-PS1="\$HOSTNAME_SYMBOL \w "
+PS1='$HOSTNAME_SYMBOL \w '
