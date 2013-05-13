@@ -45,15 +45,19 @@ Installation
 I keep my whole home directory in git without using symlinking as often
 found in other dotfile repos. Installation is therefore as simple as:
 
-    cd ~
-    git init
-    git remote add origin https://github.com/uggedal/dotfiles.git
-    git pull
+```sh
+cd ~
+git init
+git remote add origin https://github.com/uggedal/dotfiles.git
+git pull
+```
 
 Third-party dependencies are synchronized using a [custom script][dotfiles]
 (since git submodules are a PITA):
 
+```sh
     dotfiles sync
+```
 
 [keychain]: http://www.funtoo.org/Keychain
 [i3]: http://i3wm.org/
