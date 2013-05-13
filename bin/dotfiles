@@ -9,10 +9,10 @@ VIM_PLUGINS=(
   'chriskempson/base16-vim 1ec0ea8'
 
   'pangloss/vim-javascript 22475fc'
-  'tpope/vim-markdown ec0abb3'
+  'tpope/vim-markdown      ec0abb3'
 
-  'ervandew/supertab 2.0'
-  'scrooloose/syntastic 3.0.0'
+  'ervandew/supertab       2.0'
+  'scrooloose/syntastic    3.0.0'
 )
 
 log() {
