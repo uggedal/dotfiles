@@ -51,6 +51,13 @@ if [ -d $HOME/dev/go ]; then
   [ -d $GOPATH/bin ] && PATH="$PATH:$GOPATH/bin"
 fi
 
+# Local Ruby gems:
+if command -v gem >/dev/null; then
+  GEM_HOME=$HOME/.gem
+  export GEM_HOME
+  [ -d $GEM_HOME/bin ] && PATH="$PATH:$GEM_HOME/bin"
+fi
+
 
 #
 # Aliases
