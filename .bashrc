@@ -7,6 +7,12 @@
 
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
 
+if command -v vim >/dev/null; then
+  EDITOR=$(command -v vim)
+  VISUAL="$EDITOR"
+  export EDITOR VISUAL
+fi
+
 
 #
 # Aliases
