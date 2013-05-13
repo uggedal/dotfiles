@@ -47,8 +47,8 @@ export GREP_OPTIONS GREP_COLORS
 # Go:
 if [ -d $HOME/dev/go ]; then
   GOPATH=$HOME/dev/go
-  PATH="$PATH:$GOPATH/bin"
   export GOPATH
+  [ -d $GOPATH/bin ] && PATH="$PATH:$GOPATH/bin"
 fi
 
 
