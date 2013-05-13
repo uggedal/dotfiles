@@ -35,7 +35,7 @@ if command -v ssh >/dev/null; then
 fi
 
 if command -v scp >/dev/null; then
-  ssh() {
+  scp() {
     _keychain_init
     _tmux_update_ssh_auth_sock
     command scp "$@"
