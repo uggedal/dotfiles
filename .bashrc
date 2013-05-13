@@ -58,6 +58,9 @@ if command -v gem >/dev/null; then
   [ -d $GEM_HOME/bin ] && PATH="$PATH:$GEM_HOME/bin"
 fi
 
+# Local node modules:
+[ -d ~/node_modules/.bin ] && PATH="$PATH:~/node_modules/.bin"
+
 
 #
 # Aliases
