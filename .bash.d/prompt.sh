@@ -1,5 +1,5 @@
-if [ -z "$HOSTNAME_SYMBOL" ]; then
-  HOSTNAME_SYMBOL=$(_chemical_element_to_symbol $HOSTNAME)
+if [ -n "$SSH_CONNECTION" ]; then
+  HOSTNAME_SYMBOL=$(_chemical_element_to_symbol $HOSTNAME)' '
 fi
 
 C_RED=$'\033[0;31m'
@@ -18,4 +18,4 @@ _prompt_symbol() {
   printf $C_RESET
 }
 
-PS1='$HOSTNAME_SYMBOL \w $(_prompt_symbol $?) '
+PS1='$HOSTNAME_SYMBOL\w $(_prompt_symbol $?) '
