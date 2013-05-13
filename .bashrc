@@ -7,6 +7,16 @@
 
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
 
+
+#
+# Aliases
+#
+
+# Use human readable format for file sizes of ls and append indicators to
+# directories (/), executables (*), symlinks (@), sockets (=), and FIFOs (|):
+alias ls='command ls -hF --color=auto'
+
+
 #
 # Plugins
 #   - activate/deactivate by making the plugin file executable or not
