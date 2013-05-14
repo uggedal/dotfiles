@@ -7,6 +7,10 @@
 
 [ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
 
+# History:
+HISTSIZE=10000
+HISTFILESIZE=$HISTSIZE
+
 if command -v vim >/dev/null; then
   EDITOR=$(command -v vim)
   VISUAL="$EDITOR"
