@@ -87,13 +87,13 @@ alias cal='command cal -m'
 
 
 #
-# Plugins
-#   - activate/deactivate by making the plugin file executable or not
+# Components
+#   - activate/deactivate by making the component file executable or not
 #
 
 if [ -d ~/.bash.d ]; then
-  for plugin in ~/.bash.d/*.sh; do
-    [ -x $plugin ] && . $plugin
+  for component in ~/.bash.d/*.sh; do
+    [ -x $component ] && . $component
   done
-  unset plugin
+  unset component
 fi
