@@ -85,6 +85,9 @@ alias bc='command bc -ql'
 # Start cal week on monday:
 alias cal='command cal -m'
 
+# Tmux is notoriously bad at detecting UTF-8 support, so we force it:
+alias tmux='command tmux -u'
+
 
 #
 # Components
