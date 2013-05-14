@@ -92,7 +92,7 @@ alias cal='command cal -m'
 #
 
 if [ -d ~/.bash.d ]; then
-  for component in ~/.bash.d/*.sh; do
+  for component in ~/.bash.d/*.bash; do
     [ -x $component ] && . $component
   done
   unset component
