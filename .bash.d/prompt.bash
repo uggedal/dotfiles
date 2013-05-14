@@ -25,9 +25,8 @@ PS1="${PS1}❯${C_RESET} "
 if command -v virtualenv >/dev/null; then
   _prompt_virtualenv() {
     if [ -n "$VIRTUAL_ENV" ]; then
-      printf $(basename $VIRTUAL_ENV)
+      printf '%s ' $(basename $VIRTUAL_ENV)
     fi
   }
-
-  PS1='${C_GREEN}$(_prompt_virtualenv)${C_RESET} '"$PS1"
+  PS1=${C_GREEN}'$(_prompt_virtualenv)'${C_RESET}"$PS1"
 fi
