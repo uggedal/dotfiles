@@ -66,12 +66,6 @@ fi
 # Local node modules:
 [ -d ~/node_modules/.bin ] && PATH="$PATH:~/node_modules/.bin"
 
-# Disable default virtualenv prompt:
-if command -v virtualenv >/dev/null; then
-  VIRTUAL_ENV_DISABLE_PROMPT=true
-  export VIRTUAL_ENV_DISABLE_PROMPT
-fi
-
 
 #
 # Aliases

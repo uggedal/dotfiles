@@ -19,14 +19,3 @@ _ok_status() {
 }
 PS1="$PS1"'$(_ok_status $? && printf "'${C_GREY}'" || printf "'${C_RED}'")'
 PS1="${PS1}❯${C_RESET} "
-
-
-# Custom virtualenv marker:
-if command -v virtualenv >/dev/null; then
-  _prompt_virtualenv() {
-    if [ -n "$VIRTUAL_ENV" ]; then
-      printf '%s ' $(basename $VIRTUAL_ENV)
-    fi
-  }
-  PS1=${C_GREEN}'$(_prompt_virtualenv)'${C_RESET}"$PS1"
-fi
