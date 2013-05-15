@@ -23,6 +23,9 @@ HISTSIZE=10000
 HISTFILESIZE=$HISTSIZE
 HISTCONTROL=ignoreboth
 
+# Never check for mail:
+unset MAILCHECK
+
 if command -v vim >/dev/null; then
   EDITOR=$(command -v vim)
   VISUAL="$EDITOR"
