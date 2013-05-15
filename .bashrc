@@ -2,6 +2,14 @@
 [ -z "$PS1" ] && return
 
 #
+# Options
+#
+
+# Append rather than overwrite history when shell exits:
+shopt -s histappend
+
+
+#
 # Environment
 #
 
