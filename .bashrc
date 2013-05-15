@@ -8,6 +8,9 @@
 # Append rather than overwrite history when shell exits:
 shopt -s histappend
 
+# Enable extended pattern matching during pathname expansion:
+shopt -s extglob
+
 
 #
 # Environment
