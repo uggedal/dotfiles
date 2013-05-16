@@ -13,9 +13,19 @@ fi
 # Show $CWD:
 PS1="$PS1"'\w '
 
+# Unicode prompt symbol in pseudoterminals but not in real console where
+# fonts are limited to ASCII:
+if tty | grep -F /dev/pts >/dev/null; then
+  prompt_symbol='❯'
+else
+  prompt_symbol='>'
+fi
+
 # Color prompt symbol red when last command had a non-zero exit code:
 _ok_status() {
   [ $1 -eq 0 -o $1 -eq 130 ]
 }
 PS1="$PS1"'$(_ok_status $? && printf "'${C_GREY}'" || printf "'${C_RED}'")'
-PS1="${PS1}❯${C_RESET} "
+PS1="${PS1}${prompt_symbol}${C_RESET} "
+
+unset prompt_symbol
