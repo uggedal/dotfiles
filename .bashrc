@@ -26,12 +26,6 @@ HISTCONTROL=ignoreboth
 # Never check for mail:
 unset MAILCHECK
 
-if command -v vim >/dev/null; then
-  EDITOR=$(command -v vim)
-  VISUAL="$EDITOR"
-  export EDITOR VISUAL
-fi
-
 # Make man pages more readable:
 MANWIDTH=80
 export MANWIDTH
