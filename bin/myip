@@ -1,0 +1,3 @@
+#!/bin/sh
+
+printf '%s\n' $(curl -s http://canihazip.com/s/)
