@@ -11,6 +11,7 @@
   cached = diff --cached
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
+  dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
   unpush = push -f origin HEAD^:master
   unmerged = ls-files --unmerged
 [push]
