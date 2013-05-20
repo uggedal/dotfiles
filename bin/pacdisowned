@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# List files not owned by any packages
+#
 
 tmp=${TMPDIR-/tmp}/pacdisowned-$UID-$$
 db=$tmp/db
