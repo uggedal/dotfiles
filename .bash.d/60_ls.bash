@@ -4,4 +4,8 @@
 #     sockets (=), and FIFOs (|)
 #   - list dates for long listings in full iso format
 
-alias ls='command ls -hF --time-style=long-iso --color=auto'
+alias ls='command ls \
+  --human-readable \
+  --classify \
+  --time-style=long-iso \
+  --color=auto'
