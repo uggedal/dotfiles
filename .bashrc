@@ -26,10 +26,6 @@ HISTCONTROL=ignoreboth
 # Never check for mail:
 unset MAILCHECK
 
-# Make man pages more readable:
-MANWIDTH=80
-export MANWIDTH
-
 
 #
 # Aliases
