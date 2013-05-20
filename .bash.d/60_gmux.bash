@@ -10,9 +10,9 @@ gmux() {
   local elevator='su root -c'
 
   if [ $# -eq 0 ]; then
-    printf '%s%%\n' $(printf 'scale=0; (%s * 100) / %s\n' $(<$cur) $(<$max) | bc)
+    printf '%s%%\n' $(printf 'scale=0; (%s*100)/%s\n' $(<$cur) $(<$max) | bc)
   elif [ $# -eq 1 ]; then
     command -v sudo >/dev/null && elevator='sudo'
-    $elevator "printf 'scale=0; (%s / 100) * %s\n' $(<$max) $1 | bc > $cur"
+    $elevator "printf 'scale=0; (%s/100)*%s\n' $(<$max) $1 | bc > $cur"
   fi
 }
