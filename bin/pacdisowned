@@ -10,7 +10,7 @@ fs=$tmp/fs
 mkdir "$tmp"
 trap  'rm -rf "$tmp"' EXIT
 
-pacman -Qlq | sort -u > "$db"
+pacman --query --list --quiet | sort --unique > "$db"
 
 find /bin /etc /lib /sbin /usr \
   ! -name lost+found \
