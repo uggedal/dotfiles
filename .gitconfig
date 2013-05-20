@@ -8,6 +8,7 @@
   ci = commit
   st = status --short --branch
   br = branch
+  cached = diff --cached
   hist = log --pretty=format:\"%h %ad | %s%d [%an]\" --graph --date=short
   todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
   unpush = push -f origin HEAD^:master
