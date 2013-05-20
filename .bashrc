@@ -28,14 +28,6 @@ unset MAILCHECK
 
 
 #
-# Aliases
-#
-
-# Start cal week on monday:
-alias cal='command cal -m'
-
-
-#
 # Components
 #   - activate/deactivate by making the component file executable or not
 #
