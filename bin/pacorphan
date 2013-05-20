@@ -1,4 +1,8 @@
 #!/bin/sh
+#
+# Remove all orphaned packages (packages which were not explicitly installed
+# and are not a dependency of explicitly installed packages)
+#
 
 orphans=$(pacman --query --unrequired --deps --quiet)
 
