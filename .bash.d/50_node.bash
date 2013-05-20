@@ -1,3 +1,7 @@
 # Local node modules
 
-[ -d ~/node_modules/.bin ] && PATH="$PATH:~/node_modules/.bin"
+nodebin=$HOME/node_modules/.bin
+
+[ -d $nodebin ] && [[ $PATH != *$nodebin* ]] && PATH="$PATH:$nodebin"
+
+unset nodebin
