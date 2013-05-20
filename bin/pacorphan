@@ -1,5 +1,5 @@
 #!/bin/sh
 
-orphans=$(pacman -Qtdq)
+orphans=$(pacman --query --unrequired --deps --quiet)
 
-test $? -eq 0 && pacman -Rs $orphans
+test $? -eq 0 && pacman --remove --recursive $orphans
