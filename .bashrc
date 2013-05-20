@@ -31,9 +31,6 @@ unset MAILCHECK
 # Aliases
 #
 
-# Surpress bc welcome msg and load math lib with 20 as default scale:
-alias bc='command bc -ql'
-
 # Start cal week on monday:
 alias cal='command cal -m'
 
