@@ -12,7 +12,12 @@ gmux() {
   if [ $# -eq 0 ]; then
     printf '%s%%\n' $(printf 'scale=0; (%s*100)/%s\n' $(<$cur) $(<$max) | bc)
   elif [ $# -eq 1 ]; then
+    local safe=$(printf 'scale=0; (%s/4)\n' $(<$max) | bc)
+    local want=$(printf 'scale=0; (%s/100)*%s\n' $(<$max) $1 | bc)
+
+    [ $want -lt $safe ] && return 1
+
     command -v sudo >/dev/null && elevator='sudo'
-    $elevator "printf 'scale=0; (%s/100)*%s\n' $(<$max) $1 | bc > $cur"
+    $elevator "echo $want > $cur"
   fi
 }
