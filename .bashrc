@@ -13,7 +13,7 @@ shopt -s extglob
 
 
 #
-# Environment
+# Shell variables
 #
 
 # Sane hisotry length and ignoring dupes and space prefixed commands:
