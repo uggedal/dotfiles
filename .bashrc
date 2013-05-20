@@ -16,8 +16,6 @@ shopt -s extglob
 # Environment
 #
 
-[ -d $HOME/bin ] && PATH="$HOME/bin:$PATH"
-
 # Sane hisotry length and ignoring dupes and space prefixed commands:
 HISTSIZE=10000
 HISTFILESIZE=$HISTSIZE
