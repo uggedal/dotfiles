@@ -1,0 +1,14 @@
+#!/bin/sh
+
+if [ $# -ne 1 -a $# -ne 2 ]; then
+  printf '%s: %s\n' Usage "$(basename $0) <url> [code]" >&2
+  exit 1
+fi
+
+if [ -n "$2" ]; then
+  code="-F code=$2"
+fi
+
+curl -i http://git.io -F "url=$1" $code
+
+printf '\n'
