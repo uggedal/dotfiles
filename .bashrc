@@ -35,13 +35,6 @@ GREP_OPTIONS='--color=auto'
 GREP_COLORS='ms=1;31'
 export GREP_OPTIONS GREP_COLORS
 
-# Go:
-if [ -d $HOME/dev/go ]; then
-  GOPATH=$HOME/dev/go
-  export GOPATH
-  [ -d $GOPATH/bin ] && PATH="$PATH:$GOPATH/bin"
-fi
-
 # Local Ruby gems:
 if command -v gem >/dev/null; then
   GEM_HOME=$HOME/.gem
