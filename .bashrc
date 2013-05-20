@@ -35,13 +35,6 @@ GREP_OPTIONS='--color=auto'
 GREP_COLORS='ms=1;31'
 export GREP_OPTIONS GREP_COLORS
 
-# Local Ruby gems:
-if command -v gem >/dev/null; then
-  GEM_HOME=$HOME/.gem
-  export GEM_HOME
-  [ -d $GEM_HOME/bin ] && PATH="$PATH:$GEM_HOME/bin"
-fi
-
 # Local node modules:
 [ -d ~/node_modules/.bin ] && PATH="$PATH:~/node_modules/.bin"
 
