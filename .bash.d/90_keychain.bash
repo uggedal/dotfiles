@@ -45,12 +45,15 @@ fi
 if command -v git >/dev/null; then
   git() {
     local network_actions='(push|pull|fetch)'
+    local binary=git
 
     if [[ $1 =~ $network_actions ]]; then
       _keychain_init
       _tmux_update_ssh_auth_sock
     fi
 
-    command git "$@"
+    command -v hub >/dev/null && binary=hub
+
+    command $binary "$@"
   }
 fi
