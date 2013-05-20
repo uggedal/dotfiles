@@ -22,11 +22,8 @@ if [ -x /usr/bin/xmodmap -a -f $HOME/.Xmodmap ]; then
   /usr/bin/xmodmap $HOME/.Xmodmap
 fi
 
-# Root window background
-xsetroot -solid '#f5f5f5'
-
-# Nicer pointer over root window
-xsetroot -cursor_name left_ptr &
+# Root window background and nicer pointer over root window
+xsetroot -solid '#f5f5f5' -cursor_name left_ptr &
 
 # Hide cursor after 5 seconds of idling
 /usr/bin/unclutter -noevents -root &
