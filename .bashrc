@@ -16,7 +16,7 @@ shopt -s extglob
 # Shell variables
 #
 
-# Sane hisotry length and ignoring dupes and space prefixed commands:
+# Sane history length and ignoring dupes and space prefixed commands:
 HISTSIZE=10000
 HISTFILESIZE=$HISTSIZE
 HISTCONTROL=ignoreboth
