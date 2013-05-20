@@ -35,9 +35,6 @@ GREP_OPTIONS='--color=auto'
 GREP_COLORS='ms=1;31'
 export GREP_OPTIONS GREP_COLORS
 
-# Local node modules:
-[ -d ~/node_modules/.bin ] && PATH="$PATH:~/node_modules/.bin"
-
 
 #
 # Aliases
