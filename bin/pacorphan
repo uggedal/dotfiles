@@ -1,3 +1,5 @@
 #!/bin/sh
 
-pacman -Qtdq && pacman -Rs $(pacman -Qtdq)
+orphans=$(pacman -Qtdq)
+
+test $? -eq 0 && pacman -Rs $orphans
