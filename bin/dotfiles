@@ -64,20 +64,6 @@ ensure_plugins() {
   done
 }
 
-status_plugins() {
-  local root=$1
-  shift
-  local plugins=("${@}")
-
-  for plugin in "${plugins[@]}"; do
-    local repo=${plugin%% *}
-    local name=${repo##*/}
-    local version=${plugin##* }
-
-    status_repo $name $repo $root/$name $version
-  done
-}
-
 status_repo() {
   local name=$1
   local repo=$2
@@ -103,6 +89,20 @@ status_repo() {
   fi
 
   err $name "not updated to $version"
+}
+
+status_plugins() {
+  local root=$1
+  shift
+  local plugins=("${@}")
+
+  for plugin in "${plugins[@]}"; do
+    local repo=${plugin%% *}
+    local name=${repo##*/}
+    local version=${plugin##* }
+
+    status_repo $name $repo $root/$name $version
+  done
 }
 
 case $1 in
