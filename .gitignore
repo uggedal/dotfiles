@@ -23,6 +23,7 @@
 /.thumbnails/
 /.viminfo
 /.vim/.netrwhist
+/.vim/bundle
 /.VirtualBox/
 /.Xauthority
 /Downloads/
