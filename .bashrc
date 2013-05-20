@@ -30,11 +30,6 @@ unset MAILCHECK
 MANWIDTH=80
 export MANWIDTH
 
-# Coloring of grep matches:
-GREP_OPTIONS='--color=auto'
-GREP_COLORS='ms=1;31'
-export GREP_OPTIONS GREP_COLORS
-
 
 #
 # Aliases
