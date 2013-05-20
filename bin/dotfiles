@@ -16,8 +16,8 @@ VIM_PLUGINS=(
   'scrooloose/syntastic     3.0.0'
 )
 
-log() {
-  printf "%-30s %s\n" $1 "$2"
+err() {
+  printf "%-30s %s\n" $1 "$2" >&2
 }
 
 ensure_git() {
@@ -85,12 +85,12 @@ status_repo() {
   local version=$4
 
   if ! ensure_git $target; then
-    log $name 'not installed'
+    err $name 'not installed'
     return
   fi
 
   if ! ensure_remote $repo $target; then
-    log $name "not using $repo remote"
+    err $name "not using $repo remote"
     return
   fi
 
@@ -102,7 +102,7 @@ status_repo() {
     grep -q "^$version" <<<$actual_version && return
   fi
 
-  log $name "not updated to $version"
+  err $name "not updated to $version"
 }
 
 case $1 in
