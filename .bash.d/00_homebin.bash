@@ -1,3 +1,7 @@
 # User local bin path
 
-[ -d $HOME/bin ] && [[ $PATH != *$HOME/bin* ]] && PATH="$HOME/bin:$PATH"
+localbin=$HOME/bin
+
+[ -d $localbin ] && [[ $PATH != *$localbin* ]] && PATH="$localbin:$PATH"
+
+unset localbin
