@@ -2,7 +2,6 @@
 
 set -e
 
-# TODO: take proto as argv:
 PROTO=git
 
 VIM_PLUGINS=(
@@ -107,13 +106,17 @@ status_plugins() {
 
 case $1 in
   sync)
+    if [ $# -eq 2 ] && [[ $2  =~ (git|http|https) ]]; then
+      PROTO=$2
+    fi
+
     ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   status)
     status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   *)
-    echo Usage: $(basename $0) '[sync|status]'
+    echo Usage: $(basename $0) '<sync [git|http|https]|status>'
     exit 64
   ;;
 esac
