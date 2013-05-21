@@ -13,6 +13,7 @@ VIM_PLUGINS=(
 
   'ervandew/supertab        2.0'
   'scrooloose/syntastic     3.0.0'
+  'tpope/vim-characterize   d5ba608'
 )
 
 err() {
