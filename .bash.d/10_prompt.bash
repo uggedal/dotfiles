@@ -13,9 +13,10 @@ fi
 # Show $CWD:
 PS1="$PS1"'\w '
 
-# Unicode prompt symbol in pseudoterminals but not in real console where
-# fonts are limited to ASCII:
-if tty | grep -F /dev/pts >/dev/null; then
+# Use unicode prompt symbol in when:
+#   - running with UTF-8 locale and
+#   - not in real console where fonts are limited to ASCII
+if tty | grep -F /dev/pts >/dev/null && [[ $LANG == *UTF-8* ]]; then
   prompt_symbol='❯'
 else
   prompt_symbol='>'
