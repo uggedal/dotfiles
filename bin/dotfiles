@@ -106,7 +106,7 @@ status_plugins() {
 
 case $1 in
   sync)
-    if [ $# -eq 2 ] && [[ $2  =~ (git|http|https) ]]; then
+    if [ $# -eq 2 ] && [[ $2  =~ ^(git|https?)$ ]]; then
       PROTO=$2
     fi
 
