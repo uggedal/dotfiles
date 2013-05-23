@@ -1,3 +1,6 @@
+# Wrapper around mplayer which enables vaapi if we're on a machine
+# with support. Also handles streaming content from RAR files.
+
 command -v mplayer >/dev/null || return
 
 mplayer() {
