@@ -6,7 +6,7 @@ command -v mplayer >/dev/null || return
 mplayer() {
   local opt=""
 
-  if command -v vainfo >/dev/null && vainfo >/dev/null; then
+  if command -v vainfo >/dev/null && vainfo &>/dev/null; then
     opt="-vo vaapi"
   fi
 
