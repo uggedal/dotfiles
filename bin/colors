@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #
-#   This file echoes a bunch of color codes to the 
-#   terminal to demonstrate what's available.  Each 
-#   line is the color code of one forground color,
-#   out of 17 (default + 16 escapes), followed by a 
-#   test use of that color on all nine background 
-#   colors (default + 8 escapes).
+# This file echoes a bunch of color codes to the
+# terminal to demonstrate what's available.  Each
+# line is the color code of one forground color,
+# out of 17 (default + 16 escapes), followed by a
+# test use of that color on all nine background
+# colors (default + 8 escapes).
 #
-#   Based on: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
+# Based on: http://tldp.org/HOWTO/Bash-Prompt-HOWTO/x329.html
 
 text='gYw'
 
