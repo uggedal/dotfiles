@@ -7,6 +7,10 @@ set completion-ignore-case on
 # list all ambiguous completion matches immediately
 set show-all-if-ambiguous on
 
+# do not show hidden files in completion matches unless
+# the pattern begins with `.`
+set match-hidden-files off
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
