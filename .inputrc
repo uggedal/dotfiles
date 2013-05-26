@@ -1,6 +1,6 @@
+# disable display of '^C' and other control characters
+set echo-control-characters off
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
-
-# disable display of '^C' and other control characters
-set echo-control-characters off
