@@ -11,6 +11,9 @@ shopt -s histappend
 # Enable extended pattern matching during pathname expansion:
 shopt -s extglob
 
+# Enable recursive globbing with `**`:
+shopt -s globstar
+
 
 #
 # Shell variables
