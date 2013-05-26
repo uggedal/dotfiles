@@ -11,6 +11,9 @@ set show-all-if-ambiguous on
 # the pattern begins with `.`
 set match-hidden-files off
 
+# disable confirmation before listing many completion matches
+set completion-query-items -1
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
