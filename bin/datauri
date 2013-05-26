@@ -1,0 +1,8 @@
+#!/bin/sh
+#
+# Converts the given file to a RFC 2397 Data URI Scheme
+
+mime=$(file -b --mime-type "$1")
+expr text/plain : ^text/ >/dev/null && mime="$mime;charset=utf-8"
+
+printf 'data:%s;base64,%s\n' $mime $(base64 $1 | tr -d \\n)
