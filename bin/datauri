@@ -4,6 +4,11 @@
 
 f=$(readlink -f $1)
 
+if [ ! -r $f ]; then
+  printf '%s is not a file or not readable\n' $f >&2
+  exit 1
+fi
+
 mime=$(file -b --mime-type "$f")
 expr text/plain : ^text/ >/dev/null && mime="$mime;charset=utf-8"
 
