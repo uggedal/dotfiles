@@ -2,7 +2,9 @@
 #
 # Converts the given file to a RFC 2397 Data URI Scheme
 
-mime=$(file -b --mime-type "$1")
+f=$(readlink -f $1)
+
+mime=$(file -b --mime-type "$f")
 expr text/plain : ^text/ >/dev/null && mime="$mime;charset=utf-8"
 
-printf 'data:%s;base64,%s\n' $mime $(base64 $1 | tr -d \\n)
+printf 'data:%s;base64,%s\n' $mime $(base64 $f | tr -d \\n)
