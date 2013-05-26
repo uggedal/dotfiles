@@ -4,6 +4,9 @@ set echo-control-characters off
 # use case-insensitive file name matching and completion
 set completion-ignore-case on
 
+# list all ambiguous completion matches immediately
+set show-all-if-ambiguous on
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
