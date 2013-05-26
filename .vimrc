@@ -127,9 +127,6 @@ set colorcolumn=80 " mark lines over 80 columns
 " Languages
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" JSON syntax highlighting:
-au BufNewFile,BufRead *.json setlocal ft=javascript
-
 " Salt state syntax highlighting:
 au BufNewFile,BufRead *.sls setlocal ft=yaml
 
