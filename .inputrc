@@ -14,6 +14,9 @@ set match-hidden-files off
 # disable confirmation before listing many completion matches
 set completion-query-items -1
 
+# display completion matches without columns
+set completion-display-width 0
+
 # enable non-stupid behavior when completing inside a word
 set skip-completed-text on
 
