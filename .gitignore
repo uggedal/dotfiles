@@ -16,6 +16,7 @@
 /.keychain/
 /.lesshst
 /.local/share/
+/.node-gyp/
 /.npm/
 /.pki/
 /.pulse*
