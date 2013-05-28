@@ -16,6 +16,7 @@
 /.keychain/
 /.lesshst
 /.local/share/
+/.npm/
 /.pki/
 /.pulse*
 /.secrets
