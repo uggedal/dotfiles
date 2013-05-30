@@ -165,27 +165,27 @@ set laststatus=2
 let mapleader = ","
 
 " Buffer movement:
-nnoremap <Leader>b :ls<CR>
-nnoremap <Leader>p :bp<CR>
-nnoremap <Leader>n :bn<CR>
-nnoremap <Leader>d :bd<CR>
-nnoremap <Leader>g :b#<CR>
-nnoremap <Leader>1 :1b<CR>
-nnoremap <Leader>2 :2b<CR>
-nnoremap <Leader>3 :3b<CR>
-nnoremap <Leader>4 :4b<CR>
-nnoremap <Leader>5 :5b<CR>
-nnoremap <Leader>6 :6b<CR>
-nnoremap <Leader>7 :7b<CR>
-nnoremap <Leader>8 :8b<CR>
-nnoremap <Leader>9 :9b<CR>
-nnoremap <Leader>0 :10b<CR>
+nnoremap <leader>b :ls<CR>
+nnoremap <leader>p :bp<CR>
+nnoremap <leader>n :bn<CR>
+nnoremap <leader>d :bd<CR>
+nnoremap <leader>g :b#<CR>
+nnoremap <leader>1 :1b<CR>
+nnoremap <leader>2 :2b<CR>
+nnoremap <leader>3 :3b<CR>
+nnoremap <leader>4 :4b<CR>
+nnoremap <leader>5 :5b<CR>
+nnoremap <leader>6 :6b<CR>
+nnoremap <leader>7 :7b<CR>
+nnoremap <leader>8 :8b<CR>
+nnoremap <leader>9 :9b<CR>
+nnoremap <leader>0 :10b<CR>
 
 " Toggle paste mode for no autoindenting:
 nnoremap <leader>i :set invpaste<CR>
 
 " Opens an edit command with the path of the current file filled in
-nnoremap <Leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
+nnoremap <leader>e :e <C-R>=expand("%:p:h") . "/" <CR>
 
 " Create vertical split and navigate to it:
 nnoremap <leader>w <C-w>v<C-w>l
