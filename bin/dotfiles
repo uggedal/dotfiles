@@ -16,6 +16,9 @@ VIM_PLUGINS=(
   'scrooloose/syntastic       3.0.0'
   'tpope/vim-characterize     d5ba608'
   'vim-scripts/IndexedSearch  070503'
+
+  'vim-scripts/genutils       2.5'
+  'uggedal/SelectBuf          2916b8f'
 )
 
 err() {
