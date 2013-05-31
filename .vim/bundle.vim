@@ -13,3 +13,4 @@ let g:syntastic_auto_loc_list=2
 " SelectBuf:
 nmap <unique> <silent> <Leader>o <Plug>SelectBuf
 let g:selBufAlwaysShowPaths=1
+let g:selBufDefaultSortOrder="number"
