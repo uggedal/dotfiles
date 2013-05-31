@@ -15,3 +15,4 @@ nmap <unique> <silent> <Leader>o <Plug>SelectBuf
 let g:selBufAlwaysShowPaths=1
 let g:selBufDefaultSortOrder="number"
 let g:selBufDisableMRUlisting=1
+let g:selBufShowHelpHint=0
