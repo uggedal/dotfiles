@@ -90,6 +90,12 @@ status_repo() {
     test $actual_version = $version && return
   else
     local actual_version=$(cd $target && git rev-parse HEAD)
+    local behind=$(cd $target && git rev-list --count origin...HEAD 2>/dev/null)
+
+    if [ "$behind" -gt 0 ]; then
+      err $name "behind upstream with $behind changes"
+    fi
+
     grep -q "^$version" <<<$actual_version && return
   fi
 
