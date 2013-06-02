@@ -87,6 +87,15 @@ status_repo() {
 
   if grep -q '^[0-9.]\+$' <<<$version; then
     local actual_version=$(cd $target && git describe --tags)
+    local tags=$(cd $target && git tag)
+    local index=$(grep -En '^.+$' <<< "$tags" | grep :$actual_version\$ | cut -d: -f1)
+    local num=$( wc -l <<< "$tags")
+    local behind=$(($num - $index))
+
+    if [ "$behind" -gt 0 ]; then
+      err $name "behind $behind upstream tags"
+    fi
+
     test $actual_version = $version && return
   else
     local actual_version=$(cd $target && git rev-parse HEAD)
