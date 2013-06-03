@@ -2,6 +2,7 @@
 /.bash_history
 /.cache/
 /.config/chromium/
+/.config/google-chrome/
 /.config/gtk-*/
 /.config/htop/htoprc
 /.config/menus/
