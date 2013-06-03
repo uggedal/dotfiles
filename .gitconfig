@@ -9,7 +9,6 @@
   st = status --short --branch
   br = branch
   cached = diff --cached
-  p = log --pretty=format:'%C(white blue bold) %h %C(white yellow bold) %ad %Creset %C(white)%ae%Creset %s' --date=short -p
   todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
   dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
   unpush = push -f origin HEAD^:master
@@ -27,3 +26,5 @@
 	tool = vimdiff
 [merge]
 	conflictstyle = diff3
+[format]
+  pretty = %C(white blue bold) %h %C(white yellow bold) %ad %Creset %C(white)%ae%Creset\n %s
