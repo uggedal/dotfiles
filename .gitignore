@@ -19,6 +19,7 @@
 /.keychain/
 /.lesshst
 /.local/share/
+/.m2/
 /.node-gyp/
 /.npm/
 /.pki/
