@@ -30,6 +30,7 @@
 /.viminfo
 /.vim/.netrwhist
 /.vim/bundle
+/.vboxclient-*.pid
 /.VirtualBox/
 /.Xauthority
 /Downloads/
