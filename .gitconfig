@@ -20,6 +20,7 @@
 	rebase = true
 [log]
   date = iso
+  abbrevCommit = true
 [advice]
   statusHints = false
 [diff]
