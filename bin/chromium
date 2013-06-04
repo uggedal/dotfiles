@@ -1,0 +1,4 @@
+#!/bin/sh
+
+command -v chromium >/dev/null && exec chromium "$@"
+command -v google-chrome >/dev/null && exec google-chrome "$@"
