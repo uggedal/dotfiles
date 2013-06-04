@@ -5,6 +5,7 @@
 /.config/google-chrome/
 /.config/gtk-*/
 /.config/htop/htoprc
+/.config/hub
 /.config/menus/
 /.config/spotify/
 /.config/Trolltech.conf
