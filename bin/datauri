@@ -10,6 +10,6 @@ if [ ! -r $f ]; then
 fi
 
 mime=$(file -b --mime-type "$f")
-expr text/plain : ^text/ >/dev/null && mime="$mime;charset=utf-8"
+expr "$mime" : ^text/ >/dev/null && mime="$mime;charset=utf-8"
 
 printf 'data:%s;base64,%s\n' $mime $(base64 $f | tr -d \\n)
