@@ -8,11 +8,11 @@ vimf() {
   fi
 
   if [ $# -eq 2 ]; then
-    d=$1
+    d="$1"
     shift;
   fi
 
-  local f=$(find $d -name "$1" -type f -print -quit)
+  local f=$(find "$d" -name "$1" -type f -print -quit)
 
   [ -n "$f" ] && $EDITOR "$f"
 }
