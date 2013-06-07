@@ -1,4 +1,6 @@
 #!/bin/sh
+#
+# Wrapper which uses either chromium or google-chrome.
 
 [ -x /usr/bin/chromium ] && exec /usr/bin/chromium "$@"
 [ -x /usr/bin/google-chrome ] && exec /usr/bin/google-chrome "$@"
