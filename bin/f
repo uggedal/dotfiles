@@ -1,4 +1,7 @@
 #!/bin/sh
+#
+# List files matching the given string within an optional context dir.
+# Use -v as the first argument to list the matching lines.
 
 opts="-I"
 root="."
