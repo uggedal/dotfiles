@@ -26,8 +26,12 @@ set editing-mode vi
 $if mode=vi
   # clear screen like in emacs mode
   "\C-l":clear-screen
+
 $endif
 
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
+
+# shortcut for inserting a grep pipeline
+"\C-g":" | grep "
