@@ -28,6 +28,13 @@ $if mode=vi
   set keymap vi-insert
   "\C-l":clear-screen
 
+  # disable left and right cursor movement so that we learn to use command mode
+  set keymap vi-command
+  "\e[C":redraw-current-line
+  "\e[D":redraw-current-line
+  set keymap vi-insert
+  "\e[C":redraw-current-line
+  "\e[D":redraw-current-line
 $endif
 
 # history search with arrow keys
