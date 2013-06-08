@@ -24,7 +24,8 @@ set skip-completed-text on
 set editing-mode vi
 
 $if mode=vi
-  # clear screen like in emacs mode
+  # clear screen in insert mode
+  set keymap vi-insert
   "\C-l":clear-screen
 
 $endif
