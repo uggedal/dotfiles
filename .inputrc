@@ -20,6 +20,9 @@ set completion-display-width 0
 # enable non-stupid behavior when completing inside a word
 set skip-completed-text on
 
+# vi mode
+set editing-mode vi
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
