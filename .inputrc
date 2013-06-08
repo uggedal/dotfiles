@@ -23,6 +23,9 @@ set skip-completed-text on
 # vi mode
 set editing-mode vi
 
+# clear screen like in emacs mode
+"\C-l":clear-screen
+
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
