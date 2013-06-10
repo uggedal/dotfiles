@@ -12,7 +12,7 @@ shopt -s histappend
 shopt -s extglob
 
 # Enable recursive globbing with `**`:
-shopt -s globstar
+shopt -s globstar 2>/dev/null
 
 
 #
