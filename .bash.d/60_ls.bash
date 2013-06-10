@@ -6,6 +6,9 @@
 #     sockets (=), and FIFOs (|)
 #   - list dates for long listings in full iso format
 
+# Check for newer capabilities:
+command ls --group-directories-first / &>/dev/null || return
+
 alias ls="command ls \
   -1 \
   --group-directories-first \
