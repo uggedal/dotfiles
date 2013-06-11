@@ -99,7 +99,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-set scrolloff=3   " Display next/prev 3 lines after/before cursor
+set scrolloff=3   " Keep margin of 3 lines before/after cursor when scrolling.
 
 " Allow moving cursor past end of line in visual block mode:
 set virtualedit+=block
