@@ -47,7 +47,11 @@ set novisualbell
 set t_vb=
 
 set wildmode=longest,list,full " shell like tab completion behavior
-set wildignore+=*.pyc,*.png
+set wildignore+=*.o
+set wildignore+=*.pyc
+set wildignore+=*.png
+set wildignore+=*.jpg
+set wildignore+=*.gif
 
 autocmd InsertLeave * set nocursorline " no cursorline in normal mode
 autocmd InsertEnter * set cursorline   " cursorline in insert mode
