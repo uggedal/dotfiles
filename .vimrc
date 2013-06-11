@@ -123,6 +123,7 @@ set shiftround     " snap to indent columns
 set smarttab       " inserts spaces according to shiftwidt when <TAB>
 
 set wrap           " visually wrap lines longer than the window
+set linebreak      " wrap lines on word boundaries
 
 set colorcolumn=80 " mark lines over 80 columns
 
