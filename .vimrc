@@ -127,6 +127,11 @@ set linebreak      " wrap lines on word boundaries
 
 set colorcolumn=80 " mark lines over 80 columns
 
+" Toggle indent based folding (defaults to off) with 'zi':
+set foldmethod=indent
+set foldnestmax=3
+set nofoldenable
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Languages
