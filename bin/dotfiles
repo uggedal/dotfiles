@@ -71,18 +71,17 @@ ensure_plugins() {
 }
 
 status_repo() {
-  local name=$1
-  local repo=$2
-  local target=$3
-  local version=$4
+  local repo=$1
+  local target=$2
+  local version=$3
 
   if ! ensure_git $target; then
-    err $name 'not installed'
+    err $repo 'not installed'
     return
   fi
 
   if ! ensure_remote $repo $target; then
-    err $name "not using $repo remote"
+    err $repo "not using $repo remote"
     return
   fi
 
@@ -94,7 +93,7 @@ status_repo() {
     local behind=$(($num - $index))
 
     if [ "$behind" -gt 0 ]; then
-      err $name "behind $behind upstream tags"
+      err $repo "behind $behind upstream tags"
     fi
 
     test $actual_version = $version && return
@@ -103,13 +102,13 @@ status_repo() {
     local behind=$(cd $target && git rev-list --count origin...HEAD 2>/dev/null)
 
     if [ "$behind" -gt 0 ]; then
-      err $name "behind $behind upstream changes"
+      err $repo "behind $behind upstream changes"
     fi
 
     grep -q "^$version" <<<$actual_version && return
   fi
 
-  err $name "not updated to $version"
+  err $repo "not updated to $version"
 }
 
 status_plugins() {
@@ -122,7 +121,7 @@ status_plugins() {
     local name=${repo##*/}
     local version=${plugin##* }
 
-    status_repo $name $repo $root/$name $version
+    status_repo $repo $root/$name $version
   done
 }
 
