@@ -5,7 +5,7 @@ set -e
 PROTO=git
 
 VIM_PLUGINS=(
-  'chriskempson/base16-vim    dffebc6'
+  'chriskempson/base16-vim    701117e'
 
   'pangloss/vim-javascript    22475fc'
   'tpope/vim-markdown         ec0abb3'
