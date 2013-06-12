@@ -23,7 +23,7 @@ VIM_PLUGINS=(
 )
 
 err() {
-  printf "%-30s %s\n" $1 "$2" >&2
+  printf "%-40s %s\n" $1 "$2" >&2
 }
 
 ensure_git() {
