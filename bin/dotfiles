@@ -8,7 +8,7 @@ VIM_PLUGINS=(
   'chriskempson/base16-vim    701117e'
 
   'pangloss/vim-javascript    b21629b'
-  'tpope/vim-markdown         ec0abb3'
+  'tpope/vim-markdown         451eefb'
   'hail2u/vim-css3-syntax     012c1ba'
   'elzr/vim-json              3b3fa6b'
 
