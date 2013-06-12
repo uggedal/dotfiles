@@ -16,3 +16,6 @@ let g:selBufAlwaysShowPaths=1
 let g:selBufDefaultSortOrder="number"
 let g:selBufDisableMRUlisting=1
 let g:selBufShowHelpHint=0
+
+" JSON:
+autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
