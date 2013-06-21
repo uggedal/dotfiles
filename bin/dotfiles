@@ -92,20 +92,22 @@ status_repo() {
     local num=$( wc -l <<< "$tags")
     local behind=$(($num - $index))
 
-    if [ "$behind" -gt 0 ]; then
-      err $repo "behind $behind upstream tags"
+    if [ $actual_version = $version ]; then
+      if [ "$behind" -gt 0 ]; then
+        err $repo "behind $behind upstream tags"
+      fi
+      return
     fi
-
-    test $actual_version = $version && return
   else
     local actual_version=$(cd $target && git rev-parse HEAD)
     local behind=$(cd $target && git rev-list --count origin...HEAD 2>/dev/null)
 
-    if [ "$behind" -gt 0 ]; then
-      err $repo "behind $behind upstream changes"
+    if grep -q "^$version" <<<$actual_version; then
+      if [ "$behind" -gt 0 ]; then
+        err $repo "behind $behind upstream changes"
+      fi
+      return
     fi
-
-    grep -q "^$version" <<<$actual_version && return
   fi
 
   err $repo "not updated to $version"
