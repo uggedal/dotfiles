@@ -1,8 +1,6 @@
 # Generated files:
 /.bash_history
 /.cache/
-/.config/chromium/
-/.config/google-chrome/
 /.config/gtk-*/
 /.config/htop/htoprc
 /.config/hub
@@ -21,6 +19,7 @@
 /.lesshst
 /.local/share/
 /.m2/
+/.mozilla/
 /.node-gyp/
 /.npm/
 /.pki/
