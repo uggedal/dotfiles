@@ -7,7 +7,7 @@ PROTO=git
 VIM_PLUGINS=(
   'chriskempson/base16-vim    7fc2172'
 
-  'pangloss/vim-javascript    ccdf8b7'
+  'pangloss/vim-javascript    a030169'
   'tpope/vim-markdown         451eefb'
   'hail2u/vim-css3-syntax     v0.7'
   'elzr/vim-json              3b3fa6b'
