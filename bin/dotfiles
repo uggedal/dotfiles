@@ -10,7 +10,7 @@ VIM_PLUGINS=(
   'pangloss/vim-javascript    a030169'
   'tpope/vim-markdown         fccf76f'
   'hail2u/vim-css3-syntax     v0.8'
-  'elzr/vim-json              3b3fa6b'
+  'elzr/vim-json              aff5fac'
 
   'ervandew/supertab          2.0'
   'scrooloose/syntastic       3.0.0'
