@@ -28,3 +28,9 @@
 	conflictstyle = diff3
 [format]
   pretty = %C(white blue bold) %h %C(white yellow bold) %ad %Creset %C(white)%ae%Creset\n %s
+[sendemail]
+  smtpuser = eivind@uggedal.com
+  smtpserver = smtp.gmail.com
+  smtpserverport = 587
+  smtpencryption = tls
+  suppresscc = all
