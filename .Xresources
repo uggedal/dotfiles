@@ -46,7 +46,7 @@ URxvt*urgentOnBell: true
 
 *.foreground:   base02
 *.background:   base07
-*.cursorColor:  base02
+*.cursorColor:  base03
 *.color0:       base00
 *.color1:       base08
 *.color2:       base0B
