@@ -25,3 +25,15 @@ servers = (
     autoconnect = "yes";
   }
 );
+
+channels = (
+  {
+    name = "#alpine-linux";
+    chatnet = "freenode";
+    autojoin = "yes"; },
+  {
+    name = "#alpine-devel";
+    chatnet = "freenode";
+    autojoin = "yes";
+  }
+);
