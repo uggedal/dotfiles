@@ -37,3 +37,9 @@ channels = (
     autojoin = "yes";
   }
 );
+
+ignores = (
+  {
+    level = "JOINS PARTS QUITS";
+  }
+);
