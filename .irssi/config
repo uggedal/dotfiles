@@ -1,0 +1,10 @@
+settings = {
+  core = {
+    real_name = "Eivind Uggedal";
+    user_name = "uggedal";
+    nick = "uggedal";
+  };
+  "fe-text" = {
+    actlist_sort = "refnum";
+  };
+};
