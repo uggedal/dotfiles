@@ -41,6 +41,9 @@
 /node_modules/
 /VirtualBox\ VMs/
 
+# Secrets:
+/.irssi/sasl.auth
+
 # Blob files:
 /dev
 /dl
