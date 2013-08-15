@@ -43,3 +43,12 @@ ignores = (
     level = "JOINS PARTS QUITS";
   }
 );
+
+aliases = {
+  J = "join";
+  N = "names";
+  M = "msg";
+  T = "topic";
+  C = "clear";
+  WC = "window close";
+};
