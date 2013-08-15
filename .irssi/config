@@ -52,3 +52,11 @@ aliases = {
   C = "clear";
   WC = "window close";
 };
+
+statusbar = {
+  default = {
+    window = {
+      disabled = "yes";
+    };
+  };
+};
