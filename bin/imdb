@@ -1,0 +1,40 @@
+#!/usr/bin/env python2
+#
+# Sort releases in the given dir after imdb score
+
+import os
+import sys
+import re
+import urllib
+import json
+
+if len(sys.argv) != 2:
+    sys.stderr.write("Usage: %s <path>\n")
+    sys.exit(64)
+
+root = sys.argv[1]
+movies = []
+title_re = re.compile(r'^([A-Za-z0-9\.]+)\.[0-9]{4}')
+
+
+for fname in os.listdir(root):
+    if not os.path.isfile("%s/%s" % (root, fname)):
+        continue
+
+    match = title_re.search(fname)
+    if match is None:
+        sys.stderr.write("[skip] %s\n" % fname)
+        continue
+
+    title = match.group(1).replace('.', ' ')
+    qs = urllib.urlencode({'t': title})
+    res = urllib.urlopen("http://www.omdbapi.com/?%s" % qs)
+
+    data = json.loads(res.read())
+    movies.append([data.get('imdbRating', 'N/A'),
+                   title,
+                  "%s" % data.get('imdbVotes', ''),
+                  data.get('Genre', '')])
+
+for m in sorted(movies, reverse=True):
+    print "%-5s %-30s %7s  %-25s" % (m[0], m[1], m[2], m[3])
