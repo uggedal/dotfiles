@@ -11,7 +11,7 @@ mplayer() {
   fi
 
   case $1 in
-    *.rar) 7z x -so $1 2>/dev/null | /usr/bin/mplayer $opt -;;
+    *.rar) unrar p -inul $1 2>/dev/null | /usr/bin/mplayer $opt -;;
     *) /usr/bin/mplayer $opt "$@";;
   esac
 }
