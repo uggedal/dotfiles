@@ -1,4 +1,5 @@
-vo=xv
+vo=vaapi
+va=vaapi
 monitoraspect=1.6
 
 fontconfig=1
