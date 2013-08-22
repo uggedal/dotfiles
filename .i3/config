@@ -20,6 +20,7 @@ focus_follows_mouse no
 
 for_window [class="MPlayer"] floating enable, border none
 for_window [class="Spotify"] floating enable, border none, move absolute position center
+for_window [class="qemu-system-x86_64"] floating enable, border none, move absolute position center
 for_window [class="^(Chromium|Google-chrome|Firefox)$"] border none
 
 assign [class="^(Chromium|Google-chrome|Firefox)$"] 1
