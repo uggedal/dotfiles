@@ -1,5 +1,5 @@
 vo=xv
-monitoraspect=16:9
+monitoraspect=1.6
 
 fontconfig=1
 font='DejaVu Sans'
