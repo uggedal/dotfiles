@@ -6,6 +6,7 @@ settings = {
   };
   "fe-text" = {
     actlist_sort = "refnum";
+    scrollback_lines = "50000";
   };
 };
 
