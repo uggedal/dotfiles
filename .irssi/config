@@ -30,7 +30,8 @@ channels = (
   {
     name = "#alpine-linux";
     chatnet = "freenode";
-    autojoin = "yes"; },
+    autojoin = "yes";
+  },
   {
     name = "#alpine-devel";
     chatnet = "freenode";
