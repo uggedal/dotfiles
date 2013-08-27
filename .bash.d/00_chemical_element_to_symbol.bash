@@ -2,7 +2,7 @@
 # Takes a full chemical element and converts it to its short chemical symbol
 #
 _chemical_element_to_symbol() {
-  local element=$1
+  local element="${1%%.*}"
 
   # Check for associative array support:
   if ! declare -A &>/dev/null; then
