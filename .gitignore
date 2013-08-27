@@ -40,6 +40,7 @@
 /n/
 /node_modules/
 /VirtualBox\ VMs/
+/vm/*.qcow2
 
 # Secrets:
 /.irssi/sasl.auth
