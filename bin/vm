@@ -1,0 +1,39 @@
+#!/bin/sh
+
+QEMU=qemu-system-x86_64
+
+usage() {
+  printf "Usage: %s <type>\n" $(basename $0)
+  exit 64
+}
+
+[ $# -eq 0 ] && usage
+
+WIN_IMG=$HOME/vm/win.qcow2
+WIN_CAP=20G
+WIN_MEM=4096
+
+win() {
+  if [ ! -f $WIN_IMG ]; then
+    if [ $# -eq 1 ]; then
+      mkdir -p $(dirname $WIN_IMG)
+      qemu-img create -f qcow2 $WIN_IMG $WIN_CAP
+      exec $QEMU -enable-kvm -m $WIN_MEM -cdrom $1 -boot 
+    else
+      printf "Usage: %s <install.iso>\n" $(basename $0)
+      exit 64
+    fi
+  fi
+
+  exec $QEMU -enable-kvm -m $WIN_MEM -vga std -full-screen $WIN_IMG
+}
+
+case $1 in
+  win)
+    shift
+    win
+    ;;
+  *)
+    usage
+    ;;
+esac
