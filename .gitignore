@@ -46,7 +46,7 @@
 /.irssi/sasl.auth
 
 # Blob files:
-/dev
 /dl
 /img
+/src
 /vid
