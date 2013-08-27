@@ -1,6 +1,7 @@
 #!/bin/sh
 
 QEMU=qemu-system-x86_64
+IMG_ROOT=$HOME/.vm
 
 usage() {
   printf "Usage: %s <type>\n" $(basename $0)
@@ -9,7 +10,7 @@ usage() {
 
 [ $# -eq 0 ] && usage
 
-WIN_IMG=$HOME/vm/win.qcow2
+WIN_IMG=$IMG_ROOT/win.qcow2
 WIN_CAP=20G
 WIN_MEM=4096
 
