@@ -2,3 +2,24 @@ set toolbars=nomenu,nonavigation,nobookmarks,noaddons
 set scrollbars=false
 
 set hintchars=sadfjklewcmpgh
+
+highlight Hint <<EOF
+background: #f5f5f5;
+border: 1px solid rgba(0, 0, 0, .25);
+border-radius: 3px;
+box-shadow: 0 3px 7px 0 rgba(0, 0, 0, .25);
+color: #303030;
+font: bold 11px "DejaVu Sans";
+padding: 2px 3px 1px 3px;
+text-transform: uppercase;
+EOF
+
+highlight HintElem <<EOF
+background-color: rgba(244, 191, 117, .25);
+color: #303030;
+EOF
+
+highlight HintActive <<EOF
+background-color: rgba(144, 169, 89, .25);
+color: #303030;
+EOF
