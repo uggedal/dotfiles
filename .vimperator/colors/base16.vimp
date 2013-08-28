@@ -7,6 +7,10 @@ highlight ErrorMsg <<EOF
   color: #ac4142;
 EOF
 
+highlight WarningMsg <<EOF
+  color: #ac4142;
+EOF
+
 highlight InfoMsg <<EOF
   color: #6a9fb5;
 EOF
