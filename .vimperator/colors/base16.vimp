@@ -55,6 +55,10 @@ highlight Filter <<EOF
   background-color: rgba(244, 191, 117, .75);
 EOF
 
+highlight Question <<EOF
+  color: #90a959;
+EOF
+
 highlight Hint <<EOF
   background: #f5f5f5;
   border: 1px solid rgba(0, 0, 0, .25);
