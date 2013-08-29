@@ -4,3 +4,14 @@ set scrollbars=false
 set hintchars=sadfjklewcmpgh
 
 colorscheme base16
+
+style news.ycombinator.com <<EOF
+  td.title:nth-child(1) {
+    display: block;
+    visibility: hidden;
+    width: 0;
+  }
+  td.title:nth-child(1) + td img {
+    padding: 0 .5em;
+  }
+EOF
