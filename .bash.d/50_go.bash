@@ -5,7 +5,7 @@ command -v go >/dev/null || return
 GOPATH=$HOME/src/go
 export GOPATH
 
-gobin=$GOPATH/.bin
+gobin=$GOPATH/bin
 
 [ -d $gobin ] && [[ $PATH != *$gobin* ]] && PATH="$PATH:$gobin"
 
