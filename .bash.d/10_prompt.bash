@@ -3,6 +3,9 @@ C_GREEN='\[\e[32m\]'
 C_GREY='\[\e[1;34m\]'
 C_RESET='\[\e[0m\]'
 
+# Save the last commands exit code:
+PROMPT_COMMAND=${PROMPT_COMMAND:+$PROMPT_COMMAND; }'_prompt_status=$?'
+
 PS1=''
 
 # Show hostname when connected over ssh:
@@ -24,9 +27,11 @@ fi
 
 # Color prompt symbol red when last command had a non-zero exit code:
 _ok_status() {
-  [ $1 -eq 0 -o $1 -eq 130 ]
+  local rc=$_prompt_status
+  unset _prompt_status
+  [ $rc -eq 0 -o $rc -eq 130 ]
 }
-PS1="$PS1"'$(_ok_status $? && printf "'${C_GREY}'" || printf "'${C_RED}'")'
+PS1="$PS1"'$(_ok_status && printf "'${C_GREY}'" || printf "'${C_RED}'")'
 PS1="${PS1}${prompt_symbol}${C_RESET} "
 
 PS2="${C_GREY}${prompt_symbol}${C_RESET} "
