@@ -11,6 +11,7 @@ VIM_PLUGINS=(
   'tpope/vim-markdown         fccf76f'
   'hail2u/vim-css3-syntax     v0.8'
   'elzr/vim-json              37c223d'
+  'avakhov/vim-yaml           4b37a4f'
 
   'ervandew/supertab          2.0'
   'scrooloose/syntastic       3.0.0'
