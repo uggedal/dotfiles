@@ -1,6 +1,6 @@
 # User local bin path
 
-localbin=$HOME/bin
+localbin=$HOME/.local/bin
 
 [ -d $localbin ] && [[ $PATH != *$localbin* ]] && PATH="$localbin:$PATH"
 
