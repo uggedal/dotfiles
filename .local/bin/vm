@@ -13,6 +13,7 @@ usage() {
 WIN_IMG=$IMG_ROOT/win.qcow2
 WIN_CAP=20G
 WIN_MEM=4096
+WIN_USB_ID=0529:0600
 
 win() {
   if [ ! -f $WIN_IMG ]; then
@@ -26,7 +27,13 @@ win() {
     fi
   fi
 
-  exec $QEMU -enable-kvm -m $WIN_MEM -vga std -full-screen $WIN_IMG
+  if lsusb grep -q $WIN_USB_ID; then
+    local usbflags="-usb -usbdevice host:$WIN_USB_ID"
+  else
+    local usbflags=
+  fi
+
+  exec $QEMU -enable-kvm -m $WIN_MEM $usbflags -vga std -full-screen $WIN_IMG
 }
 
 case $1 in
