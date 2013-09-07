@@ -27,7 +27,7 @@ win() {
     fi
   fi
 
-  if lsusb grep -q $WIN_USB_ID; then
+  if lsusb | grep -q $WIN_USB_ID; then
     local usbflags="-usb -usbdevice host:$WIN_USB_ID"
   else
     local usbflags=
