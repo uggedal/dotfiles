@@ -19,7 +19,7 @@
 /.java/
 /.keychain/
 /.lesshst
-/.local/share/
+/.local/share/qemu
 /.m2/
 /.mozilla/
 /.node-gyp/
@@ -35,7 +35,6 @@
 /.vimperator/info/
 /.vboxclient-*.pid
 /.VirtualBox/
-/.vm/*.qcow2
 /.Xauthority
 /Downloads/
 /n/
