@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Change display
+
+PRI='LVDS'
+SEC='DisplayPort-0'
+
+if xrandr | grep -q "^$SEC disconnected"; then
+  xrandr --output $SEC --off --output $PRI --auto
+else
+  xrandr --output $PRI --off --output $SEC --auto
+fi
