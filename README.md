@@ -61,4 +61,4 @@ dotfiles sync
 
 [keychain]: http://www.funtoo.org/Keychain
 [i3]: http://i3wm.org/
-[dotfiles]: https://github.com/uggedal/dotfiles/tree/master/bin/dotfiles
+[dotfiles]: https://github.com/uggedal/dotfiles/tree/master/.local/bin/dotfiles
