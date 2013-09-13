@@ -19,9 +19,9 @@ _tmux_update_ssh_auth_sock() {
 
   local updated_sock=$(tmux showenv | grep '^SSH_AUTH_SOCK' | cut -d= -f2)
 
-  [ $SSH_AUTH_SOCK = $updated_sock ] && return
+  [ "$SSH_AUTH_SOCK" = "$updated_sock" ] && return
 
-  if [ -S $updated_sock ]; then
+  if [ -S "$updated_sock" ]; then
     SSH_AUTH_SOCK=$updated_sock
   fi
 }
