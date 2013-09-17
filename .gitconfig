@@ -11,6 +11,7 @@
   cached = diff --cached
   todo = !git ls-files | xargs grep --color=auto -onE '(TODO|FIXME):.*$'
   dangling = !git fsck 2> /dev/null | grep '^dangling commit' | awk '{print $3}' | git log --stdin --no-walk
+  substatus = !"for g in $(find $GIT_PREFIX -name .git); do (w=${g%/*}; cd $w; if ! git diff --no-ext-diff --quiet --exit-code; then pwd; git status; echo; fi); done"
   unpush = push -f origin HEAD^:master
   unmerged = ls-files --unmerged
 [push]
