@@ -17,5 +17,8 @@ let g:selBufDefaultSortOrder="number"
 let g:selBufDisableMRUlisting=1
 let g:selBufShowHelpHint=0
 
+" MiniBufExpl:
+let g:miniBufExplStatusLineText="--"
+
 " JSON:
 autocmd BufNewFile,BufRead *.json setlocal conceallevel=0

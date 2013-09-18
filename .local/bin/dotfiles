@@ -18,6 +18,7 @@ VIM_PLUGINS=(
   'tpope/vim-characterize     d5ba608'
   'vim-scripts/IndexedSearch  500a64a'
   'vim-scripts/gitignore      061c5c7'
+  'fholgado/minibufexpl.vim   v6.5.2'
 
   'vim-scripts/genutils       2.5'
   'uggedal/SelectBuf          2916b8f'
