@@ -19,9 +19,11 @@ VIM_PLUGINS=(
   'vim-scripts/IndexedSearch  500a64a'
   'vim-scripts/gitignore      061c5c7'
   'fholgado/minibufexpl.vim   v6.5.2'
+)
 
-  'vim-scripts/genutils       2.5'
-  'uggedal/SelectBuf          2916b8f'
+DEPRECATED_VIM_PLUGINS=(
+  'vim-scripts/genutils'
+  'uggedal/SelectBuf'
 )
 
 err() {
@@ -69,6 +71,19 @@ ensure_plugins() {
     local version=${plugin##* }
 
     ensure_repo $repo $root/$name $version
+  done
+}
+
+remove_plugins() {
+  local root=$1
+  shift
+  local plugins=("${@}")
+
+  for plugin in "${plugins[@]}"; do
+    local repo=${plugin%% *}
+    local name=${repo##*/}
+
+    rm -rf $root/$name
   done
 }
 
@@ -136,6 +151,7 @@ case $1 in
     fi
 
     ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
+    remove_plugins "$HOME/.vim/bundle" "${DEPRECATED_VIM_PLUGINS[@]}"
   ;;
   status)
     status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
