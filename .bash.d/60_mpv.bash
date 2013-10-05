@@ -8,10 +8,8 @@ mpv() {
   local flags=
 
   if test -f $xlog && grep -q 'VDPAU driver' $xlog; then
-    echo VDPAU
     flags='--vo vdpau --hwdec vdpau'
   elif command -v vainfo >/dev/null && vainfo &>/dev/null; then
-    echo VAAPI
     flags='--vo vaapi --hwdec vaapi'
   fi
 
