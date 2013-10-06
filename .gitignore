@@ -10,6 +10,7 @@
 /.config/spotify/
 /.config/Trolltech.conf
 /.dbus/
+/.dmenu_cache
 /.fontconfig/
 /.gem/
 /.gimp-*/
