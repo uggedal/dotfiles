@@ -1,2 +1,5 @@
 alt + shift + q
   bspc quit
+
+alt + shift + Return
+  urxvtc
