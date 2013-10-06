@@ -20,7 +20,7 @@
 /.java/
 /.keychain/
 /.lesshst
-/.local/share/qemu
+/.local/share/
 /.m2/
 /.mozilla/
 /.node-gyp/
