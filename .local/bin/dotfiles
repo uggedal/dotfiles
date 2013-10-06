@@ -5,7 +5,7 @@ set -e
 PROTO=git
 
 VIM_PLUGINS=(
-  'chriskempson/base16-vim    7fc2172'
+  'altercation/vim-colors-solarized 528a59f'
 
   'pangloss/vim-javascript    v0.9.0'
   'tpope/vim-markdown         fccf76f'
@@ -24,6 +24,7 @@ VIM_PLUGINS=(
 DEPRECATED_VIM_PLUGINS=(
   'vim-scripts/genutils'
   'uggedal/SelectBuf'
+  'chriskempson/base16-vim'
 )
 
 err() {
