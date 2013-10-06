@@ -24,7 +24,7 @@ set shell=/bin/bash  " some plugins are not compatible with fish shell
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color and Syntax
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set background=light
+set background=dark
 
 syntax enable
 set synmaxcol=200                " don't highlight long lines
