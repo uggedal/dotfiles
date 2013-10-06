@@ -18,5 +18,3 @@ _ok_status() {
   [ $rc -eq 0 -o $rc -eq 130 ]
 }
 PS1="$PS1"'$(_ok_status || printf "'${C_RED}'")\w'"${C_RESET} "
-
-unset prompt_symbol
