@@ -35,4 +35,9 @@ xsetroot -solid '#eee8d5' -cursor_name left_ptr &
 /usr/bin/autocutsel -selection CLIPBOARD -fork
 /usr/bin/autocutsel -selection PRIMARY -fork
 
-exec i3
+# Keyboard mapping
+sxhkd &
+
+while true; do
+  bspwm || break
+done
