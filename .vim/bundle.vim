@@ -1,5 +1,6 @@
 call pathogen#infect()
 
+let g:loaded_togglebg = 1
 silent! colorscheme solarized
 
 " No grey bg in sign gutter
