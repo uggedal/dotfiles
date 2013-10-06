@@ -3,3 +3,6 @@ alt + shift + q
 
 alt + shift + Return
   urxvtc
+
+alt + {_,shift + }{h,j,k,l}
+  bspc window -{f,s} {left,down,up,right}
