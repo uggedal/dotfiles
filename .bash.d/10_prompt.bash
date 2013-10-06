@@ -19,6 +19,4 @@ _ok_status() {
 }
 PS1="$PS1"'$(_ok_status || printf "'${C_RED}'")\w'"${C_RESET} "
 
-PS2="${C_BROWN}>${C_RESET} "
-
 unset prompt_symbol
