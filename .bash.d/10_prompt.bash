@@ -1,6 +1,5 @@
 C_RED='\[\e[31m\]'
 C_GREEN='\[\e[32m\]'
-C_GREY='\[\e[1;34m\]'
 C_RESET='\[\e[0m\]'
 
 # Save the last commands exit code:
@@ -31,9 +30,9 @@ _ok_status() {
   unset _prompt_status
   [ $rc -eq 0 -o $rc -eq 130 ]
 }
-PS1="$PS1"'$(_ok_status && printf "'${C_GREY}'" || printf "'${C_RED}'")'
+PS1="$PS1"'$(_ok_status && printf "'${C_GREEN}'" || printf "'${C_RED}'")'
 PS1="${PS1}${prompt_symbol}${C_RESET} "
 
-PS2="${C_GREY}${prompt_symbol}${C_RESET} "
+PS2="${C_GREEN}${prompt_symbol}${C_RESET} "
 
 unset prompt_symbol
