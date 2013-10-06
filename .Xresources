@@ -25,6 +25,8 @@ URxvt*externalBorder: 0
 
 URxvt*urgentOnBell: true
 
+URxvt.intensityStyles: false
+
 ! solarized light colorscheme
 
 #define S_yellow        #b58900
