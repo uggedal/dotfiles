@@ -6,3 +6,6 @@ alt + shift + Return
 
 alt + {_,shift + }{h,j,k,l}
   bspc window -{f,s} {left,down,up,right}
+
+alt + {space,f}
+  bspc window -t {floating,fullscreen}
