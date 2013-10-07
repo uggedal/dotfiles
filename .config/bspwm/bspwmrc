@@ -1,6 +1,7 @@
 #!/bin/sh
 
-bspc monitor -a 1 2 3 4 5 6
+bspc desktop ^1 -n 1
+bspc monitor -a 2 3 4 5 6
 
 bspc rule -a MPlayer --floating
 bspc rule -a mpv --floating
