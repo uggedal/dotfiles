@@ -4,7 +4,6 @@ FONT='DejaVu Sans'
 SIZE=10
 HEIGHT=16
 MARGIN=4
-PADDING='   '
 FG='#657b83'
 BG='#eee8d5'
 _IFS=$IFS
@@ -35,15 +34,15 @@ cat ~/.panel-fifo | (
           case $item in
               [FO]*)
                   # focused desktop
-                  info="$info^fg(#268bd2)$name^fg()$PADDING"
+                  info="$info^bg(#fdfaf6) $name ^bg() "
                   ;;
               [Uu]*)
                   # urgent desktop
-                  info="$info^fg(#dc322f)$name^fg()$PADDING"
+                  info="$info^fg(#dc322f) $name ^fg() "
                   ;;
               o*)
                   # occupied desktop
-                  info="$info$name$PADDING"
+                  info="$info $name  "
                   ;;
             esac
           shift
