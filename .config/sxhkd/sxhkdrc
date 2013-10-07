@@ -1,6 +1,9 @@
 alt + shift + q
   bspc quit
 
+alt + shift + c
+  bspc window -c
+
 alt + shift + Return
   urxvtc
 
