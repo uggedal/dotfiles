@@ -15,7 +15,7 @@ bspc rule -a MPlayer --floating
 bspc rule -a mpv --floating
 bspc rule -a Gimp --floating
 
-bspc config top_padding $(expr $HEIGHT + $MARGIN)
+bspc config top_padding $(expr $HEIGHT + \( $MARGIN / 2 \))
 bspc config border_width 1
 bspc config window_gap 4
 bspc config focused_border_color "#d0ccc0"
