@@ -38,6 +38,4 @@ xsetroot -solid '#eee8d5' -cursor_name left_ptr &
 # Keyboard mapping
 sxhkd &
 
-while true; do
-  bspwm || break
-done
+exec bspwm
