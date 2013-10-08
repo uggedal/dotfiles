@@ -1,5 +1,5 @@
 alt + shift + q
-  pkill -f bspwmbar; bspc quit
+  bspc quit
 
 alt + shift + c
   bspc window -c
