@@ -41,4 +41,6 @@ sxhkd &
 [ -e $PANEL_FIFO ] && rm -f $PANEL_FIFO
 mkfifo $PANEL_FIFO
 
+bspwmbar &
+
 exec bspwm -s $PANEL_FIFO -p W
