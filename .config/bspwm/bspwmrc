@@ -1,11 +1,9 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 FONT='DejaVu Sans'
 SIZE=10
 HEIGHT=16
-MARGIN=4
-FG='#657b83'
-BG='#eee8d5'
+BATTERY=BAT0
 _IFS=$IFS
 
 bspc desktop ^1 -n 1
@@ -15,17 +13,35 @@ bspc rule -a MPlayer --floating
 bspc rule -a mpv --floating
 bspc rule -a Gimp --floating
 
-bspc config top_padding $(expr $HEIGHT + \( $MARGIN / 2 \))
+bspc config top_padding $HEIGHT
 bspc config border_width 1
 bspc config window_gap 4
 bspc config focused_border_color "#d0ccc0"
 bspc config normal_border_color "#fdfaf6"
 
-cat ~/.panel-fifo | (
+(
+  bat=/sys/class/power_supply/$BATTERY
+  cap=$(expr \( 100 \* $(<$bat/energy_now) \) / $(<$bat/energy_full))
+  printf 'B%s%%\n' $cap > $PANEL_FIFO
+
+  date +'T%Y-%m-%d %H:%M' > $PANEL_FIFO
+  sleep 1
+) &
+
+cat $PANEL_FIFO | (
+  battery=''
+  info=''
+  dt=''
   while read -r line; do
-    info=''
     case $line in
+      B*)
+        battery="${line#?}"
+        ;;
+      T*)
+        dt="${line#?}"
+        ;;
       W*)
+        info=''
         IFS=':'
         set -- ${line#?}
         while [ $# -gt 0 ]; do
@@ -34,11 +50,11 @@ cat ~/.panel-fifo | (
           case $item in
               [FO]*)
                   # focused desktop
-                  info="$info^bg(#fdfaf6) $name ^bg() "
+                  info="$info\\u2\\b8 $name \\br\\ur "
                   ;;
               [Uu]*)
                   # urgent desktop
-                  info="$info^fg(#dc322f) $name ^fg() "
+                  info="$info\\u2\\b8\\f2 $name \\br\\ur\\fr "
                   ;;
               o*)
                   # occupied desktop
@@ -50,6 +66,6 @@ cat ~/.panel-fifo | (
         IFS=$_IFS
         ;;
     esac
-    printf '%s\n' "$info"
+    printf '%s \\r%s %s \n' "$info" "$battery" "$dt"
   done
-) | dzen2 -y $MARGIN -x $MARGIN -h $HEIGHT -ta l -dock -fn "$FONT:size=$SIZE" -fg $FG -bg $BG &
+) | bar &
