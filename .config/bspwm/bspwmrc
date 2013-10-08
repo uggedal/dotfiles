@@ -4,6 +4,7 @@ FONT='DejaVu Sans'
 SIZE=10
 HEIGHT=16
 BATTERY=BAT0
+ADAPTER=ADP1
 _IFS=$IFS
 
 bspc desktop ^1 -n 1
@@ -22,7 +23,8 @@ bspc config normal_border_color "#fdfaf6"
 (
   bat=/sys/class/power_supply/$BATTERY
   cap=$(expr \( 100 \* $(<$bat/energy_now) \) / $(<$bat/energy_full))
-  printf 'B%s\n' $cap > $PANEL_FIFO
+  charging=$(</sys/class/power_supply/$ADAPTER/online)
+  printf 'B%s %s\n' $cap $charging > $PANEL_FIFO
 
   date +'T%Y-%m-%d %H:%M' > $PANEL_FIFO
   sleep 1
@@ -35,11 +37,14 @@ cat $PANEL_FIFO | (
   while read -r line; do
     case $line in
       B*)
-        cap="${line#?}"
+        bat="${line#?}"
+        charging=${bat#* }
+        cap=${bat% *}
         col=r
         [ $cap -lt 50 ] && col=0
         [ $cap -lt 30 ] && col=1
         [ $cap -lt 10 ] && col=2
+        [ $charging -eq 1 ] && col=7
         battery="\\f$col$cap%\\fr"
         ;;
       T*)
