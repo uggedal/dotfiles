@@ -4,7 +4,6 @@ BATTERY=BAT0
 ADAPTER=ADP1
 _IFS=$IFS
 
-
 (
   while true; do
     bat=/sys/class/power_supply/$BATTERY

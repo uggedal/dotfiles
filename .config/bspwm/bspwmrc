@@ -15,4 +15,4 @@ bspc config window_gap 4
 bspc config focused_border_color "#d0ccc0"
 bspc config normal_border_color "#fdfaf6"
 
-$(readlink -f $(dirname $0))/bspwmbar &
+bspwmbar &
