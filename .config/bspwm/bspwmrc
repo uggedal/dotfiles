@@ -71,6 +71,6 @@ cat $PANEL_FIFO | (
         IFS=$_IFS
         ;;
     esac
-    printf '%s \\r%s   %s \n' "$info" "$battery" "$dt"
+    printf ' %s \\r%s  \\f9//\\fr  %s \n' "$info" "$battery" "$dt"
   done
 ) | bar &
