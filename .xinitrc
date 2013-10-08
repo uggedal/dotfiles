@@ -38,7 +38,7 @@ xsetroot -solid '#eee8d5' -cursor_name left_ptr &
 # Keyboard mapping
 sxhkd &
 
-[ -e ~/.panel-fifo ] && rm -f ~/.panel-fifo
-mkfifo ~/.panel-fifo
+[ -e $PANEL_FIFO ] && rm -f $PANEL_FIFO
+mkfifo $PANEL_FIFO
 
-exec bspwm -s ~/.panel-fifo -p W
+exec bspwm -s $PANEL_FIFO -p W
