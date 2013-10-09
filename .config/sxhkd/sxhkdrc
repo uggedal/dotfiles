@@ -8,7 +8,7 @@ alt + shift + Return
   urxvtc
 
 alt + p
-  dmenu_run -fn "DejaVu Sans Mono-10" -nb "#eee8d5" -nf "#657b83" -sb "#fdfaf6" -sf "#dc322f"
+  interrobang
 
 alt + {_,shift + }{h,j,k,l}
   bspc window -{f,s} {left,down,up,right}
