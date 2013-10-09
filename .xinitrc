@@ -1,6 +1,8 @@
 # Expand font path
-xset +fp /usr/share/fonts/local
-xset fp rehash
+if [ -d /usr/share/fonts/local ]; then
+  xset +fp /usr/share/fonts/local
+  xset fp rehash
+fi
 
 # Load local .Xresources
 xrdb -merge $HOME/.Xresources
