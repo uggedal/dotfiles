@@ -7,9 +7,11 @@ _IFS=$IFS
 (
   while true; do
     bat=/sys/class/power_supply/$BATTERY
-    cap=$(expr \( 100 \* $(<$bat/energy_now) \) / $(<$bat/energy_full))
-    charging=$(</sys/class/power_supply/$ADAPTER/online)
-    printf 'B%s %s\n' $cap $charging > $PANEL_FIFO
+    if [ -d $bar ]; then
+      cap=$(expr \( 100 \* $(<$bat/energy_now) \) / $(<$bat/energy_full))
+      charging=$(</sys/class/power_supply/$ADAPTER/online)
+      printf 'B%s %s\n' $cap $charging > $PANEL_FIFO
+    fi
 
     date +'T%Y-%m-%d %H:%M' > $PANEL_FIFO
     sleep 1
