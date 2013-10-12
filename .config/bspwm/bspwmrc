@@ -8,6 +8,7 @@ bspc monitor -a 2 3 4 5 6
 bspc rule -a MPlayer --floating
 bspc rule -a mpv --floating
 bspc rule -a Gimp --floating
+bspc rule -a Spotify --floating
 
 bspc config top_padding $HEIGHT
 bspc config border_width 1
