@@ -15,6 +15,7 @@ set autoread         " read a unchanged file if it's been changed outside vim
 
 set ruler            " show line and column number of cursor position
 set showcmd          " display incomplete commands
+set number
 
 set shortmess+=I     " don't show splash screen
 
