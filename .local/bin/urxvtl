@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Helper for launching urxvt with different font sizes
+
+[ $# -eq 1 ] || exit 64
+
+fn=$(pcregrep -o1 '^URxvt.font:(.*)$' ~/.Xresources)
+fb=$(pcregrep -o1 '^URxvt.boldFont:(.*)$' ~/.Xresources)
+
+urxvtc -fn "${fn/10/$1}" -fb "${fb/10/$1}"
