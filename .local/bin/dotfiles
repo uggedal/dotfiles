@@ -16,6 +16,7 @@ VIM_PLUGINS=(
   'ervandew/supertab          2.0'
   'scrooloose/syntastic       3.1.0'
   'tpope/vim-characterize     d5ba608'
+  'tpope/vim-commentary       a3ae0df'
   'vim-scripts/IndexedSearch  500a64a'
   'vim-scripts/gitignore      061c5c7'
   'fholgado/minibufexpl.vim   v6.5.2'
