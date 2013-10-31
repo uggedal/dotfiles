@@ -1,6 +1,8 @@
 [user]
   name = Eivind Uggedal
   email = eivind@uggedal.com
+[core]
+  abbrev = 12
 [color]
   ui = auto
 [alias]
