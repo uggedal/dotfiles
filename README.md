@@ -25,7 +25,7 @@ This repo also contains configuration for some not so essential programs:
 
 * mercurial
 * jshint
-* mplayer
+* mpv
 * rtorrent
 
 Lastly this repo contains a few useful scripts:
