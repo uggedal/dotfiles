@@ -15,8 +15,8 @@ I use in my daily workflow are:
 In addition the following programs are used to form an ideal graphical
 experience:
 
-* [i3][]
-* i3status
+* [bspwm][]
+* [interrobang][]
 * urxvt
 * unclutter
 * autocutsel
@@ -60,5 +60,6 @@ dotfiles sync
 ```
 
 [keychain]: http://www.funtoo.org/Keychain
-[i3]: http://i3wm.org/
+[bspwm]: https://github.com/baskerville/bspwm
+[interrobang]: https://github.com/TrilbyWhite/interrobang
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/.local/bin/dotfiles
