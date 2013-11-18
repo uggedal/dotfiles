@@ -18,6 +18,7 @@ VIM_PLUGINS=(
   'tpope/vim-characterize     d5ba608'
   'tpope/vim-commentary       a3ae0df'
   'vim-scripts/IndexedSearch  500a64a'
+  'nelstrom/vim-visual-star-search 59d5f09fc613'
   'vim-scripts/gitignore      061c5c7'
   'fholgado/minibufexpl.vim   v6.5.2'
 )
