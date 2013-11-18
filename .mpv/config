@@ -3,3 +3,5 @@ monitoraspect=1.6
 osd-font='DejaVu Sans'
 
 fs=yes
+
+osc=no
