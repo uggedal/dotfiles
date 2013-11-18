@@ -1,9 +1,0 @@
-vo=vaapi
-va=vaapi
-monitoraspect=1.6
-
-fontconfig=1
-font='DejaVu Sans'
-
-subfont-text-scale=3
-subpos=95
