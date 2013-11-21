@@ -11,7 +11,8 @@ style news.ycombinator.com <<EOF
     visibility: hidden;
     width: 0;
   }
-  td.title:nth-child(1) + td img {
-    padding: 0 .5em;
+  td.title:nth-child(1) + td a[onclick] {
+    display: inline-block;
+    padding: 0 1em;
   }
 EOF
