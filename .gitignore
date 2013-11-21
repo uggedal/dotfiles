@@ -14,6 +14,7 @@
 /.dbus/
 /.dmenu_cache
 /.fontconfig/
+/.gegl-*/
 /.gem/
 /.gimp-*/
 /.gphoto/
