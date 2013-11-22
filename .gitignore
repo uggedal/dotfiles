@@ -1,4 +1,6 @@
 # Generated files:
+/.abuild/*.rsa
+/.abuild/*.rsa.pub
 /.ansible/
 /.ansible_async/
 /.ash_history
