@@ -28,4 +28,4 @@ find "$root" -path '*/.git' -prune \
   -o -path '*/node_modules' -prune \
   -o -name '*.swp' -prune \
   -o -name '*.pyc' -prune \
-  -o -type f -print0 | xargs -0 grep $opts --color=auto -e "$@"
+  -o -type f -print0 | xargs -0 grep $opts -e "$@"
