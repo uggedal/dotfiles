@@ -6,6 +6,11 @@
 opts="-I"
 root="."
 
+[ $# -gt 0 ] || {
+  printf '%s: [-v] [root] <re>\n' $(basename $0) >&2
+  exit 64
+}
+
 if [ "$1" = '-v' ]; then
   opts="${opts}n"
   shift
