@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# List files matching the given string within an optional context dir.
+# Recursively list files matching the given string within an optional root dir.
 # Use -v as the first argument to list the matching lines.
 
 opts="-I"
