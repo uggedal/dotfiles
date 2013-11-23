@@ -6,10 +6,6 @@
 opts="-I"
 root="."
 
-if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
-  opts="${opts}i"
-fi
-
 if [ "$1" = '-v' ]; then
   opts="${opts}n"
   shift
@@ -20,6 +16,10 @@ fi
 if [ -d "$1" ]; then
   root="$1"
   shift
+fi
+
+if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
+  opts="${opts}i"
 fi
 
 find "$root" -path '*/.git' -prune \
