@@ -3,32 +3,29 @@
 # Recursively list files matching the given string within an optional root dir.
 # Use -v as the first argument to list the matching lines.
 
-opts='-Il'
-root='.'
+root=.
+garg=-I
+farg=
+for i in /.git /.hg /node_modules .swp; do
+  farg="${farg} -path *$i -prune -o"
+done
+farg="$farg -type f"
 
-[ $# -gt 0 ] || {
-  printf '%s: [-v] [root] [re]\n' $(basename $0) >&2
-  exit 64
+[ $# -eq 0 ] && {
+  find "$root" $farg
+  exit $?
 }
 
-[ "$1" = '-v' ] && {
-  opts='-In'
+if [ "$1" = '-v' ]; then
+  garg="${garg}n"
   shift
-}
-
-[ -d "$1" ] && {
-  root="$1"
-  shift
-}
-
-if $(echo "$@" | grep -ve '[A-Z]' > /dev/null); then
-  opts="${opts}i"
+else
+  garg="${garg}l"
 fi
 
-find "$root" -path '*/.git' -prune \
-  -o -path '*/.hg' -prune \
-  -o -path '*/.svn' -prune \
-  -o -path '*/node_modules' -prune \
-  -o -name '*.swp' -prune \
-  -o -name '*.pyc' -prune \
-  -o -type f -print0 | xargs -0 grep $opts -e "$@"
+re="$1"
+[ $# -eq 2 ] && root="$2"
+
+printf "$1" | grep -ve '[A-Z]' >/dev/null && garg="${garg}i"
+
+find "$root" $farg -print0 | xargs -0 fgrep $garg -e "$re"
