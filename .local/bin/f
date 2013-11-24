@@ -3,27 +3,25 @@
 # Recursively list files matching the given string within an optional root dir.
 # Use -v as the first argument to list the matching lines.
 
-opts="-I"
-root="."
+opts='-Il'
+root='.'
 
 [ $# -gt 0 ] || {
-  printf '%s: [-v] [root] <re>\n' $(basename $0) >&2
+  printf '%s: [-v] [root] [re]\n' $(basename $0) >&2
   exit 64
 }
 
-if [ "$1" = '-v' ]; then
-  opts="${opts}n"
+[ "$1" = '-v' ] && {
+  opts='-In'
   shift
-else
-  opts="${opts}l"
-fi
+}
 
-if [ -d "$1" ]; then
+[ -d "$1" ] && {
   root="$1"
   shift
-fi
+}
 
-if $(echo "$@" | grep -ve "[A-Z]" > /dev/null); then
+if $(echo "$@" | grep -ve '[A-Z]' > /dev/null); then
   opts="${opts}i"
 fi
 
