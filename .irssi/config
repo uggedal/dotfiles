@@ -20,9 +20,9 @@ servers = (
   {
     address = "holmes.freenode.net";
     chatnet = "freenode";
-    port = "6667";
-    use_ssl = "no";
-    ssl_verify = "no";
+    port = "7000";
+    use_ssl = "yes";
+    ssl_verify = "yes";
     autoconnect = "yes";
   }
 );
