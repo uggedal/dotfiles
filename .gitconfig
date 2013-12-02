@@ -19,16 +19,16 @@
 [push]
   default = upstream
 [pull]
-	rebase = true
+  rebase = true
 [log]
   date = iso
   abbrevCommit = true
 [advice]
   statusHints = false
 [diff]
-	tool = vimdiff
+  tool = vimdiff
 [merge]
-	conflictstyle = diff3
+  conflictstyle = diff3
 [format]
   pretty = %C(red)%h %C(green)%ad %C(white)%ae%Creset\n  %s
 [sendemail]
