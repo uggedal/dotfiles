@@ -37,3 +37,5 @@
   smtpserverport = 587
   smtpencryption = tls
   suppresscc = all
+[github]
+	user = uggedal
