@@ -31,6 +31,8 @@ syntax enable
 set synmaxcol=200                " don't highlight long lines
 filetype plugin indent on        " language dependent indenting
 
+let g:is_posix=1                 " posix sh highlighting
+
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " User Interface
