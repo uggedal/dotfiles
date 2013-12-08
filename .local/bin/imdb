@@ -7,6 +7,10 @@ import sys
 import re
 import urllib
 import json
+import webbrowser
+
+IMDB='http://www.imdb.com/title/'
+OMDB='http://www.omdbapi.com/'
 
 if len(sys.argv) != 2:
     sys.stderr.write("Usage: %s <path>\n")
@@ -28,13 +32,16 @@ for fname in os.listdir(root):
 
     title = match.group(1).replace('.', ' ')
     qs = urllib.urlencode({'t': title})
-    res = urllib.urlopen("http://www.omdbapi.com/?%s" % qs)
+    res = urllib.urlopen("%s?%s" % (OMDB, qs))
 
     data = json.loads(res.read())
     movies.append([data.get('imdbRating', 'N/A'),
                    title,
                   "%s" % data.get('imdbVotes', ''),
-                  data.get('Genre', '')])
+                  data.get('Genre', ''),
+                  data.get('imdbID', '')])
 
 for m in sorted(movies, reverse=True):
     print "%-5s %-30s %7s  %-25s" % (m[0], m[1], m[2], m[3])
+
+    webbrowser.open(IMDB + m[4])
