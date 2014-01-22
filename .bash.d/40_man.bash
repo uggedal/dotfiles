@@ -1,4 +1,5 @@
-# Make man pages more readable
+# Make man pages more readable and colorful
 
 MANWIDTH=80
-export MANWIDTH
+GROFF_NO_SGR=1
+export MANWIDTH GROFF_NO_SGR
