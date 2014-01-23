@@ -1,3 +1,6 @@
 #!/bin/bash
 
-find ~/dl/${PWD##*/} -maxdepth 2 -type f -name \*.rar -exec unrar x {} \;
+find ~/dl/${PWD##*/} -maxdepth 2 -type f -name \*.rar |
+  while read f; do
+    [ -f "$(unrar lb $f)" ] || unrar x $f
+  done
