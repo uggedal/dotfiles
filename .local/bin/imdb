@@ -44,4 +44,5 @@ for fname in os.listdir(root):
 for m in sorted(movies, reverse=True):
     print "%-5s %-30s %7s  %-25s" % (m[0], m[1], m[2], m[3])
 
-    webbrowser.open(IMDB + m[4])
+    if len(m[4]):
+        webbrowser.open(IMDB + m[4])
