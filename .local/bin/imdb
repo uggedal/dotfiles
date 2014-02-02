@@ -12,8 +12,8 @@ import webbrowser
 IMDB='http://www.imdb.com/title/'
 OMDB='http://www.omdbapi.com/'
 
-if len(sys.argv) != 2:
-    sys.stderr.write("Usage: %s <path>\n")
+if 1 < len(sys.argv) > 3:
+    sys.stderr.write("Usage: %s <path> [-v]\n")
     sys.exit(64)
 
 root = sys.argv[1]
@@ -44,5 +44,5 @@ for fname in os.listdir(root):
 for m in sorted(movies, reverse=True):
     print "%-5s %-30s %7s  %-25s" % (m[0], m[1], m[2], m[3])
 
-    if len(m[4]):
+    if len(m[4]) and len(sys.argv) == 3 and sys.argv[2] == '-v':
         webbrowser.open(IMDB + m[4])
