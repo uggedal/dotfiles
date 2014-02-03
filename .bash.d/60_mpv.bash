@@ -13,8 +13,8 @@ mpv() {
     flags='--vo vaapi --hwdec vaapi'
   fi
 
-  case $1 in
-    *.rar) unrar p -inul $1 2>/dev/null | /usr/bin/mpv $flags "$@" -;;
+  case "$1" in
+    *.rar) unrar p -inul "$1" 2>/dev/null | /usr/bin/mpv $flags "$@" -;;
     *) /usr/bin/mpv $flags "$@";;
   esac
 }
