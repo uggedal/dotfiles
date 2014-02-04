@@ -18,7 +18,7 @@ chatnets = {
 
 servers = (
   {
-    address = "holmes.freenode.net";
+    address = "kornbluth.freenode.net";
     chatnet = "freenode";
     port = "7000";
     use_ssl = "yes";
