@@ -6,7 +6,7 @@ settings = {
   };
   "fe-text" = {
     actlist_sort = "refnum";
-    scrollback_lines = "50000";
+    scrollback_lines = "1000";
   };
   "fe-common/core" = {
     autolog = "yes";
