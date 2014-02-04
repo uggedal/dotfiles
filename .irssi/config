@@ -8,6 +8,11 @@ settings = {
     actlist_sort = "refnum";
     scrollback_lines = "50000";
   };
+  "fe-common/core" = {
+    autolog = "yes";
+    autolog_level = "ALL -CRAP -CLIENTCRAP -CTCPS -JOINS -PARTS -QUITS -MODES -NICKS";
+    autolog_path = "~/.irssi/logs/$tag/$0/%Y-%m-%d.log";
+  };
 };
 
 chatnets = {
