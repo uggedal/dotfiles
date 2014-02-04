@@ -47,7 +47,7 @@ channels = (
 
 ignores = (
   {
-    level = "JOINS PARTS QUITS";
+    level = "JOINS PARTS QUITS MODES";
   }
 );
 
