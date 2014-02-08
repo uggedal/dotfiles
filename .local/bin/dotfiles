@@ -9,7 +9,7 @@ VIM_PLUGINS=(
 
   'pangloss/vim-javascript          v0.9.0'
   'tpope/vim-markdown               fccf76f'
-  'hail2u/vim-css3-syntax           v0.8'
+  'hail2u/vim-css3-syntax           v0.9'
   'elzr/vim-json                    37c223d'
   'avakhov/vim-yaml                 4b37a4f'
 
