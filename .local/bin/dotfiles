@@ -14,7 +14,7 @@ VIM_PLUGINS=(
   'avakhov/vim-yaml                 4b37a4f'
 
   'ervandew/supertab                2.0'
-  'scrooloose/syntastic             3.2.0'
+  'scrooloose/syntastic             3.3.0'
   'tpope/vim-characterize           d5ba608'
   'tpope/vim-commentary             a3ae0df'
   'vim-scripts/IndexedSearch        500a64a'
