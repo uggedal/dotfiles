@@ -29,6 +29,7 @@
 /.local/share/
 /.m2/
 /.mozilla/
+/.mpv/watch_later/
 /.node-gyp/
 /.npm/
 /.npmrc
