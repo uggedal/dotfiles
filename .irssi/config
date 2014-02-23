@@ -34,11 +34,6 @@ servers = (
 
 channels = (
   {
-    name = "#alpine-devel";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
     name = "#gentoo-dev";
     chatnet = "freenode";
     autojoin = "yes";
