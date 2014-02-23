@@ -44,6 +44,11 @@ channels = (
     autojoin = "yes";
   },
   {
+    name = "#gentoo-dev-help";
+    chatnet = "freenode";
+    autojoin = "yes";
+  },
+  {
     name = "#gentoo";
     chatnet = "freenode";
     autojoin = "yes";
