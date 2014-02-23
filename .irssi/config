@@ -49,12 +49,12 @@ channels = (
     autojoin = "yes";
   },
   {
-    name = "#gentoo";
+    name = "#gentoo-sunrise";
     chatnet = "freenode";
     autojoin = "yes";
   },
   {
-    name = "#gentoo-sunrise";
+    name = "#gentoo";
     chatnet = "freenode";
     autojoin = "yes";
   }
