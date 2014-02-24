@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# Colorizes and aligns irssi irc logs
+
+RE='^\([0-9][0-9]:[0-9][0-9]\) <\([@\+ ]*\)\([^ ]*\)>'
+
+TC=$(printf '\e[33m')
+MC=$(printf '\e[34m')
+RC=$(printf '\e[00m')
+
+sed -n "s/$RE/$TC\1$RC $MC\2$RC\t\3\t/p" $1 | 
+  awk 'BEGIN{FS="\t";}{ printf "%s%-12s %s\n", $1, $2, $3}' |
+  less
