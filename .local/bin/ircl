@@ -4,8 +4,8 @@
 
 RE='^\([0-9][0-9]:[0-9][0-9]\) <\([@\+ ]*\)\([^ ]*\)>'
 
-TC=$(printf '\e[33m')
-MC=$(printf '\e[34m')
+TC=$(printf '\e[32m')
+MC=$(printf '\e[33m')
 RC=$(printf '\e[00m')
 
 sed -n "s/$RE/$TC\1$RC $MC\2$RC\t\3\t/p" $1 | 
