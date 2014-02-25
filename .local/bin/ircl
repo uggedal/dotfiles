@@ -31,4 +31,4 @@ aligner='
 '
 
 
-awk "$aligner" $1
+awk "$aligner" $1 | less
