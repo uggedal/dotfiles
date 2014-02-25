@@ -15,7 +15,11 @@ aligner='
       printf "%s\n", s
       s = "                    "
     }
-    s = s $i
+    if (length($i) + 20 > '$cols') {
+      printf "\n  %s\n", $i
+    } else {
+      s = s $i
+    }
 
     if (i < NF) {
       s = s OFS;
