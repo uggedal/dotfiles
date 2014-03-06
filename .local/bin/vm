@@ -33,7 +33,7 @@ win() {
     local usbflags=
   fi
 
-  exec su -c "$QEMU -enable-kvm -m $WIN_MEM $usbflags -vga std -full-screen $WIN_IMG"
+  exec su -c "$QEMU -enable-kvm -m $WIN_MEM $usbflags -usbdevice tablet -vga std -full-screen $WIN_IMG"
 }
 
 case $1 in
