@@ -2,3 +2,5 @@ startup_message off
 
 unbind c
 bind c exec urxvtc
+
+unmanage mpv
