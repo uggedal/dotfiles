@@ -38,12 +38,4 @@ xsetroot -solid '#eee8d5' -cursor_name left_ptr &
 /usr/bin/autocutsel -selection CLIPBOARD -fork
 /usr/bin/autocutsel -selection PRIMARY -fork
 
-# Keyboard mapping
-sxhkd &
-
-[ -e $PANEL_FIFO ] && rm -f $PANEL_FIFO
-mkfifo $PANEL_FIFO
-
-bspwmbar &
-
-exec bspwm -s $PANEL_FIFO -p W
+exec ratpoison
