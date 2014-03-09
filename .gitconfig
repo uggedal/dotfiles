@@ -38,4 +38,4 @@
   smtpencryption = tls
   suppresscc = all
 [github]
-	user = uggedal
+  user = uggedal
