@@ -15,8 +15,7 @@ I use in my daily workflow are:
 In addition the following programs are used to form an ideal graphical
 experience:
 
-* [bspwm][]
-* [interrobang][]
+* [ratpoison][]
 * urxvt
 * unclutter
 * autocutsel
@@ -60,6 +59,5 @@ dotfiles sync
 ```
 
 [keychain]: http://www.funtoo.org/Keychain
-[bspwm]: https://github.com/baskerville/bspwm
-[interrobang]: https://github.com/TrilbyWhite/interrobang
+[ratpoison]: http://www.nongnu.org/ratpoison/
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/.local/bin/dotfiles
