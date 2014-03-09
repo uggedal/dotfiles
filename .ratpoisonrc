@@ -17,6 +17,8 @@ unbind b
 unbind C-b
 unbind c
 unbind C-c
+unbind f
+unbind C-f
 unbind C-g
 unbind k
 unbind C-k
