@@ -1,3 +1,7 @@
+#
+# General
+#
+
 startup_message off
 
 unbind c
