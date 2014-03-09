@@ -82,6 +82,7 @@ bind d time
 # Style
 #
 
+set font "DejaVu Sans Mono-10"
 set border 2
 set barborder 0
 set fwcolor #93a1a1
