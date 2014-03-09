@@ -4,6 +4,10 @@
 
 startup_message off
 
+#
+# Keybindings
+#
+
 unbind c
 bind c exec urxvtc
 
