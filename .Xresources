@@ -19,7 +19,7 @@ URxvt*urlLauncher: chromium
 URxvt*scrollBar: false
 URxvt*mouseWheelScrollPage: True
 
-URxvt*internalBorder: 6
+URxvt*internalBorder: 10
 !URxvt*borderLess: true
 URxvt*externalBorder: 0
 
