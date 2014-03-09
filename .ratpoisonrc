@@ -8,8 +8,73 @@ startup_message off
 # Keybindings
 #
 
+# Unneeded or remapped
+unbind a
+unbind C-a
+unbind A
+unbind C-A
+unbind b
+unbind C-b
 unbind c
-bind c exec urxvtc
+unbind C-c
+unbind C-g
+unbind k
+unbind C-k
+unbind K
+unbind C-K
+unbind l
+unbind C-l
+unbind v
+unbind C-v
+unbind V
+unbind C-V
+unbind Return
+unbind C-Return
+unbind Tab
+unbind M-Tab
+unbind space
+unbind C-space
+unbind C-exclam
+unbind Left
+unbind Right
+unbind Up
+unbind Down
+unbind C-Left
+unbind C-Right
+unbind C-Up
+unbind C-Down
+
+# Terminal
+bind Return exec urxvtc
+bind S-Return colon exec urxvtc -e 
+
+# Frame focus
+bind h focusleft
+bind l focusright
+bind k focusup
+bind j focusdown
+
+# Frame movement
+bind H exchangeleft
+bind L exchangeright
+bind K exchangeup
+bind J exchangedown
+
+# Other
+bind c delete
+bind d time
+
+#
+# Style
+#
+
+set border 2
+set barborder 0
+set fwcolor #93a1a1
+set bwcolor #fdfaf6
+set fgcolor #657b83
+set bgcolor #eee8d5
+# TODO: font (check syntax)
 
 #
 # Windows
