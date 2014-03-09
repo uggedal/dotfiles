@@ -19,6 +19,7 @@ unbind c
 unbind C-c
 unbind f
 unbind C-f
+unbind F
 unbind C-g
 unbind k
 unbind C-k
