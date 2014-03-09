@@ -27,6 +27,8 @@ unbind K
 unbind C-K
 unbind l
 unbind C-l
+unbind m
+unbind C-m
 unbind v
 unbind C-v
 unbind V
