@@ -21,6 +21,7 @@ unbind f
 unbind C-f
 unbind F
 unbind C-g
+unbind C-i
 unbind k
 unbind C-k
 unbind K
@@ -29,10 +30,14 @@ unbind l
 unbind C-l
 unbind m
 unbind C-m
+unbind C-r
+unbind C-s
+unbind C-S
 unbind v
 unbind C-v
 unbind V
 unbind C-V
+unbind C-w
 unbind x
 unbind C-x
 unbind Return
@@ -43,6 +48,7 @@ unbind space
 unbind C-space
 unbind C-exclam
 unbind C-underscore
+unbind C-apostrophe
 unbind Left
 unbind Right
 unbind Up
