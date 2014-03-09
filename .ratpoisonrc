@@ -89,7 +89,6 @@ set fwcolor #93a1a1
 set bwcolor #fdfaf6
 set fgcolor #657b83
 set bgcolor #eee8d5
-# TODO: font (check syntax)
 
 #
 # Windows
