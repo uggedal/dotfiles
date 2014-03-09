@@ -28,6 +28,8 @@ unbind v
 unbind C-v
 unbind V
 unbind C-V
+unbind x
+unbind C-x
 unbind Return
 unbind C-Return
 unbind Tab
