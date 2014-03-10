@@ -88,7 +88,7 @@ set barborder 1
 set fwcolor #93a1a1
 set bwcolor #fdfaf6
 set fgcolor #657b83
-set bgcolor #eee8d5
+set bgcolor #fdfaf6
 
 #
 # Windows
