@@ -5,6 +5,41 @@
 startup_message off
 
 #
+# Groups
+#
+
+gnew one
+gnewbg two
+gnewbg three
+gnewbg four
+gnewbg five
+gnewbg six
+gmerge default
+gdelete default
+
+#
+# Windows
+#
+
+set bargravity n
+set winname class
+
+unmanage mpv
+
+#
+# Style
+#
+
+set font "DejaVu Sans Mono-10"
+set border 2
+set barborder 1
+set barpadding 4 2
+set fwcolor #93a1a1
+set bwcolor #fdfaf6
+set fgcolor #657b83
+set bgcolor #fdfaf6
+
+#
 # Keybindings
 #
 
@@ -77,38 +112,3 @@ bind J exchangedown
 # Other
 bind c delete
 bind d time
-
-#
-# Style
-#
-
-set font "DejaVu Sans Mono-10"
-set border 2
-set barborder 1
-set barpadding 4 2
-set fwcolor #93a1a1
-set bwcolor #fdfaf6
-set fgcolor #657b83
-set bgcolor #fdfaf6
-
-#
-# Groups
-#
-
-gnew one
-gnewbg two
-gnewbg three
-gnewbg four
-gnewbg five
-gnewbg six
-gmerge default
-gdelete default
-
-#
-# Windows
-#
-
-set bargravity n
-set winname class
-
-unmanage mpv
