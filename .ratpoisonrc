@@ -92,6 +92,19 @@ set fgcolor #657b83
 set bgcolor #fdfaf6
 
 #
+# Groups
+#
+
+gnew one
+gnewbg two
+gnewbg three
+gnewbg four
+gnewbg five
+gnewbg six
+gmerge default
+gdelete default
+
+#
 # Windows
 #
 
