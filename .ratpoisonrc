@@ -125,6 +125,8 @@ bind 3 rpws3
 bind 4 rpws4
 bind 5 rpws5
 bind 6 rpws6
+bind P rpwsp
+bind N rpwsn
 
 # Group movement
 bind exclam rpwsm1
