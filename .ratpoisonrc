@@ -94,6 +94,6 @@ set bgcolor #eee8d5
 # Windows
 #
 
-set bargravity nw
+set bargravity n
 
 unmanage mpv
