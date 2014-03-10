@@ -109,7 +109,6 @@ gdelete default
 #
 
 set bargravity n
-
 set winname class
 
 unmanage mpv
