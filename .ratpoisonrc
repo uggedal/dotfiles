@@ -8,14 +8,7 @@ startup_message off
 # Groups
 #
 
-gnew one
-gnewbg two
-gnewbg three
-gnewbg four
-gnewbg five
-gnewbg six
-gmerge default
-gdelete default
+exec rpws init 6 -a
 
 #
 # Windows
@@ -126,12 +119,12 @@ bind K exchangeup
 bind J exchangedown
 
 # Groups
-bind 1 exec ratpoison -c "gselect 1" -c "select -" -c "only" -c "next"
-bind 2 exec ratpoison -c "gselect 2" -c "select -" -c "only" -c "next"
-bind 3 exec ratpoison -c "gselect 3" -c "select -" -c "only" -c "next"
-bind 4 exec ratpoison -c "gselect 4" -c "select -" -c "only" -c "next"
-bind 5 exec ratpoison -c "gselect 5" -c "select -" -c "only" -c "next"
-bind 6 exec ratpoison -c "gselect 6" -c "select -" -c "only" -c "next"
+bind 1 rpws1
+bind 2 rpws2
+bind 3 rpws3
+bind 4 rpws4
+bind 5 rpws5
+bind 6 rpws6
 
 # Other
 bind c delete
