@@ -3,6 +3,7 @@
 #
 
 startup_message off
+set waitcursor 0
 
 #
 # Groups
