@@ -96,4 +96,6 @@ set bgcolor #eee8d5
 
 set bargravity n
 
+set winname class
+
 unmanage mpv
