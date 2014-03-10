@@ -75,12 +75,14 @@ unbind C-V
 unbind C-w
 unbind x
 unbind C-x
+unbind period
 unbind Return
 unbind C-Return
 unbind Tab
 unbind M-Tab
 unbind space
 unbind C-space
+unbind exclam
 unbind C-exclam
 unbind C-underscore
 unbind C-apostrophe
@@ -92,6 +94,9 @@ unbind C-Left
 unbind C-Right
 unbind C-Up
 unbind C-Down
+
+# Exec
+bind period exec
 
 # Terminal
 bind Return exec urxvtc
