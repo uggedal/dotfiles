@@ -125,6 +125,14 @@ bind L exchangeright
 bind K exchangeup
 bind J exchangedown
 
+# Groups
+bind 1 exec ratpoison -c "gselect 1" -c "groups"
+bind 2 exec ratpoison -c "gselect 2" -c "groups"
+bind 3 exec ratpoison -c "gselect 3" -c "groups"
+bind 4 exec ratpoison -c "gselect 4" -c "groups"
+bind 5 exec ratpoison -c "gselect 5" -c "groups"
+bind 6 exec ratpoison -c "gselect 6" -c "groups"
+
 # Other
 bind c delete
 bind d time
