@@ -25,7 +25,7 @@ unmanage mpv
 #
 
 set font "DejaVu Sans Mono-10"
-set border 2
+set border 0
 set barborder 1
 set barpadding 4 2
 set fwcolor #93a1a1
