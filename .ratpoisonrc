@@ -16,6 +16,12 @@ set winfmt  %n [%s] %t
 unmanage mpv
 
 #
+# Hooks
+#
+
+addhook switchwin info %n %t
+
+#
 # Style
 #
 
