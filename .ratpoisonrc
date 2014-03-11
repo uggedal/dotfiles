@@ -95,7 +95,7 @@ unbind C-Down
 bind period exec
 
 # Terminal
-bind Return exec urxvtc
+bind Return exec rpfocus URxvt urxvtc -e 'tmux has-session && tmux attach || tmux'
 bind S-Return colon exec urxvtc -e 
 
 # Frame focus
