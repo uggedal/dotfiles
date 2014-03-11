@@ -96,7 +96,8 @@ unbind C-Down
 bind period exec
 
 # Terminal
-bind Return exec rpfocus URxvt urxvtc -e sh -c 'tmux -q has-session && exec tmux attach || exec tmux'
+alias tmux exec rpfocus URxvt urxvtc -e sh -c 'tmux -q has-session && exec tmux attach || exec tmux'
+bind Return tmux
 
 # Browsers
 bind f exec rpfocus Firefox firefox
@@ -116,3 +117,9 @@ bind J exchangedown
 # Other
 bind c delete
 bind d time
+
+#
+# Start
+#
+
+tmux
