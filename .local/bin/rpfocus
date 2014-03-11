@@ -10,5 +10,5 @@ n=$(ratpoison -c 'windows %n %c' | awk '/^[0-9]+ '$class'$/ { print $1 }')
 if [ -n "$n" ]; then
   ratpoison -c "select $n"
 else
-  exec $@
+  exec "$@"
 fi
