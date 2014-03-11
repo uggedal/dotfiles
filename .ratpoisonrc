@@ -20,6 +20,7 @@ unmanage mpv
 #
 
 addhook switchwin info %n %t
+addhook switchframe info %n %t
 
 #
 # Style
