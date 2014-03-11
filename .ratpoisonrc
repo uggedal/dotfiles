@@ -11,6 +11,7 @@ set waitcursor 0
 
 set bargravity n
 set winname class
+set winfmt  %n [%s] %t
 
 unmanage mpv
 
