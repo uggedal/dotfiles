@@ -6,12 +6,6 @@ startup_message off
 set waitcursor 0
 
 #
-# Groups
-#
-
-exec rpws init 6 -a
-
-#
 # Windows
 #
 
@@ -38,17 +32,6 @@ set bgcolor #fdfaf6
 #
 
 # Unneeded or remapped
-unbind 0
-unbind 1
-unbind 2
-unbind 3
-unbind 4
-unbind 5
-unbind 6
-unbind 7
-unbind 8
-unbind 9
-unbind minus
 unbind a
 unbind C-a
 unbind A
@@ -118,24 +101,6 @@ bind H exchangeleft
 bind L exchangeright
 bind K exchangeup
 bind J exchangedown
-
-# Group focus
-bind 1 rpws1
-bind 2 rpws2
-bind 3 rpws3
-bind 4 rpws4
-bind 5 rpws5
-bind 6 rpws6
-bind P rpwsp
-bind N rpwsn
-
-# Group movement
-bind exclam rpwsm1
-bind at rpwsm2
-bind numbersign rpwsm3
-bind dollar rpwsm4
-bind percent rpwsm5
-bind asciicircum rpwsm6
 
 # Other
 bind c delete
