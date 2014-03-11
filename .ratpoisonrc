@@ -52,6 +52,7 @@ unbind f
 unbind C-f
 unbind F
 unbind C-g
+unbind i
 unbind C-i
 unbind k
 unbind C-k
