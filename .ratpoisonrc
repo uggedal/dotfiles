@@ -97,6 +97,9 @@ bind period exec
 # Terminal
 bind Return exec rpfocus URxvt urxvtc -e sh -c 'tmux -q has-session && exec tmux attach || exec tmux'
 
+# Browsers
+bind f exec rpfocus Firefox firefox
+
 # Frame focus
 bind h focusleft
 bind l focusright
