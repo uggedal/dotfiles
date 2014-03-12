@@ -38,4 +38,4 @@ xsetroot -solid '#eee8d5' -cursor_name left_ptr &
 /usr/bin/autocutsel -selection CLIPBOARD -fork
 /usr/bin/autocutsel -selection PRIMARY -fork
 
-exec ratpoison
+exec herbstluftwm --locked
