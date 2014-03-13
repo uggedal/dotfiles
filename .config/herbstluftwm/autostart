@@ -1,5 +1,7 @@
 #!/bin/sh
 
+FONT='DejaVu Sans Mono-10'
+
 hc() {
     herbstclient "$@"
 }
@@ -24,7 +26,7 @@ bind_keys() {
   hc keybind $Mod-Shift-r reload
   hc keybind $Mod-Shift-c close
   hc keybind $Mod-Shift-Return spawn urxvtc
-  hc keybind $Mod-p spawn dmenu_run
+  hc keybind $Mod-p spawn dmenu_run -fn "$FONT"
 
   hc keybind $Mod-h focus left
   hc keybind $Mod-j focus down
