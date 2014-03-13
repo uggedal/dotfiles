@@ -18,17 +18,6 @@ selbg=$(hc get window_border_active_color)
 selfg='#101010'
 
 ####
-# Try to find textwidth binary.
-# In e.g. Ubuntu, this is named dzen2-textwidth.
-if which textwidth &> /dev/null ; then
-    textwidth="textwidth";
-elif which dzen2-textwidth &> /dev/null ; then
-    textwidth="dzen2-textwidth";
-else
-    echo "This script requires the textwidth tool of the dzen2 project."
-    exit 1
-fi
-####
 # true if we are using the svn version of dzen2
 # depending on version/distribution, this seems to have version strings like
 # "dzen-" or "dzen-x.x.x-svn"
@@ -120,7 +109,7 @@ hc pad $monitor $panel_height
         right="$separator^bg() $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
-        width=$($textwidth "$font" "$right_text_only    ")
+        width=$((${#right_text_only} * 10))
         echo -n "^pa($(($panel_width - $width)))$right"
         echo
 
