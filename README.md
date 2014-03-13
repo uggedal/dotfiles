@@ -15,7 +15,7 @@ I use in my daily workflow are:
 In addition the following programs are used to form an ideal graphical
 experience:
 
-* [ratpoison][]
+* [herbstluftwm][] with [dzen][]
 * urxvt
 * unclutter
 * autocutsel
@@ -59,5 +59,6 @@ dotfiles sync
 ```
 
 [keychain]: http://www.funtoo.org/Keychain
-[ratpoison]: http://www.nongnu.org/ratpoison/
+[herbstluftwm]: http://herbstluftwm.org/
+[dzen]: https://github.com/robm/dzen
 [dotfiles]: https://github.com/uggedal/dotfiles/tree/master/.local/bin/dotfiles
