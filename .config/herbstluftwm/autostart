@@ -63,7 +63,6 @@ bind_keys() {
   hc keybind $Mod-comma  use_index -1 --skip-visible
 
   hc keybind $Mod-r remove
-  hc keybind $Mod-space cycle_layout 1
   hc keybind $Mod-f fullscreen toggle
   hc keybind $Mod-p pseudotile toggle
 
