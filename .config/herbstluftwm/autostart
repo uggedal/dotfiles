@@ -45,8 +45,8 @@ bind_keys() {
   hc keybind $Mod-Shift-k shift up
   hc keybind $Mod-Shift-l shift right
 
-  hc keybind $Mod-u split bottom 0.5
-  hc keybind $Mod-o split right 0.5
+  hc keybind $Mod-s split bottom 0.5
+  hc keybind $Mod-v split right 0.5
 
   resizestep=0.05
   hc keybind $Mod-Control-h resize left +$resizestep
