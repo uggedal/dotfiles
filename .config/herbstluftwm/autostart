@@ -64,7 +64,6 @@ bind_keys() {
 
   hc keybind $Mod-r remove
   hc keybind $Mod-space cycle_layout 1
-  hc keybind $Mod-s floating toggle
   hc keybind $Mod-f fullscreen toggle
   hc keybind $Mod-p pseudotile toggle
 
