@@ -111,8 +111,6 @@ set_rules
 
 hc unlock
 
-herbstclient set tree_style '╾│ ├└╼─┐'
-
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     $XDG_CONFIG_HOME/herbstluftwm/panel.sh $monitor &
 done
