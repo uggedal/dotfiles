@@ -90,7 +90,7 @@ hc pad $monitor $panel_height
         right="$separator^bg() $date $separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
-        width=$((${#right_text_only} * 10))
+        width=$((${#right_text_only} * 8 + 10))
         echo -n "^pa($(($panel_width - $width)))$right"
         echo
 
