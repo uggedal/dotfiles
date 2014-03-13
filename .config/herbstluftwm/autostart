@@ -4,77 +4,74 @@ hc() {
     herbstclient "$@"
 }
 
+tags() {
+  seq 1 6
+}
+
+bind_keys() {
+  local Mod=$1
+
+  hc keyunbind --all
+
+  hc keybind $Mod-Shift-q quit
+  hc keybind $Mod-Shift-r reload
+  hc keybind $Mod-Shift-c close
+  hc keybind $Mod-Shift-Return spawn urxvtc
+  hc keybind $Mod-p spawn dmenu_run
+
+  hc keybind $Mod-h focus left
+  hc keybind $Mod-j focus down
+  hc keybind $Mod-k focus up
+  hc keybind $Mod-l focus right
+  hc keybind $Mod-Shift-h shift left
+  hc keybind $Mod-Shift-j shift down
+  hc keybind $Mod-Shift-k shift up
+  hc keybind $Mod-Shift-l shift right
+
+  hc keybind $Mod-u split bottom 0.5
+  hc keybind $Mod-o split right 0.5
+  hc keybind $Mod-Control-space split explode
+
+  resizestep=0.05
+  hc keybind $Mod-Control-h resize left +$resizestep
+  hc keybind $Mod-Control-j resize down +$resizestep
+  hc keybind $Mod-Control-k resize up +$resizestep
+  hc keybind $Mod-Control-l resize right +$resizestep
+
+  for i in $(tags) ; do
+      hc keybind $Mod-$key use_index $i
+      hc keybind $Mod-Shift-$key move_index $i
+  done
+
+  hc keybind $Mod-period use_index +1 --skip-visible
+  hc keybind $Mod-comma  use_index -1 --skip-visible
+
+  hc keybind $Mod-r remove
+  hc keybind $Mod-space cycle_layout 1
+  hc keybind $Mod-s floating toggle
+  hc keybind $Mod-f fullscreen toggle
+  hc keybind $Mod-p pseudotile toggle
+
+  hc keybind $Mod-BackSpace   cycle_monitor
+  hc keybind $Mod-Tab         cycle_all +1
+  hc keybind $Mod-Shift-Tab   cycle_all -1
+  hc keybind $Mod-c cycle
+  hc keybind $Mod-i jumpto urgent
+
+  hc mouseunbind --all
+  hc mousebind $Mod-Button1 move
+  hc mousebind $Mod-Button2 zoom
+  hc mousebind $Mod-Button3 resize
+}
+
 hc emit_hook reload
 
-# remove all existing keybindings
-hc keyunbind --all
-
-# keybindings
-Mod=Mod1
-
-hc keybind $Mod-Shift-q quit
-hc keybind $Mod-Shift-r reload
-hc keybind $Mod-Shift-c close
-hc keybind $Mod-Shift-Return spawn urxvtc
-hc keybind $Mod-p spawn dmenu_run
-
-# basic movement
-# focusing clients
-hc keybind $Mod-h     focus left
-hc keybind $Mod-j     focus down
-hc keybind $Mod-k     focus up
-hc keybind $Mod-l     focus right
-
-# moving clients
-hc keybind $Mod-Shift-h     shift left
-hc keybind $Mod-Shift-j     shift down
-hc keybind $Mod-Shift-k     shift up
-hc keybind $Mod-Shift-l     shift right
-
-# splitting frames
-hc keybind $Mod-u       split   bottom  0.5
-hc keybind $Mod-o       split   right   0.5
-# let the current frame explode into subframes
-hc keybind $Mod-Control-space split explode
-
-# resizing frames
-resizestep=0.05
-hc keybind $Mod-Control-h       resize left +$resizestep
-hc keybind $Mod-Control-j       resize down +$resizestep
-hc keybind $Mod-Control-k       resize up +$resizestep
-hc keybind $Mod-Control-l       resize right +$resizestep
-
-# tags
 hc rename default 1 || true
-for i in $(seq 1 6) ; do
+for i in $(tags) ; do
     hc add $i
-    hc keybind "$Mod-$key" use_index "$i"
-    hc keybind "$Mod-Shift-$key" move_index "$i"
 done
 
-# cycle through tags
-hc keybind $Mod-period use_index +1 --skip-visible
-hc keybind $Mod-comma  use_index -1 --skip-visible
-
-# layouting
-hc keybind $Mod-r remove
-hc keybind $Mod-space cycle_layout 1
-hc keybind $Mod-s floating toggle
-hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-p pseudotile toggle
-
-# mouse
-hc mouseunbind --all
-hc mousebind $Mod-Button1 move
-hc mousebind $Mod-Button2 zoom
-hc mousebind $Mod-Button3 resize
-
-# focus
-hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle_all +1
-hc keybind $Mod-Shift-Tab   cycle_all -1
-hc keybind $Mod-c cycle
-hc keybind $Mod-i jumpto urgent
+bind_keys Mod1
 
 # colors
 hc set frame_border_active_color '#222222'
