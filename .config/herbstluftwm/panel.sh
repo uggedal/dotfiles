@@ -17,16 +17,6 @@ bgcolor=$(hc get frame_border_normal_color)
 selbg=$(hc get window_border_active_color)
 selfg='#101010'
 
-####
-# true if we are using the svn version of dzen2
-# depending on version/distribution, this seems to have version strings like
-# "dzen-" or "dzen-x.x.x-svn"
-if dzen2 -v 2>&1 | head -n 1 | grep -q '^dzen-\([^,]*-svn\|\),'; then
-    dzen2_svn="true"
-else
-    dzen2_svn=""
-fi
-
 if awk -Wv 2>/dev/null | head -1 | grep -q '^mawk'; then
     # mawk needs "-W interactive" to line-buffer stdout correctly
     # http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=593504
@@ -92,16 +82,7 @@ hc pad $monitor $panel_height
                     echo -n "^bg()^fg(#ababab)"
                     ;;
             esac
-            if [ ! -z "$dzen2_svn" ] ; then
-                # clickable tags if using SVN dzen
-                echo -n "^ca(1,\"${herbstclient_command[@]:-herbstclient}\" "
-                echo -n "focus_monitor \"$monitor\" && "
-                echo -n "\"${herbstclient_command[@]:-herbstclient}\" "
-                echo -n "use \"${i:1}\") ${i:1} ^ca()"
-            else
-                # non-clickable tags if using older dzen
-                echo -n " ${i:1} "
-            fi
+            echo -n " ${i:1} "
         done
         echo -n "$separator"
         echo -n "^bg()^fg() ${windowtitle//^/^^}"
