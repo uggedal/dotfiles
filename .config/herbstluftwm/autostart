@@ -96,10 +96,14 @@ set_theme() {
 set_rules() {
   hc unrule -F
   hc rule focus=off
-  hc rule class~'.*[Rr]xvt.*' focus=on
-  hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
-  hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
-  hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' manage=off
+  hc rule class~'.*[Rr]xvt.*' \
+          focus=on
+  hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' \
+          pseudotile=on
+  hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' \
+          focus=on
+  hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK)' \
+          manage=off
 }
 
 hc emit_hook reload
