@@ -70,7 +70,6 @@ bind_keys() {
   hc keybind $Mod-BackSpace   cycle_monitor
   hc keybind $Mod-Tab         cycle_all +1
   hc keybind $Mod-Shift-Tab   cycle_all -1
-  hc keybind $Mod-c cycle
   hc keybind $Mod-i jumpto urgent
 
   hc mouseunbind --all
