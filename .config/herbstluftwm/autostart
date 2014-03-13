@@ -121,10 +121,7 @@ hc unlock
 
 herbstclient set tree_style '╾│ ├└╼─┐'
 
-# find the panel
-panel=~/.config/herbstluftwm/panel.sh
-[ -x "$panel" ] || panel=/etc/xdg/herbstluftwm/panel.sh
+# panel
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    "$panel" $monitor &
+    $XDG_CONFIG_HOME/herbstluftwm/panel.sh $monitor &
 done
