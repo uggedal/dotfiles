@@ -8,6 +8,13 @@ tags() {
   seq 1 6
 }
 
+add_tags() {
+  hc rename default 1 || true
+  for i in $(tags) ; do
+      hc add $i
+  done
+}
+
 bind_keys() {
   local Mod=$1
 
@@ -97,22 +104,15 @@ set_rules() {
 
 hc emit_hook reload
 
-hc rename default 1 || true
-for i in $(tags) ; do
-    hc add $i
-done
-
+add_tags
 bind_keys Mod1
-
 set_theme
 set_rules
 
-# unlock, just to be sure
 hc unlock
 
 herbstclient set tree_style '╾│ ├└╼─┐'
 
-# panel
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     $XDG_CONFIG_HOME/herbstluftwm/panel.sh $monitor &
 done
