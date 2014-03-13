@@ -1,6 +1,10 @@
 #!/bin/sh
 
 FONT='DejaVu Sans Mono-10'
+PANEL_NB='#fdfaf6'
+PANEL_NF='#657b83'
+PANEL_SB=$PANEL_NB
+PANEL_SF='#dc322f'
 
 hc() {
     herbstclient "$@"
@@ -26,7 +30,11 @@ bind_keys() {
   hc keybind $Mod-Shift-r reload
   hc keybind $Mod-Shift-c close
   hc keybind $Mod-Shift-Return spawn urxvtc
-  hc keybind $Mod-p spawn dmenu_run -fn "$FONT"
+  hc keybind $Mod-p spawn dmenu_run -fn "$FONT" \
+                                    -nb $PANEL_NB \
+                                    -nf $PANEL_NF \
+                                    -sb $PANEL_SB \
+                                    -sf $PANEL_SF
 
   hc keybind $Mod-h focus left
   hc keybind $Mod-j focus down
