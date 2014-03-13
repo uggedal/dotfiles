@@ -68,7 +68,6 @@ bind_keys() {
   hc keybind $Mod-Shift-space floating toggle
 
   hc keybind $Mod-BackSpace   cycle_monitor
-  hc keybind $Mod-i jumpto urgent
 
   hc mouseunbind --all
   hc mousebind $Mod-Button1 move
