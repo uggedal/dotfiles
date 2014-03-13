@@ -56,8 +56,8 @@ bind_keys() {
   hc keybind $Mod-Control-l resize right +$resizestep
 
   for i in $(tags) ; do
-      hc keybind $Mod-$key use_index $i
-      hc keybind $Mod-Shift-$key move_index $i
+      hc keybind $Mod-$i use_index $i
+      hc keybind $Mod-Shift-$i move_index $i
   done
 
   hc keybind $Mod-period use_index +1 --skip-visible
