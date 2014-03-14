@@ -7,15 +7,21 @@ hc() {
 monitor=${1:-0}
 font="$2"
 
+PANEL_NOR_BG='#fdfaf6'
+PANEL_NOR_FG='#657b83'
+PANEL_SEL_BG=$(hc get window_border_active_color)
+PANEL_SEL_FG=$PANEL_NOR_BG
+PANEL_URG_BG='#dc322f'
+PANEL_URG_FG=$PANEL_NOR_BG
+PANEL_SEP_FG='#93a1a1'
+PANEL_EMP_FG=$PANEL_SEP_FG
+PANEL_WIN_FG=$PANEL_SEP_FG
+
 geometry=( $(herbstclient monitor_rect "$monitor") )
 x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=19
-
-bgcolor=$(hc get frame_border_normal_color)
-selbg=$(hc get window_border_active_color)
-selfg='#101010'
 
 if awk -Wv 2>/dev/null | head -1 | grep -q '^mawk'; then
     # mawk needs "-W interactive" to line-buffer stdout correctly
@@ -42,7 +48,7 @@ hc pad $monitor $panel_height
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
-        date +$'date\t^fg(#efefef)%H:%M^fg(#909090), %Y-%m-^fg(#efefef)%d'
+        date +$'date\t'"^fg($PANEL_SEP_FG)%Y-%m-%d ^fg($PANEL_NOR_FG)%H:%M"
         sleep 1 || break
     done > >(uniq_linebuffered) &
     childpid=$!
@@ -59,32 +65,32 @@ hc pad $monitor $panel_height
         # This part prints dzen data based on the _previous_ data
         # handling run, and then waits for the next event to happen.
 
-        separator="^bg()^fg($selbg)|"
+        separator="^bg()^fg($PANEL_SEP_FG) | "
         # draw tags
         for i in "${tags[@]}" ; do
             case ${i:0:1} in
                 '#')
-                    echo -n "^bg($selbg)^fg($selfg)"
+                    echo -n "^bg($PANEL_SEL_BG)^fg($PANEL_SEL_FG)"
                     ;;
                 '+')
                     echo -n "^bg(#9CA668)^fg(#141414)"
                     ;;
                 ':')
-                    echo -n "^bg()^fg(#ffffff)"
+                    echo -n "^bg()^fg($PANEL_NOR_FG)"
                     ;;
                 '!')
-                    echo -n "^bg(#FF0675)^fg(#141414)"
+                    echo -n "^bg($PANEL_URG_BG)^fg($PANEL_URG_FG)"
                     ;;
                 *)
-                    echo -n "^bg()^fg(#ababab)"
+                    echo -n "^bg()^fg($PANEL_EMP_FG)"
                     ;;
             esac
             echo -n " ${i:1} "
         done
         echo -n "$separator"
-        echo -n "^bg()^fg() ${windowtitle//^/^^}"
+        echo -n "^bg()^fg($PANEL_WIN_FG) ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg() $date $separator"
+        right="$separator^bg()$date$separator"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$((${#right_text_only} * 8 + 10))
@@ -145,4 +151,4 @@ hc pad $monitor $panel_height
 } 2> /dev/null | dzen2 -w $panel_width -x $x -y $y \
     -fn "$font" -h $panel_height \
     -e 'button3=' \
-    -ta l -bg "$bgcolor" -fg '#efefef'
+    -ta l -bg $PANEL_NOR_BG -fg $PANEL_NOR_FG
