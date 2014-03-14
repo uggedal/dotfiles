@@ -37,7 +37,7 @@ else
     }
 fi
 
-hc pad $monitor $(($panel_height + 4))
+hc pad $monitor $panel_height
 
 {
     ### Event generator ###
