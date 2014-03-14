@@ -1,18 +1,18 @@
 #!/bin/bash
 
-hc() { "${herbstclient_command[@]:-herbstclient}" "$@" ;}
+hc() {
+  herbstclient "$@"
+}
+
 monitor=${1:-0}
+font="$2"
+
 geometry=( $(herbstclient monitor_rect "$monitor") )
-if [ -z "$geometry" ] ;then
-    echo "Invalid monitor $monitor"
-    exit 1
-fi
-# geometry has the format W H X Y
 x=${geometry[0]}
 y=${geometry[1]}
 panel_width=${geometry[2]}
 panel_height=19
-font=${2:-"-*-fixed-medium-*-*-*-12-*-*-*-*-*-*-*"}
+
 bgcolor=$(hc get frame_border_normal_color)
 selbg=$(hc get window_border_active_color)
 selfg='#101010'
@@ -35,12 +35,10 @@ hc pad $monitor $panel_height
 
 {
     ### Event generator ###
-    # based on different input data (mpc, date, hlwm hooks, ...) this generates events, formed like this:
+    # based on different input data (mpc, date, hlwm hooks, ...) this
+    # generates events, formed like this:
     #   <eventname>\t<data> [...]
-    # e.g.
-    #   date    ^fg(#efefef)18:33^fg(#909090), 2013-10-^fg(#efefef)29
 
-    #mpc idleloop player &
     while true ; do
         # "date" output is checked once a second, but an event is only
         # generated if the output changed compared to the previous run.
@@ -55,13 +53,12 @@ hc pad $monitor $panel_height
     visible=true
     date=""
     windowtitle=""
-    while true ; do
+    while true; do
 
         ### Output ###
-        # This part prints dzen data based on the _previous_ data handling run,
-        # and then waits for the next event to happen.
+        # This part prints dzen data based on the _previous_ data
+        # handling run, and then waits for the next event to happen.
 
-        bordercolor="#26221C"
         separator="^bg()^fg($selbg)|"
         # draw tags
         for i in "${tags[@]}" ; do
@@ -95,23 +92,21 @@ hc pad $monitor $panel_height
         echo
 
         ### Data handling ###
-        # This part handles the events generated in the event loop, and sets
-        # internal variables based on them. The event and its arguments are
-        # read into the array cmd, then action is taken depending on the event
-        # name.
-        # "Special" events (quit_panel/togglehidepanel/reload) are also handled
-        # here.
+        # This part handles the events generated in the event loop,
+        # and sets internal variables based on them. The event and
+        # its arguments are read into the array cmd, then action is
+        # taken depending on the event name.
+        # "Special" events (quit_panel/togglehidepanel/reload) are
+        # also handled here.
 
         # wait for next event
         IFS=$'\t' read -ra cmd || break
         # find out event origin
         case "${cmd[0]}" in
             tag*)
-                #echo "resetting tags" >&2
                 IFS=$'\t' read -ra tags <<< "$(hc tag_status $monitor)"
                 ;;
             date)
-                #echo "resetting date" >&2
                 date="${cmd[@]:1}"
                 ;;
             quit_panel)
@@ -140,15 +135,14 @@ hc pad $monitor $panel_height
             focus_changed|window_title_changed)
                 windowtitle="${cmd[@]:2}"
                 ;;
-            #player)
-            #    ;;
         esac
     done
 
     ### dzen2 ###
-    # After the data is gathered and processed, the output of the previous block
-    # gets piped to dzen2.
+    # After the data is gathered and processed, the output of the
+    # previous block gets piped to dzen2.
 
-} 2> /dev/null | dzen2 -w $panel_width -x $x -y $y -fn "$font" -h $panel_height \
+} 2> /dev/null | dzen2 -w $panel_width -x $x -y $y \
+    -fn "$font" -h $panel_height \
     -e 'button3=' \
     -ta l -bg "$bgcolor" -fg '#efefef'
