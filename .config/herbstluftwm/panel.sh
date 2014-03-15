@@ -17,11 +17,13 @@ PANEL_SEP_FG='#93a1a1'
 PANEL_EMP_FG=$PANEL_SEP_FG
 PANEL_WIN_FG=$PANEL_SEP_FG
 
+GAP=6
+
 geometry=( $(herbstclient monitor_rect "$monitor") )
-x=${geometry[0]}
-y=${geometry[1]}
-panel_width=${geometry[2]}
-panel_height=19
+x=$((${geometry[0]} + $GAP))
+y=$((${geometry[1]} + $GAP))
+panel_width=$((${geometry[2]} - ($GAP*2)))
+panel_height=21
 
 if awk -Wv 2>/dev/null | head -1 | grep -q '^mawk'; then
     # mawk needs "-W interactive" to line-buffer stdout correctly
@@ -37,7 +39,7 @@ else
     }
 fi
 
-hc pad $monitor $panel_height
+hc pad $monitor $(($panel_height + $GAP))
 
 {
     ### Event generator ###
@@ -90,7 +92,7 @@ hc pad $monitor $panel_height
         echo -n "$separator"
         echo -n "^bg()^fg($PANEL_WIN_FG) ${windowtitle//^/^^}"
         # small adjustments
-        right="$separator^bg()$date$separator"
+        right="$separator^bg()$date"
         right_text_only=$(echo -n "$right" | sed 's.\^[^(]*([^)]*)..g')
         # get width of right aligned text.. and add some space..
         width=$((${#right_text_only} * 8 + 10))
