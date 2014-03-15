@@ -34,7 +34,8 @@ bind_keys() {
                                     -nb $PANEL_NB \
                                     -nf $PANEL_NF \
                                     -sb $PANEL_SB \
-                                    -sf $PANEL_SF
+                                    -sf $PANEL_SF \
+                                    -l 5
 
   hc keybind $Mod-h focus left
   hc keybind $Mod-j focus down
