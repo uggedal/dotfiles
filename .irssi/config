@@ -34,32 +34,12 @@ servers = (
 
 channels = (
   {
-    name = "#gentoo-dev";
+    name = "#alpine-devel";
     chatnet = "freenode";
     autojoin = "yes";
   },
   {
-    name = "#gentoo-dev-help";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
-    name = "#gentoo-embedded";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
-    name = "#gentoo-overlays";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
-    name = "#gentoo-sunrise";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
-    name = "#gentoo";
+    name = "#alpine-linux";
     chatnet = "freenode";
     autojoin = "yes";
   }
