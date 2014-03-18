@@ -65,5 +65,8 @@ statusbar = {
     window = {
       disabled = "yes";
     };
+    topic = {
+      disabled = "yes";
+    };
   };
 };
