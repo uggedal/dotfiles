@@ -4,10 +4,7 @@ settings = {
     user_name = "uggedal";
     nick = "uggedal";
   };
-  "fe-text" = {
-    actlist_sort = "refnum";
-    scrollback_lines = "1000";
-  };
+  "fe-text" = { actlist_sort = "refnum"; scrollback_lines = "1000"; };
   "fe-common/core" = {
     autolog = "yes";
     autolog_level = "ALL -CRAP -CLIENTCRAP -CTCPS -JOINS -PARTS -QUITS -MODES -NICKS";
@@ -15,11 +12,7 @@ settings = {
   };
 };
 
-chatnets = {
-  freenode = {
-    type = "IRC";
-  };
-};
+chatnets = { freenode = { type = "IRC"; }; };
 
 servers = (
   {
@@ -33,23 +26,11 @@ servers = (
 );
 
 channels = (
-  {
-    name = "#alpine-devel";
-    chatnet = "freenode";
-    autojoin = "yes";
-  },
-  {
-    name = "#alpine-linux";
-    chatnet = "freenode";
-    autojoin = "yes";
-  }
+  { name = "#alpine-devel"; chatnet = "freenode"; autojoin = "yes"; },
+  { name = "#alpine-linux"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
-ignores = (
-  {
-    level = "JOINS PARTS QUITS MODES";
-  }
-);
+ignores = ( { level = "JOINS PARTS QUITS MODES"; } );
 
 aliases = {
   J = "join";
@@ -61,12 +42,8 @@ aliases = {
 };
 
 statusbar = {
-  default = {
-    window = {
-      disabled = "yes";
-    };
-    topic = {
-      disabled = "yes";
-    };
+  default = { 
+    window = { disabled = "yes"; };
+    topic = { disabled = "yes"; };
   };
 };
