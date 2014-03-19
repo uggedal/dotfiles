@@ -35,7 +35,6 @@
 /.npmrc
 /.pki/
 /.pulse*
-/.ratpoison_history
 /.secrets
 /.ssh/
 /.thumbnails/
