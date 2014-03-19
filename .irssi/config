@@ -10,7 +10,12 @@ settings = {
     autolog_level = "ALL -CRAP -CLIENTCRAP -CTCPS -JOINS -PARTS -QUITS -MODES -NICKS";
     autolog_path = "~/.irssi/logs/$tag/$0/%Y-%m-%d.log";
   };
-  "perl/core/scripts" = { neat_maxlength = "12"; neat_right_mode = "no"; };
+  "perl/core/scripts" = {
+    neat_maxlength = "12";
+    neat_right_mode = "no";
+    trackbar_string = "-";
+    trackbar_style = "%g";
+  };
 };
 
 chatnets = { freenode = { type = "IRC"; }; };
