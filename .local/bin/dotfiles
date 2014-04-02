@@ -106,7 +106,7 @@ status_repo() {
     return
   fi
 
-  if grep -q '^[v0-9.]\+$' <<<$version; then
+  if grep -q '^[v0-9.]*$' <<<$version; then
     local actual_version=$(cd $target && git describe --tags)
     local tags=$(cd $target && git tag)
     local index=$(grep -En '^.+$' <<< "$tags" | grep :$actual_version\$ | cut -d: -f1)
