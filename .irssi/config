@@ -3,6 +3,7 @@ settings = {
     real_name = "Eivind Uggedal";
     user_name = "uggedal";
     nick = "uggedal";
+    recode_transliterate = "no";
   };
   "fe-text" = { actlist_sort = "refnum"; scrollback_lines = "1000"; };
   "fe-common/core" = {

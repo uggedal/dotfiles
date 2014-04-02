@@ -12,6 +12,7 @@ VIM_PLUGINS=(
   'hail2u/vim-css3-syntax           v0.9'
   'elzr/vim-json                    752e607'
   'avakhov/vim-yaml                 4b37a4f'
+  'mustache/vim-mustache-handlebars a80922f'
 
   'ervandew/supertab                2.0'
   'scrooloose/syntastic             3.3.0'
