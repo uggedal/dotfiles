@@ -10,7 +10,7 @@ VIM_PLUGINS=(
   'pangloss/vim-javascript          v0.9.0'
   'tpope/vim-markdown               b02182e'
   'hail2u/vim-css3-syntax           v0.10.0'
-  'elzr/vim-json                    752e607'
+  'elzr/vim-json                    c3895dd'
   'avakhov/vim-yaml                 4b37a4f'
   'mustache/vim-mustache-handlebars a80922f'
 
