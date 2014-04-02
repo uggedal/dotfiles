@@ -15,7 +15,7 @@ VIM_PLUGINS=(
   'mustache/vim-mustache-handlebars a80922f'
 
   'ervandew/supertab                2.0'
-  'scrooloose/syntastic             3.3.0'
+  'scrooloose/syntastic             3.4.0'
   'tpope/vim-characterize           b541813'
   'tpope/vim-commentary             a3ae0df'
   'vim-scripts/IndexedSearch        500a64a'
