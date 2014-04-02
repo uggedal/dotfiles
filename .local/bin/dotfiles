@@ -161,7 +161,7 @@ case $1 in
     status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
   ;;
   *)
-    echo Usage: $(basename $0) '<sync [git|http|https]|status>'
+    printf 'Usage: %s <sync [git|http|https]|status>\n' $(basename $0) >&2
     exit 64
   ;;
 esac
