@@ -8,7 +8,7 @@ VIM_PLUGINS=(
   'altercation/vim-colors-solarized 528a59f'
 
   'pangloss/vim-javascript          v0.9.0'
-  'tpope/vim-markdown               b02182'
+  'tpope/vim-markdown               b02182e'
   'hail2u/vim-css3-syntax           v0.10.0'
   'elzr/vim-json                    752e607'
   'avakhov/vim-yaml                 4b37a4f'
