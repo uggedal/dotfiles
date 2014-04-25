@@ -34,7 +34,7 @@ servers = (
 
 channels = (
   { name = "#alpine-devel"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#alpine-linux"; chatnet = "freenode"; autojoin = "yes"; }
+  { name = "#alpine-linux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#musl"; chatnet = "freenode"; autojoin = "yes"; }
 );
 
@@ -55,3 +55,4 @@ statusbar = {
     topic = { disabled = "yes"; };
   };
 };
+logs = { };
