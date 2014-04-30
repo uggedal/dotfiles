@@ -16,3 +16,81 @@ style news.ycombinator.com <<EOF
     padding: 0 1em;
   }
 EOF
+
+style https://jira.* <<EOF
+  #logo,
+  #announcement-banner,
+  #js-quickfilters-label,
+  #ghx-modes-tools,
+  #ghx-board-name,
+  #ghx-release,
+  .ghx-qty,
+  .ghx-grabber,
+  .ghx-type,
+  .ghx-flags,
+  .ghx-days,
+  .ghx-project-avatar,
+  .ghx-detail-nav-menu,
+  .ghx-feedback {
+    display: none !important;
+  }
+
+  #ghx-operations {
+    padding: 0 10px !important;
+  }
+
+  .ghx-issue {
+    border-color: #ccc !important;
+    border-style: solid !important;
+    border-width: 0px 1px 1px 1px !important;
+    padding-left: 10px !important;
+  }
+
+  .ghx-issue:first-child {
+    border-top-width: 1px !important;
+  }
+
+  .ghx-avatar .ghx-avatar-img {
+    height: 22px !important;
+    width: 22px !important;
+  }
+
+  .ghx-has-avatar .ghx-issue-fields {
+    padding-right: 32px !important;
+  }
+
+  #header .aui-header {
+    background: #e9e9e9 !important;
+    border-bottom: none !important;
+  }
+
+  #header:hover .aui-header {
+    background: #555 !important;
+  }
+
+  #create_link {
+    background: transparent !important;
+    box-shadow: none !important;
+    height: auto !important;
+    text-shadow: none !important;
+  }
+
+  #header:hover #create_link {
+    background: #3B7FC4 !important;
+  }
+
+  .aui-header .aui-dropdown2-trigger:hover,
+  .aui-header .aui-dropdown2-trigger:focus,
+  .aui-header .aui-dropdown2-trigger.active {
+    background: #777 !important;
+  }
+
+  .ghx-detail-contents {
+    background: #fff !important;
+  }
+  
+  .ghx-detail-head,
+  .ghx-detail-nav-content {
+    padding-left: 10px !important;
+  }
+EOF
