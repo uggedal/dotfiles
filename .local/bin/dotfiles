@@ -26,9 +26,6 @@ VIM_PLUGINS=(
 )
 
 DEPRECATED_VIM_PLUGINS=(
-  'vim-scripts/genutils'
-  'uggedal/SelectBuf'
-  'chriskempson/base16-vim'
 )
 
 err() {
