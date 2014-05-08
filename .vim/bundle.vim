@@ -19,3 +19,6 @@ let g:miniBufExplStatusLineText="--"
 
 " JSON:
 autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
+
+" Nimrod (disable compiler plugin):
+let b:nimrod_loaded = 1
