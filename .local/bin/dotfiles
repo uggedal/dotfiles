@@ -17,7 +17,7 @@ VIM_PLUGINS=(
 
   'ervandew/supertab                2.1'
   'scrooloose/syntastic             3.4.0'
-  'tpope/vim-characterize           b541813'
+  'tpope/vim-characterize           418c75e'
   'tpope/vim-commentary             v1.2'
   'vim-scripts/IndexedSearch        500a64a'
   'nelstrom/vim-visual-star-search  59d5f09fc613'
