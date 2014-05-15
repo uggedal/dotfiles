@@ -19,8 +19,10 @@ settings = {
   };
 };
 
-chatnets = { freenode = { type = "IRC"; }; };
-chatnets = { mozilla = { type = "IRC"; }; };
+chatnets = {
+  { freenode = { type = "IRC"; },
+  { mozilla = { type = "IRC"; }; }
+};
 
 servers = (
   {
