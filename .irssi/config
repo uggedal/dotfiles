@@ -21,7 +21,6 @@ settings = {
 
 chatnets = {
   { freenode = { type = "IRC"; },
-  { mozilla = { type = "IRC"; }; }
 };
 
 servers = (
@@ -32,14 +31,6 @@ servers = (
     use_ssl = "yes";
     ssl_verify = "yes";
     autoconnect = "yes";
-  },
-  {
-    address = "irc.mozilla.org";
-    chatnet = "mozilla";
-    port = "6697";
-    use_ssl = "yes";
-    ssl_verify = "yes";
-    autoconnect = "yes";
   }
 );
 
@@ -47,7 +38,6 @@ channels = (
   { name = "#alpine-devel"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#alpine-linux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#musl"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#rust"; chatnet = "mozilla"; autojoin = "yes"; }
 );
 
 ignores = ( { level = "JOINS PARTS QUITS MODES"; } );
