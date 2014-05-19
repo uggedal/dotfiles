@@ -1,0 +1,134 @@
+#!/bin/sh
+
+MONITOR=$1
+FONT="$2"
+FONT_WIDTH=8
+
+NOR_BG='#fdfaf6'
+NOR_FG='#657b83'
+SEL_BG=$(herbstclient get window_border_active_color)
+SEL_FG=$NOR_BG
+URG_BG='#dc322f'
+URG_FG=$NOR_BG
+SEP_FG='#93a1a1'
+EMP_FG=$SEP_FG
+WIN_FG=$SEP_FG
+
+geometry() {
+  herbstclient monitor_rect "$MONITOR" | awk "{ print \$$1 }"
+}
+
+GAP=6
+X=$(($(geometry 1) + $GAP))
+Y=$(($(geometry 2) + $GAP))
+WIDTH=$(($(geometry 3) - ($GAP*2)))
+HEIGHT=21
+
+TAGS=
+update_tags() {
+  TAGS="$(herbstclient tag_status $MONITOR)"
+}
+
+TITLE=
+update_title() {
+  TITLE="$(printf '%s' "$1" | sed 's/.*\t//;s/\^/\^\^/g')"
+}
+
+DATE=
+update_date() {
+  DATE="$(printf '%s' "$1" | sed 's/^date\t//')"
+}
+
+plain_width() {
+  local str
+  str=$(printf '%s' "$1" | sed 's/\^[^(]*([^)]*)//g')
+  printf '%d' $((${#str} * $FONT_WIDTH))
+}
+
+format() {
+  local sep="^bg()^fg($SEP_FG) | "
+  local right="$sep^fg($SEP_FG)${DATE% *} ^fg($NOR_FG)${DATE#* }"
+  local tagbg
+  local tagfg
+
+  for i in $TAGS; do
+    tagbg=""
+    tagfg=""
+    case $i in
+      '#'*)
+        tagbg=$SEL_BG
+        tagfg=$SEL_FG
+        ;;
+      ':'*)
+        tagfg=$NOR_FG
+        ;;
+      '!'*)
+        tagbg=$URG_BG
+        tagfg=$URG_FG
+        ;;
+      *)
+        tagfg=$EMP_FG
+        ;;
+    esac
+    printf '^bg(%s)^fg(%s) %s ' "$tagbg" "$tagfg" "${i#?}"
+  done
+
+  printf '%s^bg()^fg(%s) %s' "$sep" $WIN_FG "$TITLE"
+  printf '^pa(%d)%s\n' $(($WIDTH - $(plain_width "$right") - 10)) "$right"
+}
+
+{
+
+  (
+    prev=
+    while true; do
+      now="$(date +'%Y-%m-%d %H:%M')"
+      [ "$prev" = "$now" ] || {
+        printf 'date\t%s\n' "$now"
+        prev="$now"
+      }
+      sleep 1 || break
+    done
+  ) &
+  datechld=$!
+
+  herbstclient --idle
+
+  kill $datechld
+
+} 2> /dev/null | {
+
+  update_tags
+  format
+
+  while true; do
+    IFS=$(printf '\n') read -r hook || break
+
+    case "$hook" in
+      tag*)
+        update_tags
+        ;;
+      focus_changed*|window_title_changed*)
+        update_title "$hook"
+        ;;
+      quit_panel*|reload*)
+        exit
+        ;;
+      date*)
+        update_date "$hook"
+        ;;
+    esac
+
+    format
+  done
+
+} 2> /dev/null | dzen2 \
+  -ta l \
+  -fn "$FONT" \
+  -w $WIDTH \
+  -h $HEIGHT \
+  -x $X \
+  -y $Y \
+  -bg $NOR_BG \
+  -fg $NOR_FG \
+  -e 'button3='
