@@ -23,6 +23,7 @@
 /.gstreamer-*/
 /.IntelliJIdea*/
 /.irssi/logs/
+/.irssi/saved_colors
 /.java/
 /.keychain/
 /.lesshst
