@@ -24,6 +24,8 @@ Y=$(($(geometry 2) + $GAP))
 WIDTH=$(($(geometry 3) - ($GAP*2)))
 HEIGHT=21
 
+herbstclient pad $MONITOR $(($HEIGHT + $GAP))
+
 TAGS=
 update_tags() {
   TAGS="$(herbstclient tag_status $MONITOR)"
