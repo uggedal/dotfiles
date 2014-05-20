@@ -105,7 +105,7 @@ format() {
         pdate="$ndate"
       }
 
-      [ $BATTERY_WIDTH -eq 0 ] || continue
+      [ $BATTERY_WIDTH -eq 0 ] && continue
 
       enow=$(cat $BATTERY_SYS/energy_now)
       efull=$(cat $BATTERY_SYS/energy_full)
