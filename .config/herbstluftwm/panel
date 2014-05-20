@@ -47,7 +47,7 @@ BATTERY_SYS=/sys/class/power_supply/BAT0
 
 BATTERY=0
 update_battery() {
-  :
+  BATTERY="$(printf '%s' "$1" | sed 's/^battery\t//')"
 }
 
 plain_width() {
@@ -94,21 +94,33 @@ format() {
 {
 
   (
-    prev=
+    pdate=
+    pbat=
     while true; do
-      now="$(date +'%Y-%m-%d %H:%M')"
-      [ "$prev" = "$now" ] || {
-        printf 'date\t%s\n' "$now"
-        prev="$now"
-      }
       sleep 1 || break
+
+      ndate="$(date +'%Y-%m-%d %H:%M')"
+      [ "$pdate" = "$ndate" ] || {
+        printf 'date\t%s\n' "$ndate"
+        pdate="$ndate"
+      }
+
+      [ $BATTERY_WIDTH -eq 0 ] || continue
+
+      enow=$(cat $BATTERY_SYS/energy_now)
+      efull=$(cat $BATTERY_SYS/energy_full)
+      nbat=$(expr \( 100 \* $enow \) / $efull)
+      [ "$pbat" -eq "$nbat" ] || {
+        printf 'battery\t%d\n' "$nbat"
+        pbat="$nbat"
+      }
     done
   ) &
-  datechld=$!
+  chld=$!
 
   herbstclient --idle
 
-  kill $datechld
+  kill $chld
 
 } 2> /dev/null | {
 
@@ -130,6 +142,9 @@ format() {
         ;;
       date*)
         update_date "$hook"
+        ;;
+      battery*)
+        update_battery "$hook"
         ;;
     esac
 
