@@ -4,15 +4,30 @@ MONITOR=$1
 FONT="$2"
 FONT_WIDTH=8
 
-NOR_BG='#fdfaf6'
-NOR_FG='#657b83'
-SEL_BG=$(herbstclient get window_border_active_color)
-SEL_FG=$NOR_BG
-URG_BG='#dc322f'
-URG_FG=$NOR_BG
-SEP_FG='#93a1a1'
-EMP_FG=$SEP_FG
-WIN_FG=$SEP_FG
+WHITE='#fdfaf6'
+GREY='#93a1a1'
+BLACK='#657b83'
+
+RED='#dc322f'
+ORANGE='#cb4b16'
+YELLOW='#b58900'
+GREEN='#859900'
+
+NOR_BG=$WHITE
+NOR_FG=$BLACK
+SEL_BG=$GREEN
+SEL_FG=$WHITE
+URG_BG=$RED
+URG_FG=$WHITE
+SEP_FG=$GREY
+EMP_FG=$GREY
+WIN_FG=$GREY
+
+BAT_BG=$GREY
+BAT_LO=$RED
+BAT_ME=$ORANGE
+BAT_HI=$YELLOW
+BAT_FU=$GREEN
 
 geometry() {
   herbstclient monitor_rect "$MONITOR" | awk "{ print \$$1 }"
@@ -56,6 +71,16 @@ plain_width() {
   printf '%d' $((${#str} * $FONT_WIDTH))
 }
 
+battery_color() {
+  local c=$BAT_FU
+
+  [ "$BATTERY" -lt 75 ] && c=$BAT_HI
+  [ "$BATTERY" -lt 50 ] && c=$BAT_ME
+  [ "$BATTERY" -lt 25 ] && c=$BAT_LO
+
+  printf '%s' $c
+}
+
 format() {
   local sep="^bg()^fg($SEP_FG) | "
   local right="$sep^fg($SEP_FG)${DATE% *} ^fg($NOR_FG)${DATE#* }"
@@ -87,7 +112,11 @@ format() {
   printf '%s^bg()^fg(%s) %s' "$sep" $WIN_FG "$TITLE"
   printf '^pa(%d)' $(($WIDTH - $(plain_width "$right") - 10 - $BATTERY_WIDTH))
   [ $BATTERY_WIDTH -eq 0 ] || printf '%d' $BATTERY |
-    gdbar -fg $SEL_BG -bg $SEP_FG -w $BATTERY_WIDTH -s o -nonl
+    gdbar -fg $(battery_color $SEL_BG) \
+          -bg $BAT_BG \
+          -w $BATTERY_WIDTH \
+          -s o \
+          -nonl
   printf '%s\n' "$right"
 }
 
