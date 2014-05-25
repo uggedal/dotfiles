@@ -12,6 +12,7 @@ RED='#dc322f'
 ORANGE='#cb4b16'
 YELLOW='#b58900'
 GREEN='#859900'
+BLUE='#268bd2'
 
 NOR_BG=$WHITE
 NOR_FG=$BLACK
@@ -28,6 +29,7 @@ BAT_LO=$RED
 BAT_ME=$ORANGE
 BAT_HI=$YELLOW
 BAT_FU=$GREEN
+BAT_CH=$BLUE
 
 geometry() {
   herbstclient monitor_rect "$MONITOR" | awk "{ print \$$1 }"
@@ -58,11 +60,18 @@ update_date() {
 
 BATTERY_WIDTH=60
 BATTERY_SYS=/sys/class/power_supply/BAT0
+ADAPTER_SYS=/sys/class/power_supply/ADP1
 [ -d $BATTERY_SYS ] || BATTERY_WIDTH=0
+[ -d $ADAPTER_SYS ] || BATTERY_WIDTH=0
 
 BATTERY=0
 update_battery() {
   BATTERY="$(printf '%s' "$1" | sed 's/^battery\t//')"
+}
+
+ADAPTER=0
+update_adapter() {
+  ADAPTER="$(printf '%s' "$1" | sed 's/^adapter\t//')"
 }
 
 plain_width() {
@@ -77,6 +86,7 @@ battery_color() {
   [ "$BATTERY" -lt 75 ] && c=$BAT_HI
   [ "$BATTERY" -lt 50 ] && c=$BAT_ME
   [ "$BATTERY" -lt 25 ] && c=$BAT_LO
+  [ "$ADAPTER" -eq 1 ] && c=$BAT_CH
 
   printf '%s' $c
 }
@@ -125,6 +135,7 @@ format() {
   (
     pdate=
     pbat=
+    padp=
     while true; do
       sleep 1 || break
 
@@ -142,6 +153,12 @@ format() {
       [ "$pbat" -eq "$nbat" ] || {
         printf 'battery\t%d\n' "$nbat"
         pbat="$nbat"
+      }
+
+      nadp=$(cat $ADAPTER_SYS/online)
+      [ "$padp" -eq "$nadp" ] || {
+        printf 'adapter\t%d\n' "$nadp"
+        padp="$nadp"
       }
     done
   ) &
@@ -174,6 +191,9 @@ format() {
         ;;
       battery*)
         update_battery "$hook"
+        ;;
+      adapter*)
+        update_adapter "$hook"
         ;;
     esac
 
