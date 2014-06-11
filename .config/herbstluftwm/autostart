@@ -6,6 +6,8 @@ PANEL_NF='#657b83'
 PANEL_SB=$PANEL_NB
 PANEL_SF='#dc322f'
 
+: ${XDG_CONFIG_HOME:="$HOME/.config"}
+
 hc() {
     herbstclient "$@"
 }
