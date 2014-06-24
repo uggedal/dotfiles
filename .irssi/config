@@ -20,7 +20,8 @@ settings = {
 };
 
 chatnets = {
-  { freenode = { type = "IRC"; },
+  freenode = { type = "IRC"; };
+  oftc = { type = "IRC"; };
 };
 
 servers = (
@@ -30,6 +31,16 @@ servers = (
     port = "7000";
     use_ssl = "yes";
     ssl_verify = "yes";
+    autoconnect = "yes";
+  },
+  {
+    address = "irc.oftc.net";
+    chatnet = "oftc";
+    port = "6697";
+    use_ssl = "yes";
+    ssl_cert = "~/.irssi/certs/uggedal.pem";
+    ssl_verify = "yes";
+    ssl_cafile = "~/.irssi/certs/CAs.pem";
     autoconnect = "yes";
   }
 );
