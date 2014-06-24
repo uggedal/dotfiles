@@ -49,8 +49,6 @@ channels = (
   { name = "#alpine-devel"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#alpine-linux"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#musl"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#openrc"; chatnet = "freenode"; autojoin = "yes"; },
-  { name = "#gentoo-dev"; chatnet = "freenode"; autojoin = "yes"; },
   { name = "#suckless"; chatnet = "oftc"; autojoin = "yes"; },
   { name = "#morpheus"; chatnet = "oftc"; autojoin = "yes"; }
 );
