@@ -53,6 +53,7 @@
 /VirtualBox\ VMs/
 
 # Secrets:
+/.irssi/certs/
 /.irssi/sasl.auth
 
 # Blob files:
