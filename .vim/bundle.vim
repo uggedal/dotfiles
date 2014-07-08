@@ -14,11 +14,5 @@ let g:syntastic_mode_map = { 'mode': 'active',
                            \ 'active_filetypes': [],
                            \ 'passive_filetypes': ['java'] }
 
-" MiniBufExpl:
-let g:miniBufExplStatusLineText="--"
-
 " JSON:
 autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
-
-" Nimrod (disable compiler plugin):
-let b:nimrod_loaded = 1
