@@ -18,6 +18,7 @@ let g:syntastic_mode_map = { 'mode': 'active',
 autocmd BufNewFile,BufRead *.json setlocal conceallevel=0
 
 " Bufferline:
+let g:bufferline_fname_mod = ':.'
 let g:bufferline_show_bufnr = 0
 let g:bufferline_echo = 0
 let g:bufferline_active_buffer_left = ''
