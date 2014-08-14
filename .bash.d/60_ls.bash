@@ -16,3 +16,4 @@ fi
 alias ls="command ls $ls_flags"
 
 unset ls_flags
+unset LS_COLORS
