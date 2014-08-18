@@ -47,6 +47,8 @@
 /.vboxclient-*.pid
 /.VirtualBox/
 /.Xauthority
+/.weechat/*.log
+/.weechat/logs
 /Downloads/
 /n/
 /node_modules/
