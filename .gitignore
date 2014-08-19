@@ -49,6 +49,7 @@
 /.Xauthority
 /.weechat/*.log
 /.weechat/logs
+/.weechat/sec.conf
 /Downloads/
 /n/
 /node_modules/
