@@ -37,6 +37,3 @@ $endif
 # history search with arrow keys
 "\e[A":history-search-backward
 "\e[B":history-search-forward
-
-# shortcut for inserting a grep pipeline
-"\C-g":" | grep "
