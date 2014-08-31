@@ -2,9 +2,13 @@
 #
 # Helper for launching urxvt with different font sizes
 
-[ $# -eq 1 ] || exit 64
+[ $# -eq 1 ] || {
+  printf 'Usage: %s <size>\n' $0
+  exit 64
+}
 
-fn=$(pcregrep -o1 '^URxvt.font:(.*)$' ~/.Xresources)
-fb=$(pcregrep -o1 '^URxvt.boldFont:(.*)$' ~/.Xresources)
+font() {
+  grep "^URxvt.$1:" ~/.Xresources | cut -d: -f2- | sed "s/10/$2/"
+}
 
-urxvtc -fn "${fn/10/$1}" -fb "${fb/10/$1}"
+urxvtc -fn "$(font font $1)" -fb "$(font boldFond $1)"
