@@ -19,7 +19,7 @@ if [ -d /sys/class/backlight/gmux_backlight ]; then
 fi
 
 # Enable compose key
-setxkbmap -option compose:rwin
+setxkbmap -option compose:ralt
 
 if command -v xmodmap >/dev/null && [ -f $HOME/.Xmodmap ]; then
   xmodmap $HOME/.Xmodmap
