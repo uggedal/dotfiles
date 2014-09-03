@@ -3,6 +3,8 @@
 QEMU=qemu-system-x86_64
 IMG_ROOT=$HOME/.local/share/qemu
 
+OPTS='-enable-kvm -usbdevice tablet -vga std -full-screen'
+
 usage() {
   printf "Usage: %s <type>\n" $(basename $0)
   exit 64
@@ -20,7 +22,7 @@ win() {
     if [ $# -eq 1 ]; then
       mkdir -p $(dirname $WIN_IMG)
       qemu-img create -f qcow2 $WIN_IMG $WIN_CAP
-      exec $QEMU -enable-kvm -m $WIN_MEM -cdrom $1 -boot d
+      exec $QEMU $OPTS -enable-kvm -m $WIN_MEM -cdrom $1 -boot d
     else
       printf "Usage: %s win <install.iso>\n" $(basename $0)
       exit 64
@@ -33,7 +35,7 @@ win() {
     local usbflags=
   fi
 
-  exec su -c "$QEMU -enable-kvm -m $WIN_MEM $usbflags -usbdevice tablet -vga std -full-screen $WIN_IMG"
+  exec su -c "$QEMU $OPTS -m $WIN_MEM $usbflags $WIN_IMG"
 }
 
 case $1 in
