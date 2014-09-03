@@ -1,6 +1,6 @@
 #!/bin/sh
 
-FONT='DejaVu Sans Mono-10'
+FONT='DejaVu Sans Mono-12'
 PANEL_NB='#fdfaf6'
 PANEL_NF='#657b83'
 PANEL_SB=$PANEL_NB
