@@ -22,7 +22,7 @@ win() {
       qemu-img create -f qcow2 $WIN_IMG $WIN_CAP
       exec $QEMU -enable-kvm -m $WIN_MEM -cdrom $1 -boot d
     else
-      printf "Usage: %s <install.iso>\n" $(basename $0)
+      printf "Usage: %s win <install.iso>\n" $(basename $0)
       exit 64
     fi
   fi
@@ -39,7 +39,7 @@ win() {
 case $1 in
   win)
     shift
-    win
+    win "$@"
     ;;
   *)
     usage
