@@ -11,8 +11,8 @@ Xft.rgba: rgb
 
 ! Urxvt
 
-URxvt.font:xft:DejaVu Sans Mono-10
-URxvt.boldFont:xft:DejaVu Sans Mono-10:style=bold
+URxvt.font:xft:DejaVu Sans Mono-12
+URxvt.boldFont:xft:DejaVu Sans Mono-12:style=bold
 URxvt.letterSpace: -1
 
 URxvt*scrollBar: false
