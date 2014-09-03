@@ -22,7 +22,7 @@ win() {
     if [ $# -eq 1 ]; then
       mkdir -p $(dirname $WIN_IMG)
       qemu-img create -f qcow2 $WIN_IMG $WIN_CAP
-      exec $QEMU $OPTS -m $WIN_MEM -cdrom $1 -boot d
+      exec $QEMU $OPTS -m $WIN_MEM -cdrom $1 -boot d $WIN_IMG
     else
       printf "Usage: %s win <install.iso>\n" $(basename $0)
       exit 64
