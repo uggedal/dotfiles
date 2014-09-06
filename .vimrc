@@ -151,7 +151,7 @@ au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4
 au FileType go setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
 
 au BufRead APKBUILD setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
-au BufRead template setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
+au BufRead template setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab ft=sh
 
 " Extended matching with %
 if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
