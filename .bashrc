@@ -1,6 +1,12 @@
 # Bail if not running interactively:
 [ -z "$PS1" ] && return
 
+# Source system profile
+if [ -f /etc/profile ]; then
+  . /etc/profile
+fi
+
+
 #
 # Options
 #
