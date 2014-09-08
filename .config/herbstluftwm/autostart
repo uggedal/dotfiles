@@ -13,7 +13,7 @@ hc() {
 }
 
 tags() {
-  seq 1 6
+  seq 1 9
 }
 
 add_tags() {
