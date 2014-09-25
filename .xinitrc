@@ -52,4 +52,8 @@ if command -v numlockx >/dev/null; then
   numlockx
 fi
 
-exec herbstluftwm --locked
+PANEL_FIFO=$HOME/.bspwm_panel_fifo
+export PANEL_FIFO
+
+sxhkd &
+exec bspwm
