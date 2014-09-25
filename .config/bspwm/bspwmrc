@@ -1,12 +1,14 @@
 #!/bin/sh
 
-bspc config border_width 2
-bspc config window_gap 6
-
-bspc config split_ratio 0.5
+. $(dirname $0)/config
 
 bspc monitor -d $(seq 1 9)
 
+bspc config border_width $BORDER
+bspc config window_gap $GAP
+bspc config split_ratio 0.5
 bspc config auto_alternate true
+bspc config focused_border_color $COLOR_FOCUSED
+bspc config normal_border_color $COLOR_NORMAL
 
 $(dirname $0)/panel &
