@@ -1,0 +1,72 @@
+#!/bin/sh
+
+. $(dirname $0)/config
+
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+[ -e $PANEL_FIFO ] && rm $PANEL_FIFO
+mkfifo $PANEL_FIFO
+
+bspc config top_padding $(($PANEL_HEIGHT +  $PANEL_Y))
+bspc control --subscribe > $PANEL_FIFO &
+
+colorize() {
+  local s="$1"
+  local fg bg ul
+  eval fg=\$COLOR_${2}_FG
+  eval bg=\$COLOR_${2}_BG
+  [ $# -eq 3 ] && eval ul=\$COLOR_${2}_UL
+
+  if [ "$ul" ]; then
+    printf -- '%%{F%s}%%{B%s}%%{U%s}%%{+u}%s%%{-u}%%{U-}%%{F-}%%{B-}' $fg $bg $ul "$s"
+  else
+    printf -- '%%{F%s}%%{B%s}%s%%{F-}%%{B-}' $fg $bg "$s"
+  fi
+}
+
+bspwm_parse() {
+  local oifs="$IFS"
+
+  IFS=:
+  for d in $1; do
+    case $d in
+      O*|F*)
+        printf -- '%s' "$(colorize " ${d#?} " FOCUSED 1)"
+        ;;
+      U*|u*)
+        printf -- '%s' "$(colorize " ${d#?} " URGENT)"
+        ;;
+      o*)
+        printf -- '%s' "$(colorize " ${d#?} " OCCUPIED)"
+        ;;
+      f*)
+        printf -- '%s' "$(colorize " ${d#?} " FREE)"
+        ;;
+    esac
+  done
+
+  IFS="$oifs"
+}
+
+parse() {
+  local desktops title system
+
+  while read -r line; do
+    case $line in
+      W*)
+        desktops=$(bspwm_parse ${line#?})
+        ;;
+    esac
+    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}${system}"
+  done
+
+}
+
+cat $PANEL_FIFO | parse | bar \
+  -f "$FONT" \
+  -g ${PANEL_WIDTH}x$PANEL_HEIGHT+$PANEL_X+$PANEL_Y \
+  -F $COLOR_FG \
+  -B $COLOR_BG \
+  -u $PANEL_UL
+
+wait
