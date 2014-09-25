@@ -8,7 +8,15 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 mkfifo $PANEL_FIFO
 
 bspc config top_padding $(($PANEL_HEIGHT +  $PANEL_Y))
+
 bspc control --subscribe > $PANEL_FIFO &
+
+(
+  while true; do
+    date +'D%Y-%m-%d %H:%M'
+    sleep 1
+  done
+) > $PANEL_FIFO &
 
 colorize() {
   local s="$1"
@@ -58,6 +66,9 @@ parse() {
     case $line in
       W*)
         desktops=$(bspwm_parse ${line#?})
+        ;;
+      D*)
+        system="$(printf -- '%s' "$(colorize " ${line#?} " DATE)")"
         ;;
     esac
     printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}${system}"
