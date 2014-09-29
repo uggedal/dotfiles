@@ -13,5 +13,6 @@ $(dirname $0)/panel &
 
 $(dirname $0)/poller > $PANEL_FIFO &
 bspc control --subscribe > $PANEL_FIFO &
+xtitle -sf 'T%s' > $PANEL_FIFO &
 
 exec bspwm

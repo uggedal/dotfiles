@@ -77,12 +77,16 @@ battery_parse() {
 parse() {
   local desktops title system dt bat
 
+  title=bspwm
+
   while read -r line; do
-    title=bspwm
 
     case $line in
       W*)
         desktops=$(bspwm_parse ${line#?})
+        ;;
+      T*)
+        title="$(colorize " ${line#?} " TITLE)"
         ;;
       D*)
         dt="$(colorize " ${line#?} " DATE)"
