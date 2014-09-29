@@ -9,5 +9,4 @@ bspc config window_gap $GAP
 bspc config split_ratio 0.5
 bspc config focused_border_color $COLOR_FOCUSED
 bspc config normal_border_color $COLOR_NORMAL
-
-$(dirname $0)/panel &
+bspc config top_padding $(($PANEL_HEIGHT +  $PANEL_Y))

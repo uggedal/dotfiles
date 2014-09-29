@@ -1,4 +1,9 @@
-MONITOR_WIDTH=$(xrandr -q | awk '/current/ { print $8 }')
+BSPWM_CACHE=$HOME/.cache/bspwm
+PANEL_FIFO=$BSPWM_CACHE/panel.fifo
+
+if xrandr >/dev/null 2>&1; then
+  MONITOR_WIDTH=$(xrandr -q | awk '/current/ { print $8 }')
+fi
 
 BORDER=2
 

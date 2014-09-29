@@ -52,8 +52,4 @@ if command -v numlockx >/dev/null; then
   numlockx
 fi
 
-PANEL_FIFO=$HOME/.bspwm_panel_fifo
-export PANEL_FIFO
-
-sxhkd &
-exec bspwm
+exec $HOME/.config/bspwm/init
