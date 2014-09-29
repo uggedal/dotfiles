@@ -63,6 +63,8 @@ parse() {
   local desktops title system
 
   while read -r line; do
+    title=bspwm
+
     case $line in
       W*)
         desktops=$(bspwm_parse ${line#?})
