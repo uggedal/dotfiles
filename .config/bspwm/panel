@@ -10,13 +10,7 @@ mkfifo $PANEL_FIFO
 bspc config top_padding $(($PANEL_HEIGHT +  $PANEL_Y))
 
 bspc control --subscribe > $PANEL_FIFO &
-
-(
-  while true; do
-    date +'D%Y-%m-%d %H:%M'
-    sleep 1
-  done
-) > $PANEL_FIFO &
+$(dirname $0)/poller > $PANEL_FIFO &
 
 colorize() {
   local s="$1"
@@ -59,8 +53,39 @@ bspwm_parse() {
   IFS="$oifs"
 }
 
+battery_color() {
+  local c=BATTERY_FULL
+
+  [ "$1" -lt 75 ] && c=BATTERY_HIGH
+  [ "$1" -lt 50 ] && c=BATTERY_MEDIUM
+  [ "$1" -lt 25 ] && c=BATTERY_LOW
+
+  printf '%s' $c
+}
+
+battery_parse() {
+  local bat=
+  local ac=
+  local oifs="$IFS"
+  local percentage="$(colorize '%%' BATTERY_PERCENTAGE)"
+
+  IFS=:
+  for b in $1; do
+    case $b in
+      B*)
+        bat="$bat $(colorize " ${b#?}" $(battery_color ${b#?}))$percentage"
+        ;;
+      A*)
+        [ "${b#?}" = 0 ] || ac="$(colorize AC BATTERY_AC)"
+    esac
+  done
+  printf -- '%s%s' "$ac" "$bat"
+
+  IFS="$oifs"
+}
+
 parse() {
-  local desktops title system
+  local desktops title system dt bat
 
   while read -r line; do
     title=bspwm
@@ -70,12 +95,15 @@ parse() {
         desktops=$(bspwm_parse ${line#?})
         ;;
       D*)
-        system="$(printf -- '%s' "$(colorize " ${line#?} " DATE)")"
+        dt="$(colorize " ${line#?} " DATE)"
+        ;;
+      B*)
+        bat="$(battery_parse "${line#?}")"
         ;;
     esac
-    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}${system}"
-  done
 
+    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$bat $dt"
+  done
 }
 
 cat $PANEL_FIFO | parse | bar \

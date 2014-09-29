@@ -1,0 +1,29 @@
+#!/bin/sh
+
+. $(dirname $0)/config
+
+batteries() {
+  local bat enow efull state
+  local sys=/sys/class/power_supply
+  local ac=$sys/AC
+
+  [ -d "$ac" ] || return
+
+  for bat in $sys/BAT*; do
+    [ -d "$bat" ] || return
+    enow=$(cat $bat/energy_now)
+    efull=$(cat $bat/energy_full)
+    state="${state}B$(expr \( 100 \* $enow \) / $efull):"
+  done
+  state="${state}A$(cat $ac/online)"
+  printf 'B%s\n' "$state"
+}
+
+while true; do
+  # TODO: sleep until minute rolls:
+  date +'D%Y-%m-%d %H:%M'
+  # TODO: cache result and only output when changing:
+  batteries
+
+  sleep 1
+done
