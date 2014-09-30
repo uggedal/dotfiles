@@ -101,13 +101,14 @@ link_parse() {
     esac
   done
 
-  printf -- '%s' "$(colorize " $ssid " $(link_color $quality))"
+  printf -- '%s' "$(colorize "$ssid" $(link_color $quality))"
 }
 
 parse() {
-  local desktops title system dt bat link
+  local desktops title system dt bat link sep
 
   title=bspwm
+  sep=$(colorize ' | ' SEPARATOR)
 
   while read -r line; do
 
@@ -119,7 +120,7 @@ parse() {
         title="$(colorize " ${line#?} " TITLE)"
         ;;
       D*)
-        dt="$(colorize " ${line#?} " DATE)"
+        dt="$(colorize "${line#?}" DATE)"
         ;;
       B*)
         bat="$(battery_parse "${line#?}")"
@@ -129,7 +130,7 @@ parse() {
         ;;
     esac
 
-    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$link $bat $dt"
+    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$link$sep$bat$sep$dt"
   done
 }
 
