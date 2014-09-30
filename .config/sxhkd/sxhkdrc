@@ -9,7 +9,7 @@ alt + shift + c
   bspc window -c
 
 alt + {t,f}
-  bspc window -t {pseudo_titled,fullscreen}
+  bspc window -t {pseudo_tiled,fullscreen}
 
 alt + {_,shift + }{h,j,k,l}
   bspc window -{f,s} {left,down,up,right}
