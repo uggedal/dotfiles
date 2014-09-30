@@ -46,6 +46,15 @@ bspwm_parse() {
   IFS="$oifs"
 }
 
+date_parse() {
+    local date time
+
+    date=$(colorize ${1% *} DATE)
+    time=$(colorize ${1#* } TIME)
+
+    printf '%s %s' "$date" "$time"
+}
+
 battery_color() {
   local c=BATTERY_FULL
 
@@ -123,7 +132,7 @@ parse() {
         title="$(colorize " ${line#?} " TITLE)"
         ;;
       D*)
-        dt="$(colorize "${line#?}" DATE)"
+        dt="$(date_parse "${line#?}")"
         ;;
       B*)
         bat="$(battery_parse "${line#?}")"
