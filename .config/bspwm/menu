@@ -1,0 +1,11 @@
+#!/bin/sh
+
+. $(dirname $0)/config
+
+exec dmenu_run -fn $FONT \
+    -nf $COLOR_MENU_FG \
+    -nb $COLOR_MENU_BG \
+    -sf $COLOR_MENU_SELECTED_FG \
+    -sb $COLOR_MENU_SELECTED_BG \
+    -l 5 \
+    -p '>'

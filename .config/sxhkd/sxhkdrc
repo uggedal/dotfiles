@@ -37,4 +37,4 @@ alt + shift + Return
   urxvtc
 
 alt + p
-  dmenu_run
+  $XDG_CONFIG_HOME/bspwm/menu
