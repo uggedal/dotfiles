@@ -29,7 +29,7 @@ bspwm_parse() {
         printf -- '%s' "$(colorize " ${d#?} " FREE_FOCUSED 1)"
         ;;
       U*|u*)
-        printf -- '%s' "$(colorize " ${d#?} " URGENT)"
+        printf -- '%s' "$(colorize " ${d#?} " URGENT 1)"
         ;;
       o*)
         printf -- '%s' "$(colorize " ${d#?} " OCCUPIED)"
