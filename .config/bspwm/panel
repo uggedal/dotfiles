@@ -79,7 +79,7 @@ battery_parse() {
         bat="$bat$(colorize "${b#?}" $(battery_color ${b#?}))$percentage"
         ;;
       A*)
-        [ "${b#?}" = 0 ] || ac="$(colorize AC BATTERY_AC)"
+        [ "${b#?}" = 0 ] || ac="$(colorize '<|>' BATTERY_AC) "
     esac
   done
   printf -- '%s%s' "$ac" "$bat"
