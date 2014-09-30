@@ -4,15 +4,18 @@
 
 colorize() {
   local s="$1"
+  local open='%%{F%s}%%{B%s}'
+  local close='%%{F-}%%{B-}'
   local fg bg ul
+
   eval fg=\$COLOR_${2}_FG
   eval bg=\$COLOR_${2}_BG
   [ $# -eq 3 ] && eval ul=\$COLOR_${2}_UL
 
   if [ "$ul" ]; then
-    printf -- '%%{F%s}%%{B%s}%%{U%s}%%{+u}%s%%{-u}%%{U-}%%{F-}%%{B-}' $fg $bg $ul "$s"
+    printf -- $open'%%{U%s}%%{+u}%s%%{-u}%%{U-}'$close $fg $bg $ul "$s"
   else
-    printf -- '%%{F%s}%%{B%s}%s%%{F-}%%{B-}' $fg $bg "$s"
+    printf -- $open'%s'$close $fg $bg "$s"
   fi
 }
 
