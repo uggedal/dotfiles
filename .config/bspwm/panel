@@ -130,7 +130,10 @@ parse() {
         ;;
     esac
 
-    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$link$sep$bat$sep$dt "
+    printf -- '%s' "%{l}${desktops}%{c}${title}%{r}"
+    [ "$link" ] && printf -- '%s%s' "$link" "$sep"
+    [ "$bat" ] && printf -- '%s%s' "$bat" "$sep"
+    printf -- '%s \n' "$dt"
   done
 }
 
