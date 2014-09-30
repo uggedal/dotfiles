@@ -14,6 +14,9 @@ alt + {t,f}
 alt + {_,shift + }{h,j,k,l}
   bspc window -{f,s} {left,down,up,right}
 
+alt + ctrl + {h,j,k,l}
+  bspc window -p {left,down,up,right}
+
 alt + {_,shift + }{1-9}
   bspc {desktop -f,window -d} ^{1-9}
 
