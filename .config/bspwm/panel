@@ -74,8 +74,37 @@ battery_parse() {
   IFS="$oifs"
 }
 
+link_color() {
+  local c=LINK_FULL
+
+  echo quality: $1 >log.out
+
+  [ "$1" -lt 75 ] && c=LINK_HIGH
+  [ "$1" -lt 50 ] && c=LINK_MEDIUM
+  [ "$1" -lt 25 ] && c=LINK_LOW
+
+  printf '%s' $c
+}
+
+link_parse() {
+  local ssid quality level
+  IFS=:
+  for f in $1; do
+    case $f in
+      S*)
+        ssid=${f#?}
+        ;;
+      Q*)
+        quality=${f#?}
+        ;;
+    esac
+  done
+
+  printf -- '%s' "$(colorize " $ssid " $(link_color $quality))"
+}
+
 parse() {
-  local desktops title system dt bat
+  local desktops title system dt bat link
 
   title=bspwm
 
@@ -94,9 +123,12 @@ parse() {
       B*)
         bat="$(battery_parse "${line#?}")"
         ;;
+      L*)
+        link="$(link_parse "${line#?}")"
+        ;;
     esac
 
-    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$bat $dt"
+    printf -- '%s\n' "%{l}${desktops}%{c}${title}%{r}$link $bat $dt"
   done
 }
 

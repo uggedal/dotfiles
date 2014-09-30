@@ -19,11 +19,25 @@ batteries() {
   printf 'B%s\n' "$state"
 }
 
+link() {
+  local ssid quality
+  local i=wlp3s0
+
+  command -v iw >/dev/null || return
+
+  ssid=$(iw $i link | awk '/SSID: / { print $2 }')
+  quality=$(awk /$i:' / { gsub(/\./, "", $3); print $3 }' /proc/net/wireless)
+
+  [ "$ssid" ] && printf 'LS%s:Q%d\n' "$ssid" "$quality"
+}
+
 while true; do
   # TODO: sleep until minute rolls:
   date +'D%Y-%m-%d %H:%M'
   # TODO: cache result and only output when changing:
   batteries
+  # TODO: cache result and only output when changing:
+  link
 
   sleep 1
 done
