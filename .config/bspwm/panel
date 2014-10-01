@@ -46,6 +46,12 @@ bspwm_parse() {
   IFS="$oifs"
 }
 
+title_parse() {
+    local title="$1"
+    [ ${#title} -gt 100 ] && title="$(expr substr "$title" 1 100)..."
+    printf -- '%s' "$(colorize "$title" TITLE)"
+}
+
 date_parse() {
     local date time
 
@@ -129,7 +135,7 @@ parse() {
         desktops=$(bspwm_parse ${line#?})
         ;;
       T*)
-        title="$(colorize " ${line#?} " TITLE)"
+        title="$(title_parse "${line#?}")"
         ;;
       D*)
         dt="$(date_parse "${line#?}")"
