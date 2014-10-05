@@ -3,4 +3,4 @@
 STREAM="http://lyd.nrk.no/nrk_radio_p3_mp3_h"
 RE="s/.*Demuxer info title changed to (.+).*/\1/p"
 
-mpv -msglevel=all=info $STREAM 2>/dev/null | sed -nr "$RE"
+mpv -msg-level=all=info $STREAM 2>/dev/null | sed -nr "$RE"
