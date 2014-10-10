@@ -12,22 +12,31 @@ usage() {
 
 [ $# -eq 0 ] && usage
 
+_genimg() {
+  local img=$1
+  local cap=$2
+  local mem=$3
+  local iso=$4
+
+  if [ ! -f $img ]; then
+    if [ "$iso" ]; then
+      mkdir -p $(dirname $img)
+      qemu-img create -f qcow2 $img $cap
+      exec $QEMU $OPTS -m $mem -cdrom $iso -boot d $img
+    else
+      printf "Usage: %s %s <install.iso>\n" $FN $(basename $0)
+      exit 64
+    fi
+  fi
+}
+
 WIN_IMG=$IMG_ROOT/win.qcow2
 WIN_CAP=20G
 WIN_MEM=4096
 WIN_USB_ID=0529:0600
 
 win() {
-  if [ ! -f $WIN_IMG ]; then
-    if [ $# -eq 1 ]; then
-      mkdir -p $(dirname $WIN_IMG)
-      qemu-img create -f qcow2 $WIN_IMG $WIN_CAP
-      exec $QEMU $OPTS -m $WIN_MEM -cdrom $1 -boot d $WIN_IMG
-    else
-      printf "Usage: %s win <install.iso>\n" $(basename $0)
-      exit 64
-    fi
-  fi
+  _genimg $WIN_IMG $WIN_CAP $WIN_MEM $1
 
   if lsusb | grep -q $WIN_USB_ID; then
     local usbflags="-usb -usbdevice host:$WIN_USB_ID"
@@ -38,10 +47,23 @@ win() {
   exec su -c "$QEMU $OPTS -m $WIN_MEM $usbflags $WIN_IMG"
 }
 
+OBSD_IMG=$IMG_ROOT/openbsd.qcow2
+OBSD_CAP=10G
+OBSD_MEM=4096
+
+openbsd() {
+  _genimg $OBSD_IMG $OBSD_CAP $OBSD_MEM $1
+
+  exec $QEMU $OPTS -m $OBSD_MEM $OBSD_IMG
+}
+
+FN=
+
 case $1 in
-  win)
+  win|openbsd)
+    FN=$1
     shift
-    win "$@"
+    $FN "$@"
     ;;
   *)
     usage
