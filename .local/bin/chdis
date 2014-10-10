@@ -10,5 +10,3 @@ if xrandr | grep -q "^$SEC disconnected"; then
 else
   xrandr --output $PRI --off --output $SEC --auto
 fi
-
-herbstclient detect_monitors
