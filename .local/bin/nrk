@@ -1,0 +1,4 @@
+#!/bin/sh
+
+ffmpeg -i $(curl -L "$1" | sed -n '/RESOLUTION=1280x720/{n;p}') \
+  -c copy nrk_$(date +%s).mkv
