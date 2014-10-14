@@ -1,0 +1,10 @@
+#!/bin/sh
+
+. $(dirname $0)/config
+
+exec tabbed -c \
+    -U $COLOR_MENU_FG \
+    -u $COLOR_MENU_BG \
+    -T $COLOR_MENU_SELECTED_FG \
+    -t $COLOR_MENU_SELECTED_BG \
+    vimb -e
