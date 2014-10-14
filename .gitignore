@@ -43,7 +43,6 @@
 /.viminfo
 /.vim/.netrwhist
 /.vim/bundle
-/.vimperator/info/
 /.vboxclient-*.pid
 /.VirtualBox/
 /.Xauthority
