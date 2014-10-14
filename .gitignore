@@ -13,6 +13,13 @@
 /.config/menus/
 /.config/spotify/
 /.config/Trolltech.conf
+/.config/vimb/closed*
+/.config/vimb/command
+/.config/vimb/cookies
+/.config/vimb/history
+/.config/vimb/hsts
+/.config/vimb/queue
+/.config/vimb/search
 /.dbus/
 /.dmenu_cache
 /.fontconfig/
