@@ -1,6 +1,7 @@
 set home-page=about:blank
 
 set strict-focus=on
+set strict-ssl=off
 set webinspector=on
 
 set completion-font=DejaVu Sans Mono 12
