@@ -1,1 +1,3 @@
 set home-page=about:blank
+
+set strict-focus=on
