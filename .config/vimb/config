@@ -1,4 +1,5 @@
 set home-page=about:blank
+shortcut-add dl=https://google.com/search?q=$0
 
 set strict-focus=on
 set strict-ssl=off
