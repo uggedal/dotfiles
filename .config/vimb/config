@@ -1,6 +1,7 @@
 set home-page=about:blank
 
 set strict-focus=on
+set webinspector=on
 
 
 # Webkit settings:
