@@ -3,6 +3,13 @@ set home-page=about:blank
 set strict-focus=on
 set webinspector=on
 
+set completion-font=DejaVu Sans Mono 12
+set input-font-normal=DejaVu Sans Mono 12
+set input-font-error=DejaVu Sans Mono Bold 12
+set status-font=DejaVu Sans Mono 12
+set status-ssl-font=DejaVu Sans Mono 12
+set status-sslinvalid-font=DejaVu Sans Mono 12
+
 
 # Webkit settings:
 set fontsize=12
