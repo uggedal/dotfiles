@@ -41,6 +41,3 @@ alt + shift + Return
 
 alt + p
   $XDG_CONFIG_HOME/bspwm/menu
-
-alt + b
-  $XDG_CONFIG_HOME/bspwm/browser
