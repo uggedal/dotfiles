@@ -27,6 +27,7 @@
 /.gem/
 /.gimp-*/
 /.gnupg/*.gpg
+/.gnupg/*.gpg~
 /.gphoto/
 /.gstreamer-*/
 /.IntelliJIdea*/
