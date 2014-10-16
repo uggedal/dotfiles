@@ -8,8 +8,7 @@
 _keychain_init() {
   command -v keychain >/dev/null || return
 
-  local private_key=$HOME/.ssh/preferred.id_rsa
-  [ -e $private_key ] || private_key=$HOME/.ssh/id_rsa
+  local private_key=$HOME/.ssh/id_rsa
   [ -e $private_key ] || return 1
   eval $(keychain --quiet --quick --agents ssh --eval $private_key)
 }
