@@ -6,7 +6,7 @@
 /.ash_history
 /.bash_history
 /.cache/
-/.config/google-chrome/
+/.config/chromium/
 /.config/gtk-*/
 /.config/htop/htoprc
 /.config/hub
