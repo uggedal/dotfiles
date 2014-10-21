@@ -2,6 +2,12 @@
 
 command -v gpg-agent >/dev/null || return
 
+case $(tty) in
+  /dev/tty*)
+    return
+    ;;
+esac
+
 GPG_TTY=$(tty)
 export GPG_TTY
 
