@@ -2,6 +2,9 @@
 
 command -v gpg-agent >/dev/null || return
 
+GPG_TTY=$(tty)
+export GPG_TTY
+
 agent_info=$XDG_RUNTIME_DIR/gpg-agent-info
 
 if [ -f $agent_info ] && kill -0 $(head -n1 $agent_info | cut -d: -f2) 2>/dev/null; then
