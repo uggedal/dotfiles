@@ -14,14 +14,8 @@
 /.config/pulse/
 /.config/spotify/
 /.config/Trolltech.conf
-/.config/vimb/bookmark
-/.config/vimb/closed*
-/.config/vimb/command
-/.config/vimb/cookies
-/.config/vimb/history
-/.config/vimb/hsts
-/.config/vimb/queue
-/.config/vimb/search
+/.config/vimb/
+!/.config/vimb/config
 /.dbus/
 /.dmenu_cache
 /.fontconfig/
