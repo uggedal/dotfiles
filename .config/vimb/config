@@ -5,6 +5,9 @@ set strict-focus=on
 set strict-ssl=off
 set webinspector=on
 
+nmap H <C-O>
+nmap L <C-I>
+
 set completion-font=DejaVu Sans Mono 12
 set input-font-normal=DejaVu Sans Mono 12
 set input-font-error=DejaVu Sans Mono Bold 12
