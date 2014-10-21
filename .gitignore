@@ -16,6 +16,7 @@
 /.local/share/
 /.m2/
 /.mpv/watch_later/
+/.password-store/
 /.pki/
 /.secrets
 /.ssh/
