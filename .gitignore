@@ -28,9 +28,8 @@
 /.gegl-*/
 /.gem/
 /.gimp-*/
-/.gnupg/*.gpg
-/.gnupg/*.gpg~
-/.gnupg/random_seed
+/.gnupg/
+!/.gnupg/gpg.conf
 /.gphoto/
 /.gstreamer-*/
 /.IntelliJIdea*/
