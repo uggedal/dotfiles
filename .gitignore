@@ -8,8 +8,8 @@
 /.config/vimb/
 !/.config/vimb/config
 /.dbus/
-/.gnupg/
-!/.gnupg/gpg.conf
+/.gnupg/*
+!/.gnupg/gpg*.conf
 /.gstreamer-*/
 /.keychain/
 /.lesshst
