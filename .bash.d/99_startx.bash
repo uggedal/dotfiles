@@ -2,4 +2,4 @@
 
 command -v startx >/dev/null || return
 
-[ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] && startx
+[ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] && exec startx
