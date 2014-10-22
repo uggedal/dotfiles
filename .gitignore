@@ -23,10 +23,10 @@
 /.viminfo
 /.vim/.netrwhist
 /.vim/bundle
-/.Xauthority
 /.weechat/*.log
 /.weechat/logs
 /.weechat/sec.conf
+/.Xauthority
 /Downloads/
 
 # Blob files:
