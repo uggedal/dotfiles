@@ -5,7 +5,7 @@
 /.config/gtk-*/
 /.config/htop/htoprc
 /.config/pulse/
-/.config/vimb/
+/.config/vimb/*
 !/.config/vimb/config
 /.dbus/
 /.gnupg/*
