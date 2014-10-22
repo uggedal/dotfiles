@@ -23,6 +23,7 @@
 /.viminfo
 /.vim/.netrwhist
 /.vim/bundle
+/.vboxclient-*.pid
 /.weechat/*.log
 /.weechat/logs
 /.weechat/sec.conf
