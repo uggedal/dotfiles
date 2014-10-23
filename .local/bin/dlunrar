@@ -1,6 +1,25 @@
-#!/bin/bash
+#!/bin/sh
 
-find ~/dl/${PWD##*/} -maxdepth 2 -type f -name \*.rar |
+DIR=/var/lib/transmission/seed
+
+filter() {
+  case $(pwd) in
+    */ep)
+      grep '[._]HDTV[._]'
+      ;;
+    */mov)
+      grep '\(BluRay\|WEB-DL\)'
+      ;;
+    *)
+      cat >/dev/null
+      ;;
+  esac
+}
+
+extract() {
   while read f; do
     [ -f "$(unrar lb $f)" ] || unrar x $f
   done
+}
+
+find $DIR -maxdepth 2 -type f -name \*.rar | filter | extract
