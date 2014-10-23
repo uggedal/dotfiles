@@ -1,7 +1,0 @@
-#!/bin/sh
-
-RTORRENT_TEMP_DIR=".rtorrent.session"
-
-[ -d $RTORRENT_TEMP_DIR ] || mkdir $RTORRENT_TEMP_DIR
-
-exec /usr/bin/rtorrent "$@"
