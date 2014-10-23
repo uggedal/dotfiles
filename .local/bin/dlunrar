@@ -22,4 +22,12 @@ extract() {
   done
 }
 
+link() {
+  while read f; do
+    [ -f "$f" ] || ln -s $f .
+  done
+}
+
 find $DIR -maxdepth 2 -type f -name \*.rar | filter | extract
+
+find $DIR -maxdepth 2 -type f -name \*.mkv | filter | link
