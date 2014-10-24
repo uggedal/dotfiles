@@ -12,5 +12,3 @@ bspc config top_padding $(($PANEL_HEIGHT +  $PANEL_Y))
 bspc config history_aware_focus true
 
 bspc monitor -d $(seq 1 9)
-
-bspc rule -a vimb focus=false
