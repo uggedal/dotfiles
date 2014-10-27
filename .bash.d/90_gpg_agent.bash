@@ -2,12 +2,6 @@
 
 command -v gpg-agent >/dev/null || return
 
-case $(tty) in
-  /dev/tty*)
-    return
-    ;;
-esac
-
 GPG_TTY=$(tty)
 export GPG_TTY
 
@@ -16,9 +10,9 @@ agent_info=$HOME/.cache/gpg-agent-info
 if [ -f $agent_info ] && kill -0 $(head -n1 $agent_info | cut -d: -f2) 2>/dev/null; then
   . $agent_info
 else
-  eval $(gpg-agent --daemon --enable-ssh-support --write-env-file $agent_info)
+  eval $(gpg-agent --daemon --write-env-file $agent_info)
 fi
 
-export GPG_AGENT_INFO SSH_AUTH_SOCK SSH_AGENT_PID
+export GPG_AGENT_INFO
 
 unset agent_info
