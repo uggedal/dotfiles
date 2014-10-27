@@ -22,8 +22,6 @@ _wrap_ssh() {
   fi
 
   unset -f ssh scp git
-
-  command $cmd "$@"
 }
 
 ssh() {
