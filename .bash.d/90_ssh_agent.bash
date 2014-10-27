@@ -17,21 +17,23 @@ _wrap_ssh() {
   local cmd=$1
   shift
 
-  if ssh-add -l >/dev/null; then
-    unset -f $cmd
-  else
+  if ! ssh-add -l >/dev/null; then
     ssh-add
   fi
+
+  unset -f ssh scp git
 
   command $cmd "$@"
 }
 
 ssh() {
-  _wrap_ssh ssh "$@"
+  _wrap_ssh "$@"
+  command ssh "$@"
 }
 
 scp() {
-  _wrap_ssh scp "$@"
+  _wrap_ssh "$@"
+  command scp "$@"
 }
 
 git() {
@@ -39,8 +41,7 @@ git() {
     push|pull|fetch)
       _wrap_ssh git "$@"
       ;;
-    *)
-      command git "$@"
-      ;;
   esac
+
+  command git "$@"
 }
