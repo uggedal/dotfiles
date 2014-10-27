@@ -12,3 +12,35 @@ else
 fi
 
 unset agent_info
+
+_wrap_ssh() {
+  local cmd=$1
+  shift
+
+  if ssh-add -l >/dev/null; then
+    unset -f $cmd
+  else
+    ssh-add
+  fi
+
+  command ssh "$@"
+}
+
+ssh() {
+  _wrap_ssh ssh "$@"
+}
+
+scp() {
+  _wrap_ssh scp "$@"
+}
+
+git() {
+  case $1 in
+    push|pull|fetch)
+      _wrap_ssh git "$@"
+      ;;
+    *)
+      command git "$@"
+      ;;
+  esac
+}
