@@ -23,7 +23,7 @@ _wrap_ssh() {
     ssh-add
   fi
 
-  command ssh "$@"
+  command $cmd "$@"
 }
 
 ssh() {
