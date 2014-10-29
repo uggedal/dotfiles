@@ -19,7 +19,7 @@ _wrap_ssh() {
   shift
 
   if ! ssh-add -l >/dev/null; then
-    ssh-add
+    ssh-add $(grep -l 'ENCRYPTED$' .ssh/*id_rsa)
   fi
 
   unset -f ssh scp git
