@@ -81,5 +81,6 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+  position top
   status_command i3status
 }
