@@ -52,4 +52,4 @@ if command -v numlockx >/dev/null; then
   numlockx
 fi
 
-exec $HOME/.config/bspwm/init
+exec i3
