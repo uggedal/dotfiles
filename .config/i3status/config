@@ -11,7 +11,7 @@ order += "tztime local"
 
 wireless wlp3s0 {
   format_up = " %essid %quality "
-  format_down = " W: down "
+  format_down = " "
 }
 
 disk "/" {
