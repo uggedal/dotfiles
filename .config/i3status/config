@@ -16,6 +16,7 @@ wireless wlp3s0 {
 
 disk "/" {
   format = " %avail "
+  prefix_type = custom
 }
 
 battery 0 {
