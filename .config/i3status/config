@@ -10,22 +10,22 @@ order += "battery 1"
 order += "tztime local"
 
 wireless wlp3s0 {
-  format_up = "W: (%quality at %essid) %ip"
-  format_down = "W: down"
+  format_up = " W: (%quality at %essid) %ip "
+  format_down = " W: down "
 }
 
 battery 0 {
-  format = "%status %percentage %remaining"
+  format = " %status %percentage %remaining "
 }
 
 battery 1 {
-  format = "%status %percentage %remaining"
+  format = " %status %percentage %remaining "
 }
 
 tztime local {
-  format = "%Y-%m-%d %H:%M"
+  format = " %Y-%m-%d %H:%M "
 }
 
 disk "/" {
-  format = "%avail"
+  format = " %avail "
 }
