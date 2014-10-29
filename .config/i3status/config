@@ -21,10 +21,12 @@ disk "/" {
 
 battery 0 {
   format = " %status %percentage %remaining "
+  last_full_capacity = true
 }
 
 battery 1 {
   format = " %status %percentage %remaining "
+  last_full_capacity = true
 }
 
 tztime local {
