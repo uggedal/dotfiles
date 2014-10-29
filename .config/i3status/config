@@ -26,13 +26,13 @@ disk "/" {
 }
 
 battery 0 {
-  format = " %status %percentage %remaining "
+  format = " %percentage "
   format_down = " "
   last_full_capacity = true
 }
 
 battery 1 {
-  format = " %status %percentage %remaining "
+  format = " %percentage "
   format_down = " "
   last_full_capacity = true
 }
