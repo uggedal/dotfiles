@@ -1,6 +1,7 @@
 # SSH agent
 
 command -v ssh-agent >/dev/null || return
+[ "$SSH_CONNECTION" ] && return
 
 agent_info=$HOME/.cache/ssh-agent-info
 
