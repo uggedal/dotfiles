@@ -11,7 +11,10 @@ set $YELLOW "#b58900"
 set $GREEN "#859900"
 set $BLUE "#268bd2"
 
-font pango:DejaVu Sans Mono 10
+set $FONT_ANTIALIASED "pango:DejaVu Sans Mono 10"
+set $FONT_BITMAP "-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso8859-1"
+
+font $FONT_ANTIALIASED
 
 set $BORDER 3
 new_window normal $BORDER
@@ -31,7 +34,7 @@ floating_modifier $mod
 
 bindsym $mod+Shift+Return exec urxvtc
 bindsym $mod+Shift+c kill
-bindsym $mod+p exec dmenu_run
+bindsym $mod+p exec dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $YELLOW -sb $BLACK -l 5 -p '>'
 
 # change focus
 bindsym $mod+h focus left
