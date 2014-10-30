@@ -13,6 +13,8 @@ set $BLUE "#268bd2"
 
 font pango:DejaVu Sans Mono 10
 
+new_window normal 4
+
 client.focused $DARK $DARK $LIGHT $ORANGE
 client.focused_inactive $YELLOW $YELLOW $LIGHT $ORANGE
 client.unfocused $LIGHT $LIGHT $DARK $YELLOW
