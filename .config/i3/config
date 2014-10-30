@@ -95,7 +95,7 @@ bindsym $mod+Shift+8 move container to workspace $W8
 bindsym $mod+Shift+9 move container to workspace $W9
 
 bindsym $mod+Shift+r restart
-bindsym $mod+Shift+q exec exit
+bindsym $mod+Shift+q exit
 
 mode "split" {
   bindsym s split v, mode "default"
