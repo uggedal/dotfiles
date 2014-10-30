@@ -15,7 +15,9 @@ font pango:DejaVu Sans Mono 10
 
 set $BORDER 3
 new_window normal $BORDER
-for_window [class="^URxvt"] border pixel $BORDER
+for_window [class="^URxvt$"] border pixel $BORDER
+
+for_window [class="^Vimb$"] layout tabbed
 
 client.focused $GREEN $GREEN $WHITE $ORANGE
 client.focused_inactive $YELLOW $YELLOW $LIGHT $ORANGE
