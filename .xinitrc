@@ -10,7 +10,7 @@ xrdb -merge $HOME/.Xresources
 
 # VBox sync
 if command -v VBoxClient-all >/dev/null; then
-  VBoxClient-all&
+  VBoxClient-all &
 fi
 
 # Enable compose key
