@@ -8,24 +8,18 @@ I use in my daily workflow are:
 * bash
 * ssh
 * git
-* [keychain][]
 * vim
 * tmux
+* weechat
+* [pass][]
 
 In addition the following programs are used to form an ideal graphical
 experience:
 
-* [herbstluftwm][] with [dzen][]
+* [i3][]
 * urxvt
 * unclutter
 * autocutsel
-
-This repo also contains configuration for some not so essential programs:
-
-* mercurial
-* jshint
-* mpv
-* rtorrent
 
 Lastly this repo contains a few useful scripts:
 
@@ -51,14 +45,12 @@ git remote add origin https://github.com/uggedal/dotfiles.git
 git pull
 ```
 
-Third-party dependencies are synchronized using a [custom script][dotfiles]
+Third-party dependencies are synchronized using a custom script
 (since git submodules are a PITA):
 
 ```sh
 dotfiles sync
 ```
 
-[keychain]: http://www.funtoo.org/Keychain
-[herbstluftwm]: http://herbstluftwm.org/
-[dzen]: https://github.com/robm/dzen
-[dotfiles]: https://github.com/uggedal/dotfiles/tree/master/.local/bin/dotfiles
+[pass]: http://www.passwordstore.org/
+[i3]: http://i3wm.org/
