@@ -13,6 +13,11 @@ set $BLUE "#268bd2"
 
 font pango:DejaVu Sans Mono 10
 
+client.focused $DARK $DARK $LIGHT $ORANGE
+client.focused_inactive $YELLOW $YELLOW $LIGHT $ORANGE
+client.unfocused $LIGHT $LIGHT $DARK $YELLOW
+client.urgent $RED $RED $LIGHT $YELLOW
+
 focus_follows_mouse no
 
 # Use Mouse+$mod to drag floating windows to their wanted position
