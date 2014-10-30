@@ -32,12 +32,14 @@ disk "/" {
 battery 0 {
   format = " %percentage "
   format_down = " "
+  integer_battery_capacity = true
   last_full_capacity = true
 }
 
 battery 1 {
   format = " %percentage "
   format_down = " "
+  integer_battery_capacity = true
   last_full_capacity = true
 }
 
