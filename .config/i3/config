@@ -28,38 +28,25 @@ client.unfocused $LIGHT $LIGHT $MEDIUM $YELLOW
 client.urgent $RED $RED $LIGHT $YELLOW
 
 focus_follows_mouse no
-
-# Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 bindsym $mod+Shift+Return exec urxvtc
 bindsym $mod+Shift+c kill
 bindsym $mod+p exec dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $YELLOW -sb $BLACK -l 5 -p '>'
 
-# change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
 bindsym $mod+l focus right
 
-# move focused window
 bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
 
-# enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
 
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-#bindsym $mod+w layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
-
-# change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
 set $W1 " 1 "
@@ -72,7 +59,6 @@ set $W7 " 7 "
 set $W8 " 8 "
 set $W9 " 9 "
 
-# switch to workspace
 bindsym $mod+1 workspace $W1
 bindsym $mod+2 workspace $W2
 bindsym $mod+3 workspace $W3
@@ -83,7 +69,6 @@ bindsym $mod+7 workspace $W7
 bindsym $mod+8 workspace $W8
 bindsym $mod+9 workspace $W9
 
-# move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $W1
 bindsym $mod+Shift+2 move container to workspace $W2
 bindsym $mod+Shift+3 move container to workspace $W3
