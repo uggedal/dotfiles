@@ -15,9 +15,9 @@ font pango:DejaVu Sans Mono 10
 
 new_window normal 4
 
-client.focused $DARK $DARK $LIGHT $ORANGE
+client.focused $DARK $DARK $WHITE $ORANGE
 client.focused_inactive $YELLOW $YELLOW $LIGHT $ORANGE
-client.unfocused $LIGHT $LIGHT $DARK $YELLOW
+client.unfocused $LIGHT $LIGHT $MEDIUM $YELLOW
 client.urgent $RED $RED $LIGHT $YELLOW
 
 focus_follows_mouse no
