@@ -1,6 +1,10 @@
 general {
   colors = true
   interval = 1
+
+  color_good = "#859900"
+  color_degraded = "#b58900"
+  color_bad = "#dc322f"
 }
 
 order += "wireless wlp3s0"
