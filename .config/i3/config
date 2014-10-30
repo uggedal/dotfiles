@@ -1,5 +1,16 @@
 set $mod Mod1
 
+set $WHITE "#fdfaf6"
+set $LIGHT "#eee8d5"
+set $MEDIUM "#93a1a1"
+set $DARK "#657b83"
+set $BLACK "#002b36"
+set $RED "#dc322f"
+set $ORANGE "#cb4b16"
+set $YELLOW "#b58900"
+set $GREEN "#859900"
+set $BLUE "#268bd2"
+
 font pango:DejaVu Sans Mono 10
 
 focus_follows_mouse no
@@ -80,6 +91,16 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 bar {
+  colors {
+    background $BLACK
+    statusline $LIGHT
+    separator $DARK
+
+    focused_workspace $BLACK $GREEN $WHITE
+    active_workspace $BLACK $YELLOW $WHITE
+    inactive_workspace $BLACK $BLACK $DARK
+    urgent_workspace $BLACK $RED $WHITE
+  }
   position top
   status_command i3status
 }
