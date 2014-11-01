@@ -11,7 +11,7 @@ set $YELLOW "#b58900"
 set $GREEN "#859900"
 set $BLUE "#268bd2"
 
-set $FONT_ANTIALIASED "pango:DejaVu Sans Mono 10"
+set $FONT_ANTIALIASED "pango:DejaVu Sans Mono 11"
 set $FONT_BITMAP "-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso8859-1"
 
 font $FONT_ANTIALIASED
