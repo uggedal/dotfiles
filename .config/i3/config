@@ -16,7 +16,7 @@ set $FONT_BITMAP "-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso8859-1"
 
 font $FONT_ANTIALIASED
 
-set $BORDER 3
+set $BORDER 4
 new_window normal $BORDER
 for_window [class="^URxvt$"] border pixel $BORDER
 for_window [class="^Chromium"] border none
