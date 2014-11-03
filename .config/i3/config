@@ -19,6 +19,7 @@ font $FONT_ANTIALIASED
 set $BORDER 3
 new_window normal $BORDER
 for_window [class="^URxvt$"] border pixel $BORDER
+for_window [class="^Chromium"] border none
 
 for_window [class="^Vimb$"] focus child, layout tabbed, focus
 
