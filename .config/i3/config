@@ -31,9 +31,9 @@ client.urgent $RED $RED $LIGHT $YELLOW
 focus_follows_mouse no
 floating_modifier $mod
 
-bindsym $mod+Shift+Return exec urxvtc
+bindsym $mod+Shift+Return exec --no-startup-id urxvtc
 bindsym $mod+Shift+c kill
-bindsym $mod+p exec dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $YELLOW -sb $BLACK -l 5 -p '>'
+bindsym $mod+p exec --no-startup-id dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $YELLOW -sb $BLACK -l 5 -p '>'
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
