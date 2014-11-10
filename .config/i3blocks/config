@@ -8,3 +8,6 @@ color=#93a1a1
 [battery1]
 command=~/.config/i3blocks/battery.sh 1
 color=#93a1a1
+
+[date]
+command=date +' %Y-%m-%d %H:%M '
