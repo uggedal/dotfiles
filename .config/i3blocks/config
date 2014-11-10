@@ -1,6 +1,10 @@
 interval=1
 color=#657b83
 
+[iw]
+interval=5
+command=~/.config/i3blocks/iw.sh  wlp3s0
+
 [battery0]
 command=~/.config/i3blocks/battery.sh 0
 
