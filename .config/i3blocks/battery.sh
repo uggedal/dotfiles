@@ -11,7 +11,7 @@ color() {
   [ "$perc" -lt 50 ] && c=$ORANGE
   [ "$perc" -lt 25 ] && c=$RED
   [ "$state" -eq 1 ] && c=$CYAN
-  
+
   printf '%s' $c
 }
 
