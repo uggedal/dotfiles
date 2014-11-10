@@ -5,6 +5,10 @@ color=#657b83
 interval=5
 command=~/.config/i3blocks/iw.sh  wlp3s0
 
+[disk]
+interval=5
+command=~/.config/i3blocks/df.sh  /
+
 [battery0]
 command=~/.config/i3blocks/battery.sh 0
 
