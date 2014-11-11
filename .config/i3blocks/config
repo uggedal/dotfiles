@@ -1,19 +1,18 @@
 interval=1
 color=#657b83
+separator=false
 
 [iw]
 interval=5
 command=~/.config/i3blocks/iw.sh  wlp3s0
 
 [mem_label]
-separator=false
 full_text=M
 
 [mem]
 command=~/.config/i3blocks/mem.sh
 
 [df_label]
-separator=false
 full_text= /
 
 [df]
