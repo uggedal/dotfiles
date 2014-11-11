@@ -4,11 +4,11 @@
 
 color() {
   local perc=$1
-  local c=$GREEN
+  local c=$RED
 
-  [ "$perc" -lt 75 ] && c=$YELLOW
-  [ "$perc" -lt 50 ] && c=$ORANGE
-  [ "$perc" -lt 25 ] && c=$RED
+  [ "$perc" -lt 75 ] && c=$ORANGE
+  [ "$perc" -lt 50 ] && c=$YELLOW
+  [ "$perc" -lt 25 ] && c=$GREEN
 
   printf '%s' $c
 }
@@ -21,10 +21,10 @@ status() {
   local mp=$1
 
   local free=$(_df $mp 4)
-  local use=$(_df $mp 5)
-  use=${use%%%}
+  local used=$(_df $mp 5)
+  used=${used%%%}
 
-  printf -- ' %s \n\n%s\n' $free $(color $use)
+  printf -- ' %s \n\n%s\n' $free $(color $used)
 }
 
 status "$@"
