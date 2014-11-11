@@ -14,15 +14,24 @@ color() {
 }
 
 _df() {
-  df -h $1 | tail -1 | awk "{ print \$$2 }"
+  df -h $1 | awk '
+  /^\// {
+    free=$4
+    used=$5
+    exit 0
+  }
+  END {
+    gsub(/%$/, "", used)
+    printf "%s %s", free, used
+  }'
 }
 
 status() {
   local mp=$1
+  local stats="$(_df $mp)"
 
-  local free=$(_df $mp 4)
-  local used=$(_df $mp 5)
-  used=${used%%%}
+  local free=${stats% *}
+  local used=${stats#* }
 
   printf -- ' %s \n\n%s\n' $free $(color $used)
 }
