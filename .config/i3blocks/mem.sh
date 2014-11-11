@@ -29,7 +29,7 @@ _mem() {
 }
 END {
   unused=free+buffers+cached
-  printf "%dM %.0f", (unused/1024), ((total-unused)/total*100)
+  printf "%.1fG %.0f", (unused/1024/1024), ((total-unused)/total*100)
 }
 ' /proc/meminfo
 }
