@@ -13,6 +13,10 @@ full_text=M
 interval=5
 command=~/.config/i3blocks/mem.sh
 
+[disk_label]
+separator=false
+full_text= /
+
 [disk]
 interval=5
 command=~/.config/i3blocks/df.sh  /

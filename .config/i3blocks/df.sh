@@ -33,7 +33,7 @@ status() {
   local free=${stats% *}
   local used=${stats#* }
 
-  printf -- ' %s \n\n%s\n' $free $(color $used)
+  printf -- '%s \n\n%s\n' $free $(color $used)
 }
 
 status "$@"
