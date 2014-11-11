@@ -23,12 +23,16 @@ status() {
   [ -d $ac ] || return
   [ -d "$bat" ] || return
 
+  [ "$2" = label ] && {
+    printf 'B%d\n' $1
+  }
+
   local now=$(cat $bat/energy_now)
   local full=$(cat $bat/energy_full)
   local perc=$(expr \( 100 \* $now \) / $full)
   local state=$(cat $ac/online)
 
-  printf -- ' %s%% \n\n%s\n' $perc $(color $state $perc)
+  printf -- '%s%% \n\n%s\n' $perc $(color $state $perc)
 }
 
 status "$@"

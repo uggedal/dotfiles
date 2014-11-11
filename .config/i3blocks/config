@@ -21,8 +21,16 @@ full_text= /
 interval=5
 command=~/.config/i3blocks/df.sh  /
 
+[battery0_label]
+command=~/.config/i3blocks/battery.sh 0 label
+interval=once
+
 [battery0]
 command=~/.config/i3blocks/battery.sh 0
+
+[battery1_label]
+command=~/.config/i3blocks/battery.sh 1 label
+interval=once
 
 [battery1]
 command=~/.config/i3blocks/battery.sh 1
