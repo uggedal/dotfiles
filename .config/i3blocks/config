@@ -3,8 +3,8 @@ color=#657b83
 separator=false
 
 [iw]
-interval=5
 command=~/.config/i3blocks/iw.sh  wlp3s0
+interval=5
 
 [mem_label]
 full_text=M
@@ -24,6 +24,7 @@ interval=once
 
 [battery0]
 command=~/.config/i3blocks/battery.sh 0
+interval=5
 
 [battery1_label]
 command=~/.config/i3blocks/battery.sh 1 label
@@ -31,6 +32,7 @@ interval=once
 
 [battery1]
 command=~/.config/i3blocks/battery.sh 1
+interval=5
 
 [date]
 command=date +' %Y-%m-%d %H:%M '
