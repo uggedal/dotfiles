@@ -35,5 +35,5 @@ command=~/.config/i3blocks/battery.sh 1
 interval=5
 
 [date]
-command=date +' %Y-%m-%d %H:%M '
+command=date +'%Y-%m-%d %H:%M '
 color=#93a1a1
