@@ -32,7 +32,7 @@ status() {
   local perc=$(expr \( 100 \* $now \) / $full)
   local state=$(cat $ac/online)
 
-  printf -- '%s%% \n\n%s\n' $perc $(color $state $perc)
+  printf -- '%s%%\n\n%s\n' $perc $(color $state $perc)
 }
 
 status "$@"

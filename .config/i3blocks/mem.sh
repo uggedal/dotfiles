@@ -42,7 +42,7 @@ status() {
 
   echo $used 1>&2
 
-  printf -- '%s \n\n%s\n' $free $(color $used)
+  printf -- '%s\n\n%s\n' $free $(color $used)
 }
 
 status "$@"
