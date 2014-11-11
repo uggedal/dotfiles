@@ -5,6 +5,10 @@ color=#657b83
 interval=5
 command=~/.config/i3blocks/iw.sh  wlp3s0
 
+[mem]
+interval=5
+command=~/.config/i3blocks/mem.sh
+
 [disk]
 interval=5
 command=~/.config/i3blocks/df.sh  /
