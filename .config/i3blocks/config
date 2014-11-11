@@ -13,7 +13,7 @@ full_text=M
 command=~/.config/i3blocks/mem.sh
 
 [df_label]
-full_text= /
+full_text=/
 
 [df]
 command=~/.config/i3blocks/df.sh  /
