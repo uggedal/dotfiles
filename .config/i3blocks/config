@@ -10,7 +10,6 @@ separator=false
 full_text=M
 
 [mem]
-interval=5
 command=~/.config/i3blocks/mem.sh
 
 [df_label]
@@ -18,7 +17,6 @@ separator=false
 full_text= /
 
 [df]
-interval=5
 command=~/.config/i3blocks/df.sh  /
 
 [battery0_label]
