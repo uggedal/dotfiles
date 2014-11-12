@@ -1,6 +1,6 @@
 # GPG agent
 
-command -v gpg-agent >/dev/null || return
+gpg-agent --version 2>/dev/null | fgrep -q 'gpg-agent (GnuPG) 2.0' 2>/dev/null || return
 
 GPG_TTY=$(tty)
 export GPG_TTY
