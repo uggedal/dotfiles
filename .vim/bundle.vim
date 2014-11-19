@@ -3,6 +3,11 @@ call pathogen#infect()
 let g:loaded_togglebg = 1
 silent! colorscheme solarized
 
+" Extended matching with %
+if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
+  runtime! macros/matchit.vim
+endif
+
 " No grey bg in sign gutter
 hi! SignColumn ctermbg=NONE
 

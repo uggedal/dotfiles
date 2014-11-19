@@ -118,7 +118,11 @@ nnoremap N Nzzzv
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Text
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set wrap           " visually wrap lines longer than the window
+set colorcolumn=80 " mark lines over 80 columns
+set linebreak      " wrap lines on word boundaries
 set autoindent     " fallback when filetype don't provide indent
+
 set expandtab      " expand tabs to spaces
 set tabstop=2      " width of an actual tab char in spaces
 set softtabstop=2  " width of an inserted tab char
@@ -126,37 +130,27 @@ set shiftwidth=2   " number of spaces for each indent
 set shiftround     " snap to indent columns
 set smarttab       " inserts spaces according to shiftwidt when <TAB>
 
-set wrap           " visually wrap lines longer than the window
-set linebreak      " wrap lines on word boundaries
+au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4
 
-set colorcolumn=80 " mark lines over 80 columns
+function Tabs()
+  setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
+endfunction
 
+command! Tabs :call Tabs()
+
+au BufRead APKBUILD call Tabs()
+au BufRead template call Tabs()
+au BufRead template setl ft=sh
+au FileType go call Tabs()
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Folding
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Toggle indent based folding (defaults to off) with 'zi':
 set foldmethod=indent
 set foldnestmax=3
 set nofoldenable
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Languages
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" Salt state syntax highlighting:
-au BufNewFile,BufRead *.sls setlocal ft=yaml
-
-" 4 spaces for Python:
-au FileType python setl softtabstop=4 tabstop=4 shiftwidth=4
-
-" Tabs for Go:
-au FileType go setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
-
-au BufRead APKBUILD setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab
-au BufRead template setl noexpandtab softtabstop=0 tabstop=4 shiftwidth=4 nosmarttab ft=sh
-
-" Extended matching with %
-if !exists('g:loaded_matchit') && findfile('plugin/matchit.vim', &rtp) ==# ''
-  runtime! macros/matchit.vim
-endif
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
