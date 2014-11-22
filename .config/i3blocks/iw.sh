@@ -20,7 +20,9 @@ status() {
   command -v iw >/dev/null || return
 
   local ssid=$(iw $if link | awk '/SSID: / { print $2 }')
+  [ "$ssid" ] || return
   local quality=$(awk /$if:' / { gsub(/\./, "", $3); print $3 }' /proc/net/wireless)
+
 
   printf -- '%s \n\n%s\n' $ssid $(color $quality)
 }
