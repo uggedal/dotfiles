@@ -6,6 +6,10 @@ SAVEHIST=$HISTSIZE
 # Editing
 bindkey -v
 
+_fg() { fg; }
+zle -N _fg
+bindkey '^Z' _fg
+
 # Completion
 autoload -Uz compinit && compinit
 
