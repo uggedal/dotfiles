@@ -20,8 +20,11 @@ autoload -Uz compinit && compinit
 MAILCHECK=0
 
 # Prompt
-_chemical_element_to_symbol() {
-  local element="${1%%.*}"
+_prompt_host() {
+  [ "$SSH_CONNECTION" ] || return
+
+  local host=$(hostname)
+  local element="${host%%.*}"
 
   typeset -A _e
   _e[hydrogen]=h
@@ -146,13 +149,13 @@ _chemical_element_to_symbol() {
   local match=${_e[$element]}
 
   if [ "$match" ]; then
-    echo $match
+    printf -- '%s ' $match
   else
-    echo $element
+    printf -- '%s ' $element
   fi
 }
 
 # TODO: cache symbol and hostname lookup
 
 setopt PROMPT_SUBST
-PS1='$(_chemical_element_to_symbol $(hostname)) %~ '
+PS1='$(_prompt_host)%~ '
