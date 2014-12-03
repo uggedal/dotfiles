@@ -5,3 +5,6 @@ SAVEHIST=$HISTSIZE
 
 # Editing
 bindkey -v
+
+# Completion
+autoload -Uz compinit && compinit
