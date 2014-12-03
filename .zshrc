@@ -8,3 +8,6 @@ bindkey -v
 
 # Completion
 autoload -Uz compinit && compinit
+
+# Mail
+MAILCHECK=0
