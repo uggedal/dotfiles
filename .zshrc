@@ -1,5 +1,5 @@
 # Environment
-export PAGER=less
+export PAGER=$(command -v less)
 
 # History
 HISTFILE=~/.zsh_history
