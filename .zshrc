@@ -2,6 +2,7 @@
 
 export PAGER=$(command -v less)
 
+# Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
 
@@ -17,12 +18,17 @@ setopt EXTENDED_HISTORY
 ### EDITING
 
 bindkey -v
+
+# Make backspace work after leaving command mode:
 bindkey '^?' backward-delete-char
+
+# Prefix history search:
 bindkey -M vicmd 'k' history-beginning-search-backward
 bindkey -M vicmd 'j' history-beginning-search-forward
 
 KEYTIMEOUT=1
 
+# Toggle fg/suspend:
 _fg() { fg; }
 zle -N _fg
 bindkey '^Z' _fg
