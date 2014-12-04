@@ -64,8 +64,8 @@ bindkey -v
 bindkey '^?' backward-delete-char
 
 # Prefix history search:
-bindkey -M vicmd 'k' history-beginning-search-backward
-bindkey -M vicmd 'j' history-beginning-search-forward
+bindkey "^[[A" history-beginning-search-backward
+bindkey "^[[B" history-beginning-search-forward
 
 KEYTIMEOUT=1
 
