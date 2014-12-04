@@ -1,10 +1,12 @@
-# Environment
+### ENVIRONMENT
+
 export PAGER=$(command -v less)
 
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
 
-# History
+### HISTORY
+
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
@@ -12,7 +14,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt EXTENDED_HISTORY
 
-# Editing
+### EDITING
+
 bindkey -v
 bindkey '^?' backward-delete-char
 bindkey -M vicmd 'k' history-beginning-search-backward
@@ -24,16 +27,19 @@ _fg() { fg; }
 zle -N _fg
 bindkey '^Z' _fg
 
-# Completion
+### COMPLETION
+
 autoload -Uz compinit && compinit
 
-# Output
+### OUTPUT
+
 MAILCHECK=0
 LISTMAX=0
 REPORTTIME=60
 TIMEFMT="%J  %U user %S system %*E elapsed %P cpu %MM memory"
 
-# Prompt
+### PROMPT
+
 _prompt_host() {
   [ "$SSH_CONNECTION" ] || return
 
