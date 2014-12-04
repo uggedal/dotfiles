@@ -11,6 +11,7 @@ setopt EXTENDED_HISTORY
 
 # Editing
 bindkey -v
+bindkey '^?' backward-delete-char
 
 KEYTIMEOUT=1
 
