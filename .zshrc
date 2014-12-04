@@ -24,6 +24,7 @@ autoload -Uz compinit && compinit
 # Output
 MAILCHECK=0
 LISTMAX=0
+REPORTTIME=60
 
 # Prompt
 _prompt_host() {
