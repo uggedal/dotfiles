@@ -46,4 +46,17 @@ _prompt_host() {
   fi
 }
 
-PS1="$(_prompt_host)%~ "
+_HOST="$(_prompt_host)"
+
+PS1="$_HOST%~ "
+
+function zle-line-init zle-keymap-select {
+  if [ "$KEYMAP" = vicmd ]; then
+    PS1="$_HOST%{%F{yellow}%}%~%{%f%} "
+  else
+    PS1="$_HOST%~ "
+  fi
+  zle reset-prompt
+}
+zle -N zle-line-init
+zle -N zle-keymap-select
