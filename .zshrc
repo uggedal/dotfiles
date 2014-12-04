@@ -20,6 +20,8 @@ export LESS_TERMCAP_us=$'\e[0;34m'     # start underlining
 export LESS_TERMCAP_ue=$'\e[0m'        # end underlining
 export LESS_TERMCAP_me=$'\e[0m'        # end all modes
 
+export MANWIDTH=80
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
