@@ -1,6 +1,9 @@
 # Environment
 export PAGER=$(command -v less)
 
+[ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
+  PATH=$HOME/.local/bin:$PATH
+
 # History
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
