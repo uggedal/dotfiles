@@ -119,3 +119,8 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+### X
+
+command -v startx >/dev/null && [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] &&
+  exec startx
