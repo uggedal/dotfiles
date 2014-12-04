@@ -6,6 +6,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
 setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_SPACE
 
 # Editing
 bindkey -v
