@@ -30,6 +30,8 @@
 /.weechat/logs
 /.weechat/sec.conf
 /.Xauthority
+/.zcompdump
+/.zdirs
 /.zsh_history
 /Downloads/
 
