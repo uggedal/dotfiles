@@ -5,6 +5,7 @@ export PAGER=$(command -v less)
 HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=$HISTSIZE
+setopt HIST_IGNORE_DUPS
 
 # Editing
 bindkey -v
