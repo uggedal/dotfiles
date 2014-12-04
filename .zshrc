@@ -1,5 +1,8 @@
 ### ENVIRONMENT
 
+export EDITOR=$(command -v vim)
+export VISUAL=$EDITOR
+
 export PAGER=$(command -v less)
 
 # Local bin
