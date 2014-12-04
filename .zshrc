@@ -9,6 +9,8 @@ SAVEHIST=$HISTSIZE
 # Editing
 bindkey -v
 
+KEYTIMEOUT=1
+
 _fg() { fg; }
 zle -N _fg
 bindkey '^Z' _fg
