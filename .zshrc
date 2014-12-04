@@ -27,6 +27,22 @@ alias grep='command grep --color=auto'
 alias fgrep='command fgrep --color=auto'
 export GREP_COLORS='ms=1;32'
 
+# Use ls with:
+#   - list files in one column
+#   - human readable format for file sizes
+#   - append indicators to directories (/), executables (*), symlinks (@),
+#     sockets (=), and FIFOs (|)
+#   - list dates for long listings in full iso format (if supported)
+#   - list directories before files (if supported)
+ls_flags='-1hF --color=auto'
+gnu_ls_flags='--time-style=long-iso --group-directories-first'
+if command ls $gnu_ls_flags / >/dev/null 2>&1; then
+  ls_flags="$ls_flags $gnu_ls_flags"
+fi
+alias ls="command ls $ls_flags"
+unset ls_flags
+unset LS_COLORS
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
