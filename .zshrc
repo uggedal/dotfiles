@@ -25,6 +25,7 @@ autoload -Uz compinit && compinit
 MAILCHECK=0
 LISTMAX=0
 REPORTTIME=60
+TIMEFMT="%J  %U user %S system %P cpu %MM memory %*E total"
 
 # Prompt
 _prompt_host() {
