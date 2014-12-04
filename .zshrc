@@ -83,7 +83,15 @@ autoload -Uz compinit && compinit
 MAILCHECK=0
 LISTMAX=0
 REPORTTIME=60
-TIMEFMT="%J  %U user %S system %*E elapsed %P cpu %MM memory"
+autoload -Uz colors && colors
+TIMEFMT="
+%J
+
+wall: $fg[green]%*E$reset_color
+user: $fg[yellow]%U$reset_color
+sys:  $fg[yellow]%S$reset_color
+cpu:  $fg[blue]%P$reset_color
+mem:  $fg[blue]%MM$reset_color"
 
 ### PROMPT
 
