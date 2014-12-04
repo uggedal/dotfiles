@@ -155,7 +155,4 @@ _prompt_host() {
   fi
 }
 
-# TODO: cache symbol and hostname lookup
-
-setopt PROMPT_SUBST
-PS1='$(_prompt_host)%~ '
+PS1="$(_prompt_host)%~ "
