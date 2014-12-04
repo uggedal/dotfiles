@@ -5,6 +5,21 @@ export VISUAL=$EDITOR
 
 export PAGER=$(command -v less)
 
+# Make less:
+#   - quit if paged content fits in one screen
+#   - not clear the screen when exiting
+#   - output raw ANSI control characters (used for coloring below)
+#   - use smart case insensitive search
+export LESS="-FXRi"
+
+# Colored man pages:
+export LESS_TERMCAP_md=$'\e[1;31m'     # start bold
+export LESS_TERMCAP_so=$'\e[1;40;37m'  # start standout
+export LESS_TERMCAP_se=$'\e[0m'        # end standout
+export LESS_TERMCAP_us=$'\e[0;34m'     # start underlining
+export LESS_TERMCAP_ue=$'\e[0m'        # end underlining
+export LESS_TERMCAP_me=$'\e[0m'        # end all modes
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
