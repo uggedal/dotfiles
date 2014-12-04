@@ -22,6 +22,11 @@ export LESS_TERMCAP_me=$'\e[0m'        # end all modes
 
 export MANWIDTH=80
 
+# Colorized grep matches:
+alias grep='command grep --color=auto'
+alias fgrep='command fgrep --color=auto'
+export GREP_COLORS='ms=1;32'
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
