@@ -21,8 +21,9 @@ bindkey '^Z' _fg
 # Completion
 autoload -Uz compinit && compinit
 
-# Mail
+# Output
 MAILCHECK=0
+LISTMAX=0
 
 # Prompt
 _prompt_host() {
