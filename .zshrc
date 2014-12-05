@@ -164,3 +164,48 @@ preexec() {
   [ "${#cmd}" -ge $n ] && cmd="${(r:20::.::.:)${2[1,18]}}"
   printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" "$cmd"
 }
+
+### SSH
+
+_tmux_update_ssh_auth_sock() {
+  [ -n "$TMUX" ] || return
+
+  local sock=$(tmux showenv | grep '^SSH_AUTH_SOCK' | cut -d= -f2)
+
+  [ "$SSH_AUTH_SOCK" = "$sock" ] && return
+
+  if [ -S "$sock" ]; then
+    SSH_AUTH_SOCK=$sock
+  fi
+}
+
+_wrap_ssh() {
+  [ "$SSH_CONNECTION" ] && return
+
+  if ! ssh-add -l >/dev/null; then
+    ssh-add $(grep -l 'ENCRYPTED$' .ssh/*id_rsa)
+  fi
+}
+
+ssh() {
+  _wrap_ssh "$@"
+  _tmux_update_ssh_auth_sock
+  command ssh "$@"
+}
+
+scp() {
+  _wrap_ssh "$@"
+  _tmux_update_ssh_auth_sock
+  command scp "$@"
+}
+
+git() {
+  case $1 in
+    push|pull|fetch)
+      _tmux_update_ssh_auth_sock
+      _wrap_ssh git "$@"
+      ;;
+  esac
+
+  command git "$@"
+}
