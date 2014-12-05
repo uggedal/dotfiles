@@ -154,11 +154,13 @@ precmd() {
 
 preexec() {
   local fmt
+  local cmd="$2"
+  local n=20
   case "$TERM" in
     xterm*|rxvt*) fmt='\e]2;%s %s\a';;
     screen*) fmt='\ek%s %s\e\\';;
     *) return;;
   esac
-  printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" \
-    "${(r:20::.::.:)${2[1,18]}}"
+  [ "${#cmd}" -ge $n ] && cmd="${(r:20::.::.:)${2[1,18]}}"
+  printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" "$cmd"
 }
