@@ -84,6 +84,8 @@ bindkey '^Z' _fg
 zmodload zsh/complist
 autoload -Uz compinit && compinit
 
+zstyle ':completion::complete:*' use-cache on
+
 # Allow completing .. to ../:
 zstyle ':completion:*' special-dirs ..
 # Do not treat // as /*/:
