@@ -81,6 +81,7 @@ bindkey '^Z' _fg
 
 ### COMPLETION
 
+zmodload zsh/complist
 autoload -Uz compinit && compinit
 
 # Allow completing .. to ../:
