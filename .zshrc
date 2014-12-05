@@ -89,6 +89,8 @@ zstyle ':completion:*' special-dirs ..
 # Do not treat // as /*/:
 zstyle ':completion:*' squeeze-slashes true
 
+zstyle ':completion:*' show-ambiguity '32'
+
 ### OUTPUT
 
 MAILCHECK=0
