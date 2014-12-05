@@ -135,7 +135,7 @@ PS1="${_HOST}$_DIR "
 
 function zle-line-init zle-keymap-select {
   if [ "$KEYMAP" = vicmd ]; then
-    PS1="$_HOST%{%F{yellow}%}%~%{%f%} "
+    PS1="$_HOST%{%F{green}%}%~%{%f%} "
   else
     PS1="${_HOST}$_DIR "
   fi
