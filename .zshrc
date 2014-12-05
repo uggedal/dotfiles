@@ -159,5 +159,6 @@ preexec() {
     screen*) fmt='\ek%s %s\e\\';;
     *) return;;
   esac
-  printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" "$2"
+  printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" \
+    "${(r:20::.::.:)${2[1,18]}}"
 }
