@@ -83,6 +83,9 @@ bindkey '^Z' _fg
 
 autoload -Uz compinit && compinit
 
+# Allow completing .. to ../:
+zstyle ':completion:*' special-dirs ..
+
 ### OUTPUT
 
 MAILCHECK=0
