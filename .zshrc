@@ -206,3 +206,18 @@ git() {
 
   command git "$@"
 }
+
+_ssh_agent() {
+  command -v ssh-agent >/dev/null || return
+  [ "$SSH_CONNECTION" ] && return
+
+  local agent_info=$HOME/.cache/ssh-agent-info
+
+  [ -f $agent_info ] && . $agent_info >/dev/null
+  [ "$SSH_AGENT_PID" ] && kill -0 $SSH_AGENT_PID 2>/dev/null || {
+    ssh-agent > $agent_info
+    . $agent_info >/dev/null
+  }
+}
+
+_ssh_agent
