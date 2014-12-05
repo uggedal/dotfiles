@@ -143,3 +143,21 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+
+precmd() {
+  local fmt='%~'
+  case "$TERM" in
+    xterm*|rxvt*) print -Pn "\e]2;$fmt\a";;
+    screen*) print -Pn "\ek$fmt\e\\";;
+  esac
+}
+
+preexec() {
+  local fmt
+  case "$TERM" in
+    xterm*|rxvt*) fmt='\e]2;%s %s\a';;
+    screen*) fmt='\ek%s %s\e\\';;
+    *) return;;
+  esac
+  printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" "$2"
+}
