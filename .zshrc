@@ -85,6 +85,8 @@ autoload -Uz compinit && compinit
 
 # Allow completing .. to ../:
 zstyle ':completion:*' special-dirs ..
+# Do not treat // as /*/:
+zstyle ':completion:*' squeeze-slashes true
 
 ### OUTPUT
 
