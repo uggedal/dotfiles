@@ -5,3 +5,6 @@ osd-font='DejaVu Sans'
 fs=yes
 
 osc=no
+
+vo=vaapi
+hwdec=vaapi
