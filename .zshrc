@@ -3,6 +3,10 @@
 command -v startx >/dev/null && [ -z $DISPLAY ] && [ $(tty) = /dev/tty1 ] &&
   exec startx
 
+### SHRC
+
+[ -f $HOME/.shrc ] && . $HOME/.shrc
+
 ### ENVIRONMENT
 
 export EDITOR=$(command -v vim)
