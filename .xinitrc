@@ -17,7 +17,7 @@ fi
 setxkbmap -option compose:ralt
 
 # Root window background and nicer pointer over root window
-xsetroot -solid '#eee8d5' -cursor_name left_ptr &
+xsetroot -solid '#282828' -cursor_name left_ptr &
 
 # Hide cursor after 5 seconds of idling
 if command -v unclutter >/dev/null; then
