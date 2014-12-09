@@ -23,8 +23,8 @@ for_window [class="^Chromium"] border none
 
 for_window [class="^Vimb$"] focus child, layout tabbed, focus
 
-client.focused $GREEN $GREEN $WHITE $ORANGE
-client.focused_inactive $ORANGE $ORANGE $WHITE $ORANGE
+client.focused $MEDIUM $MEDIUM $BLACK $ORANGE
+client.focused_inactive $BLACK $BLACK $LIGHT $BLACK
 client.unfocused $BLACK $BLACK $LIGHT $BLACK
 client.urgent $RED $RED $LIGHT $BLACK
 
