@@ -1,15 +1,15 @@
 set $mod Mod1
 
-set $WHITE "#fdfaf6"
-set $LIGHT "#eee8d5"
-set $MEDIUM "#93a1a1"
-set $DARK "#657b83"
-set $BLACK "#002b36"
-set $RED "#dc322f"
-set $ORANGE "#cb4b16"
-set $YELLOW "#b58900"
-set $GREEN "#859900"
-set $BLUE "#268bd2"
+set $WHITE "#ebdbb2"
+set $LIGHT "#a89984"
+set $MEDIUM "#928374"
+set $DARK "#32302f"
+set $BLACK "#282828"
+set $RED "#cc241d"
+set $ORANGE "#d79921"
+set $YELLOW "#fabd2f"
+set $GREEN "#98971a"
+set $BLUE "#458588"
 
 set $FONT_ANTIALIASED "pango:DejaVu Sans Mono 11"
 set $FONT_BITMAP "-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso8859-1"
@@ -24,16 +24,16 @@ for_window [class="^Chromium"] border none
 for_window [class="^Vimb$"] focus child, layout tabbed, focus
 
 client.focused $GREEN $GREEN $WHITE $ORANGE
-client.focused_inactive $YELLOW $YELLOW $LIGHT $ORANGE
-client.unfocused $LIGHT $LIGHT $MEDIUM $YELLOW
-client.urgent $RED $RED $LIGHT $YELLOW
+client.focused_inactive $ORANGE $ORANGE $WHITE $ORANGE
+client.unfocused $BLACK $BLACK $LIGHT $BLACK
+client.urgent $RED $RED $LIGHT $BLACK
 
 focus_follows_mouse no
 floating_modifier $mod
 
 bindsym $mod+Shift+Return exec --no-startup-id urxvtc
 bindsym $mod+Shift+c kill
-bindsym $mod+p exec --no-startup-id dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $YELLOW -sb $BLACK -l 5 -p '>'
+bindsym $mod+p exec --no-startup-id dmenu_run -fn $FONT_BITMAP -nf $WHITE -nb $BLACK -sf $GREEN -sb $BLACK -l 5 -p '>'
 
 bindsym $mod+h focus left
 bindsym $mod+j focus down
@@ -108,13 +108,13 @@ bindsym $mod+r mode "resize"
 
 bar {
   colors {
-    background $BLACK
-    statusline $LIGHT
+    background $DARK
+    statusline $MEDIUM
     separator $DARK
 
     focused_workspace $BLACK $GREEN $WHITE
     active_workspace $BLACK $YELLOW $WHITE
-    inactive_workspace $BLACK $BLACK $DARK
+    inactive_workspace $BLACK $BLACK $MEDIUM
     urgent_workspace $BLACK $RED $WHITE
   }
   position top

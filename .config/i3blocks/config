@@ -1,5 +1,4 @@
 interval=1
-color=#657b83
 separator=false
 
 [iw]
@@ -36,4 +35,4 @@ interval=5
 
 [date]
 command=date +'%Y-%m-%d %H:%M '
-color=#93a1a1
+color=#928374
