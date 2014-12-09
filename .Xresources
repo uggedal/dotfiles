@@ -27,28 +27,36 @@ URxvt.intensityStyles: false
 
 URxvt.fading: 30
 
-! Solarized light colorscheme
+! gruvbox dark colorscheme
 
-*background: #fdfaf6
-*foreground: #657b83
-*fadeColor: #fdfaf6
-*cursorColor: #586e75
-*pointerColorBackground: #93a1a1
-*pointerColorForeground: #586e75
+*fadeColor: #282828
+*cursorColor: #928374
 
-*color0: #eee8d5
-*color1: #dc322f
-*color2: #859900
-*color3: #b58900
-*color4: #268bd2
-*color5: #d33682
-*color6: #2aa198
-*color7: #073642
-*color9: #cb4b16
-*color8: #fdfaf6
-*color10: #93a1a1
-*color11: #839496
-*color12: #657b83
-*color13: #6c71c4
-*color14: #586e75
-*color15: #002b36
+! hard contrast: *background: #1d2021
+*background: #282828
+! soft contrast: *background: #32302f
+*foreground: #ebdbb2
+! Black + DarkGrey
+*color0:  #282828
+*color8:  #928374
+! DarkRed + Red
+*color1:  #cc241d
+*color9:  #fb4934
+! DarkGreen + Green
+*color2:  #98971a
+*color10: #b8bb26
+! DarkYellow + Yellow
+*color3:  #d79921
+*color11: #fabd2f
+! DarkBlue + Blue
+*color4:  #458588
+*color12: #83a598
+! DarkMagenta + Magenta
+*color5:  #b16286
+*color13: #d3869b
+! DarkCyan + Cyan
+*color6:  #689d6a
+*color14: #8ec07c
+! LightGrey + White
+*color7:  #a89984
+*color15: #ebdbb2
