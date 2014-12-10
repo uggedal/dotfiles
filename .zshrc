@@ -52,6 +52,10 @@ unset LS_COLORS
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
 
+#  Gruvbox colors:
+[ -x $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh ] &&
+  ./.vim/bundle/gruvbox/gruvbox_256palette.sh
+
 ### HISTORY
 
 HISTFILE=~/.zsh_history
