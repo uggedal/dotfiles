@@ -112,10 +112,10 @@ bar {
     statusline $MEDIUM
     separator $DARK
 
-    focused_workspace $BLACK $GREEN $WHITE
-    active_workspace $BLACK $YELLOW $WHITE
-    inactive_workspace $BLACK $BLACK $MEDIUM
-    urgent_workspace $BLACK $RED $WHITE
+    focused_workspace $DARK $GREEN $WHITE
+    active_workspace $DARK $YELLOW $WHITE
+    inactive_workspace $DARK $DARK $MEDIUM
+    urgent_workspace $DARK $RED $WHITE
   }
   position top
   status_command i3blocks
