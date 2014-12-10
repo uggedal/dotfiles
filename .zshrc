@@ -54,7 +54,7 @@ unset LS_COLORS
 
 #  Gruvbox colors:
 [ -x $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh ] &&
-  ./.vim/bundle/gruvbox/gruvbox_256palette.sh
+  $HOME/.vim/bundle/gruvbox/gruvbox_256palette.sh
 
 ### HISTORY
 
