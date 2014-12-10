@@ -23,10 +23,11 @@ for_window [class="^Chromium"] border none
 
 for_window [class="^Vimb$"] focus child, layout tabbed, focus
 
-client.focused $MEDIUM $MEDIUM $BLACK $ORANGE
-client.focused_inactive $BLACK $BLACK $MEDIUM $BLACK
-client.unfocused $BLACK $BLACK $MEDIUM $BLACK
-client.urgent $RED $RED $LIGHT $BLACK
+# border background text indicator
+client.focused $ORANGE $ORANGE $WHITE $RED
+client.focused_inactive $LIGHT $MEDIUM $WHITE $BLACK
+client.unfocused $LIGHT $MEDIUM $WHITE $BLACK
+client.urgent $RED $RED $WHITE $BLACK
 
 focus_follows_mouse no
 floating_modifier $mod
