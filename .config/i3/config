@@ -20,6 +20,7 @@ set $BORDER 4
 new_window normal $BORDER
 for_window [class="^URxvt$"] border pixel $BORDER
 for_window [class="^Chromium"] border none
+for_window [class="^Firefox"] border none
 
 for_window [class="^Vimb$"] focus child, layout tabbed, focus
 
