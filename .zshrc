@@ -166,6 +166,16 @@ preexec() {
   printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" ${2%% *}
 }
 
+### Plugins
+
+_plugin() {
+  local f=/usr/share/zsh/plugins/$1/$1.zsh
+
+  [ -r $f ] && . $f
+}
+
+_plugin zsh-syntax-highlighting
+
 ### SSH
 
 _tmux_update_ssh_auth_sock() {
