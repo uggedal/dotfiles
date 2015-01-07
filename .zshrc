@@ -206,8 +206,8 @@ ZSH_HIGHLIGHT_STYLES[command]=fg=red
 ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
 ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=none
 ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=red
-ZSH_HIGHLIGHT_STYLES[path]=yellow
-ZSH_HIGHLIGHT_STYLES[path_prefix]=yellow
+ZSH_HIGHLIGHT_STYLES[path]=fg=yellow
+ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=yellow
 ZSH_HIGHLIGHT_STYLES[path_approx]=fg=none
 ZSH_HIGHLIGHT_STYLES[globbing]=fg=none
 ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=none
