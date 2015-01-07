@@ -80,6 +80,10 @@ bindkey "^[[B" history-beginning-search-forward
 bindkey -M vicmd '?' history-incremental-pattern-search-backward
 bindkey -M vicmd '/' history-incremental-pattern-search-forward
 
+# Undo:
+bindkey -M vicmd 'u' undo
+bindkey -M vicmd '^R' redo
+
 # Edit cmdline in $EDITOR:
 zle -N edit-command-line
 autoload -Uz edit-command-line
