@@ -148,6 +148,8 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
+### Title
+
 precmd() {
   local fmt='%~'
   case "$TERM" in
