@@ -89,6 +89,12 @@ zle -N edit-command-line
 autoload -Uz edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
+# No arrow keys:
+bindkey -M viins -r '^[[C'
+bindkey -M viins -r '^[[D'
+bindkey -M vicmd -r '^[[C'
+bindkey -M vicmd -r '^[[D'
+
 KEYTIMEOUT=1
 
 # Toggle fg/suspend:
