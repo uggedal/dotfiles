@@ -1,0 +1,19 @@
+#!/bin/sh
+
+URL=http://void.uggedal.com
+DAYS=1
+
+case $1 in
+  [0-9]|[0-9][0-9]|[0-9][0-9][0-9]) DAYS=$1;;
+esac
+
+TODAY=void-updates_$(date +%Y-%m-%d).txt
+BEFORE=void-updates_$(date --date="-$DAYS days" +%Y-%m-%d).txt
+
+TMP=$(mktemp -d)
+trap "rm -rf $TMP" INT TERM EXIT
+
+curl -s $URL/$TODAY > $TMP/$TODAY
+curl -s $URL/$BEFORE > $TMP/$BEFORE
+
+vimdiff $TMP/$TODAY $TMP/$BEFORE
