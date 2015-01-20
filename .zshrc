@@ -98,7 +98,7 @@ bindkey -M vicmd -r '^[[D'
 KEYTIMEOUT=1
 
 # Toggle fg/suspend:
-_fg() { fg; }
+_fg() { fg 2>/dev/null; }
 zle -N _fg
 bindkey '^Z' _fg
 
