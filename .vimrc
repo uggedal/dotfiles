@@ -141,6 +141,7 @@ command! Tabs :call Tabs()
 au BufRead APKBUILD call Tabs()
 au BufRead template call Tabs()
 au BufRead template setl ft=sh
+au BufRead update setl ft=sh
 au FileType go call Tabs()
 
 
