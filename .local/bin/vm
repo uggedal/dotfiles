@@ -33,7 +33,7 @@ _genimg() {
 WIN_IMG=$IMG_ROOT/win.qcow2
 WIN_CAP=20G
 WIN_MEM=4096
-WIN_USB_ID=0529:0600
+WIN_USB_ID=0529:0620
 
 win() {
   _genimg $WIN_IMG $WIN_CAP $WIN_MEM $1
