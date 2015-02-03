@@ -26,6 +26,6 @@ fi
 re="$1"
 [ $# -eq 2 ] && root="$2"
 
-printf "$1" | grep -ve '[A-Z]' >/dev/null && garg="${garg}i"
+printf -- "$1" | grep -ve '[A-Z]' >/dev/null && garg="${garg}i"
 
 find "$root" $farg -print0 | xargs -0 fgrep $garg -e "$re"
