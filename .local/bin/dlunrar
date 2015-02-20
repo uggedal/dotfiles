@@ -17,12 +17,16 @@ filter() {
 }
 
 extract() {
+  local f
+
   while read f; do
     [ -f "$(unrar lb $f)" ] || unrar x $f
   done
 }
 
 link() {
+  local f
+
   while read f; do
     [ -f "$f" ] || ln -s $f .
   done
