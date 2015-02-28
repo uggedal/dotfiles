@@ -5,7 +5,7 @@ DIR=/var/lib/transmission/seed
 filter() {
   case $(pwd) in
     */ep)
-      grep '[._]HDTV[._]'
+      grep '\([._]HDTV[._]\|[._]WEBRip[._]\)'
       ;;
     */mov)
       grep '\(BluRay\|WEB-DL\)'
