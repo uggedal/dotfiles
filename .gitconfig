@@ -30,7 +30,7 @@
 [merge]
   conflictstyle = diff3
 [format]
-  pretty = %C(red)%h %C(green)%ad %C(white)%ae%Creset\n  %s
+  pretty = %C(red)%h %C(green)%ad %C(white)%ae%Creset%n%w(79,2,2)%s%n%n%w(79,2,2)%-b
 [sendemail]
   smtpuser = eivind@uggedal.com
   smtpserver = smtp.gmail.com
