@@ -2,8 +2,6 @@
 
 DIR=/var/lib/transmission/seed
 
-set -x
-
 filter() {
   case $(pwd) in
     */ep)
