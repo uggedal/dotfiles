@@ -28,7 +28,7 @@ link() {
   local f
 
   while read f; do
-    [ -e "$(basename $f)" ] || ln -s $f .
+    [ -e "$(basename $f)" ] || ln -sv $f .
   done
 }
 
