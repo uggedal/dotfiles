@@ -166,4 +166,4 @@ cat $FIFO | parse | lemonbar \
   -u $UNDERLINE \
   -f $FONT_BITMAP \
   -F $LIGHT \
-  -B $DARK \
+  -B $BLACK \
