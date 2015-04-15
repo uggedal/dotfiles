@@ -26,7 +26,7 @@ poll() {
 
   (
     while :; do
-      printf -- "time %s %%{F$WHITE}%s%%{F-}\n" $(date +'%Y-%m-%d %H:%M:%S')
+      printf -- "time %s %%{F$WHITE}%s%%{F-}\n" $(date +'%Y-%m-%d %H:%M')
 
       sleep $((60 - $(date +%S)))
     done
