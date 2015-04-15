@@ -4,22 +4,77 @@
 
 HEIGHT=22
 
-dt() {
-  printf -- "%s %%{F$WHITE}%s%%{F-}" $(date +'%Y-%m-%d %H:%M')
+c() {
+    herbstclient "$@"
 }
 
-poll() {
-  while sleep 1; do
-    printf -- "%%{r}%s \n" "$(dt)"
+clients() {
+  local n=$(c attr tags.focus.curframe_wcount)
+  local c=$(c attr tags.focus.curframe_windex)
+
+  for i in $(seq $n); do
+    if [ $(($i - 1)) -eq $c ]; then
+      printf -- ' %%{F%s}%s%%{F-} ' $ORANGE $i
+    else
+      printf -- ' %s ' $i
+    fi
   done
 }
 
-trap 'herbstclient pad 0 0' INT TERM EXIT
-herbstclient pad 0 $HEIGHT
+poll() {
+  local timepid
 
-poll | lemonbar \
+  (
+    while :; do
+      printf -- "time %s %%{F$WHITE}%s%%{F-}\n" $(date +'%Y-%m-%d %H:%M:%S')
+
+      sleep $((60 - $(date +%S)))
+    done
+  )&
+  timepid=$!
+
+  local hook arg title
+  c --idle | while read -r hook arg title; do
+    printf -- 'title %s\n' "$title"
+  done
+
+  kill $timepid
+}
+
+parse() {
+  local event msg update
+  local clients time title
+
+  while read -r event msg; do
+    update=
+
+    case $event in
+      title)
+        if [ "$title" != "$msg" ]; then
+          title="$msg"
+          clients=$(clients)
+          update=yes
+        fi
+        ;;
+      time)
+        if [ "$time" != "$msg" ]; then
+          time="$msg"
+          update=yes
+        fi
+        ;;
+    esac
+
+    if [ "$update" ]; then
+      printf -- ' %s %%{c} %s %%{r} %s \n' "$clients" "$title" "$time"
+    fi
+  done
+}
+
+trap 'c pad 0 0' INT TERM EXIT
+c pad 0 $HEIGHT
+
+poll | parse | lemonbar \
   -g x$HEIGHT++ \
   -f $FONT_BITMAP \
   -F $LIGHT \
   -B $DARK
-
