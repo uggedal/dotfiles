@@ -146,7 +146,7 @@ c pad 0 $HEIGHT
   trap 'kill $WLANPID' INT TERM EXIT
 
   c --idle | while read -r hook arg title; do
-    printf -- 'title %s\n' "$title"
+    [ "$hook" = focus_changed ] && printf -- 'title %s\n' "$title"
   done
 } | parse | lemonbar \
   -g x$HEIGHT++ \
