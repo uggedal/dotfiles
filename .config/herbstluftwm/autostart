@@ -103,8 +103,7 @@ c emit_hook reload
 keybind
 style
 rule
+$(dirname $0)/panel&
 layout
 
 c unlock
-
-$(dirname $0)/panel&
