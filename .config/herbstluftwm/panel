@@ -1,0 +1,25 @@
+#!/bin/sh
+
+. $(dirname $0)/style.sh
+
+HEIGHT=22
+
+dt() {
+  printf -- "%s %%{F$WHITE}%s%%{F-}" $(date +'%Y-%m-%d %H:%M')
+}
+
+poll() {
+  while sleep 1; do
+    printf -- "%%{r}%s \n" "$(dt)"
+  done
+}
+
+trap 'herbstclient pad 0 0' INT TERM EXIT
+herbstclient pad 0 $HEIGHT
+
+poll | lemonbar \
+  -g x$HEIGHT++ \
+  -f $FONT_BITMAP \
+  -F $LIGHT \
+  -B $DARK
+

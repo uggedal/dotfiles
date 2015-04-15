@@ -106,3 +106,5 @@ rule
 layout
 
 c unlock
+
+$(dirname $0)/panel&
