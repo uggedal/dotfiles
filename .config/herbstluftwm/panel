@@ -21,24 +21,23 @@ clients() {
   done
 }
 
+time() {
+  while :; do
+    printf -- "time %s %%{F$WHITE}%s%%{F-}\n" $(date +'%Y-%m-%d %H:%M')
+
+    sleep $((60 - $(date +%S)))
+  done
+}
+
 poll() {
-  local timepid
-
-  (
-    while :; do
-      printf -- "time %s %%{F$WHITE}%s%%{F-}\n" $(date +'%Y-%m-%d %H:%M')
-
-      sleep $((60 - $(date +%S)))
-    done
-  )&
-  timepid=$!
+  (time)&
+  TIMEPID=$!
+  trap 'kill $TIMEPID' INT TERM EXIT
 
   local hook arg title
   c --idle | while read -r hook arg title; do
     printf -- 'title %s\n' "$title"
   done
-
-  kill $timepid
 }
 
 parse() {
