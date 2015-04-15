@@ -135,10 +135,6 @@ parse() {
   done
 }
 
-
-FIFO=$(mktemp -u)
-mkfifo -m600 $FIFO
-
 cleanup() {
   c pad 0 0
   kill $CHLD 2>/dev/null
@@ -146,6 +142,9 @@ cleanup() {
 }
 
 trap 'cleanup' INT TERM EXIT
+
+FIFO=$(mktemp -u)
+mkfifo -m600 $FIFO
 
 (wm) >$FIFO&
 CHLD="$CHLD $!"
