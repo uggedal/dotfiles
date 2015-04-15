@@ -69,15 +69,40 @@ bat() {
     done
 
     printf -- '\n'
+  done
+}
 
-    sleep 5
+wlan_color() {
+  local perc=$1
+  local c=$GREEN
+
+  # Max quality is 70
+  [ "$perc" -lt 52 ] && c=$YELLOW
+  [ "$perc" -lt 37 ] && c=$ORANGE
+  [ "$perc" -lt 18 ] && c=$RED
+
+  printf '%s' $c
+}
+
+wlan() {
+  command -v iw >/dev/null || return 0
+
+  local if=$1
+  local ssid quality
+
+  while sleep 5; do
+    ssid=$(iw $if link | awk '/SSID: / { print $2 }')
+    [ "$ssid" ] || continue
+    quality=$(awk /$if:' / { gsub(/\./, "", $3); print $3 }' /proc/net/wireless)
+
+    printf -- 'wlan %%{F%s}%s%%{F-}' $(wlan_color $perc) $ssid
   done
 }
 
 parse() {
   local event msg
   local update prev
-  local clients time bat title
+  local clients time bat wlan title
 
   while read -r event msg; do
     update=
@@ -88,7 +113,7 @@ parse() {
         clients=$(clients)
         update=yes
         ;;
-      time|bat)
+      time|bat|wlan)
         eval prev=\$$event
         if [ "$prev" != "$msg" ]; then
           eval $event="\$msg"
@@ -98,7 +123,8 @@ parse() {
     esac
 
     if [ "$update" ]; then
-      printf -- ' %s %%{c} %s %%{r} %s %s \n' "$clients" "$title" "$bat" "$time"
+      printf -- ' %s %%{c} %s %%{r} %s %s %s \n' \
+        "$clients" "$title" "$wlan" "$bat" "$time"
     fi
   done
 }
@@ -114,6 +140,10 @@ c pad 0 $HEIGHT
   (bat)&
   BATPID=$!
   trap 'kill $BATPID' INT TERM EXIT
+
+  (wlan)&
+  WLANPID=$!
+  trap 'kill $WLANPID' INT TERM EXIT
 
   local hook arg title
   c --idle | while read -r hook arg title; do
