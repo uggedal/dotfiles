@@ -81,15 +81,15 @@ wlan_color() {
 wlan() {
   command -v iw >/dev/null || return 0
 
-  local if=$1
+  local if=$(iw dev | awk '/\t+Interface/ { print $2 }')
   local ssid quality
 
-  while sleep 5; do
+  while sleep 1; do
     ssid=$(iw $if link | awk '/SSID: / { print $2 }')
     [ "$ssid" ] || continue
     quality=$(awk /$if:' / { gsub(/\./, "", $3); print $3 }' /proc/net/wireless)
 
-    printf -- 'wlan %%{F%s}%s%%{F-}' $(wlan_color $perc) $ssid
+    printf -- 'wlan %%{F%s}%s%%{F-}' $(wlan_color $quality) $ssid
   done
 }
 
