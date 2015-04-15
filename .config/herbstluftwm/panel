@@ -145,7 +145,6 @@ c pad 0 $HEIGHT
   WLANPID=$!
   trap 'kill $WLANPID' INT TERM EXIT
 
-  local hook arg title
   c --idle | while read -r hook arg title; do
     printf -- 'title %s\n' "$title"
   done
