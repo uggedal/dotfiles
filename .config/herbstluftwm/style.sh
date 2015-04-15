@@ -1,0 +1,12 @@
+FONT_BITMAP=-xos4-terminus-bold-r-normal--16-160-72-72-c-80-iso8859-1
+
+WHITE='#ebdbb2'
+LIGHT='#a89984'
+MEDIUM='#928374'
+DARK='#32302f'
+BLACK='#282828'
+RED='#cc241d'
+ORANGE='#d79921'
+YELLOW='#fabd2f'
+GREEN='#98971a'
+BLUE='#458588'

@@ -33,4 +33,4 @@ if command -v autocutsel >/dev/null; then
   autocutsel -selection PRIMARY -fork
 fi
 
-exec i3
+exec herbstluftwm --locked
