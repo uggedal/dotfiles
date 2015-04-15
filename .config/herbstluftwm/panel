@@ -43,8 +43,8 @@ bat() {
 
   [ -d $ac ] || return 0
 
-  while sleep 5; do
-    state=$(< $ac/online)
+  while sleep 1; do
+    state=$(cat $ac/online)
 
     printf -- 'bat'
 
@@ -55,8 +55,8 @@ bat() {
           ;;
       esac
 
-      now=$(< $bat/energy_now)
-      full=$(< $bat/energy_full)
+      now=$(cat $bat/energy_now)
+      full=$(cat $bat/energy_full)
       perc=$(expr \( 100 \* $now \) / $full)
 
       printf -- ' %%{F%s}%s%%{F-}' $(bat_color $state $perc) $perc
