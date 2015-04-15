@@ -29,42 +29,74 @@ time() {
   done
 }
 
-poll() {
-  (time)&
-  TIMEPID=$!
-  trap 'kill $TIMEPID' INT TERM EXIT
+bat_color() {
+  local state=$1
+  local perc=$2
+  local c=$GREEN
 
-  local hook arg title
-  c --idle | while read -r hook arg title; do
-    printf -- 'title %s\n' "$title"
+  [ "$perc" -lt 75 ] && c=$YELLOW
+  [ "$perc" -lt 50 ] && c=$ORANGE
+  [ "$perc" -lt 25 ] && c=$RED
+  [ "$state" -eq 1 ] && c=$BLUE
+
+  printf '%s' $c
+}
+
+bat() {
+  local sys=/sys/class/power_supply
+  local ac=$sys/AC
+  local bat state now full perc
+
+  [ -d $ac ] || return 0
+
+  while :; do
+    state=$(< $ac/online)
+
+    for bat in $sys/BAT*; do
+      case $bat in
+        *\*)
+          return 0
+          ;;
+      esac
+
+      now=$(< $bat/energy_now)
+      full=$(< $bat/energy_full)
+      perc=$(expr \( 100 \* $now \) / $full)
+
+      printf -- ' %%{F%s}%s%%{F-}' $(color $state $perc) $perc
+    done
+
+    printf -- '\n'
+
+    sleep 5
   done
 }
 
 parse() {
-  local event msg update
-  local clients time title
+  local event msg
+  local update prev
+  local clients time bat title
 
   while read -r event msg; do
     update=
 
     case $event in
       title)
-        if [ "$title" != "$msg" ]; then
-          title="$msg"
-          clients=$(clients)
-          update=yes
-        fi
+        title="$msg"
+        clients=$(clients)
+        update=yes
         ;;
-      time)
-        if [ "$time" != "$msg" ]; then
-          time="$msg"
-          update=yes
+      time|bat)
+        eval prev=\$$event
+        if [ "$prev" != "$msg" ]; then
+          eval $event="\$msg"
         fi
+        update=yes
         ;;
     esac
 
     if [ "$update" ]; then
-      printf -- ' %s %%{c} %s %%{r} %s \n' "$clients" "$title" "$time"
+      printf -- ' %s %%{c} %s %%{r} %s %s \n' "$clients" "$title" "$bat" "$time"
     fi
   done
 }
@@ -72,7 +104,20 @@ parse() {
 trap 'c pad 0 0' INT TERM EXIT
 c pad 0 $HEIGHT
 
-poll | parse | lemonbar \
+{
+  (time)&
+  TIMEPID=$!
+  trap 'kill $TIMEPID' INT TERM EXIT
+
+  (bat)&
+  BATPID=$!
+  trap 'kill $BATPID' INT TERM EXIT
+
+  local hook arg title
+  c --idle | while read -r hook arg title; do
+    printf -- 'title %s\n' "$title"
+  done
+} | parse | lemonbar \
   -g x$HEIGHT++ \
   -f $FONT_BITMAP \
   -F $LIGHT \
