@@ -3,6 +3,7 @@
 . $(dirname $0)/style.sh
 
 HEIGHT=22
+UNDERLINE=2
 
 c() {
     herbstclient "$@"
@@ -98,7 +99,7 @@ clients() {
 
   for i in $(seq $n); do
     if [ $(($i - 1)) -eq $c ]; then
-      printf -- ' %%{F%s}%s%%{F-} ' $ORANGE $i
+      printf -- '%%{+u}%%{U%s} %s %%{U-}%%{-u}' $ORANGE $i
     else
       printf -- ' %s ' $i
     fi
@@ -162,6 +163,7 @@ c pad 0 $HEIGHT
 
 cat $FIFO | parse | lemonbar \
   -g x$HEIGHT++ \
+  -u $UNDERLINE \
   -f $FONT_BITMAP \
   -F $LIGHT \
-  -B $DARK
+  -B $DARK \
