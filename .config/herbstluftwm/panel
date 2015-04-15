@@ -8,16 +8,9 @@ c() {
     herbstclient "$@"
 }
 
-clients() {
-  local n=$(c attr tags.focus.curframe_wcount)
-  local c=$(c attr tags.focus.curframe_windex)
-
-  for i in $(seq $n); do
-    if [ $(($i - 1)) -eq $c ]; then
-      printf -- ' %%{F%s}%s%%{F-} ' $ORANGE $i
-    else
-      printf -- ' %s ' $i
-    fi
+wm() {
+  c --idle | while read -r hook arg title; do
+    [ "$hook" = focus_changed ] && printf -- 'title %s\n' "$title"
   done
 }
 
@@ -99,6 +92,19 @@ wlan() {
   done
 }
 
+clients() {
+  local n=$(c attr tags.focus.curframe_wcount)
+  local c=$(c attr tags.focus.curframe_windex)
+
+  for i in $(seq $n); do
+    if [ $(($i - 1)) -eq $c ]; then
+      printf -- ' %%{F%s}%s%%{F-} ' $ORANGE $i
+    else
+      printf -- ' %s ' $i
+    fi
+  done
+}
+
 parse() {
   local event msg
   local update prev
@@ -129,26 +135,33 @@ parse() {
   done
 }
 
-trap 'c pad 0 0' INT TERM EXIT
+
+FIFO=$(mktemp -u)
+mkfifo -m600 $FIFO
+
+cleanup() {
+  c pad 0 0
+  kill $CHLD 2>/dev/null
+  rm -f $FIFO
+}
+
+trap 'cleanup' INT TERM EXIT
+
+(wm) >$FIFO&
+CHLD="$CHLD $!"
+
+(time) >$FIFO&
+CHLD="$CHLD $!"
+
+(bat) >$FIFO&
+CHLD="$CHLD $!"
+
+(wlan) >$FIFO&
+CHLD="$CHLD $!"
+
 c pad 0 $HEIGHT
 
-{
-  (time)&
-  TIMEPID=$!
-  trap 'kill $TIMEPID' INT TERM EXIT
-
-  (bat)&
-  BATPID=$!
-  trap 'kill $BATPID' INT TERM EXIT
-
-  (wlan)&
-  WLANPID=$!
-  trap 'kill $WLANPID' INT TERM EXIT
-
-  c --idle | while read -r hook arg title; do
-    [ "$hook" = focus_changed ] && printf -- 'title %s\n' "$title"
-  done
-} | parse | lemonbar \
+cat $FIFO | parse | lemonbar \
   -g x$HEIGHT++ \
   -f $FONT_BITMAP \
   -F $LIGHT \
