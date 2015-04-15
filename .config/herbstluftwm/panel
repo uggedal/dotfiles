@@ -124,8 +124,8 @@ parse() {
         eval prev=\$$event
         if [ "$prev" != "$msg" ]; then
           eval $event="\$msg"
+          update=yes
         fi
-        update=yes
         ;;
     esac
 
