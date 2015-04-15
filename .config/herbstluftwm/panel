@@ -49,8 +49,10 @@ bat() {
 
   [ -d $ac ] || return 0
 
-  while :; do
+  while sleep 5; do
     state=$(< $ac/online)
+
+    printf -- 'bat'
 
     for bat in $sys/BAT*; do
       case $bat in
@@ -63,7 +65,7 @@ bat() {
       full=$(< $bat/energy_full)
       perc=$(expr \( 100 \* $now \) / $full)
 
-      printf -- ' %%{F%s}%s%%{F-}' $(color $state $perc) $perc
+      printf -- ' %%{F%s}%s%%{F-}' $(bat_color $state $perc) $perc
     done
 
     printf -- '\n'
