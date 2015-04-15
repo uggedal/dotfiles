@@ -89,7 +89,7 @@ wlan() {
     [ "$ssid" ] || continue
     quality=$(awk /$if:' / { gsub(/\./, "", $3); print $3 }' /proc/net/wireless)
 
-    printf -- 'wlan %%{F%s}%s%%{F-}' $(wlan_color $quality) $ssid
+    printf -- 'wlan %%{F%s}%s%%{F-}\n' $(wlan_color $quality) $ssid
   done
 }
 
