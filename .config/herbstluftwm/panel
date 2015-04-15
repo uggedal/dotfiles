@@ -130,7 +130,7 @@ parse() {
     esac
 
     if [ "$update" ]; then
-      printf -- ' %s %%{c} %s %%{r} %s %s %s \n' \
+      printf -- ' %s %%{c} %s %%{r} %s  %s  %s \n' \
         "$clients" "$title" "$wlan" "$bat" "$time"
     fi
   done
