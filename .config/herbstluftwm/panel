@@ -137,7 +137,6 @@ parse() {
 }
 
 cleanup() {
-  c pad 0 0
   kill $CHLD 2>/dev/null
   rm -f $FIFO
 }
