@@ -93,16 +93,35 @@ wlan() {
   done
 }
 
-clients() {
-  local n=$(c attr tags.focus.curframe_wcount)
-  local c=$(c attr tags.focus.curframe_windex)
+frame_clients() {
+  local total=$1
+  local focus=$2
+  local i
 
-  for i in $(seq $n); do
-    if [ $(($i - 1)) -eq $c ]; then
+  for i in $(seq $total); do
+    if [ $(($i - 1)) -eq $focus ]; then
       printf -- '%%{+u}%%{U%s} %s %%{U-}%%{-u}' $ORANGE $i
     else
       printf -- ' %s ' $i
     fi
+  done
+}
+
+clients() {
+  local line
+
+  c layout | awk -F: '/max: / { print $2 }' | while read -r line; do
+    case "$line" in
+      *FOCUS*)
+        frame_clients \
+          $(c attr tags.focus.curframe_wcount) \
+          $(c attr tags.focus.curframe_windex)
+        ;;
+      *)
+        frame_clients $(printf -- '%s' "$line" | wc -w) 999
+        ;;
+    esac
+    printf -- ' '
   done
 }
 
