@@ -5,10 +5,10 @@ DIR=/var/lib/transmission/seed
 filter() {
   case $(pwd) in
     */ep)
-      grep 'S[0-9][0-9]E[0-9][0-9]'
+      grep -i 'S[0-9][0-9]E[0-9][0-9]'
       ;;
     */mov)
-      grep '\(BluRay\|WEB-DL\)'
+      grep -i '\(BluRay\|WEB-DL\)'
       ;;
     *)
       cat >/dev/null
