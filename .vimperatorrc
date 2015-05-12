@@ -1,0 +1,4 @@
+set toolbars=nomenu,nonavigation,nobookmarks,noaddons
+set scrollbars=false
+
+set hintchars=sadfjklewcmpgh
