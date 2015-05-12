@@ -2,13 +2,15 @@
 
 DIR=/var/lib/transmission/seed
 
+EP_RE='S[0-9][0-9]E[0-9][0-9]'
+
 filter() {
   case $(pwd) in
     */ep)
-      grep -i 'S[0-9][0-9]E[0-9][0-9]'
+      grep -i $EP_RE
       ;;
     */mov)
-      grep -i '\(BluRay\|WEB-DL\)'
+      grep -i '\(BluRay\|WEB-DL\)' | grep -vi $EP_RE
       ;;
     *)
       cat >/dev/null
