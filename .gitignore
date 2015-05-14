@@ -26,6 +26,7 @@
 /.viminfo
 /.vim/.netrwhist
 /.vim/bundle
+/.vimperator/
 /.vboxclient-*.pid
 /.weechat/*.log
 /.weechat/logs
