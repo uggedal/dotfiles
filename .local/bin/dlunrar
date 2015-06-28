@@ -21,16 +21,16 @@ filter() {
 extract() {
   local f
 
-  while read f; do
-    [ -f "$(unrar lb $f)" ] || unrar x $f
+  while IFS=$(printf '\n') read f; do
+    [ -f "$(unrar lb "$f")" ] || unrar x "$f"
   done
 }
 
 link() {
   local f
 
-  while read f; do
-    [ -e "$(basename $f)" ] || ln -sv $f .
+  while IFS=$(printf '\n') read f; do
+    [ -e "$(basename "$f")" ] || ln -sv "$f" .
   done
 }
 
