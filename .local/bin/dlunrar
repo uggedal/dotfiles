@@ -36,4 +36,4 @@ link() {
 
 find $DIR -maxdepth 3 -type f -name \*.rar | filter | extract
 
-find $DIR -maxdepth 3 -type f -name \*.mkv | filter | link
+find $DIR -maxdepth 3 -type f -name \*.mkv | grep -v sample | filter | link
