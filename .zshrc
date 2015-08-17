@@ -134,6 +134,12 @@ sys:  $fg[yellow]%S$reset_color
 cpu:  $fg[blue]%P$reset_color
 mem:  $fg[blue]%MM$reset_color"
 
+# URL auto quote:
+autoload -U url-quote-magic
+zstyle ':urlglobber' url-other-schema git http https
+zstyle ':url-quote-magic:*' url-metas '?^#='
+zle -N self-insert url-quote-magic
+
 ### PROMPT
 
 _prompt_host() {
