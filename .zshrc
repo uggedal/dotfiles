@@ -80,6 +80,9 @@ bindkey "^[[B" history-beginning-search-forward
 bindkey -M vicmd '?' history-incremental-pattern-search-backward
 bindkey -M vicmd '/' history-incremental-pattern-search-forward
 
+# emacs history search:
+bindkey '^R' history-incremental-pattern-search-backward
+
 # Undo:
 bindkey -M vicmd 'u' undo
 bindkey -M vicmd '^R' redo
