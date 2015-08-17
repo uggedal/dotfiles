@@ -121,6 +121,7 @@ nnoremap N Nzzzv
 set wrap           " visually wrap lines longer than the window
 set colorcolumn=80 " mark lines over 80 columns
 set linebreak      " wrap lines on word boundaries
+set breakindent    " wrap lines with indent
 set autoindent     " fallback when filetype don't provide indent
 
 set expandtab      " expand tabs to spaces
