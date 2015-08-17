@@ -116,7 +116,7 @@ zstyle ':completion::complete:*' use-cache true
 zstyle ':completion:*' special-dirs ..
 # Do not treat // as /*/:
 zstyle ':completion:*' squeeze-slashes true
-
+# Ambiguity color:
 zstyle ':completion:*' show-ambiguity '32'
 
 ### OUTPUT
