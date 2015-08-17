@@ -78,6 +78,12 @@ setopt NO_NOMATCH
 setopt AUTO_PUSHD
 setopt PUSHD_IGNORE_DUPS
 
+alias d=dirs\ -v
+for _i ({1..9}); do
+  alias $_i=cd\ +$_i
+done
+unset _i
+
 ### EDITING
 
 bindkey -v
