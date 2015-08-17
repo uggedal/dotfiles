@@ -170,7 +170,7 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init
 zle -N zle-keymap-select
 
-### Title
+### TITLE
 
 precmd() {
   local fmt='%~'
@@ -190,7 +190,7 @@ preexec() {
   printf -- "$fmt" "${${PWD/#%$HOME/~}/#$HOME\//~/}" ${2%% *}
 }
 
-### Plugins
+### PLUGINS
 
 _plugin() {
   local f=/usr/share/zsh/plugins/$1/$1.zsh
