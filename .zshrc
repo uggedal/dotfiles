@@ -65,6 +65,10 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt EXTENDED_HISTORY
 
+### JOB CONTROL
+
+setopt LONG_LIST_JOBS
+
 ### EDITING
 
 bindkey -v
@@ -118,6 +122,8 @@ zstyle ':completion:*' special-dirs ..
 zstyle ':completion:*' squeeze-slashes true
 # Ambiguity color:
 zstyle ':completion:*' show-ambiguity '32'
+# Scrollable completion lists:
+zstyle ':completion:*' list-prompt ''
 
 ### OUTPUT
 
