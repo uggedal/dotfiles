@@ -133,6 +133,8 @@ zstyle ':completion:*' squeeze-slashes true
 zstyle ':completion:*' show-ambiguity '32'
 # Scrollable completion lists:
 zstyle ':completion:*' list-prompt ''
+# No completion for completion functions:
+zstyle ':completion:*:functions' ignored-patterns '_*'
 
 ### OUTPUT
 
