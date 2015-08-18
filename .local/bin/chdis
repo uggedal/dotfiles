@@ -3,7 +3,7 @@
 # Change display
 
 PRI='eDP1'
-SEC='HDMI1'
+SEC='HDMI2'
 
 if xrandr | grep -q "^$SEC disconnected"; then
   xrandr --output $SEC --off --output $PRI --auto
