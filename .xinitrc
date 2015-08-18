@@ -33,4 +33,9 @@ if command -v autocutsel >/dev/null; then
   autocutsel -selection PRIMARY -fork
 fi
 
+# Screen lock
+if command -v xautolock >/dev/null && command -v slock >/dev/null; then
+  xautolock -time 10 -locker slock &
+fi
+
 exec herbstluftwm --locked
