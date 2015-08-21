@@ -1,19 +1,12 @@
 ! Fonts
 
 Xft.dpi: 96
-Xft.autohint: 0
-Xft.hinting: 1
-Xft.hintstyle: hintfull
-Xft.antialias: 1
-Xft.lcdfilter: lcddefault
-Xft.rgba: rgb
 
 
 ! Urxvt
 
-URxvt.font:xft:DejaVu Sans Mono-12
-URxvt.boldFont:xft:DejaVu Sans Mono-12:style=bold
-URxvt.letterSpace: -1
+URxvt.font:xft:terminus:size=20
+URxvt.boldFont:xft:terminus:bold:size=20
 
 URxvt*scrollBar: false
 URxvt*mouseWheelScrollPage: True
