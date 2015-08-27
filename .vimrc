@@ -144,6 +144,7 @@ au BufRead template call Tabs()
 au BufRead template setl ft=sh
 au BufRead update setl ft=sh
 au FileType c,cpp,go call Tabs()
+au BufRead Config.in setl ft=kconfig
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
