@@ -6,8 +6,6 @@
 /.config/htop/htoprc
 /.config/pulse/
 /.config/qutebrowser/quickmarks
-/.config/vimb/*
-!/.config/vimb/config
 /.dbus/
 /.gnupg/*
 !/.gnupg/gpg*.conf
