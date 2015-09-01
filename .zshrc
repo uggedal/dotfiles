@@ -111,11 +111,16 @@ zle -N edit-command-line
 autoload -Uz edit-command-line
 bindkey -M vicmd 'v' edit-command-line
 
-# No arrow keys:
-bindkey -M viins -r '^[[C'
-bindkey -M viins -r '^[[D'
-bindkey -M vicmd -r '^[[C'
-bindkey -M vicmd -r '^[[D'
+for _m in viins vicmd; do
+    # No arrow keys:
+    bindkey -M $_m '^[[C' beep
+    bindkey -M $_m '^[[D' beep
+
+    # No annoying PGUP/DOWN bindings:
+    bindkey -M $_m '^[[5~' beep
+    bindkey -M $_m '^[[6~' beep
+done
+unset _m
 
 KEYTIMEOUT=1
 
