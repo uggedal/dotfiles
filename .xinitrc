@@ -7,6 +7,9 @@ done
 
 # Load local .Xresources
 xrdb -merge $HOME/.Xresources
+if [ -e $HOME/.Xresources-$(hostname -s) ]; then
+  xrdb -merge $HOME/.Xresources-$(hostname -s)
+fi
 
 # VBox sync
 if command -v VBoxClient-all >/dev/null; then
