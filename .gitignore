@@ -34,5 +34,6 @@
 /.zsh_history
 
 # Blob files:
+/pkg
 /src
 /vid
