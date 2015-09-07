@@ -1,35 +1,22 @@
-#!/usr/bin/env bash
+#!/bin/sh
 
 set -e
 
 PROTO=git
 
-VIM_PLUGINS=(
-  'morhetz/gruvbox                  b7d8d25'
-
-  'pangloss/vim-javascript          v0.9.0'
-  'tpope/vim-markdown               b3cea72'
-  'hail2u/vim-css3-syntax           v0.11.0'
-  'elzr/vim-json                    75bd278'
-  'avakhov/vim-yaml                 4b37a4f'
-  'mustache/vim-mustache-handlebars 685a957'
-  'metalelf0/vimt0d0                493a164'
-
-  'ervandew/supertab                2.1'
-  'scrooloose/syntastic             3.4.0'
-  'vim-scripts/IndexedSearch        500a64a'
-  'nelstrom/vim-visual-star-search  59d5f09'
-  'bling/vim-bufferline             45b279e'
-)
-
-DEPRECATED_VIM_PLUGINS=(
-  'zah/nimrod.vim                   aa586b5'
-  'tpope/vim-characterize           418c75e'
-  'tpope/vim-commentary             v1.2'
-  'vim-scripts/gitignore            061c5c7'
-  'fholgado/minibufexpl.vim         v6.5.2'
-  'altercation/vim-colors-solarized 528a59f'
-)
+VIM_PLUGINS='morhetz/gruvbox=b7d8d25
+pangloss/vim-javascript=v0.9.0
+tpope/vim-markdown=b3cea72
+hail2u/vim-css3-syntax=v0.11.0
+elzr/vim-json=75bd278
+avakhov/vim-yaml=4b37a4f
+mustache/vim-mustache-handlebars=685a957
+metalelf0/vimt0d0=493a164
+ervandew/supertab=2.1
+scrooloose/syntastic=3.4.0
+vim-scripts/IndexedSearch=500a64a
+nelstrom/vim-visual-star-search=59d5f09
+bling/vim-bufferline=45b279e'
 
 err() {
   printf "%-40s %s\n" $1 "$2" >&2
@@ -38,7 +25,7 @@ err() {
 ensure_git() {
   local target=$1
 
-  test -d $target/.git
+  [ -d $target/.git ]
 }
 
 ensure_remote() {
@@ -65,30 +52,17 @@ ensure_repo() {
 
 ensure_plugins() {
   local root=$1
-  shift
-  local plugins=("${@}")
+  local plugins="$2"
+  local plugin
 
   test -d $root || mkdir -p $root
 
-  for plugin in "${plugins[@]}"; do
-    local repo=${plugin%% *}
+  for plugin in $plugins; do
+    local repo=${plugin%%=*}
     local name=${repo##*/}
-    local version=${plugin##* }
+    local version=${plugin##*=}
 
     ensure_repo $repo $root/$name $version
-  done
-}
-
-remove_plugins() {
-  local root=$1
-  shift
-  local plugins=("${@}")
-
-  for plugin in "${plugins[@]}"; do
-    local repo=${plugin%% *}
-    local name=${repo##*/}
-
-    rm -rf $root/$name
   done
 }
 
@@ -107,11 +81,11 @@ status_repo() {
     return
   fi
 
-  if grep -q '^[v0-9.]*$' <<<$version; then
+  if printf '%s' $version | grep -q '^[v0-9.]*$'; then
     local actual_version=$(cd $target && git describe --tags)
     local tags=$(cd $target && git tag)
-    local index=$(grep -En '^.+$' <<< "$tags" | grep :$actual_version\$ | cut -d: -f1)
-    local num=$( wc -l <<< "$tags")
+    local index=$(printf '%s' "$tags" | grep -En '^.+$' | grep :$actual_version\$ | cut -d: -f1)
+    local num=$(printf "$tags" | wc -l)
     local behind=$(($num - $index))
 
     if [ $actual_version = $version ]; then
@@ -124,7 +98,7 @@ status_repo() {
     local actual_version=$(cd $target && git rev-parse HEAD)
     local behind=$(cd $target && git rev-list --count origin...HEAD 2>/dev/null)
 
-    if grep -q "^$version" <<<$actual_version; then
+    if printf '%s' $actual_version | grep -q "^$version"; then
       if [ "$behind" -gt 0 ]; then
         err $repo "behind $behind upstream changes"
       fi
@@ -137,13 +111,13 @@ status_repo() {
 
 status_plugins() {
   local root=$1
-  shift
-  local plugins=("${@}")
+  local plugins="$2"
+  local plugin
 
-  for plugin in "${plugins[@]}"; do
-    local repo=${plugin%% *}
-    local name=${repo##*/}
-    local version=${plugin##* }
+  for plugin in $plugins; do
+    local repo="${plugin%%=*}"
+    local name="${repo##*/}"
+    local version="${plugin##*=}"
 
     status_repo $repo $root/$name $version
   done
@@ -151,15 +125,18 @@ status_plugins() {
 
 case $1 in
   sync)
-    if [ $# -eq 2 ] && [[ $2  =~ ^(git|https?)$ ]]; then
-      PROTO=$2
+    if [ $# -eq 2 ]; then
+      case $2 in
+        git|http|https)
+        PROTO=$2
+        ;;
+      esac
     fi
 
-    ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
-    remove_plugins "$HOME/.vim/bundle" "${DEPRECATED_VIM_PLUGINS[@]}"
+    ensure_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS}"
   ;;
   status)
-    status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS[@]}"
+    status_plugins "$HOME/.vim/bundle" "${VIM_PLUGINS}"
   ;;
   *)
     printf 'Usage: %s <sync [git|http|https]|status>\n' $(basename $0) >&2
