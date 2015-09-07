@@ -233,7 +233,7 @@ _plugin() {
 }
 
 _plugin zsh-syntax-highlighting
-if [ "$ ZSH_HIGHLIGHT_STYLES" ]; then
+if [ "$ZSH_HIGHLIGHT_STYLES" ]; then
   ZSH_HIGHLIGHT_STYLES[default]=none
   ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=black,bg=red
   ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=red
