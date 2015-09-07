@@ -28,9 +28,11 @@ export LESS_TERMCAP_me=$'\e[0m'        # end all modes
 export MANWIDTH=80
 
 # Colorized grep matches:
-alias grep='grep --color=auto'
-alias fgrep='fgrep --color=auto'
-export GREP_COLORS='ms=1;32'
+if echo x | grep --color=auto x >/dev/null 2>&1; then
+  alias grep='grep --color=auto'
+  alias fgrep='fgrep --color=auto'
+  export GREP_COLORS='ms=1;32'
+fi
 
 # Use ls with:
 #   - list files in one column
