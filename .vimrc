@@ -19,8 +19,6 @@ set number
 
 set shortmess+=I     " don't show splash screen
 
-set shell=/bin/bash  " some plugins are not compatible with fish shell
-
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Color and Syntax
