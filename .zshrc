@@ -233,29 +233,31 @@ _plugin() {
 }
 
 _plugin zsh-syntax-highlighting
-ZSH_HIGHLIGHT_STYLES[default]=none
-ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=black,bg=red
-ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=red
-ZSH_HIGHLIGHT_STYLES[alias]=fg=red
-ZSH_HIGHLIGHT_STYLES[builtin]=fg=red
-ZSH_HIGHLIGHT_STYLES[function]=fg=green
-ZSH_HIGHLIGHT_STYLES[command]=fg=red
-ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
-ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=none
-ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=red
-ZSH_HIGHLIGHT_STYLES[path]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=yellow
-ZSH_HIGHLIGHT_STYLES[path_approx]=fg=none
-ZSH_HIGHLIGHT_STYLES[globbing]=fg=none
-ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=none
-ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
-ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
-ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=green
-ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=green
-ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
-ZSH_HIGHLIGHT_STYLES[assign]=none
+if [ "$ ZSH_HIGHLIGHT_STYLES" ]; then
+  ZSH_HIGHLIGHT_STYLES[default]=none
+  ZSH_HIGHLIGHT_STYLES[unknown-token]=fg=black,bg=red
+  ZSH_HIGHLIGHT_STYLES[reserved-word]=fg=red
+  ZSH_HIGHLIGHT_STYLES[alias]=fg=red
+  ZSH_HIGHLIGHT_STYLES[builtin]=fg=red
+  ZSH_HIGHLIGHT_STYLES[function]=fg=green
+  ZSH_HIGHLIGHT_STYLES[command]=fg=red
+  ZSH_HIGHLIGHT_STYLES[precommand]=fg=green
+  ZSH_HIGHLIGHT_STYLES[commandseparator]=fg=none
+  ZSH_HIGHLIGHT_STYLES[hashed-command]=fg=red
+  ZSH_HIGHLIGHT_STYLES[path]=fg=yellow
+  ZSH_HIGHLIGHT_STYLES[path_prefix]=fg=yellow
+  ZSH_HIGHLIGHT_STYLES[path_approx]=fg=none
+  ZSH_HIGHLIGHT_STYLES[globbing]=fg=none
+  ZSH_HIGHLIGHT_STYLES[history-expansion]=fg=none
+  ZSH_HIGHLIGHT_STYLES[single-hyphen-option]=none
+  ZSH_HIGHLIGHT_STYLES[double-hyphen-option]=none
+  ZSH_HIGHLIGHT_STYLES[back-quoted-argument]=none
+  ZSH_HIGHLIGHT_STYLES[single-quoted-argument]=fg=green
+  ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=green
+  ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=cyan
+  ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=cyan
+  ZSH_HIGHLIGHT_STYLES[assign]=none
+fi
 
 ### SSH
 
