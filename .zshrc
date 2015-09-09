@@ -50,6 +50,10 @@ alias ls="ls $ls_flags"
 unset ls_flags
 unset LS_COLORS
 
+if command -v dbclient >/dev/null; then
+  export GIT_SSH=dbclient
+fi
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
@@ -286,7 +290,11 @@ _wrap_ssh() {
 ssh() {
   _wrap_ssh "$@"
   _tmux_update_ssh_auth_sock
-  command ssh "$@"
+  if command -v dbclient >/dev/null; then
+    command dbclient "$@"
+  else
+    command ssh "$@"
+  fi
 }
 
 scp() {
