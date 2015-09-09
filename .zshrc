@@ -50,6 +50,10 @@ alias ls="ls $ls_flags"
 unset ls_flags
 unset LS_COLORS
 
+if command -v dbclient >/dev/null; then
+  alias ssh=dbclient
+fi
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
