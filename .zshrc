@@ -56,7 +56,7 @@ if command -v dbclient >/dev/null; then
 fi
 
 # Aports
-APORTSDIR=$HOME/src/aports
+export APORTSDIR=$HOME/src/aports
 
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
