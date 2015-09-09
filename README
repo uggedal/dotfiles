@@ -1,0 +1,38 @@
+Uggedal's dotfiles
+==================
+
+This is an opinionated and minimalistic dotfiles repo. You will find no
+superfluous shell aliases or obscure vim plugins here. The essential programs
+I use in my daily workflow are:
+
+* bash
+* ssh
+* git
+* vim
+* tmux
+* weechat
+* pass
+
+In addition the following programs are used to form an ideal graphical
+experience:
+
+* herbstluftwm
+* urxvt
+* unclutter
+* autocutsel
+
+Installation
+------------
+
+I keep my whole home directory in git without using symlinking as often
+found in other dotfile repos. Installation is therefore as simple as:
+
+    cd ~
+    git init
+    git remote add origin https://github.com/uggedal/dotfiles.git
+    git pull
+
+Third-party dependencies are synchronized using a custom script
+(since git submodules are a PITA):
+
+    dotfiles sync
