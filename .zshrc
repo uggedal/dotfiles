@@ -55,6 +55,9 @@ if command -v dbclient >/dev/null; then
   export GIT_SSH=dbclient
 fi
 
+# Aports
+APORTSDIR=$HOME/src/aports
+
 # Local bin
 [ -d $HOME/.local/bin ] && [[ :$PATH: != *:$HOME/.local/bin:* ]] &&
   PATH=$HOME/.local/bin:$PATH
