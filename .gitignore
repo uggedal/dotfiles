@@ -1,4 +1,5 @@
 # Generated files:
+/.abuild/*.rsa*
 /.bash_history
 /.cache/
 /.config/chromium/
