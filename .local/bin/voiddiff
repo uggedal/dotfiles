@@ -1,6 +1,6 @@
 #!/bin/sh
 
-URL=http://void.uggedal.com
+URL=http://repo.voidlinux.eu/void-updates
 DAYS=1
 
 case $1 in
