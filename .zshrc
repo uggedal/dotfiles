@@ -50,6 +50,7 @@ alias ls="ls $ls_flags"
 unset ls_flags
 unset LS_COLORS
 
+# Use dbclient with git if available:
 if command -v dbclient >/dev/null; then
   export GIT_SSH=dbclient
 fi
