@@ -6,7 +6,7 @@ PROTO=git
 
 VIM_PLUGINS='morhetz/gruvbox=v2.0.0
 pangloss/vim-javascript=v0.9.0
-tpope/vim-markdown=b3cea72
+tpope/vim-markdown=ba29415
 hail2u/vim-css3-syntax=v0.11.0
 elzr/vim-json=75bd278
 avakhov/vim-yaml=4b37a4f
