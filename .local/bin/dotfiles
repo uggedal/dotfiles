@@ -83,7 +83,7 @@ status_repo() {
 
   if printf '%s' $version | grep -q '^[v0-9.]*$'; then
     local actual_version=$(cd $target && git describe --tags)
-    local tags=$(cd $target && git tag)
+    local tags=$(cd $target && git tag --sort=v:refname)
     local index=$(printf '%s' "$tags" | grep -En '^.+$' | grep :$actual_version\$ | cut -d: -f1)
     local num=$(printf "$tags" | wc -l)
     local behind=$(($num - $index))
