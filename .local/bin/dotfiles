@@ -66,6 +66,28 @@ ensure_plugins() {
   done
 }
 
+_strip() {
+  printf '%s' "$@" | cut -c1-7
+}
+
+_vrange() {
+  printf '%s -> %s' $(_strip $1) $(_strip $2)
+}
+
+_vstrip() {
+  {
+    if [ "$@" ]; then
+      printf '%s' "$@"
+    else
+      cat
+    fi
+  } | sed 's/[^0-9\.]//g'
+}
+
+_vsort() {
+  sort -t. -k1,1n -k2,2n -k3,3n -k4,4n
+}
+
 status_repo() {
   local repo=$1
   local target=$2
@@ -82,25 +104,23 @@ status_repo() {
   fi
 
   if printf '%s' $version | grep -q '^[v0-9.]*$'; then
-    local actual_version=$(cd $target && git describe --tags)
-    local tags=$(cd $target && git tag --sort=v:refname)
-    local index=$(printf '%s' "$tags" | grep -En '^.+$' | grep :$actual_version\$ | cut -d: -f1)
-    local num=$(printf "$tags" | wc -l)
-    local behind=$(($num - $index))
+    local actual_version=$(cd $target && git describe --tags | _vstrip)
+    local origin_version=$(cd $target && git tag | _vstrip | _vsort | tail -n1)
 
-    if [ $actual_version = $version ]; then
-      if [ "$behind" -gt 0 ]; then
-        err $repo "behind $behind upstream tags"
+    if [ "$actual_version" = $(_vstrip $version) ]; then
+      if [ "$actual_version" != "$origin_version" ]; then
+        err $repo "$(_vrange $actual_version $origin_version)"
       fi
       return
     fi
   else
     local actual_version=$(cd $target && git rev-parse HEAD)
+    local origin_version=$(cd $target && git rev-parse origin/HEAD)
     local behind=$(cd $target && git rev-list --count origin...HEAD 2>/dev/null)
 
     if printf '%s' $actual_version | grep -q "^$version"; then
-      if [ "$behind" -gt 0 ]; then
-        err $repo "behind $behind upstream changes"
+      if [ "$actual_version" != "$origin_version" ]; then
+        err $repo "$(_vrange $actual_version $origin_version) (behind $behind)"
       fi
       return
     fi
