@@ -1,0 +1,5 @@
+[options]
+default=aports
+
+[aports]
+url = http://patchwork.alpinelinux.org/xmlrpc/
