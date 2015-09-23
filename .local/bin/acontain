@@ -268,9 +268,7 @@ _usage() {
 	 git co master
 	 git co 3.2-stable
 	 git co 3.1-stable
-	 $program create
-	 $program start
-	 $program prepare
+	 $program create && $program start && $program prepare
 	 cd main/openssl
 	 $program build -r
 	 $program stop
