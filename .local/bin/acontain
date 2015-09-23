@@ -69,7 +69,8 @@ _prepare() {
 
 	if ! $SUDO grep -q ^abuild: $rootfs/etc/passwd; then
 		msg "$name: adding abuild user"
-		_lxc attach -n $name -- /usr/sbin/adduser -D -G abuild -s /bin/sh abuild
+		_lxc attach -n $name -- \
+			/usr/sbin/adduser -D -G abuild -s /bin/sh abuild
 	fi
 
 	local sudoers=$rootfs/etc/sudoers.d/abuild
