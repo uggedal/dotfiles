@@ -30,7 +30,7 @@ _create() {
 	local rootfs=$4
 
 	if ! _lxc info -n $name >/dev/null 2>&1; then
-		msg "$name creating"
+		msg "$name: creating"
 		_lxc create \
 			-n $name \
 			-t alpine \
@@ -43,7 +43,7 @@ _create() {
 	local p
 	for p in $BUILD_BASE; do
 		if ! $SUDO grep -q "^$p\$" $rootfs/etc/apk/world; then
-			msg "$name installing $p"
+			msg "$name: installing $p"
 			$SUDO_APK add --root $rootfs $p
 		fi
 	done
