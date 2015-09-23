@@ -49,6 +49,16 @@ _create() {
 	done
 }
 
+ls() {
+	_foreach_container _ls
+}
+
+_ls() {
+	local name=$1
+
+	$SUDO lxc-info -n $name
+}
+
 _branches() {
 	git for-each-ref --format='%(refname:short)' refs/heads |
 		grep -e 'master$' -e '[0-9.]-stable$'
@@ -99,7 +109,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create)
+	create|ls)
 		$cmd "$@"
 		;;
 	*)
