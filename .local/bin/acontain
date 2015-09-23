@@ -176,25 +176,25 @@ _build() {
 		"cd aports/$d && abuild \"$_BUILD_ARGS\""
 }
 
-enter() {
+console() {
 	while [ "$_ENTER_SEL" != 0 ]; do
 		msg "Select:"
 		_ENTER_N=0
-		_foreach_container _enter_ls
+		_foreach_container _console_ls
 		read -r _ENTER_SEL
 		_ENTER_N=0
-		_foreach_container _enter_attach
+		_foreach_container _console_attach
 	done
 }
 
-_enter_ls() {
+_console_ls() {
 	local name=$1
 	_ENTER_N=$(($_ENTER_N+1))
 
 	printf "%3s: %s\n" $_ENTER_N $name
 }
 
-_enter_attach() {
+_console_attach() {
 	local name=$1
 	_ENTER_N=$(($_ENTER_N+1))
 
@@ -285,7 +285,19 @@ _usage() {
 	 destroy  stop and destroy all containers
 	 build    run abuild for all archs in containers matching
 	          the current git branch
-	 enter    attach to the console of the selected container
+	 console  attach to the console of the selected container
+	
+	Example:
+	 cd \$APORTSDIR
+	 git co master
+	 git co 3.2-stable
+	 git co 3.1-stable
+	 $program create
+	 $program start
+	 $program prepare
+	 cd main/openssl
+	 $program build -r
+	 $program stop
 	EOF
 }
 
@@ -295,7 +307,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create|prepare|upgrade|ls|start|stop|destroy|build|enter)
+	create|prepare|upgrade|ls|start|stop|destroy|build|console)
 		$cmd "$@"
 		;;
 	*)
