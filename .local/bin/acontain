@@ -48,7 +48,7 @@ _create() {
 		fi
 	done
 
-	local mnt=lxc-mount.entry=$APORTSDIR
+	local mnt=lxc.mount.entry=$APORTSDIR
 	if ! $SUDO grep -q ^$mnt $rootfs/../config; then
 		msg "$name: adding bind mount to $APORTSDIR"
 		$SUDO sh -c \
