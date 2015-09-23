@@ -222,11 +222,15 @@ _lxc() {
 	local action=$1
 	shift
 
-	[ "$action" = attach ] && _chroot_caps 0
+	if [ "$action" = attach ]; then
+		_chroot_caps 0
+	fi
 
 	$SUDO env -i lxc-$action "$@"
 
-	[ "$action" = attach ] && _chroot_caps 1
+	if [ "$action" = attach ]; then
+		_chroot_caps 1
+	fi
 }
 
 _chroot_caps() {
