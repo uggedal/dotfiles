@@ -72,6 +72,19 @@ _start() {
 	$SUDO lxc-start -n $name
 }
 
+stop() {
+	_foreach_container _stop
+}
+
+_stop() {
+	local name=$1
+
+	$SUDO lxc-info -n $name 2>/dev/null | grep -q RUNNING || return 0
+
+	msg "Stopping $name"
+	$SUDO lxc-stop -n $name
+}
+
 _branches() {
 	git for-each-ref --format='%(refname:short)' refs/heads |
 		grep -e '^master$' -e '[0-9.]-stable$'
