@@ -149,6 +149,28 @@ _destroy() {
 	_lxc destroy -n $name
 }
 
+build() {
+	_BUILD_ARGS="$@"
+	_foreach_container _build
+}
+
+_build() {
+	local name=$1
+	local release=$2
+
+
+	[ "$(_release)" = "$release" ] || return 0
+
+	local d=$(pwd)
+	d=${d##*$APORTSDIR/}
+
+	msg "$name: build $d"
+
+
+	_lxc attach -n $name -- su - abuild -c \
+		"cd aports/$d && abuild \"$_BUILD_ARGS\""
+}
+
 enter() {
 	while [ "$_ENTER_SEL" != 0 ]; do
 		msg "Select:"
@@ -183,6 +205,10 @@ _branches() {
 		grep -e '^master$' -e '[0-9.]-stable$'
 }
 
+_branch() {
+	git rev-parse --abbrev-ref HEAD
+}
+
 _foreach_container() {
 	local cb=$1
 	local r a n
@@ -196,7 +222,15 @@ _foreach_container() {
 }
 
 _releases() {
-	_branches | sed 's|^master$|edge|;s|-stable$||'
+	_branches | _branch_to_release
+}
+
+_release() {
+	_branch | _branch_to_release
+}
+
+_branch_to_release() {
+	sed 's|^master$|edge|;s|-stable$||'
 }
 
 _version() {
@@ -247,7 +281,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create|prepare|upgrade|ls|start|stop|destroy|enter)
+	create|prepare|upgrade|ls|start|stop|destroy|build|enter)
 		$cmd "$@"
 		;;
 	*)
