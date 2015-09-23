@@ -17,6 +17,7 @@ NAME_PREFIX="acontain"
 MIRROR="http://nl.alpinelinux.org/alpine"
 
 : ${SUDO:="sudo"}
+: ${SUDO_APK:="abuild-apk"}
 
 create() {
 	local c
@@ -28,15 +29,22 @@ _create() {
 	local name=$1
 	local release=$2
 	local arch=$3
+	local rootfs=$4
 
-	if $SUDO lxc-info -n $name >/dev/null 2>&1; then
+	if ! $SUDO lxc-info -n $name >/dev/null 2>&1; then
 		msg "Creating $name"
 		$SUDO lxc-create \
 			-n $name \
 			-t alpine \
 			-- \
 			-r $MIRROR/$(_version $release)/main \
-			-a $arch
+			-a $arch \
+			$BUILD_BASE
+	fi
+
+	if ! $SUDO grep -q "^$BUILD_BASE\$" $rootfs/etc/apk/world; then
+		msg "Installing $BUILD_BASE in $name"
+		$SUDO_APK add --root $rootfs $BUILD_BASE
 	fi
 }
 
@@ -47,11 +55,12 @@ _branches() {
 
 _foreach_container() {
 	local cb=$1
-	local r a
+	local r a n
 
 	for r in $(_releases); do
 		for a in $ARCHES; do
-			eval $1 $NAME_PREFIX-$r-$a \$r \$a
+			n=$NAME_PREFIX-$r-$a
+			eval $1 $n \$r \$a $(_lxc_path)/$n/rootfs
 		done
 	done
 }
@@ -62,6 +71,10 @@ _releases() {
 
 _version() {
 	echo "$@" | sed 's|^\([0-9]\)|v\1|'
+}
+
+_lxc_path() {
+	$SUDO lxc-config lxc.lxcpath
 }
 
 _verify() {
