@@ -276,7 +276,16 @@ _usage() {
 	usage: $program <command>
 
 	Commands:
-	 create  create lxc containers for every branch
+	 create   create lxc containers for every branch/arch
+	 prepare  configure running containers for building
+	 upgrade  upgrade running containers
+	 ls       list status of created containers
+	 start    start all stopped containers
+	 stop     stop all running containers
+	 destroy  stop and destroy all containers
+	 build    run abuild for all archs in containers matching
+	          the current git branch
+	 enter    attach to the console of the selected container
 	EOF
 }
 
