@@ -113,6 +113,35 @@ _destroy() {
 	_lxc destroy -n $name
 }
 
+enter() {
+	while [ "$_ENTER_SEL" != 0 ]; do
+		msg "Select:"
+		_ENTER_N=0
+		_foreach_container _enter_ls
+		read -r _ENTER_SEL
+		_ENTER_N=0
+		_foreach_container _enter_attach
+	done
+}
+
+_enter_ls() {
+	local name=$1
+	_ENTER_N=$(($_ENTER_N+1))
+
+	printf "%3s: %s\n" $_ENTER_N $name
+}
+
+_enter_attach() {
+	local name=$1
+	_ENTER_N=$(($_ENTER_N+1))
+
+	[ "$_ENTER_N" = "$_ENTER_SEL" ] || return 0
+
+	_ENTER_SEL=0
+
+	_lxc console -n $name
+}
+
 _branches() {
 	git for-each-ref --format='%(refname:short)' refs/heads |
 		grep -e '^master$' -e '[0-9.]-stable$'
@@ -170,7 +199,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create|upgrade|ls|start|stop|destroy)
+	create|upgrade|ls|start|stop|destroy|enter)
 		$cmd "$@"
 		;;
 	*)
