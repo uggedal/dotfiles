@@ -12,17 +12,64 @@ fi
 
 # defaults
 BUILD_BASE="build-base"
+ARCHES="x86 x86_64"
+NAME_PREFIX="acontain"
+MIRROR="http://nl.alpinelinux.org/alpine"
+
+: ${SUDO:="sudo"}
 
 create() {
-	:
+	local c
+
+	_foreach_container _create
 }
 
-verify() {
+_create() {
+	local name=$1
+	local release=$2
+	local arch=$3
+
+	if $SUDO lxc-info -n $name >/dev/null 2>&1; then
+		msg "Creating $name"
+		$SUDO lxc-create \
+			-n $name \
+			-t alpine \
+			-- \
+			-r $MIRROR/$(_version $release)/main \
+			-a $arch
+	fi
+}
+
+_branches() {
+	git for-each-ref --format='%(refname:short)' refs/heads |
+		grep -e 'master$' -e '[0-9.]-stable$'
+}
+
+_foreach_container() {
+	local cb=$1
+	local r a
+
+	for r in $(_releases); do
+		for a in $ARCHES; do
+			eval $1 $NAME_PREFIX-$r-$a \$r \$a
+		done
+	done
+}
+
+_releases() {
+	_branches | sed 's|^master$|edge|;s|-stable$||'
+}
+
+_version() {
+	echo "$@" | sed 's|^\([0-9]\)|v\1|'
+}
+
+_verify() {
 	[ "$APORTSDIR" ] || die "can't locate \$APORTSDIR"
 	git rev-parse 2>/dev/null || die "not in a git tree"
 }
 
-usage() {
+_usage() {
 	cat >&2 <<-EOF
 	$program $program_version
 	usage: $program <command>
@@ -32,7 +79,7 @@ usage() {
 	EOF
 }
 
-verify
+_verify
 
 cmd=$1
 shift
@@ -42,6 +89,6 @@ case $cmd in
 		$cmd "$@"
 		;;
 	*)
-		usage
+		_usage
 		;;
 esac
