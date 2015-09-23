@@ -56,7 +56,8 @@ ls() {
 _ls() {
 	local name=$1
 
-	_lxc info -n $name
+	msg "$name"
+	_lxc info -n $name | grep -v "^Name:"
 }
 
 start() {
