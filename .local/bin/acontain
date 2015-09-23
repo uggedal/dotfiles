@@ -21,7 +21,7 @@ create() {
 }
 
 usage() {
-	cat <<-EOF
+	cat >&2 <<-EOF
 	$program $program_version
 	usage: $program <command>
 
