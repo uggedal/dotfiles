@@ -43,10 +43,34 @@ _create() {
 	local p
 	for p in $BUILD_BASE; do
 		if ! $SUDO grep -q "^$p\$" $rootfs/etc/apk/world; then
-			msg "Installing $p in $name"
+			msg "$name installing $p"
 			$SUDO_APK add --root $rootfs $p
 		fi
 	done
+}
+
+prepare() {
+	_foreach_container _prepare
+}
+
+_prepare() {
+	local name=$1
+	local release=$2
+	local arch=$3
+	local rootfs=$4
+
+	if ! $SUDO grep -q ^abuild: $rootfs/etc/passwd; then
+		msg "$name: adding abuild user"
+		_lxc attach -n $name -- /usr/sbin/adduser -D -G abuild -s /bin/sh abuild
+	fi
+
+	local sudoers=$rootfs/etc/sudoers.d/abuild
+	if ! [ -e $sudoers ]; then
+		msg "$name: configuring sudo"
+		$SUDO sh -c "echo 'abuild ALL=NOPASSWD: ALL' > $sudoers"
+	fi
+
+	_lxc attach -n $name -- su - abuild -c 'yes | abuild-keygen -ai'
 }
 
 upgrade() {
@@ -175,7 +199,19 @@ _lxc() {
 	local action=$1
 	shift
 
-	$SUDO lxc-$action "$@"
+	[ "$action" = attach ] && _chroot_caps 0
+
+	$SUDO env -i lxc-$action "$@"
+
+	[ "$action" = attach ] && _chroot_caps 1
+}
+
+_chroot_caps() {
+	local f=/proc/sys/kernel/grsecurity/chroot_caps
+
+	[ -e $f ] || return 0
+
+	$SUDO sh -c "echo $1 >$f"
 }
 
 _verify() {
@@ -199,7 +235,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create|upgrade|ls|start|stop|destroy|enter)
+	create|prepare|upgrade|ls|start|stop|destroy|enter)
 		$cmd "$@"
 		;;
 	*)
