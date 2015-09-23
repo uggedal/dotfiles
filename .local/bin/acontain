@@ -162,7 +162,12 @@ _build() {
 	[ "$(_release)" = "$release" ] || return 0
 
 	local d=$(pwd)
-	d=${d##*$APORTSDIR/}
+	d=${d##*$APORTSDIR}
+	case $d in
+		/*)
+			d=${d#*/}
+			;;
+	esac
 
 	msg "$name: build $d"
 
