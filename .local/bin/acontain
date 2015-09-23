@@ -52,8 +52,8 @@ _create() {
 	if ! $SUDO grep -q ^$mnt $rootfs/../config; then
 		msg "$name: adding bind mount to $APORTSDIR"
 		$SUDO sh -c \
-			"echo '$mnt home/abuild/aports none bind,create=dir 0 0'" \
-			>> $rootfs/../config
+			"echo '$mnt home/abuild/aports none bind,create=dir 0 0' \
+			>> $rootfs/../config"
 	fi
 }
 
