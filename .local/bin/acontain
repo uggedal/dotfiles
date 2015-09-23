@@ -30,7 +30,7 @@ _create() {
 	local rootfs=$4
 
 	if ! _lxc info -n $name >/dev/null 2>&1; then
-		msg "Creating $name"
+		msg "$name creating"
 		_lxc create \
 			-n $name \
 			-t alpine \
@@ -69,7 +69,7 @@ ls() {
 _ls() {
 	local name=$1
 
-	msg "$name"
+	msg "$name:"
 	_lxc info -n $name | grep -v "^Name:"
 }
 
@@ -82,7 +82,7 @@ _start() {
 
 	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
 
-	msg "Starting $name"
+	msg "$name: starting"
 	_lxc start -n $name
 }
 
@@ -95,7 +95,7 @@ _stop() {
 
 	_lxc info -n $name 2>/dev/null | grep -q RUNNING || return 0
 
-	msg "Stopping $name"
+	msg "$name: stopping"
 	_lxc stop -n $name
 }
 
@@ -109,7 +109,7 @@ _destroy() {
 
 	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
 
-	msg "Destroying $name"
+	msg "$name: destroying"
 	_lxc destroy -n $name
 }
 
