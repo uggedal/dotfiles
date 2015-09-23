@@ -20,8 +20,6 @@ MIRROR="http://nl.alpinelinux.org/alpine"
 : ${SUDO_APK:="abuild-apk"}
 
 create() {
-	local c
-
 	_foreach_container _create
 }
 
