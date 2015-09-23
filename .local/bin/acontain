@@ -65,12 +65,15 @@ _prepare() {
 	fi
 
 	local sudoers=$rootfs/etc/sudoers.d/abuild
-	if ! [ -e $sudoers ]; then
+	if ! $SUDO test -e $sudoers; then
 		msg "$name: configuring sudo"
 		$SUDO sh -c "echo 'abuild ALL=NOPASSWD: ALL' > $sudoers"
 	fi
 
-	_lxc attach -n $name -- su - abuild -c 'yes | abuild-keygen -ai'
+	if ! $SUDO test -e $rootfs/home/abuild/.abuild/abuild.conf; then
+		msg "$name: generating keys"
+		_lxc attach -n $name -- su - abuild -c 'echo | abuild-keygen -ai'
+	fi
 }
 
 upgrade() {
