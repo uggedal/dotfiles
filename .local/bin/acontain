@@ -49,6 +49,19 @@ _create() {
 	done
 }
 
+upgrade() {
+	_foreach_container _upgrade
+}
+
+_upgrade() {
+	local name=$1
+	local release=$2
+	local arch=$3
+	local rootfs=$4
+
+	$SUDO_APK upgrade --root $rootfs -U
+}
+
 ls() {
 	_foreach_container _ls
 }
@@ -157,7 +170,7 @@ cmd=$1
 shift
 
 case $cmd in
-	create|ls|start|stop|destroy)
+	create|upgrade|ls|start|stop|destroy)
 		$cmd "$@"
 		;;
 	*)
