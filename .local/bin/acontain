@@ -19,10 +19,6 @@ MIRROR="http://nl.alpinelinux.org/alpine"
 : ${SUDO:="sudo"}
 : ${SUDO_APK:="abuild-apk"}
 
-create() {
-	_foreach_container _create
-}
-
 _create() {
 	local name=$1
 	local release=$2
@@ -57,10 +53,6 @@ _create() {
 	fi
 }
 
-prepare() {
-	_foreach_container _prepare
-}
-
 _prepare() {
 	local name=$1
 	local release=$2
@@ -85,10 +77,6 @@ _prepare() {
 	fi
 }
 
-upgrade() {
-	_foreach_container _upgrade
-}
-
 _upgrade() {
 	local name=$1
 	local release=$2
@@ -98,10 +86,6 @@ _upgrade() {
 	$SUDO_APK upgrade --root $rootfs -U
 }
 
-ls() {
-	_foreach_container _ls
-}
-
 _ls() {
 	local name=$1
 
@@ -109,30 +93,23 @@ _ls() {
 	_lxc info -n $name | grep -v "^Name:"
 }
 
-start() {
-	_foreach_container _start
+_change_state() {
+	local name=$1
+	local action=$2
+	local needs=$3
+
+	_lxc info -n $name 2>/dev/null | grep -q $needs || return 0
+
+	msg "$name: ${action}ing"
+	_lxc $action -n $name
 }
 
 _start() {
-	local name=$1
-
-	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
-
-	msg "$name: starting"
-	_lxc start -n $name
-}
-
-stop() {
-	_foreach_container _stop
+	_change_state $1 start STOPPED
 }
 
 _stop() {
-	local name=$1
-
-	_lxc info -n $name 2>/dev/null | grep -q RUNNING || return 0
-
-	msg "$name: stopping"
-	_lxc stop -n $name
+	_change_state $1 stop RUNNING
 }
 
 destroy() {
@@ -141,12 +118,7 @@ destroy() {
 }
 
 _destroy() {
-	local name=$1
-
-	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
-
-	msg "$name: destroying"
-	_lxc destroy -n $name
+	_change_state $1 destroy STOPPED
 }
 
 build() {
@@ -307,7 +279,10 @@ cmd=$1
 shift
 
 case $cmd in
-	create|prepare|upgrade|ls|start|stop|destroy|build|console)
+	create|prepare|upgrade|ls|start|stop)
+		_foreach_container _$cmd "$@"
+		;;
+	destroy|build|console)
 		$cmd "$@"
 		;;
 	*)
