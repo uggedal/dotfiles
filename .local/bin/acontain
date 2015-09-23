@@ -13,11 +13,13 @@ fi
 # defaults
 BUILD_BASE="build-base"
 
-cmd=$1
-shift
-
 create() {
 	:
+}
+
+verify() {
+	[ "$APORTSDIR" ] || die "can't locate \$APORTSDIR"
+	git rev-parse 2>/dev/null || die "not in a git tree"
 }
 
 usage() {
@@ -29,6 +31,11 @@ usage() {
 	 create  create lxc containers for every branch
 	EOF
 }
+
+verify
+
+cmd=$1
+shift
 
 case $cmd in
 	create)
