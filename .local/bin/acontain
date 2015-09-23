@@ -29,9 +29,9 @@ _create() {
 	local arch=$3
 	local rootfs=$4
 
-	if ! $SUDO lxc-info -n $name >/dev/null 2>&1; then
+	if ! _lxc info -n $name >/dev/null 2>&1; then
 		msg "Creating $name"
-		$SUDO lxc-create \
+		_lxc create \
 			-n $name \
 			-t alpine \
 			-- \
@@ -56,7 +56,7 @@ ls() {
 _ls() {
 	local name=$1
 
-	$SUDO lxc-info -n $name
+	_lxc info -n $name
 }
 
 start() {
@@ -66,10 +66,10 @@ start() {
 _start() {
 	local name=$1
 
-	$SUDO lxc-info -n $name 2>/dev/null | grep -q STOPPED || return 0
+	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
 
 	msg "Starting $name"
-	$SUDO lxc-start -n $name
+	_lxc start -n $name
 }
 
 stop() {
@@ -79,10 +79,10 @@ stop() {
 _stop() {
 	local name=$1
 
-	$SUDO lxc-info -n $name 2>/dev/null | grep -q RUNNING || return 0
+	_lxc info -n $name 2>/dev/null | grep -q RUNNING || return 0
 
 	msg "Stopping $name"
-	$SUDO lxc-stop -n $name
+	_lxc stop -n $name
 }
 
 destroy() {
@@ -93,10 +93,10 @@ destroy() {
 _destroy() {
 	local name=$1
 
-	$SUDO lxc-info -n $name 2>/dev/null | grep -q STOPPED || return 0
+	_lxc info -n $name 2>/dev/null | grep -q STOPPED || return 0
 
 	msg "Destroying $name"
-	$SUDO lxc-destroy -n $name
+	_lxc destroy -n $name
 }
 
 _branches() {
@@ -125,7 +125,14 @@ _version() {
 }
 
 _lxc_path() {
-	$SUDO lxc-config lxc.lxcpath
+	_lxc config lxc.lxcpath
+}
+
+_lxc() {
+	local action=$1
+	shift
+
+	$SUDO lxc-$action "$@"
 }
 
 _verify() {
