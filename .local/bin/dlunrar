@@ -10,7 +10,7 @@ filter() {
       grep -i $EP_RE
       ;;
     */mov)
-      grep -i '\(BluRay\|WEB-DL\)' | grep -vi $EP_RE
+      grep -i '\(BluRay\|WEB-DL|\Subs\)' | grep -vi $EP_RE
       ;;
     *)
       cat >/dev/null
@@ -18,11 +18,23 @@ filter() {
   esac
 }
 
+_unrared() {
+  local f
+
+  unrar lb "$1" | while IFS=$(printf '\n') read f; do
+    [ -f "$f" ] || return 1
+  done
+}
+
+_unrar() {
+  _unrared "$1" || unrar x "$1"
+}
+
 extract() {
   local f
 
   while IFS=$(printf '\n') read f; do
-    [ -f "$(unrar lb "$f")" ] || unrar x "$f"
+    _unrar $f
   done
 }
 
@@ -34,6 +46,20 @@ link() {
   done
 }
 
+reextract() {
+  local f
+
+  case $(pwd) in
+    */mov)
+      for f in *.rar; do
+        _unrar $f
+      done
+      ;;
+  esac
+}
+
 find $DIR -maxdepth 3 -type f -name \*.rar | filter | extract
 
 find $DIR -maxdepth 3 -type f -name \*.mkv | grep -v sample | filter | link
+
+reextract
