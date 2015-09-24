@@ -33,14 +33,14 @@ _create() {
 			-- \
 			-r $MIRROR/$(_version $release)/main \
 			-a $arch \
-			$BUILD_BASE
+			$BUILD_BASE || return 1
 	fi
 
 	local p
 	for p in $BUILD_BASE; do
 		if ! $SUDO grep -q "^$p\$" $rootfs/etc/apk/world; then
 			msg "$name: installing $p"
-			$SUDO_APK add --root $rootfs $p
+			$SUDO_APK add --root $rootfs $p || return 1
 		fi
 	done
 
@@ -49,7 +49,7 @@ _create() {
 		msg "$name: adding bind mount to $APORTSDIR"
 		$SUDO sh -c \
 			"echo '$mnt home/abuild/aports none bind,create=dir 0 0' \
-			>> $rootfs/../config"
+			>> $rootfs/../config" || return 1
 	fi
 }
 
@@ -62,18 +62,19 @@ _prepare() {
 	if ! $SUDO grep -q ^abuild: $rootfs/etc/passwd; then
 		msg "$name: adding abuild user"
 		_lxc attach -n $name -- \
-			/usr/sbin/adduser -D -G abuild -s /bin/sh abuild
+			/usr/sbin/adduser -D -G abuild -s /bin/sh abuild || return 1
 	fi
 
 	local sudoers=$rootfs/etc/sudoers.d/abuild
 	if ! $SUDO test -e $sudoers; then
 		msg "$name: configuring sudo"
-		$SUDO sh -c "echo 'abuild ALL=NOPASSWD: ALL' > $sudoers"
+		$SUDO sh -c "echo 'abuild ALL=NOPASSWD: ALL' > $sudoers" || return 1
 	fi
 
 	if ! $SUDO test -e $rootfs/home/abuild/.abuild/abuild.conf; then
 		msg "$name: generating keys"
-		_lxc attach -n $name -- su - abuild -c 'echo | abuild-keygen -ai'
+		_lxc attach -n $name -- su - abuild -c 'echo | abuild-keygen -ai' ||
+			return 1
 	fi
 }
 
@@ -83,7 +84,7 @@ _upgrade() {
 	local arch=$3
 	local rootfs=$4
 
-	$SUDO_APK upgrade --root $rootfs -U
+	$SUDO_APK upgrade --root $rootfs -U || return 1
 }
 
 _ls() {
@@ -145,17 +146,17 @@ _build() {
 
 
 	_lxc attach -n $name -- su - abuild -c \
-		"cd aports/$d && abuild \"$_BUILD_ARGS\""
+		"cd aports/$d && abuild \"$_BUILD_ARGS\"" || return 1
 }
 
 console() {
 	while [ "$_CONSOLE_SEL" != 0 ]; do
 		msg "Select:"
 		_CONSOLE_N=0
-		_foreach_container _console_ls
+		_foreach_container _console_ls || return 1
 		read -r _CONSOLE_SEL
 		_CONSOLE_N=0
-		_foreach_container _console_attach
+		_foreach_container _console_attach || return 1
 	done
 }
 
@@ -193,7 +194,7 @@ _foreach_container() {
 	for r in $(_releases); do
 		for a in $ARCHES; do
 			n=$NAME_PREFIX-$r-$a
-			eval $1 $n \$r \$a $(_lxc_path)/$n/rootfs
+			eval $1 $n \$r \$a $(_lxc_path)/$n/rootfs || return 1
 		done
 	done
 }
@@ -223,13 +224,13 @@ _lxc() {
 	shift
 
 	if [ "$action" = attach ]; then
-		_chroot_caps 0
+		_chroot_caps 0 || return 1
 	fi
 
-	$SUDO env -i lxc-$action "$@"
+	$SUDO env -i lxc-$action "$@" || return 1
 
 	if [ "$action" = attach ]; then
-		_chroot_caps 1
+		_chroot_caps 1 || return 1
 	fi
 }
 
