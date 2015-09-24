@@ -44,8 +44,8 @@ _create() {
 		fi
 	done
 
-	_bind_mount $name $rootfs/../config $APORTSDIR home/abuild/aports
-
+	_bind_mount $name $rootfs/../config $APORTSDIR home/abuild/aports &&
+		_bind_mount $name $rootfs/../config $SRCDEST ${SRCDEST#*/}
 }
 
 _prepare() {
