@@ -94,17 +94,6 @@ _ls() {
 	_lxc info -n $name | grep -v "^Name:"
 }
 
-_change_state() {
-	local name=$1
-	local action=$2
-	local needs=$3
-
-	_lxc info -n $name 2>/dev/null | grep -q $needs || return 0
-
-	msg "$name: ${action}ing"
-	_lxc $action -n $name
-}
-
 _start() {
 	_change_state $1 start STOPPED
 }
@@ -176,6 +165,17 @@ _console_attach() {
 	_CONSOLE_SEL=0
 
 	_lxc console -n $name
+}
+
+_change_state() {
+	local name=$1
+	local action=$2
+	local needs=$3
+
+	_lxc info -n $name 2>/dev/null | grep -q $needs || return 0
+
+	msg "$name: ${action}ing"
+	_lxc $action -n $name
 }
 
 _branches() {
