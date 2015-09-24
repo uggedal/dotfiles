@@ -149,30 +149,30 @@ _build() {
 }
 
 console() {
-	while [ "$_ENTER_SEL" != 0 ]; do
+	while [ "$_CONSOLE_SEL" != 0 ]; do
 		msg "Select:"
-		_ENTER_N=0
+		_CONSOLE_N=0
 		_foreach_container _console_ls
-		read -r _ENTER_SEL
-		_ENTER_N=0
+		read -r _CONSOLE_SEL
+		_CONSOLE_N=0
 		_foreach_container _console_attach
 	done
 }
 
 _console_ls() {
 	local name=$1
-	_ENTER_N=$(($_ENTER_N+1))
+	_CONSOLE_N=$(($_CONSOLE_N+1))
 
-	printf "%3s: %s\n" $_ENTER_N $name
+	printf "%3s: %s\n" $_CONSOLE_N $name
 }
 
 _console_attach() {
 	local name=$1
-	_ENTER_N=$(($_ENTER_N+1))
+	_CONSOLE_N=$(($_CONSOLE_N+1))
 
-	[ "$_ENTER_N" = "$_ENTER_SEL" ] || return 0
+	[ "$_CONSOLE_N" = "$_CONSOLE_SEL" ] || return 0
 
-	_ENTER_SEL=0
+	_CONSOLE_SEL=0
 
 	_lxc console -n $name
 }
