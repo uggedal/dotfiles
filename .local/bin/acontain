@@ -11,7 +11,7 @@ fi
 . "$datadir/functions.sh"
 
 # defaults
-BUILD_BASE="abuild build-base"
+BUILD_BASE="abuild build-base patch"
 ARCHES="x86 x86_64"
 NAME_PREFIX="acontain"
 MIRROR="http://nl.alpinelinux.org/alpine"
