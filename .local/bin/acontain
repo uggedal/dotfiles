@@ -103,7 +103,7 @@ _stop() {
 }
 
 destroy() {
-	stop
+	_foreach_container _stop
 	_foreach_container _destroy
 }
 
