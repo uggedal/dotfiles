@@ -44,13 +44,8 @@ _create() {
 		fi
 	done
 
-	local mnt=lxc.mount.entry=$APORTSDIR
-	if ! $SUDO grep -q ^$mnt $rootfs/../config; then
-		msg "$name: adding bind mount to $APORTSDIR"
-		$SUDO sh -c \
-			"echo '$mnt home/abuild/aports none bind,create=dir 0 0' \
-			>> $rootfs/../config" || return 1
-	fi
+	_bind_mount $name $rootfs/../config $APORTSDIR home/abuild/aports
+
 }
 
 _prepare() {
@@ -165,6 +160,20 @@ _console_attach() {
 	_CONSOLE_SEL=0
 
 	_lxc console -n $name
+}
+
+_bind_mount() {
+	local name=$1
+	local conf=$2
+	local src=$3
+	local dest=$4
+	local mnt=lxc.mount.entry=$src
+
+	if ! $SUDO grep -q ^$mnt $conf; then
+		msg "$name: adding bind mount to $src"
+		$SUDO sh -c \
+			"echo '$mnt $dest none bind,create=dir 0 0' >> $conf" || return 1
+	fi
 }
 
 _change_state() {
