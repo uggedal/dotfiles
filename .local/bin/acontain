@@ -115,7 +115,6 @@ _build() {
 	local name=$1
 	local release=$2
 
-
 	[ "$(_release)" = "$release" ] || return 0
 
 	local d=$(pwd)
@@ -131,6 +130,20 @@ _build() {
 
 	_lxc attach -n $name -- su - abuild -c \
 		"cd aports/$d && abuild \"$_BUILD_ARGS\"" || return 1
+}
+
+bump() {
+	_BUMP_ARGS="$@"
+	_foreach_container _bump
+}
+
+_bump() {
+	local name=$1
+	local release=$2
+
+	[ "$(_release)" = "$release" ] || return 0
+
+	ABUMP="$program build" abump "$_BUMP_ARGS"
 }
 
 console() {
@@ -294,7 +307,7 @@ case $cmd in
 	create|prepare|upgrade|ls|start|stop)
 		_foreach_container _$cmd "$@"
 		;;
-	destroy|build|console)
+	destroy|build|bump|console)
 		$cmd "$@"
 		;;
 	*)
