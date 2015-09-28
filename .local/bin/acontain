@@ -129,21 +129,11 @@ _build() {
 
 
 	_lxc attach -n $name -- su - abuild -c \
-		"cd aports/$d && abuild \"$_BUILD_ARGS\"" || return 1
+		"cd aports/$d && abuild $_BUILD_ARGS" || return 1
 }
 
 bump() {
-	_BUMP_ARGS="$@"
-	_foreach_container _bump
-}
-
-_bump() {
-	local name=$1
-	local release=$2
-
-	[ "$(_release)" = "$release" ] || return 0
-
-	ABUMP="$program build" abump "$_BUMP_ARGS"
+	ABUILD="$program build" abump "$@"
 }
 
 console() {
