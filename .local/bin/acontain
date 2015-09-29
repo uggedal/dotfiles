@@ -12,10 +12,10 @@ fi
 
 # defaults
 BUILD_BASE="abuild build-base patch"
-ARCHES="x86 x86_64"
 NAME_PREFIX="acontain"
 MIRROR="http://nl.alpinelinux.org/alpine"
 
+: ${ARCHES:="x86 x86_64"}
 : ${SUDO:="sudo"}
 : ${SUDO_APK:="abuild-apk"}
 
