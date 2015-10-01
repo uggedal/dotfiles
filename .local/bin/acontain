@@ -108,14 +108,12 @@ _destroy() {
 
 build() {
 	_BUILD_ARGS="$@"
-	_foreach_container _build
+	_foreach_container _build $(_release)
 }
 
 _build() {
 	local name=$1
 	local release=$2
-
-	[ "$(_release)" = "$release" ] || return 0
 
 	local d=$(pwd)
 	d=${d##*$APORTSDIR}
@@ -140,10 +138,10 @@ console() {
 	while [ "$_CONSOLE_SEL" != 0 ]; do
 		msg "Select:"
 		_CONSOLE_N=0
-		_foreach_container _console_ls || return 1
+		_foreach_container _console_ls $(_release) || return 1
 		read -r _CONSOLE_SEL
 		_CONSOLE_N=0
-		_foreach_container _console_attach || return 1
+		_foreach_container _console_attach $(_release) || return 1
 	done
 }
 
@@ -201,9 +199,14 @@ _branch() {
 
 _foreach_container() {
 	local cb=$1
+	local release=$2
 	local r a n
 
 	for r in $(_releases); do
+		if [ "$release" ] && [ "$release" != "$r" ]; then
+			continue
+		fi
+
 		for a in $ARCHES; do
 			n=$NAME_PREFIX-$r-$a
 			eval $1 $n \$r \$a $(_lxc_path)/$n/rootfs || return 1
